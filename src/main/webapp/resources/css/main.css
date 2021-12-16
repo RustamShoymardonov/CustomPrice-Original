@@ -17565,8 +17565,8 @@ table {
 }
 
 thead {
-  color: #000;
-  background-color: rgba(40, 167, 69, 0.23);
+  color: #FFFFFF;
+  background-color: blue;
 }
 
 tbody th {

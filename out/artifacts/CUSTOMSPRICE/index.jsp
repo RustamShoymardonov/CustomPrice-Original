@@ -22,7 +22,7 @@
     <meta content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png" property="og:image">
     <meta content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular."
           property="og:description">
-    <title>Vali Admin - Free Bootstrap 4 Admin Template</title>
+    <title>Божхона қиймати | Асосий сахифа</title>
     <meta charset="utf-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -58,8 +58,8 @@
     </ul>
 </header>
 <!-- Sidebar menu-->
-<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
-<aside class="app-sidebar">
+<div class="app-sidebar__overlay" data-toggle="sidebar"  ></div>
+<aside class="app-sidebar"  style="background-image: url('resources/images/archa.gif'); background-repeat: no-repeat; background-position: bottom; background-size: 90%;">
     <ul class="app-menu">
         <li><a class="app-menu__item" href="<%=request.getContextPath()%>/resources/pages/second.jsp"><i class="app-menu__icon fa fa-line-chart"></i><span
                 class="app-menu__label">Товарларни тоифалаш</span></a></li>
@@ -76,6 +76,9 @@
         <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-indent"></i><span
                 class="app-menu__label">Справочник</span></a></li>
     </ul>
+
+
+
 </aside>
 <main class="app-content">
     <div class="col-md-12">
@@ -154,17 +157,205 @@
 
     </div>
 </main>
+<script>
+
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    11
+    12
+    13
+    14
+    15
+    16
+    17
+    18
+    19
+    20
+    21
+    22
+    23
+    24
+    25
+    26
+    27
+    28
+    29
+    30
+    31
+    32
+    33
+    34
+    35
+    36
+    37
+    38
+    39
+    40
+    41
+    42
+    43
+    44
+    45
+    46
+    47
+    48
+    49
+    50
+    51
+    52
+    53
+    54
+    55
+    56
+    57
+    58
+    59
+    60
+    61
+    62
+    63
+    64
+    65
+    66
+    67
+    68
+    69
+    70
+    71
+    72
+    73
+    74
+    75
+    76
+    77
+    78
+    79
+    80
+    81
+    82
+    83
+    84
+    85
+    86
+    87
+    88
+    89
+    90
+    91
+    92
+    93
+    ////////////////////////
+    ///////// Настройки
+    ////////////////////////
+
+    // количество снежинок, которое будет на экране одновременно.
+    let snowmax=40
+
+    // Цвета для снежинок. Для каждой конкретной снежинки цвет выбирается случайно из этого массива.
+    let snowcolor=new Array("#b9dff5","#7fc7ff","#7fb1ff","#7fc7ff","#b9dff5")
+
+    // Шрифт для снежинок
+    let snowtype=new Array("Times")
+
+    // Символ (*) и есть снежинка, в место нее можно вставить любой другой символ.
+    let snowletter="&#10052;"
+
+    // Скорость движения снежинок (от 0.3 до 2)
+    let sinkspeed=0.4
+
+    // Максимальный размер для снежинок
+    let snowmaxsize=40
+
+    // Минимальный размер для снежинок
+    let snowminsize=10
+
+    // Зона для снежинок
+    // 1 для всей страницы, 2 в левой части страницы
+    // 3 в центральной части, 4 в правой части страницы
+    let snowingzone=1
+
+    ////////////////////////
+    ///////// Конец настроек
+    ////////////////////////
+
+    let snow=new Array()
+    let marginbottom
+    let marginright
+    let timer
+    let i_snow=0
+    let x_mv=new Array();
+    let crds=new Array();
+    let lftrght=new Array();
+    function randommaker(range) {
+        rand=Math.floor(range*Math.random())
+        return rand
+    }
+    function initsnow() {
+        marginbottom = document.documentElement.clientHeight+50
+        marginright = document.body.clientWidth-15
+        let snowsizerange=snowmaxsize-snowminsize
+        for (i=0;i<=snowmax;i++) {
+            crds[i] = 0;
+            lftrght[i] = Math.random()*15;
+            x_mv[i] = 0.03 + Math.random()/10;
+            snow[i]=document.getElementById("s"+i)
+            snow[i].style.fontFamily=snowtype[randommaker(snowtype.length)]
+            snow[i].size=randommaker(snowsizerange)+snowminsize
+            snow[i].style.fontSize=snow[i].size+'px';
+            snow[i].style.color=snowcolor[randommaker(snowcolor.length)]
+            snow[i].style.zIndex=1000
+            snow[i].sink=sinkspeed*snow[i].size/5
+            if (snowingzone==1) {snow[i].posx=randommaker(marginright-snow[i].size)}
+            if (snowingzone==2) {snow[i].posx=randommaker(marginright/2-snow[i].size)}
+            if (snowingzone==3) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/4}
+            if (snowingzone==4) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/2}
+            snow[i].posy=randommaker(2*marginbottom-marginbottom-2*snow[i].size)
+            snow[i].style.left=snow[i].posx+'px';
+            snow[i].style.top=snow[i].posy+'px';
+        }
+        movesnow()
+    }
+    function movesnow() {
+        for (i=0;i<=snowmax;i++) {
+            crds[i] += x_mv[i];
+            snow[i].posy+=snow[i].sink
+            snow[i].style.left=snow[i].posx+lftrght[i]*Math.sin(crds[i])+'px';
+            snow[i].style.top=snow[i].posy+'px';
+
+            if (snow[i].posy>=marginbottom-2*snow[i].size || parseInt(snow[i].style.left)>(marginright-3*lftrght[i])){
+                if (snowingzone==1) {snow[i].posx=randommaker(marginright-snow[i].size)}
+                if (snowingzone==2) {snow[i].posx=randommaker(marginright/2-snow[i].size)}
+                if (snowingzone==3) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/4}
+                if (snowingzone==4) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/2}
+                snow[i].posy=0
+            }
+        }
+        let timer=setTimeout("movesnow()",50)
+    }
+
+    for (i=0;i<=snowmax;i++) {
+        document.body.insertAdjacentHTML('beforeend', "<span id='s"+i+"' style='user-select:none;position:fixed;top:-"+snowmaxsize+"'>"+snowletter+"</span>")
+    }
+    window.onload=initsnow
+</script>
 <!-- Essential javascripts for application to work-->
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/jquery-3.3.1.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/popper.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/main.js"></script>
 <!-- The javascript plugin to display page loading on top-->
-<script src="js/plugins/pace.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/plugins/pace.min.js"></script>
 <!-- Page specific javascripts-->
-<script src="js/plugins/chart.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resources/js/plugins/chart.js" type="text/javascript"></script>
 <!-- Google analytics script-->
 
-</script>
+
 </body>
 </html>
