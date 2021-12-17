@@ -65,7 +65,7 @@
     <ul class="app-menu">
         <li><a class="app-menu__item" href="<%=request.getContextPath()%>/resources/pages/second.jsp"><i class="app-menu__icon fa fa-line-chart"></i><span
                 class="app-menu__label">Товарларни тоифалаш</span></a></li>
-        <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-check-square-o"></i><span
+        <li><a class="app-menu__item"href="<%=request.getContextPath()%>/resources/pages/threed.jsp.jsp"><i class="app-menu__icon fa fa-check-square-o"></i><span
                 class="app-menu__label">Қиймат мониторинги</span></a></li>
         <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-exclamation-triangle"></i><span
                 class="app-menu__label">Мантиқий назорат</span></a></li>
@@ -162,7 +162,6 @@
                     </div>
 
                     <div class="col-md-3">
-
                         <style>
 
                             table {
@@ -190,7 +189,6 @@
                             }
 
                         </style>
-
                         <h5><font style="vertical-align: inherit; color: red;">Самарқанд (август 2021)</font></h5>
                         <span style="font-size: 20px;"><b>индекс</b></span><span
                             style="font-size: 20px; margin-left: 1rem;"><b>20 $</b></span><span
@@ -286,8 +284,9 @@
                         </table>
                     </div>
                 </div>
-
-
+            </div>
+        </div>
+    </div>
 </main>
 <!-- Essential javascripts for application to work-->
 <script src="<%=request.getContextPath()%>/resources/js/jquery-3.3.1.min.js"></script>
