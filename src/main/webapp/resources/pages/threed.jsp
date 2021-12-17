@@ -71,7 +71,7 @@
                 class="app-menu__label">Мантиқий назорат</span></a></li>
         <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-globe"></i><span
                 class="app-menu__label">Халқаро сўровномалар</span></a></li>
-        <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-envelope-open"></i><span
+        <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-envelope-o"></i><span
                 class="app-menu__label">Кўрсатма хатлари</span></a></li>
         <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-pencil-square-o"></i><span
                 class="app-menu__label">Дастлабки қарор</span></a></li>
