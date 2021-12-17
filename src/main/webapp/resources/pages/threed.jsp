@@ -83,6 +83,19 @@
     <div class="col-md-12">
         <div class="tile" style=" padding: 0px; height: 770px;">
 
+            <div class="background" style="
+                    background-image: url('<%=request.getContextPath()%>/resources/images/gtk_image2.png');
+                    width: 900px;
+                    height: 1000px;
+                    position: fixed;
+                    right: 45px;
+                    filter: grayscale(1);
+                    background-size: contain;
+                    background-position: 180px 50%;
+                    background-repeat: no-repeat;
+                    opacity: 0.3;
+                "></div>
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="background" style="

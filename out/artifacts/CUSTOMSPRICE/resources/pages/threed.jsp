@@ -65,7 +65,7 @@
     <ul class="app-menu">
         <li><a class="app-menu__item" href="<%=request.getContextPath()%>/resources/pages/second.jsp"><i class="app-menu__icon fa fa-line-chart"></i><span
                 class="app-menu__label">Товарларни тоифалаш</span></a></li>
-        <li><a class="app-menu__item" href="<%=request.getContextPath()%>/resources/pages/threed.jsp"><i class="app-menu__icon fa fa-check-square-o"></i><span
+        <li><a class="app-menu__item"href="<%=request.getContextPath()%>/resources/pages/threed.jsp"><i class="app-menu__icon fa fa-check-square-o"></i><span
                 class="app-menu__label">Қиймат мониторинги</span></a></li>
         <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-exclamation-triangle"></i><span
                 class="app-menu__label">Мантиқий назорат</span></a></li>
@@ -81,10 +81,35 @@
 </aside>
 <main class="app-content" >
     <div class="col-md-12">
-        <div class="tile" style=" padding: 0px;">
+        <div class="tile" style=" padding: 0px; height: 770px;">
+
+            <div class="background" style="
+                    background-image: url('<%=request.getContextPath()%>/resources/images/gtk_image2.png');
+                    width: 900px;
+                    height: 1000px;
+                    position: fixed;
+                    right: 45px;
+                    filter: grayscale(1);
+                    background-size: contain;
+                    background-position: 180px 50%;
+                    background-repeat: no-repeat;
+                    opacity: 0.3;
+                "></div>
 
             <div class="row">
                 <div class="col-md-12">
+                    <div class="background" style="
+                    background-image: url('resources/images/gtk_image2.png');
+                    width: 900px;
+                    height: 1000px;
+                    position: fixed;
+                    right: 45px;
+                    filter: grayscale(1);
+                    background-size: contain;
+                    background-position: 180px 50%;
+                    background-repeat: no-repeat;
+                    opacity: 0.3;
+                "></div>
                     <div class="col">
                         <h3>Божхона қиймати мониторинги</h3>
                         <form method="">
@@ -235,7 +260,7 @@
                         </style>
 
                         <span class="searchCount pull-right"></span>
-                        <table class="table table-responsive table-bordered results">
+                        <table class="table table-responsive table-bordered results" style="font-size: 12px">
                             <thead class="table-dark" style="text-align: center;">
                             <tr>
                                 <th>№</th>
