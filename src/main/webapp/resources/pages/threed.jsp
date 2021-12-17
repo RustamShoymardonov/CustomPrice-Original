@@ -99,7 +99,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="background" style="
-                    background-image: url('resources/images/gtk_image2.png');
+                    background-image: url('<%=request.getContextPath()%>/resources/images/gtk_image2.png');
                     width: 900px;
                     height: 1000px;
                     position: fixed;
