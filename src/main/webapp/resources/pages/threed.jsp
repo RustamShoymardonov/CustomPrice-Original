@@ -81,35 +81,23 @@
 </aside>
 <main class="app-content" >
     <div class="col-md-12">
-        <div class="tile" style=" padding: 0px; height: 770px;">
+        <div class="tile" style=" padding: 0px; height: 90%;">
 
             <div class="background" style="
                     background-image: url('<%=request.getContextPath()%>/resources/images/gtk_image2.png');
-                    width: 900px;
-                    height: 1000px;
+                    width: 600px;
+                    height: 100%;
                     position: fixed;
                     right: 45px;
                     filter: grayscale(1);
                     background-size: contain;
-                    background-position: 180px 50%;
+                    background-position: 100px 105%;
                     background-repeat: no-repeat;
-                    opacity: 0.3;
-                "></div>
+                    opacity: 0.2;
+                    "></div>
 
             <div class="row">
                 <div class="col-md-12">
-                    <div class="background" style="
-                    background-image: url('<%=request.getContextPath()%>/resources/images/gtk_image2.png');
-                    width: 900px;
-                    height: 1000px;
-                    position: fixed;
-                    right: 45px;
-                    filter: grayscale(1);
-                    background-size: contain;
-                    background-position: 180px 50%;
-                    background-repeat: no-repeat;
-                    opacity: 0.3;
-                "></div>
                     <div class="col">
                         <h3>Божхона қиймати мониторинги</h3>
                         <form method="">
