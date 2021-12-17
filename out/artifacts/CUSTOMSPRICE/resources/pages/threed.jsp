@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%--
   Created by IntelliJ IDEA.
   User: ADMIN
@@ -65,9 +66,9 @@
     <ul class="app-menu">
         <li><a class="app-menu__item" href="<%=request.getContextPath()%>/resources/pages/second.jsp"><i class="app-menu__icon fa fa-line-chart"></i><span
                 class="app-menu__label">Товарларни тоифалаш</span></a></li>
-        <li><a class="app-menu__item"href="<%=request.getContextPath()%>/resources/pages/threed.jsp"><i class="app-menu__icon fa fa-check-square-o"></i><span
+        <li><a class="app-menu__item" href="<%=request.getContextPath()%>/resources/pages/threed.jsp"><i class="app-menu__icon fa fa-check-square-o"></i><span
                 class="app-menu__label">Қиймат мониторинги</span></a></li>
-        <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-exclamation-triangle"></i><span
+        <li><a class="app-menu__item" href="<%=request.getContextPath()%>/resources/pages/mq.jsp"><i class="app-menu__icon fa fa-exclamation-triangle"></i><span
                 class="app-menu__label">Мантиқий назорат</span></a></li>
         <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-globe"></i><span
                 class="app-menu__label">Халқаро сўровномалар</span></a></li>
@@ -248,9 +249,9 @@
                         </style>
 
                         <span class="searchCount pull-right"></span>
-                        <table class="table table-responsive table-bordered results" style="font-size: 12px">
-                            <thead class="table-dark" style="text-align: center;">
-                            <tr>
+                        <table class="table table-responsive table-bordered results" style="font-size: 12px;">
+                            <thead class="table-dark" style="text-align: center; vertical-align: top;">
+                            <tr style="border: none;">
                                 <th>№</th>
                                 <th>БЮД рўйхат рақами</th>
                                 <th>Режим</th>
@@ -270,13 +271,13 @@
                                 <th>Усул</th>
                                 <th>Божхона қиймати</th>
                                 <th colspan="2">Божхона индекси</th>
+                            </tr>
                             <tr class="warning no-result">
                                 <td colspan="17" style="background-color: red;"><i class="fa fa-warning"></i> Сиз киритган маълумот бўйича хечнима топилмади!</td>
                             </tr>
-                            </tr>
                             </thead>
                             <tbody style="text-align: left;">
-                            <tr>
+                            <tr style="border: none;">
                                 <td>1</td>
                                 <td>27006/11.10.2021/0001517</td>
                                 <td>им-40</td>
