@@ -63,7 +63,7 @@
     <ul class="app-menu">
         <li><a class="app-menu__item" href="<%=request.getContextPath()%>/resources/pages/second.jsp"><i class="app-menu__icon fa fa-line-chart"></i><span
                 class="app-menu__label">Товарларни тоифалаш</span></a></li>
-        <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-check-square-o"></i><span
+        <li><a class="app-menu__item" href="<%=request.getContextPath()%>/resources/pages/threed.jsp"><i class="app-menu__icon fa fa-check-square-o"></i><span
                 class="app-menu__label">Қиймат мониторинги</span></a></li>
         <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-exclamation-triangle"></i><span
                 class="app-menu__label">Мантиқий назорат</span></a></li>
@@ -84,8 +84,21 @@
     <div class="col-md-12">
         <div class="tile">
             <div class="table-responsive"
-                 style="background: url('resources/images/gtk_image2.png'); background-repeat: no-repeat; background-size: absolute; background-position: 65rem 10rem;">
-                <div class="list-group col-lg-6">
+                 style=" background-repeat: no-repeat; background-size: absolute; background-position: 65rem 10rem;">
+                <div class="background" style="
+                    background-image: url('resources/images/gtk_image2.png');
+                    width: 900px;
+                    height: 1000px;
+                    position: fixed;
+                    right: 45px;
+                    filter: grayscale(1);
+                    background-size: contain;
+                    background-position: 180px 50%;
+                    background-repeat: no-repeat;
+                    opacity: 0.3;
+                "></div>
+
+                <div class="list-group col-lg-6" style="background-color: transparent;">
                     <h3 class="list-group-item border-0" style="color:#0069C1; font-size: 24px">Тоифалаш турлари</h3>
                     <hr color="#0069C1" size="50" width="100%"/>
                     <a class="list-group-item list-group-item-action border-0" href="#">Божхона қийматини ўзгартириш</a>
