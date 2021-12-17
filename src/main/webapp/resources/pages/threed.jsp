@@ -81,11 +81,10 @@
 </aside>
 <main class="app-content" >
     <div class="col-md-12">
-        <div class="tile" style=" padding: 0px;">
+        <div class="tile" style=" padding: 0px; height: 770px;">
 
             <div class="row">
                 <div class="col-md-12">
-<<<<<<< HEAD
                     <div class="background" style="
                     background-image: url('resources/images/gtk_image2.png');
                     width: 900px;
@@ -98,8 +97,6 @@
                     background-repeat: no-repeat;
                     opacity: 0.3;
                 "></div>
-=======
->>>>>>> origin/master
                     <div class="col">
                         <h3>Божхона қиймати мониторинги</h3>
                         <form method="">
@@ -250,7 +247,7 @@
                         </style>
 
                         <span class="searchCount pull-right"></span>
-                        <table class="table table-responsive table-bordered results">
+                        <table class="table table-responsive table-bordered results" style="font-size: 12px">
                             <thead class="table-dark" style="text-align: center;">
                             <tr>
                                 <th>№</th>
