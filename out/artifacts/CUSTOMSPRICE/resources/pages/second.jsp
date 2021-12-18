@@ -40,7 +40,8 @@
 <header class="app-header">
     <!-- Sidebar toggle button--><a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-toggle="sidebar"
                                     href="#"></a>
-    <!-- Navbar Right Menu--><a class="app-header__logo" href="<%=request.getContextPath()%>/index.jsp">Божхона қиймати</a>
+    <!-- Navbar Right Menu--><a class="app-header__logo" href="<%=request.getContextPath()%>/index.jsp">Божхона
+    қиймати</a>
     <ul class="app-nav">
         <li class="app-search">
             <input class="app-search__input" placeholder="Сайт бўйлаб излаш" type="search">
@@ -62,13 +63,17 @@
 </header>
 <!-- Sidebar menu-->
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
-<aside class="app-sidebar"  style="background-image: url('/resources/images/archa.gif'); background-repeat: no-repeat; background-position: bottom; background-size: 90%;">
+<aside class="app-sidebar"
+       style="background-image: url('/resources/images/archa.gif'); background-repeat: no-repeat; background-position: bottom; background-size: 90%;">
     <ul class="app-menu">
-        <li><a class="app-menu__item" href="<%=request.getContextPath()%>/resources/pages/second.jsp"><i class="app-menu__icon fa fa-line-chart"></i><span
+        <li><a class="app-menu__item" href="<%=request.getContextPath()%>/resources/pages/second.jsp"><i
+                class="app-menu__icon fa fa-line-chart"></i><span
                 class="app-menu__label">Товарларни тоифалаш</span></a></li>
-        <li><a class="app-menu__item" href="<%=request.getContextPath()%>/resources/pages/threed.jsp"><i class="app-menu__icon fa fa-check-square-o"></i><span
+        <li><a class="app-menu__item" href="<%=request.getContextPath()%>/resources/pages/threed.jsp"><i
+                class="app-menu__icon fa fa-check-square-o"></i><span
                 class="app-menu__label">Қиймат мониторинги</span></a></li>
-        <li><a class="app-menu__item" href="<%=request.getContextPath()%>/resources/pages/mq.jsp"><i class="app-menu__icon fa fa-exclamation-triangle"></i><span
+        <li><a class="app-menu__item" href="<%=request.getContextPath()%>/resources/pages/mq.jsp"><i
+                class="app-menu__icon fa fa-exclamation-triangle"></i><span
                 class="app-menu__label">Мантиқий назорат</span></a></li>
         <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-globe"></i><span
                 class="app-menu__label">Халқаро сўровномалар</span></a></li>
@@ -82,208 +87,694 @@
 </aside>
 <main class="app-content">
     <div class="col-md-12">
-        <div class="tile">
-            <div class="table-responsive">
-                <div class="row">
-                    <div class="col-md-9 border-right">
-                        <div class="col-auto">
+        <div class="tile" style=" padding: 0px; height: 90vh;">
+            <div class="row">
+                <div class="col-md-9 border-right">
+                    <div class="col-auto">
 
-                            <div class="container">
-                                <p>Тоифалаш тури</p>
-                                <form action="/action_page.php" class="form-inline">
-                                    <div class="form-group">
-                                        <select class="form-control" id="exampleSelect1" style="width: 750px;">
-                                            <option><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">1</font></font></option>
-                                            <option><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">2</font></font></option>
-                                            <option><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">3</font></font></option>
-                                            <option><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">4</font></font></option>
-                                            <option><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">5</font></font></option>
-                                            <option><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">5</font></font></option>
-                                            <option><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">5</font></font></option>
-                                            <option><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">5</font></font></option>
-                                        </select>
-                                    </div>
-                                    <button class="btn btn-info" style="margin-left: 3rem;" type="button">
-                                        <font style="vertical-align: inherit; margin-left: 2rem; margin-right: 2rem;">
-                                            <font style="vertical-align: inherit;">И з л а ш</font>
-                                        </font>
-                                    </button>
-                                    <div class="input-group">
-                                        <div>
-                                            <label>ТИФ ТН коди</label>
-                                            <input aria-describedby="search-addon" aria-label="Search"
-                                                   class="form-control rounded" placeholder="00000000"
-                                                   type="search"/><i class="fa fa-search"></i></div>
-                                    </div>
-                                    <div>
-                                        <label style="margin-left: 2rem;">Божхона режими</label>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" id="inlineCheckbox1"
-                                                   style="margin-left: 2rem;" type="checkbox" value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">40</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" id="inlineCheckbox2"
-                                                   style="margin-left: 2rem;" type="checkbox" value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">42</label>
-                                        </div>
-                                    </div>
-                                    <div class="input-group input-daterange">
-                                        <div>
-                                            <label>Оралиқ давр</label>
-                                            <input class="form-control" style="margin-left: 3rem;" type="date"
-                                                   value="2012-04-05">
-                                            <span>дан</span>
-                                            <input class="form-control" type="date" value="2012-04-19">
-                                            <span>гача</span>
-                                        </div>
-                                    </div>
-
-                                </form>
-
-                            </div>
-                        </div>
-
-                        <div class="col-auto">
-                            <div class="tile">
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <canvas class="embed-responsive-item" height="100%" id="lineChartDemo"
-                                            style="width: 100%; height: 100%;" width="200px"></canvas>
+                        <div class="container">
+                            <p>Тоифалаш тури</p>
+                            <form action="/action_page.php" class="form-inline">
+                                <div class="form-group">
+                                    <select class="form-control" id="exampleSelect1" style="width: 750px;">
+                                        <option><font style="vertical-align: inherit;"><font
+                                                style="vertical-align: inherit;">1</font></font></option>
+                                        <option><font style="vertical-align: inherit;"><font
+                                                style="vertical-align: inherit;">2</font></font></option>
+                                        <option><font style="vertical-align: inherit;"><font
+                                                style="vertical-align: inherit;">3</font></font></option>
+                                        <option><font style="vertical-align: inherit;"><font
+                                                style="vertical-align: inherit;">4</font></font></option>
+                                        <option><font style="vertical-align: inherit;"><font
+                                                style="vertical-align: inherit;">5</font></font></option>
+                                        <option><font style="vertical-align: inherit;"><font
+                                                style="vertical-align: inherit;">5</font></font></option>
+                                        <option><font style="vertical-align: inherit;"><font
+                                                style="vertical-align: inherit;">5</font></font></option>
+                                        <option><font style="vertical-align: inherit;"><font
+                                                style="vertical-align: inherit;">5</font></font></option>
+                                    </select>
                                 </div>
-                            </div>
+                                <button class="btn btn-info" style="margin-left: 3rem;" type="button">
+                                    <font style="vertical-align: inherit; margin-left: 2rem; margin-right: 2rem;">
+                                        <font style="vertical-align: inherit;">И з л а ш</font>
+                                    </font>
+                                </button>
+                                <div class="input-group">
+                                    <div>
+                                        <label>ТИФ ТН коди</label>
+                                        <input aria-describedby="search-addon" aria-label="Search"
+                                               class="form-control rounded" placeholder="00000000"
+                                               type="search"/><i class="fa fa-search"></i></div>
+                                </div>
+                                <div>
+                                    <label style="margin-left: 2rem;">Божхона режими</label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" id="inlineCheckbox1"
+                                               style="margin-left: 2rem;" type="checkbox" value="option1">
+                                        <label class="form-check-label" for="inlineCheckbox1">40</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" id="inlineCheckbox2"
+                                               style="margin-left: 2rem;" type="checkbox" value="option2">
+                                        <label class="form-check-label" for="inlineCheckbox2">42</label>
+                                    </div>
+                                </div>
+                                <div class="input-group input-daterange">
+                                    <div>
+                                        <label>Оралиқ давр</label>
+                                        <input class="form-control" style="margin-left: 3rem;" type="date"
+                                               value="2012-04-05">
+                                        <span>дан</span>
+                                        <input class="form-control" type="date" value="2012-04-19">
+                                        <span>гача</span>
+                                    </div>
+                                </div>
+
+                            </form>
+
                         </div>
                     </div>
 
-                    <div class="col-md-3">
-                        <style>
-
-                            table {
-                                width: 716px; /* 140px * 5 column + 16px scrollbar width */
-                                border-spacing: 0;
-                            }
-
-                            tbody, thead tr {
-                                display: block;
-                            }
-
-                            tbody {
-                                height: 35vh;
-                                overflow-y: auto;
-                                overflow-x: hidden;
-                                border-color: #fff;
-                            }
-
-                            tbody td, thead th {
-                                width: 150px;
-                            }
-
-                            thead th:last-child {
-                                width: 200px; /* 140px + 16px scrollbar width */
-                            }
-
-                        </style>
-                        <h5><font style="vertical-align: inherit; color: red;">Самарқанд (август 2021)</font></h5>
-                        <span style="font-size: 20px;"><b>индекс</b></span><span
-                            style="font-size: 20px; margin-left: 1rem;"><b>20 $</b></span><span
-                            style="font-size: 20px; margin-left: 12rem; color: red;"><b>-65%</b></span>
-                        <table cellpadding="0" cellspacing="0" class="table table-sm" style="width: 100%;">
-                            <thead>
-                            <tr align="center">
-                                <th><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">т/р</font></font></th>
-                                <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">БЮД
-                                    рақами</font></font></th>
-                                <th><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">Фоизи</font></font></th>
-                            </tr>
-                            <tr align="center" style="background-color: #eee; color: green">
-                                <th colspan="3">Нарх пасайиши бўйича</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001177</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-75%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001180</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001178</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-28%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001181</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-19%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001179</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-75%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">6</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001182</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">7</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001178</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-28%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">8</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001181</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-19%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">9</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001179</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-75%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">10</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001182</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">11</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001180</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-28%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">12</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001183</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-19%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">13</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001179</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-75%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">14</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001182</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">15</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001180</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-28%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">16</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001183</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-19%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">17</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001181</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-75%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">18</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001184</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">19</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001180</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-28%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">20</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001183</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-19%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">21</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001181</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-75%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">22</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001184</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">23</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001182</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-28%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">24</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001185</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-19%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">25</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001181</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-75%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001184</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">27</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001182</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-28%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">28</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001185</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-19%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">29</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001183</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-75%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">30</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001186</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">31</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001182</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i class="fa fa-caret-down" style="color: red; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-
-
-                            </tbody>
-                        </table>
-                        <table class="table table-sm" style="width: 100%;">
-                            <thead>
-                            <tr align="center" colspan="3" style="background-color: #eee; color: green">
-                                <th>Нарҳни ошиши бўйича</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001177</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+75%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001180</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+33%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001178</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+28%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001181</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+19%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001179</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+75%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">6</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001182</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+33%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">7</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001178</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+28%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">8</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001181</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+19%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">9</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001179</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+75%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">10</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001182</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+33%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">11</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001180</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+28%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">12</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001183</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+19%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">13</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001179</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+75%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">14</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001182</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+33%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">15</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001180</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+28%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">16</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001183</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+19%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">17</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001181</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+75%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">18</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001184</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+33%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">19</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001180</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+28%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">20</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001183</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+19%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">21</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001181</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+75%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">22</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001184</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+33%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">23</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001182</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+28%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">24</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001185</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+19%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">25</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001181</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+75%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001184</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+33%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">27</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001182</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+28%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">28</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001185</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+19%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">29</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001183</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+75%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            <tr align="center"><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">30</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001186</font></font></td><td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+33%<i class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;" aria-hidden="true"></i></font></font></td></tr>
-                            </tbody>
-                        </table>
+                    <div class="col-auto">
+                        <div class="tile">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <canvas class="embed-responsive-item" height="100%" id="lineChartDemo"
+                                        style="width: 100%; height: 100%;" width="200px"></canvas>
+                            </div>
+                        </div>
                     </div>
+                </div>
+
+                <div class="col-md-3">
+                    <style>
+
+                        table {
+                            width: 716px; /* 140px * 5 column + 16px scrollbar width */
+                            border-spacing: 0;
+                        }
+
+                        tbody, thead tr {
+                            display: block;
+                        }
+
+                        tbody {
+                            height: 35vh;
+                            overflow-y: auto;
+                            overflow-x: hidden;
+                            border-color: #fff;
+                        }
+
+                        tbody td, thead th {
+                            width: 150px;
+                        }
+
+                        thead th:last-child {
+                            width: 200px; /* 140px + 16px scrollbar width */
+                        }
+
+                    </style>
+                    <h5><font style="vertical-align: inherit; color: red;">Самарқанд (август 2021)</font></h5>
+                    <span style="font-size: 20px;"><b>индекс</b></span><span
+                        style="font-size: 20px; margin-left: 1rem;"><b>20 $</b></span><span
+                        style="font-size: 20px; margin-left: 12rem; color: red;"><b>-65%</b></span>
+                    <table cellpadding="0" cellspacing="0" class="table table-sm" style="width: 100%;">
+                        <thead>
+                        <tr align="center">
+                            <th><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">т/р</font></font></th>
+                            <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">БЮД
+                                рақами</font></font></th>
+                            <th><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">Фоизи</font></font></th>
+                        </tr>
+                        <tr align="center" style="background-color: #eee; color: green">
+                            <th colspan="3">Нарх пасайиши бўйича</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">1</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001177</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-75%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">2</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001180</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">3</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001178</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-28%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">4</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001181</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-19%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">5</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001179</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-75%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">6</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001182</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">7</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001178</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-28%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">8</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001181</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-19%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">9</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001179</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-75%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">10</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001182</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">11</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001180</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-28%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">12</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001183</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-19%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">13</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001179</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-75%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">14</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001182</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">15</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001180</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-28%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">16</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001183</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-19%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">17</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001181</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-75%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">18</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001184</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">19</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001180</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-28%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">20</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001183</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-19%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">21</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001181</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-75%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">22</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001184</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">23</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001182</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-28%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">24</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001185</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-19%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">25</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001181</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-75%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001184</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">27</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001182</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-28%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">28</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001185</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-19%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">29</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001183</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-75%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">30</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001186</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">31</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001182</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-33%<i
+                                    class="fa fa-caret-down" style="color: red; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm" style="width: 100%;">
+                        <thead>
+                        <tr align="center" colspan="3" style="background-color: #eee; color: green">
+                            <th>Нарҳни ошиши бўйича</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">1</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001177</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+75%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">2</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001180</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+33%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">3</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001178</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+28%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">4</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001181</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+19%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">5</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001179</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+75%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">6</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001182</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+33%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">7</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001178</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+28%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">8</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001181</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+19%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">9</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001179</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+75%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">10</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001182</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+33%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">11</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001180</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+28%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">12</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001183</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+19%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">13</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001179</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+75%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">14</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001182</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+33%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">15</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001180</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+28%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">16</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001183</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+19%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">17</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001181</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+75%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">18</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001184</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+33%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">19</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001180</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+28%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">20</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001183</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+19%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">21</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001181</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+75%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">22</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001184</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+33%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">23</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001182</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+28%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">24</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001185</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+19%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">25</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001181</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+75%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001184</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+33%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">27</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001182</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+28%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">28</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001185</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+19%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">29</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/11.10.2021/0001183</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+75%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        <tr align="center">
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">30</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">26002/13.11.2021/0001186</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+33%<i
+                                    class="fa fa-caret-up" style="color: greenyellow; font-size: 22px;"
+                                    aria-hidden="true"></i></font></font></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -386,94 +877,113 @@
     ////////////////////////
 
     // количество снежинок, которое будет на экране одновременно.
-    let snowmax=40
+    let snowmax = 40
 
     // Цвета для снежинок. Для каждой конкретной снежинки цвет выбирается случайно из этого массива.
-    let snowcolor=new Array("#b9dff5","#7fc7ff","#7fb1ff","#7fc7ff","#b9dff5")
+    let snowcolor = new Array("#b9dff5", "#7fc7ff", "#7fb1ff", "#7fc7ff", "#b9dff5")
 
     // Шрифт для снежинок
-    let snowtype=new Array("Times")
+    let snowtype = new Array("Times")
 
     // Символ (*) и есть снежинка, в место нее можно вставить любой другой символ.
-    let snowletter="&#10052;"
+    let snowletter = "&#10052;"
 
     // Скорость движения снежинок (от 0.3 до 2)
-    let sinkspeed=0.4
+    let sinkspeed = 0.4
 
     // Максимальный размер для снежинок
-    let snowmaxsize=40
+    let snowmaxsize = 40
 
     // Минимальный размер для снежинок
-    let snowminsize=10
+    let snowminsize = 10
 
     // Зона для снежинок
     // 1 для всей страницы, 2 в левой части страницы
     // 3 в центральной части, 4 в правой части страницы
-    let snowingzone=1
+    let snowingzone = 1
 
     ////////////////////////
     ///////// Конец настроек
     ////////////////////////
 
-    let snow=new Array()
+    let snow = new Array()
     let marginbottom
     let marginright
     let timer
-    let i_snow=0
-    let x_mv=new Array();
-    let crds=new Array();
-    let lftrght=new Array();
+    let i_snow = 0
+    let x_mv = new Array();
+    let crds = new Array();
+    let lftrght = new Array();
+
     function randommaker(range) {
-        rand=Math.floor(range*Math.random())
+        rand = Math.floor(range * Math.random())
         return rand
     }
+
     function initsnow() {
-        marginbottom = document.documentElement.clientHeight+50
-        marginright = document.body.clientWidth-15
-        let snowsizerange=snowmaxsize-snowminsize
-        for (i=0;i<=snowmax;i++) {
+        marginbottom = document.documentElement.clientHeight + 50
+        marginright = document.body.clientWidth - 15
+        let snowsizerange = snowmaxsize - snowminsize
+        for (i = 0; i <= snowmax; i++) {
             crds[i] = 0;
-            lftrght[i] = Math.random()*15;
-            x_mv[i] = 0.03 + Math.random()/10;
-            snow[i]=document.getElementById("s"+i)
-            snow[i].style.fontFamily=snowtype[randommaker(snowtype.length)]
-            snow[i].size=randommaker(snowsizerange)+snowminsize
-            snow[i].style.fontSize=snow[i].size+'px';
-            snow[i].style.color=snowcolor[randommaker(snowcolor.length)]
-            snow[i].style.zIndex=1000
-            snow[i].sink=sinkspeed*snow[i].size/5
-            if (snowingzone==1) {snow[i].posx=randommaker(marginright-snow[i].size)}
-            if (snowingzone==2) {snow[i].posx=randommaker(marginright/2-snow[i].size)}
-            if (snowingzone==3) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/4}
-            if (snowingzone==4) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/2}
-            snow[i].posy=randommaker(2*marginbottom-marginbottom-2*snow[i].size)
-            snow[i].style.left=snow[i].posx+'px';
-            snow[i].style.top=snow[i].posy+'px';
+            lftrght[i] = Math.random() * 15;
+            x_mv[i] = 0.03 + Math.random() / 10;
+            snow[i] = document.getElementById("s" + i)
+            snow[i].style.fontFamily = snowtype[randommaker(snowtype.length)]
+            snow[i].size = randommaker(snowsizerange) + snowminsize
+            snow[i].style.fontSize = snow[i].size + 'px';
+            snow[i].style.color = snowcolor[randommaker(snowcolor.length)]
+            snow[i].style.zIndex = 1000
+            snow[i].sink = sinkspeed * snow[i].size / 5
+            if (snowingzone == 1) {
+                snow[i].posx = randommaker(marginright - snow[i].size)
+            }
+            if (snowingzone == 2) {
+                snow[i].posx = randommaker(marginright / 2 - snow[i].size)
+            }
+            if (snowingzone == 3) {
+                snow[i].posx = randommaker(marginright / 2 - snow[i].size) + marginright / 4
+            }
+            if (snowingzone == 4) {
+                snow[i].posx = randommaker(marginright / 2 - snow[i].size) + marginright / 2
+            }
+            snow[i].posy = randommaker(2 * marginbottom - marginbottom - 2 * snow[i].size)
+            snow[i].style.left = snow[i].posx + 'px';
+            snow[i].style.top = snow[i].posy + 'px';
         }
         movesnow()
     }
-    function movesnow() {
-        for (i=0;i<=snowmax;i++) {
-            crds[i] += x_mv[i];
-            snow[i].posy+=snow[i].sink
-            snow[i].style.left=snow[i].posx+lftrght[i]*Math.sin(crds[i])+'px';
-            snow[i].style.top=snow[i].posy+'px';
 
-            if (snow[i].posy>=marginbottom-2*snow[i].size || parseInt(snow[i].style.left)>(marginright-3*lftrght[i])){
-                if (snowingzone==1) {snow[i].posx=randommaker(marginright-snow[i].size)}
-                if (snowingzone==2) {snow[i].posx=randommaker(marginright/2-snow[i].size)}
-                if (snowingzone==3) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/4}
-                if (snowingzone==4) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/2}
-                snow[i].posy=0
+    function movesnow() {
+        for (i = 0; i <= snowmax; i++) {
+            crds[i] += x_mv[i];
+            snow[i].posy += snow[i].sink
+            snow[i].style.left = snow[i].posx + lftrght[i] * Math.sin(crds[i]) + 'px';
+            snow[i].style.top = snow[i].posy + 'px';
+
+            if (snow[i].posy >= marginbottom - 2 * snow[i].size || parseInt(snow[i].style.left) > (marginright - 3 * lftrght[i])) {
+                if (snowingzone == 1) {
+                    snow[i].posx = randommaker(marginright - snow[i].size)
+                }
+                if (snowingzone == 2) {
+                    snow[i].posx = randommaker(marginright / 2 - snow[i].size)
+                }
+                if (snowingzone == 3) {
+                    snow[i].posx = randommaker(marginright / 2 - snow[i].size) + marginright / 4
+                }
+                if (snowingzone == 4) {
+                    snow[i].posx = randommaker(marginright / 2 - snow[i].size) + marginright / 2
+                }
+                snow[i].posy = 0
             }
         }
-        let timer=setTimeout("movesnow()",50)
+        let timer = setTimeout("movesnow()", 50)
     }
 
-    for (i=0;i<=snowmax;i++) {
-        document.body.insertAdjacentHTML('beforeend', "<span id='s"+i+"' style='user-select:none;position:fixed;top:-"+snowmaxsize+"'>"+snowletter+"</span>")
+    for (i = 0; i <= snowmax; i++) {
+        document.body.insertAdjacentHTML('beforeend', "<span id='s" + i + "' style='user-select:none;position:fixed;top:-" + snowmaxsize + "'>" + snowletter + "</span>")
     }
-    window.onload=initsnow
+    window.onload = initsnow
 </script>
 </body>
 </html>

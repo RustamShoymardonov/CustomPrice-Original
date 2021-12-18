@@ -82,7 +82,7 @@
 </aside>
 <main class="app-content" >
     <div class="col-md-12">
-        <div class="tile" style=" padding: 0px; height: 90%;">
+        <div class="tile" style=" padding: 0px; height: 90vh;">
 
             <div class="background" style="
                     background-image: url('<%=request.getContextPath()%>/resources/images/gtk_image2.png');
@@ -250,27 +250,27 @@
 
                         <span class="searchCount pull-right"></span>
                         <table class="table table-responsive table-bordered results" style="font-size: 12px;">
-                            <thead class="table-dark" style="text-align: center; vertical-align: top;">
-                            <tr style="border: none;">
-                                <th>№</th>
-                                <th>БЮД рўйхат рақами</th>
-                                <th>Режим</th>
-                                <th>ТИФ ТН коди</th>
-                                <th>
+                            <thead class="table-dark" style="text-align: center; vertical-align: middle;">
+                            <tr>
+                                <th style="text-align:center; vertical-align: middle;">№</th>
+                                <th style="text-align:center; vertical-align: middle;">БЮД рўйхат рақами</th>
+                                <th style="text-align:center; vertical-align: middle;">Режим</th>
+                                <th style="text-align:center; vertical-align: middle;">ТИФ ТН коди</th>
+                                <th style="text-align:center; vertical-align: middle;">
                                     Товар номи</span>
                                     <input type="text" class="searchKey form-control" placeholder="Товар номи бўйича излаш">
                                 </th>
-                                <th>Нетто</th>
-                                <th>Божхона қиймати</th>
-                                <th>Ўлчов бирлиги</th>
-                                <th>Кел.чиқ мамлакат</th>
-                                <th>Юк.жўн мамлакат </th>
-                                <th>Сав.қил мамлакат</th>
-                                <th>Тран. тури</th>
-                                <th>Валюта</th>
-                                <th>Усул</th>
-                                <th>Божхона қиймати</th>
-                                <th colspan="2">Божхона индекси</th>
+                                <th style="text-align:center; vertical-align: middle;">Нетто</th>
+                                <th style="text-align:center; vertical-align: middle;">Божхона қиймати</th>
+                                <th style="text-align:center; vertical-align: middle;">Ўлчов бирлиги</th>
+                                <th style="text-align:center; vertical-align: middle;">Кел.чиқ мамлакат</th>
+                                <th style="text-align:center; vertical-align: middle;">Юк.жўн мамлакат </th>
+                                <th style="text-align:center; vertical-align: middle;">Сав.қил мамлакат</th>
+                                <th style="text-align:center; vertical-align: middle;">Тран. тури</th>
+                                <th style="text-align:center; vertical-align: middle;">Валюта</th>
+                                <th style="text-align:center; vertical-align: middle;">Усул</th>
+                                <th style="text-align:center; vertical-align: middle;">Божхона қиймати</th>
+                                <th style="text-align:center; vertical-align: middle;" colspan="2">Божхона индекси</th>
                             </tr>
                             <tr class="warning no-result">
                                 <td colspan="17" style="background-color: red;"><i class="fa fa-warning"></i> Сиз киритган маълумот бўйича хечнима топилмади!</td>

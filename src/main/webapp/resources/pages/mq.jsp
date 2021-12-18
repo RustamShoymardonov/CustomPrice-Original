@@ -77,21 +77,23 @@
 </aside>
 <main class="app-content" >
     <div class="col-md-12" >
-        <div class="tile" style=" padding: 0px; height: 770px;">
+        <div class="tile" style=" padding: 0px; height: 90vh;">
+
             <div class="row gx-5">
                 <div class="col-md-12">
+
                     <div class="background" style="
-                          background-image: url('/resources/images/archa.gif');
-                          width: 800px;
-                          height: 1400px;
-                          position: fixed;
-                          right: 45px;
-                          filter: grayscale(1);
-                          background-size: contain;
-                          background-position: 180px 50%;
-                          background-repeat: no-repeat;
-                          opacity: 0.2;">
-                    </div>
+                            background-image: url('<%=request.getContextPath()%>/resources/images/gtk_image2.png');
+                            width: 600px;
+                            height: 100%;
+                            position: fixed;
+                            right: 45px;
+                            filter: grayscale(1);
+                            background-size: contain;
+                            background-position: 100px 105%;
+                            background-repeat: no-repeat;
+                            opacity: 0.2;
+                            "></div>
 
                     <div class="col">
                         <form method="">
