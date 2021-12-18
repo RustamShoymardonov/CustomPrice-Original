@@ -81,16 +81,16 @@
             <div class="row gx-5">
                 <div class="col-md-12">
                     <div class="background" style="
-                      background-image: url('/resources/images/archa.gif');
-                      width: 800px;
-                      height: 1400px;
-                      position: fixed;
-                      right: 45px;
-                      filter: grayscale(1);
-                      background-size: contain;
-                      background-position: 180px 50%;
-                      background-repeat: no-repeat;
-                      opacity: 0.2;">
+                          background-image: url('/resources/images/archa.gif');
+                          width: 800px;
+                          height: 1400px;
+                          position: fixed;
+                          right: 45px;
+                          filter: grayscale(1);
+                          background-size: contain;
+                          background-position: 180px 50%;
+                          background-repeat: no-repeat;
+                          opacity: 0.2;">
                     </div>
 
                     <div class="col">
