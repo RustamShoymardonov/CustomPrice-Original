@@ -78,12 +78,10 @@
 <main class="app-content" >
     <div class="col-md-12" >
         <div class="tile" style=" padding: 0px; height: 770px;">
-
             <div class="row gx-5">
                 <div class="col-md-12">
-
                     <div class="background" style="
-                      background-image: url('gtk_image2.png');
+                      background-image: url('/resources/images/archa.gif');
                       width: 800px;
                       height: 1400px;
                       position: fixed;
@@ -131,7 +129,7 @@
                             <thead class="table-dark">
                             <tr>
                                 <th style="text-align: left; vertical-align: middle;"> Мантиқий назорат номи</th>
-                                <th style="text-align: left; vertical-align: middle;""> Мантиқий назорат ҳабари</th>
+                                <th style="text-align: left; vertical-align: middle;"> Мантиқий назорат ҳабари</th>
                                 <th style="text-align: center; vertical-align: middle;"> Мантиқий назорат таснифи</th>
                                 <th style="text-align: left; vertical-align: middle;"> Амал қилиш муддати</th>
                             </tr>
