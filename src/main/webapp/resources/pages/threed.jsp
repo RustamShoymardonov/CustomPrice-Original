@@ -220,7 +220,7 @@
                                     <div class="col-md-2 inputGroupContainer">
                                         <br>
                                         <div class="input-group">
-                                            <button type="button" class="btn btn-primary"><i class="fa fa-refresh"></i>И з л а ш</button>
+                                            <button type="submit" class="btn btn-primary"><i class="fa fa-refresh"></i>И з л а ш</button>
                                         </div>
 
                                     </div>

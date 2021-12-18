@@ -2,51 +2,57 @@
 <%--
   Created by IntelliJ IDEA.
   User: ADMIN
-  Date: 17.12.2021
-  Time: 18:18
+  Date: 15.12.2021
+  Time: 17:19
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta name="description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+    <meta content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular."
+          name="description">
     <!-- Twitter meta-->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:site" content="@pratikborsadiya">
-    <meta property="twitter:creator" content="@pratikborsadiya">
+    <meta content="summary_large_image" property="twitter:card">
+    <meta content="@pratikborsadiya" property="twitter:site">
+    <meta content="@pratikborsadiya" property="twitter:creator">
     <!-- Open Graph Meta-->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Vali Admin">
-    <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">
-    <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
-    <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
-    <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
+    <meta content="website" property="og:type">
+    <meta content="Vali Admin" property="og:site_name">
+    <meta content="Vali - Free Bootstrap 4 admin theme" property="og:title">
+    <meta content="http://pratikborsadiya.in/blog/vali-admin" property="og:url">
+    <meta content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png" property="og:image">
+    <meta content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular."
+          property="og:description">
     <title>Божхона қиймати</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
     <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/main.css">
+    <link href="<%=request.getContextPath()%>/resources/css/main.css" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath()%>/resources/css/style.css" rel="stylesheet" type="text/css">
     <!-- Font-icon css-->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+          rel="stylesheet" type="text/css">
 </head>
-
 <body class="app sidebar-mini">
 <!-- Navbar-->
 <header class="app-header">
-    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+    <!-- Sidebar toggle button--><a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-toggle="sidebar"
+                                    href="#"></a>
     <!-- Navbar Right Menu--><a class="app-header__logo" href="<%=request.getContextPath()%>/index.jsp">Божхона қиймати</a>
     <ul class="app-nav">
         <li class="app-search">
-            <input class="app-search__input" type="search" placeholder="Сайт бўйлаб излаш">
+            <input class="app-search__input" placeholder="Сайт бўйлаб излаш" type="search">
             <button class="app-search__button"><i class="fa fa-search"></i></button>
         </li>
         <li class="app-search">
             <span style="color: #0069c1; font-size: 18px;">Хазратов Бобур Баходирович</span>
         </li>
         <!-- User Menu-->
-        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+        <li class="dropdown"><a aria-label="Open Profile Menu" class="app-nav__item" data-toggle="dropdown" href="#"><i
+                class="fa fa-user fa-lg"></i></a>
             <ul class="dropdown-menu settings-menu dropdown-menu-right">
                 <!--<li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
                 <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>-->
@@ -73,8 +79,28 @@
                 class="app-menu__label">Дастлабки қарор</span></a></li>
         <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-indent"></i><span
                 class="app-menu__label">Справочник</span></a></li>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
     </ul>
 </aside>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 <main class="app-content" >
     <div class="col-md-12" >
         <div class="tile" style=" padding: 0px; height: 90vh;">
@@ -84,45 +110,45 @@
 
                     <div class="background" style="
                             background-image: url('<%=request.getContextPath()%>/resources/images/gtk_image2.png');
-                            width: 600px;
-                            height: 100%;
-                            position: fixed;
-                            right: 45px;
-                            filter: grayscale(1);
-                            background-size: contain;
-                            background-position: 100px 105%;
-                            background-repeat: no-repeat;
-                            opacity: 0.2;
-                            "></div>
+                      width: 800px;
+                      height: 1400px;
+                      position: fixed;
+                      right: 45px;
+                      filter: grayscale(1);
+                      background-size: contain;
+                      background-position: 180px 50%;
+                      background-repeat: no-repeat;
+                      opacity: 0.2;">
+                    </div>
 
                     <div class="col">
                         <form method="">
-                            <div class="col p-4"><h4>Божхона қиймати мониторинги</h4></div>
+                            <div class="col p-4"><h3>Мантиқий назорат шакиллари</h3></div>
 
                             <div class="col-md-2 inputGroupContainer">
-                                <label class="control-label">Чиқиш санаси(дан) </label>
+                                <label class="control-label">Мантиқий назорат номи</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-search"></i></span>
+                                    <input type="search" class=" form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-2 inputGroupContainer">
+                                <label class="control-label">Амал қилиш муддати</label>
                                 <div class="input-group">
                                     <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
                                     <input type="date" class=" form-control">
                                 </div>
                             </div>
-                            <div class="col-md-2 inputGroupContainer">
-                                <label class="control-label">Чиқиш санаси(гача)</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
-                                    <input type="date" class=" form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-2 inputGroupContainer">
-                                <br>
-                                <div class="input-group">
-                                    <button type="button" class="btn btn-primary"><i class="fa fa-refresh"></i>И з л а ш</button>
+                            <div class="col">
+                                <label class="control-label"><br></label>
+                                <div class="form-group">
+                                    <button type="search" class="btn btn-primary"><i class="fa fa-refresh"></i>И з л а ш</button>
                                 </div>
                             </div>
                         </form>
                     </div>
 
-                    <div class="col" style="width: 100%; padding-right: 0%; padding-left: 0%; padding-top: 5%;">
+                    <div class="col" style="width: 100%; padding-right: 0%; padding-left: 0%; padding-top: 1%;">
                         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
                         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -215,6 +241,7 @@
                         </script>
                     </div>
 
+
                 </div>
             </div>
 
@@ -222,14 +249,15 @@
     </div>
 </main>
 <!-- Essential javascripts for application to work-->
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/jquery-3.3.1.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/popper.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/index.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/main.js"></script>
 <!-- The javascript plugin to display page loading on top-->
-<script src="js/plugins/pace.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/plugins/pace.min.js"></script>
 <!-- Page specific javascripts-->
-<script type="text/javascript" src="js/plugins/chart.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/plugins/chart.js" type="text/javascript"></script>
 <script type="text/javascript">
     var data = {
         labels: ["Yanvar", "Fevral", "Mart", "Aprel", "May", "Iyun", "Iyul", "Avgust", "Sentabr", "Oktabr", "Noyabr", "Dekabr"],
@@ -271,19 +299,19 @@
             value: 300,
             color: "#46BFBD",
             highlight: "#5AD3D1",
-            label: "Complete"+"%"
+            label: "Complete" + "%"
         },
         {
             value: 100,
-            color:"#F7464A",
+            color: "#F7464A",
             highlight: "#FF5A5E",
-            label: "In-Progress"+"%"
+            label: "In-Progress" + "%"
         },
         {
             value: 50,
-            color:"#F7464A",
+            color: "#F7464A",
             highlight: "#FF5A5E",
-            label: "In-Progress"+"%"
+            label: "In-Progress" + "%"
         }
     ]
 
@@ -295,22 +323,25 @@
 </script>
 <!-- Google analytics script-->
 <script type="text/javascript">
-    if(document.location.hostname == 'pratikborsadiya.in') {
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    if (document.location.hostname == 'pratikborsadiya.in') {
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
         ga('create', 'UA-72504830-1', 'auto');
         ga('send', 'pageview');
     }
 </script>
 <script>
 
-    ////////////////////////
-    ///////// Настройки
-    ////////////////////////
-
-    // количество снежинок, которое будет на экране одновременно.
+       // количество снежинок, которое будет на экране одновременно.
     let snowmax=40
 
     // Цвета для снежинок. Для каждой конкретной снежинки цвет выбирается случайно из этого массива.

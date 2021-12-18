@@ -90,10 +90,10 @@
         <div class="tile" style=" padding: 0px; height: 90vh;">
             <div class="row">
                 <div class="col-md-9 border-right">
-                    <div class="col-auto">
+                    <div class="col">
 
                         <div class="container">
-                            <p>Тоифалаш тури</p>
+                            <h4>Тоифалаш тури</h4>
                             <form action="/action_page.php" class="form-inline">
                                 <div class="form-group">
                                     <select class="form-control" id="exampleSelect1" style="width: 750px;">
@@ -156,7 +156,7 @@
                         </div>
                     </div>
 
-                    <div class="col-auto">
+                    <div class="col">
                         <div class="tile">
                             <div class="embed-responsive embed-responsive-16by9">
                                 <canvas class="embed-responsive-item" height="100%" id="lineChartDemo"
