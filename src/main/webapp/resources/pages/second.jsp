@@ -83,7 +83,6 @@
 <main class="app-content">
     <div class="col-md-12">
         <div class="tile">
-            <div class="table-responsive">
                 <div class="row">
                     <div class="col-md-9 border-right">
                         <div class="col-auto">
@@ -285,18 +284,14 @@
                         </table>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </main>
-<!-- Essential javascripts for application to work-->
 <script src="<%=request.getContextPath()%>/resources/js/jquery-3.3.1.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/popper.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/main.js"></script>
-<!-- The javascript plugin to display page loading on top-->
 <script src="<%=request.getContextPath()%>/resources/js/plugins/pace.min.js"></script>
-<!-- Page specific javascripts-->
 <script src="<%=request.getContextPath()%>/resources/js/plugins/chart.js" type="text/javascript"></script>
 <script type="text/javascript">
     var data = {
@@ -361,7 +356,6 @@
     var ctxp = $("#pieChartDemo").get(0).getContext("2d");
     var pieChart = new Chart(ctxp).Pie(pdata);
 </script>
-<!-- Google analytics script-->
 <script type="text/javascript">
     if (document.location.hostname == 'pratikborsadiya.in') {
         (function (i, s, o, g, r, a, m) {
@@ -380,11 +374,6 @@
     }
 </script>
 <script>
-
-    ////////////////////////
-    ///////// Настройки
-    ////////////////////////
-
     // количество снежинок, которое будет на экране одновременно.
     let snowmax=40
 
