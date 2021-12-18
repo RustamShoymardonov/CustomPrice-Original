@@ -86,7 +86,6 @@
                 <div class="row">
                     <div class="col-md-9 border-right">
                         <div class="col-auto">
-
                             <div class="container">
                                 <p>Тоифалаш тури</p>
                                 <form action="/action_page.php" class="form-inline">
