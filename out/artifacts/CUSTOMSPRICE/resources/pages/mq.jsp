@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <%--
   Created by IntelliJ IDEA.
   User: ADMIN
@@ -35,6 +35,9 @@
           type="text/css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
           rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath()%>/resources/css/jquery-ui.css" rel="stylesheet">
+    <script  type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/jquery-ui.js"></script>
 </head>
 <body class="app sidebar-mini">
 <!-- Navbar-->
@@ -56,7 +59,7 @@
             <ul class="dropdown-menu settings-menu dropdown-menu-right">
                 <!--<li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
                 <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>-->
-                <li><a class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
             </ul>
         </li>
     </ul>
@@ -79,28 +82,8 @@
                 class="app-menu__label">Дастлабки қарор</span></a></li>
         <li><a class="app-menu__item" href="charts.html"><i class="app-menu__icon fa fa-indent"></i><span
                 class="app-menu__label">Справочник</span></a></li>
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
     </ul>
 </aside>
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
-            </div>
-            <div class="modal-body">
-                <p>Some text in the modal.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-
-    </div>
-</div>
 <main class="app-content" >
     <div class="col-md-12" >
         <div class="tile" style=" padding: 0px; height: 90vh;">
@@ -110,15 +93,15 @@
 
                     <div class="background" style="
                             background-image: url('<%=request.getContextPath()%>/resources/images/gtk_image2.png');
-                      width: 800px;
-                      height: 1400px;
-                      position: fixed;
-                      right: 45px;
-                      filter: grayscale(1);
-                      background-size: contain;
-                      background-position: 180px 50%;
-                      background-repeat: no-repeat;
-                      opacity: 0.2;">
+                            width: 800px;
+                            height: 1400px;
+                            position: fixed;
+                            right: 45px;
+                            filter: grayscale(1);
+                            background-size: contain;
+                            background-position: 180px 50%;
+                            background-repeat: no-repeat;
+                            opacity: 0.2;">
                     </div>
 
                     <div class="col">
@@ -166,21 +149,21 @@
                             <tr>
                                 <td>Bojxona qiymati tekshiruvi 1kg brutto uchun bojxona qiymatining avvalgi BYuD dagi (40-grafa) qiymati bilan solishtirish</td>
                                 <td>Tovarlarning 1kg brutto og'irligi uchun bojxona qiymatining (45gr/35gr) avvalgi BYuD dagi (40-grafa) 1kg uchun fahtura qiymatidan (42gr/35gr) past!</td>
-                                <td style="text-align: center;"><i class="fa fa-exclamation-triangle"></i></td>
+                                <td style="text-align: center;"><i id="open-button" class="fa fa-exclamation-triangle"></i></td>
                                 <td>01.01.2022</td>
 
                             </tr>
                             <tr>
                                 <td>Bojxona qiymati tekshiruvi 1kg brutto uchun bojxona qiymatining avvalgi BYuD dagi (40-grafa) qiymati bilan solishtirish</td>
                                 <td>Tovarlarning 1kg brutto og'irligi uchun bojxona qiymatining (45gr/35gr) avvalgi BYuD dagi (40-grafa) 1kg uchun fahtura qiymatidan (42gr/35gr) past!</td>
-                                <td style="text-align: center;"><i class="fa fa-exclamation-triangle"></i></td>
+                                <td style="text-align: center;"><i id="open-button2" class="fa fa-exclamation-triangle"></i></td>
                                 <td>01.01.2022</td>
 
                             </tr>
                             <tr>
                                 <td>Bojxona qiymati tekshiruvi 1kg brutto uchun bojxona qiymatining avvalgi BYuD dagi (40-grafa) qiymati bilan solishtirish</td>
                                 <td>Tovarlarning 1kg brutto og'irligi uchun bojxona qiymatining (45gr/35gr) avvalgi BYuD dagi (40-grafa) 1kg uchun fahtura qiymatidan (42gr/35gr) past!</td>
-                                <td style="text-align: center;"><i class="fa fa-exclamation-triangle"></i></td>
+                                <td style="text-align: center;"><i id="open-button243" onclick="openModal('#modal1')" class="fa fa-exclamation-triangle"></i></td>
                                 <td>01.01.2022</td>
 
                             </tr>
@@ -248,6 +231,134 @@
         </div>
     </div>
 </main>
+
+<div class="modal-overlay closed" id="modal-overlay"></div>
+
+<div class="modal closed" id="modal">
+    <button class="close-button" id="close-button">Obvious Close Button</button>
+    <div class="modal-guts">
+        <h1>Modal Example</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae expedita corrupti laudantium aperiam, doloremque explicabo ipsum earum dicta saepe delectus totam vitae ipsam doloribus et obcaecati facilis eius assumenda, cumque.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae expedita corrupti laudantium aperiam, doloremque explicabo ipsum earum dicta saepe delectus totam vitae ipsam doloribus et obcaecati facilis eius assumenda, cumque.</p>
+        <img src="<%=request.getContextPath()%>/resources/images/banner.jpg" style="width: 100%"/>
+
+    </div>
+</div>
+
+
+<style>
+    @import 'https://fonts.googleapis.com/css?family=Prompt:400,700';
+
+    .modal{
+        /* This way it could be display flex or grid or whatever also. */
+        display: block;
+
+        /* Probably need media queries here */
+        width: 50%;
+        max-width: 100%;
+
+        height: 80%;
+        max-height: 100%;
+
+        position: fixed;
+
+        z-index: 100;
+
+        left: 50%;
+        top: 50%;
+
+        /* Use this for centering if unknown width/height */
+        transform: translate(-50%, -50%);
+
+        /* If known, negative margins are probably better (less chance of blurry text). */
+        /* margin: -200px 0 0 -200px; */
+
+        background: white;
+        box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+    }
+    .closed {
+        display: none;
+    }
+
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 50;
+
+        background: rgba(0, 0, 0, 0.6);
+    }
+    .modal-guts {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        padding: 20px 50px 20px 20px;
+    }
+
+
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .modal .close-button {
+        position: absolute;
+
+        /* don't need to go crazy with z-index here, just sits over .modal-guts */
+        z-index: 1;
+
+        top: 10px;
+
+        /* needs to look OK with or without scrollbar */
+        right: 20px;
+
+        border: 0;
+        background: black;
+        color: white;
+        padding: 5px 10px;
+        font-size: 1.3rem;
+    }
+
+    .open-button {
+        border: 0;
+        transform: translate(-50%, -50%);
+        background: lightgreen;
+        color: white;
+        border-radius: 10px;
+        font-size: 10px;
+    }
+</style>
+<script>
+    var modal = document.querySelector("#modal");
+    var modalOverlay = document.querySelector("#modal-overlay");
+    var closeButton = document.querySelector("#close-button");
+    var openButton = document.querySelector("#open-button");
+
+
+    closeButton.addEventListener("click", function() {
+        modal.classList.toggle("closed");
+        modalOverlay.classList.toggle("closed");
+    });
+    /*openModal(id)
+    {
+        var modal = document.querySelector(id);
+        modal.classList.toggle("closed");
+        modalOverlay.classList.toggle("closed");
+    }
+*/
+    openButton.addEventListener("click", function() {
+        var modal = document.querySelector("#modal");
+        modal.classList.toggle("closed");
+        modalOverlay.classList.toggle("closed");
+    });
+</script>
 <!-- Essential javascripts for application to work-->
 <script src="<%=request.getContextPath()%>/resources/js/jquery-3.3.1.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/popper.min.js"></script>
@@ -341,7 +452,7 @@
 </script>
 <script>
 
-       // количество снежинок, которое будет на экране одновременно.
+    // количество снежинок, которое будет на экране одновременно.
     let snowmax=40
 
     // Цвета для снежинок. Для каждой конкретной снежинки цвет выбирается случайно из этого массива.
