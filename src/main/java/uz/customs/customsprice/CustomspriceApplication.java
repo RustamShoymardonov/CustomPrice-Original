@@ -8,6 +8,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 @ServletComponentScan
 @SpringBootApplication
 public class CustomspriceApplication {
+    public final static String MODEL_PACKAGE = "uz.customs.customsprice.entity";
 
     public static void main(String[] args) {
         SpringApplication.run(CustomspriceApplication.class, args);
