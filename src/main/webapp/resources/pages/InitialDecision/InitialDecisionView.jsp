@@ -560,7 +560,7 @@
                                             <!-- -->
                                             <!--  Bootstrap table-->
                                             <div class="table-responsive">
-                                                <table class="table">
+                                                <table class="table tolovlar">
                                                     <thead>
                                                     <tr>
                                                         <th scope="col">Тўлов тури</th>
@@ -572,9 +572,7 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr>
-                                                    </tr>
-                                                    <tr>
+                                                    <tr class='12'>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -591,8 +589,8 @@
                                                     $("#insertRow").on("click", function (event) {
                                                         event.preventDefault();
 
-                                                        var newRow = $("<tr>");
-                                                        var cols = '';
+                                                        var newRow = $("table.tolovlar tbody");
+                                                        var cols = '<tr>';
 
                                                         // Table columns
                                                         cols += '<td><select class="form-control rounded-0" type="text" name="firstname" placeholder="Тўлов турини танланг"><option selected>10</option><option value="1">41</option><option value="2">29</option><option value="3">71</option></select></td>';
@@ -601,12 +599,12 @@
                                                         cols += '<td><input disabled="disabled" class="form-control rounded-0" type="text" name="handle" placeholder="Миқдор"></td>';
                                                         cols += '<td><select class="form-control rounded-0" type="text" name="handle" placeholder="Тўлов турини танланг"><option selected>БН</option><option value="1">ОО</option></select></td>';
                                                         cols += '<td><button class="btn btn-danger rounded-0" id ="deleteRow"><i class="fa fa-trash"></i></button</td>';
-
+                                                        cols += '<tr>';
                                                         // Insert the columns inside a row
                                                         newRow.append(cols);
 
                                                         // Insert the row inside a table
-                                                        $("table").append(newRow);
+                                                        ///$("table").append(newRow);
 
                                                         // Increase counter after each row insertion
                                                         counter++;
