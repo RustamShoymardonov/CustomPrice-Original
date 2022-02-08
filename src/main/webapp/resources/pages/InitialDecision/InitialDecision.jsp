@@ -40,7 +40,7 @@
                                             <!--<p class="text-muted font-13 m-b-30">
                                             The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
                                             </p>-->
-                                            <table id="datatable" class="table table-striped table-bordered border border-dark" style="width:100%">
+                                            <table id="example1" class="table table-striped table-bordered border-primary" style="width:100%">
                                                 <thead class="bg-info bg-gradient-primary text-light ">
                                                 <tr>
                                                     <th>т/р</th>
@@ -196,6 +196,14 @@
                                                 </tr>
                                                 </tbody>
                                             </table>
+                                            <script>
+                                                $(document).ready(function() {
+                                                    $('#example1').DataTable();
+                                                } );
+                                                $(document).ready(function() {
+                                                    $('#example2').DataTable();
+                                                } );
+                                            </script>
                                         </div>
                                     </div>
                                 </div>
@@ -209,7 +217,7 @@
                                             <!--<p class="text-muted font-13 m-b-30">
                                             KeyTable provides Excel like cell navigation on any table. Events (focus, blur, action etc) can be assigned to individual cells, columns, rows or all cells.
                                             </p>-->
-                                            <table id="datatable-keytable" class="table table-striped table-bordered" style="width:100%">
+                                            <table id="example2" class="table table-striped table-bordered border-primary" style="width:100%">
                                                 <thead class="bg-info bg-gradient-primary text-light">
                                                 <tr>
                                                     <th style="vertical-align: middle">т/р</th>
