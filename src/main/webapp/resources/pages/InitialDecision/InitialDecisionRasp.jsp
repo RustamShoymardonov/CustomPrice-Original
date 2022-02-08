@@ -159,15 +159,15 @@
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="x_content">
                             <div class="table-responsive mt-4">
-                                <table id="example1" class="table table-striped table-bordered border-primary" style="width:100%">
+                                <table id="example1" class="table table-striped table-bordered border-primary" style="width:100%; border-style: dotted">
                                     <thead class="bg-primary">
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th style="border-style: dotted">Name</th>
+                                        <th style="border-style: dotted">Position</th>
+                                        <th style="border-style: dotted">Office</th>
+                                        <th style="border-style: dotted">Age</th>
+                                        <th style="border-style: dotted">Start date</th>
+                                        <th style="border-style: dotted">Salary</th>
                                     </tr>
                                     </thead>
                                     <tbody>
