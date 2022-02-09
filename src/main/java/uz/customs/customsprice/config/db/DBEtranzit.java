@@ -15,8 +15,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.sql.Connection;
@@ -33,7 +31,7 @@ import static uz.customs.customsprice.CustomspriceApplication.MODEL_PACKAGE;
         repositoryFactoryBeanClass = DataTablesRepositoryFactoryBean.class,
         entityManagerFactoryRef = "entityManagerFactoryEtranzit",
         transactionManagerRef = "transactionManagerEtranzit",
-        basePackages = {"uz.customs.customsprice.repository.earxiv"}
+        basePackages = {"uz.customs.customsprice.repository"}
 )
 public class DBEtranzit {
 

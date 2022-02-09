@@ -7,7 +7,6 @@ import org.hibernate.annotations.OnDeleteAction;
 import uz.customs.customsprice.entity.AbstractAuditingEntity;
 
 import javax.persistence.*;
-import javax.xml.crypto.Data;
 import java.util.Date;
 
 @Entity
@@ -18,12 +17,6 @@ public class Docs extends AbstractAuditingEntity {
     @Column(name = "id", columnDefinition = "VARCHAR(50)")
     private String id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "doc_type", insertable = false, updatable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private DocType docType;
-
     @Column(name = "doc_number", nullable = false)
     private String docNumber;
 
@@ -33,8 +26,11 @@ public class Docs extends AbstractAuditingEntity {
     @Column(name = "doc_file", nullable = false)
     private String docFile;
 
-    @Column(name = "app_id", nullable = false)
-    private String appId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "app_id", insertable = false, updatable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Applications appId;
 
     @Column(name = "doc_id", nullable = false)
     private String docId;
@@ -42,10 +38,8 @@ public class Docs extends AbstractAuditingEntity {
     public Docs() {
     }
 
-    public Docs(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, DocType docType, String docNumber, Date doc_date, String docFile, String appId, String docId) {
-        super(insUser, updUser, insTime, updTime, isDeleted);
+    public Docs(String id, String docNumber, Date doc_date, String docFile, Applications appId, String docId) {
         this.id = id;
-        this.docType = docType;
         this.docNumber = docNumber;
         this.doc_date = doc_date;
         this.docFile = docFile;
@@ -59,14 +53,6 @@ public class Docs extends AbstractAuditingEntity {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public DocType getDocType() {
-        return docType;
-    }
-
-    public void setDocType(DocType docType) {
-        this.docType = docType;
     }
 
     public String getDocNumber() {
@@ -93,11 +79,11 @@ public class Docs extends AbstractAuditingEntity {
         this.docFile = docFile;
     }
 
-    public String getAppId() {
+    public Applications getAppId() {
         return appId;
     }
 
-    public void setAppId(String appId) {
+    public void setAppId(Applications appId) {
         this.appId = appId;
     }
 
