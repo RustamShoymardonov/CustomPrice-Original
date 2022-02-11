@@ -22,97 +22,96 @@ public class Commodity extends AbstractAuditingEntity {
     @JoinColumn(name = "app_id", insertable = false, updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private Applications applications;
+    private Apps applications;
 
-    @Column(name = "trade_name", columnDefinition = "VARCHAR(255) CCSID 1208")
+    @Column(name = "TRADE_NAME", columnDefinition = "VARCHAR(255) CCSID 1208")
     private String trade_name;
 
-    @Column(name = "trade_mark", columnDefinition = "VARCHAR(255) CCSID 1208")
+    @Column(name = "TRADE_MARK", columnDefinition = "VARCHAR(255) CCSID 1208")
     private String trade_mark;
 
-    @Column(name = "mark", columnDefinition = "VARCHAR(255) CCSID 1208")
+    @Column(name = "MARK", columnDefinition = "VARCHAR(255) CCSID 1208")
     private String mark;
 
-    @Column(name = "model", columnDefinition = "VARCHAR(255) CCSID 1208")
+    @Column(name = "MODEL", columnDefinition = "VARCHAR(255) CCSID 1208")
     private String model;
 
-    @Column(name = "article", columnDefinition = "VARCHAR(255) CCSID 1208")
+    @Column(name = "ARTICLE", columnDefinition = "VARCHAR(255) CCSID 1208")
     private String article;
 
-    @Column(name = "sort", columnDefinition = "VARCHAR(255) CCSID 1208")
+    @Column(name = "SORT", columnDefinition = "VARCHAR(255) CCSID 1208")
     private String sort;
 
-    @Column(name = "standarts", columnDefinition = "VARCHAR(500) CCSID 1208")
+    @Column(name = "STANDARTS", columnDefinition = "VARCHAR(500) CCSID 1208")
     private String standarts;
 
-    @Column(name = "functions", columnDefinition = "VARCHAR(500) CCSID 1208")
+    @Column(name = "FUNCTIONS", columnDefinition = "VARCHAR(500) CCSID 1208")
     private String functions;
 
-    @Column(name = "com_prop", columnDefinition = "VARCHAR(2000) CCSID 1208")
+    @Column(name = "COM_PROP", columnDefinition = "VARCHAR(2000) CCSID 1208")
     private String com_prop;
 
-    @Column(name = "tech_char", columnDefinition = "VARCHAR(1000) CCSID 1208")
+    @Column(name = "TECH_CHAR", columnDefinition = "VARCHAR(1000) CCSID 1208")
     private String tech_char;
 
-    @Column(name = "product_goal", columnDefinition = "VARCHAR(300) CCSID 1208")
+    @Column(name = "PRODUCT_GOAL", columnDefinition = "VARCHAR(300) CCSID 1208")
     private String product_goal;
 
-    @Column(name = "hs_code", length = 10)
+    @Column(name = "HS_CODE", length = 10)
     private String hs_code;
 
-    @Column(name = "brutto", precision = 5, scale = 2)
+    @Column(name = "BRUTTO", precision = 5, scale = 2)
     private BigDecimal brutto;
 
-    @Column(name = "netto", precision = 5, scale = 2)
+    @Column(name = "NETTO", precision = 5, scale = 2)
     private BigDecimal netto;
 
-    @Column(name = "basic_qty", precision = 5, scale = 2)
+    @Column(name = "BASIC_QTY", precision = 5, scale = 2)
     private BigDecimal basic_qty;
 
-    @Column(name = "extra_units", length = 3)
+    @Column(name = "EXTRA_UNITS", length = 3)
     private String extra_units;
 
-    @Column(name = "extra_qty", precision = 5, scale = 2)
+    @Column(name = "EXTRA_QTY", precision = 5, scale = 2)
     private BigDecimal extra_qty;
 
-    @Column(name = "price", precision = 5, scale = 2)
+    @Column(name = "PRICE", precision = 5, scale = 2)
     private BigDecimal price;
 
-    @Column(name = "currency_type", length = 3)
+    @Column(name = "CURRENCY_TYPE", length = 3)
     private String currency_type;
 
-    @Column(name = "cargo_space", precision = 5, scale = 2)
+    @Column(name = "CARGO_SPACE", precision = 5, scale = 2)
     private BigDecimal cargo_space;
 
-    @Column(name = "pack_type", length = 3)
+    @Column(name = "PACK_TYPE", length = 3)
     private String pack_type;
 
-    @Column(name = "pack_type_nm", columnDefinition = "VARCHAR(90) CCSID 1208")
+    @Column(name = "PACK_TYPE_NM", columnDefinition = "VARCHAR(90) CCSID 1208")
     private String pack_type_nm;
 
-    @Column(name = "pack_qty", precision = 5, scale = 2)
+    @Column(name = "PACK_QTY", precision = 5, scale = 2)
     private BigDecimal pack_qty;
 
-    @Column(name = "extra_info", columnDefinition = "VARCHAR(1000) CCSID 1208")
+    @Column(name = "EXTRA_INFO", columnDefinition = "VARCHAR(2000) CCSID 1208")
     private String extra_info;
 
-    @Column(name = "hs_dec_num", length = 20)
+    @Column(name = "HS_DEC_NUM", length = 20)
     private String hs_dec_num;
 
-    @Column(name = "hs_dec_date")
+    @Column(name = "HS_DEC_DATE")
     private Date hs_dec_date;
 
-    @Column(name = "method", length = 3)
+    @Column(name = "METHOD", length = 2)
     private String method;
 
-    @Column(name = "method_nm", columnDefinition = "VARCHAR(90) CCSID 1208")
+    @Column(name = "METHOD_NM", columnDefinition = "VARCHAR(90) CCSID 1208")
     private String method_nm;
-
 
     public Commodity() {
     }
 
-    public Commodity(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Applications applications, String trade_name, String trade_mark, String mark, String model, String article, String sort, String standarts, String functions, String com_prop, String tech_char, String product_goal, String hs_code, BigDecimal brutto, BigDecimal netto, BigDecimal basic_qty, String extra_units, BigDecimal extra_qty, BigDecimal price, String currency_type, BigDecimal cargo_space, String pack_type, String pack_type_nm, BigDecimal pack_qty, String extra_info, String hs_dec_num, Date hs_dec_date, String method, String method_nm) {
+    public Commodity(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps applications, String trade_name, String trade_mark, String mark, String model, String article, String sort, String standarts, String functions, String com_prop, String tech_char, String product_goal, String hs_code, BigDecimal brutto, BigDecimal netto, BigDecimal basic_qty, String extra_units, BigDecimal extra_qty, BigDecimal price, String currency_type, BigDecimal cargo_space, String pack_type, String pack_type_nm, BigDecimal pack_qty, String extra_info, String hs_dec_num, Date hs_dec_date, String method, String method_nm) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
         this.applications = applications;
@@ -154,11 +153,11 @@ public class Commodity extends AbstractAuditingEntity {
         this.id = id;
     }
 
-    public Applications getApplications() {
+    public Apps getApplications() {
         return applications;
     }
 
-    public void setApplications(Applications applications) {
+    public void setApplications(Apps applications) {
         this.applications = applications;
     }
 

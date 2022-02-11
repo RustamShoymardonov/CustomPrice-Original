@@ -1,14 +1,15 @@
 package uz.customs.customsprice.entity.InitialDecision;
 
-import org.hibernate.annotations.*;
-import org.springframework.core.annotation.Order;
-import org.springframework.format.annotation.NumberFormat;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 import uz.customs.customsprice.entity.AbstractAuditingEntity;
 
-
-import javax.persistence.*;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import java.sql.Timestamp;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 //@TypeDef(name = "jsonb", typeClass = JsonStringType.class)
@@ -21,13 +22,13 @@ public class Persons extends AbstractAuditingEntity {
     @Column(name = "id", columnDefinition = "VARCHAR(50)")
     private String id;
 
-    @Column(name = "firstName", length = 60, nullable = false, columnDefinition = "VARCHAR(180) CCSID 1208")
+    @Column(name = "firstName", nullable = false, columnDefinition = "VARCHAR(180) CCSID 1208")
     private String firstName;
 
-    @Column(name = "surName", length = 60, nullable = false, columnDefinition = "VARCHAR(180) CCSID 1208")
+    @Column(name = "surName", nullable = false, columnDefinition = "VARCHAR(180) CCSID 1208")
     private String surName;
 
-    @Column(name = "lastName", length = 60, nullable = false, columnDefinition = "VARCHAR(180) CCSID 1208")
+    @Column(name = "lastName", nullable = false, columnDefinition = "VARCHAR(180) CCSID 1208")
     private String lastName;
 
     @Column(name = "email", length = 30, nullable = false, unique = true)
@@ -39,22 +40,22 @@ public class Persons extends AbstractAuditingEntity {
     @Column(name = "tin", length = 9, nullable = false, unique = true)
     private String tin;
 
-    @Column(name = "per_adr", length = 255, nullable = false, columnDefinition = "VARCHAR(765) CCSID 1208")
+    @Column(name = "per_adr", nullable = false, columnDefinition = "VARCHAR(765) CCSID 1208")
     private String perAdr;
 
     @Column(name = "phone", length = 20, nullable = false)
     private String phone;
 
-
     public Persons() {
     }
 
-    public Persons(String id, String firstName, String surName, String lastName, String email, String pin, String tin, String perAdr, String phone) {
+    public Persons(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, String firstName, String surName, String lastName, String eMail, String pin, String tin, String perAdr, String phone) {
+        super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
         this.firstName = firstName;
         this.surName = surName;
         this.lastName = lastName;
-        this.eMail = email;
+        this.eMail = eMail;
         this.pin = pin;
         this.tin = tin;
         this.perAdr = perAdr;
@@ -93,12 +94,12 @@ public class Persons extends AbstractAuditingEntity {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
+    public String geteMail() {
         return eMail;
     }
 
-    public void setEmail(String email) {
-        this.eMail = email;
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
     }
 
     public String getPin() {

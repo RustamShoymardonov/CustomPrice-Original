@@ -22,7 +22,8 @@
     <link href="<%=request.getContextPath()%>/resources/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/resources/build/css/custom.min.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/resources/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <link href="<%=request.getContextPath()%>/resources/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/resources/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css"
+          rel="stylesheet">
 
 </head>
 <body class="nav-md">
@@ -32,7 +33,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="<%=request.getContextPath()%>/resources/pages/index.jsp" class="site_title"><i
+                    <a href="<%=request.getContextPath()%>/index.jsp" class="site_title"><i
                             class="fa fa-list"></i><span>Божхона қиймати</span></a>
                 </div>
 
