@@ -30,7 +30,8 @@
 
     <div class="row">
 
-        <div class="col-md-12">
+        <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel border rounded" style="background: rgba(23, 101, 185, 0.08);">
                 <div class="x_title">
                     <h4>
                         <i class="fa fa-edit"></i>АРИЗА
@@ -219,13 +220,46 @@
                             </li>
                         </ul>
                         <div class="row">
-                        <div class="col-2 col-md-1">
-                            <fieldset class="border-primary" style="border-style: dashed double none">
-                                <div><button class="btn btn-primary btn-outline-dark btn-block">Товар №:1</button></div>
-                                <div><button class="btn btn-primary btn-outline-dark btn-block">Товар №:2</button></div>
-                                <div><button class="btn btn-primary btn-outline-dark btn-block">Товар №:3</button></div>
-                                <div><button class="btn btn-primary btn-outline-dark btn-block">Товар №:4</button></div>
-                            </fieldset>
+                        <div class="col-2 col-md-1" style="max-height: 400px; width: 80px; overflow: auto;">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><button class="btn btn-primary btn-outline-dark btn-sm btn-block">Товар №:1</button></td>
+                                    </tr>
+                                        <td><button class="btn btn-primary btn-outline-dark btn-sm btn-block">Товар №:1</button></td>
+                                    </tr>
+                                        <td><button class="btn btn-primary btn-outline-dark btn-sm btn-block">Товар №:1</button></td>
+                                    </tr>
+                                        <td><button class="btn btn-primary btn-outline-dark btn-sm btn-block">Товар №:1</button></td>
+                                    </tr>
+                                        <td><button class="btn btn-primary btn-outline-dark btn-sm btn-block">Товар №:1</button></td>
+                                    </tr>
+                                        <td><button class="btn btn-primary btn-outline-dark btn-sm btn-block">Товар №:1</button></td>
+                                    </tr>
+                                        <td><button class="btn btn-primary btn-outline-dark btn-sm btn-block">Товар №:1</button></td>
+                                    </tr>
+                                        <td><button class="btn btn-primary btn-outline-dark btn-sm btn-block">Товар №:1</button></td>
+                                    </tr>
+                                        <td><button class="btn btn-primary btn-outline-dark btn-sm btn-block">Товар №:1</button></td>
+                                    </tr>
+                                        <td><button class="btn btn-primary btn-outline-dark btn-sm btn-block">Товар №:1</button></td>
+                                    </tr>
+                                        <td><button class="btn btn-primary btn-outline-dark btn-sm btn-block">Товар №:1</button></td>
+                                    </tr>
+                                        <td><button class="btn btn-primary btn-outline-dark btn-sm btn-block">Товар №:1</button></td>
+                                    </tr>
+                                        <td><button class="btn btn-primary btn-outline-dark btn-sm btn-block">Товар №:1</button></td>
+                                    </tr>
+                                        <td><button class="btn btn-primary btn-outline-dark btn-sm btn-block">Товар №:1</button></td>
+                                    </tr>
+                                        <td><button class="btn btn-primary btn-outline-dark btn-sm btn-block">Товар №:1</button></td>
+                                    </tr>
+                                        <td><button class="btn btn-primary btn-outline-dark btn-sm btn-block">Товар №:1</button></td>
+                                    </tr>
+                                        <td><button class="btn btn-primary btn-outline-dark btn-sm btn-block">Товар №:1</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="col-12 col-md-11">
                             <div  id="step-1">
@@ -526,7 +560,12 @@
                                                         "language": {
                                                             "paginate": {
                                                                 "next": "Кейинги",
-                                                                "previous": "Олдинги"
+                                                                "previous": "Олдинги",
+                                                                "showing" : "Кўрсатилмоқда",
+                                                                "Search": "Излаш",
+                                                                "to": "дан",
+                                                                "of": "гача",
+                                                                "entries": "та дан"
                                                             }
                                                         }
                                                     });
@@ -656,6 +695,7 @@
                     </div>
                     <!-- End SmartWizard Content -->
                 </div>
+            </div>
 
         </div>
     </div>
