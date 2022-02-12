@@ -40,17 +40,17 @@
                                             <!--<p class="text-muted font-13 m-b-30">
                                             The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
                                             </p>-->
-                                            <table id="example1" class="table table-striped table-bordered border-primary" style="width:100%">
-                                                <thead class="bg-info bg-gradient-primary text-light ">
+                                            <table id="example1" class="table table-striped table-bordered border-primary" style="width:100%; border-style: dashed solid">
+                                                <thead class="bg-primary bg-gradient text-white">
                                                 <tr>
-                                                    <th>т/р</th>
-                                                    <th>Ариза рақами</th>
-                                                    <th>Мақоми</th>
-                                                    <th>Ариза санаси</th>
-                                                    <th>Манқаатдор шахс</th>
-                                                    <th>Қарор рақами</th>
-                                                    <th>Қарор санаси</th>
-                                                    <th>Амал қилиш муддати</th>
+                                                    <th style="border-style: dotted">т/р</th>
+                                                    <th style="border-style: dotted">Ариза рақами</th>
+                                                    <th style="border-style: dotted">Мақоми</th>
+                                                    <th style="border-style: dotted">Ариза санаси</th>
+                                                    <th style="border-style: dotted">Манқаатдор шахс</th>
+                                                    <th style="border-style: dotted">Қарор рақами</th>
+                                                    <th style="border-style: dotted">Қарор санаси</th>
+                                                    <th style="border-style: dotted">Амал қилиш муддати</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -217,22 +217,22 @@
                                             <!--<p class="text-muted font-13 m-b-30">
                                             KeyTable provides Excel like cell navigation on any table. Events (focus, blur, action etc) can be assigned to individual cells, columns, rows or all cells.
                                             </p>-->
-                                            <table id="example2" class="table table-striped table-bordered border-primary" style="width:100%">
-                                                <thead class="bg-info bg-gradient-primary text-light">
+                                            <table id="example2" class="table table-striped table-bordered border-primary" style="width:100%; border-style: dashed solid">
+                                                <thead class="bg-primary bg-gradient text-white">
                                                 <tr>
-                                                    <th style="vertical-align: middle">т/р</th>
-                                                    <th style="vertical-align: middle">Холати</th>
-                                                    <th style="vertical-align: middle">Ариза санаси</th>
-                                                    <th style="vertical-align: middle">Ариза рақами</th>
-                                                    <th style="vertical-align: middle">Манқаатдор шахс</th>
-                                                    <th style="vertical-align: middle">Қарор рақами</th>
-                                                    <th style="vertical-align: middle">Қарор санаси</th>
-                                                    <th style="vertical-align: middle">Амал қилиш муддати</th>
-                                                    <th style="vertical-align: middle">Шартнома ёки товарни етказиб бериш асоси</th>
-                                                    <th style="vertical-align: middle">Товар коди ТИФ ТН</th>
-                                                    <th style="vertical-align: middle">Товар қисқача номи</th>
-                                                    <th style="vertical-align: middle">Усул</th>
-                                                    <th style="vertical-align: middle">Бекор қилиш санаси</th>
+                                                    <th class="w-auto" style="vertical-align: middle;  text-align: center; border-style: dotted">т/р</th>
+                                                    <th style="vertical-align: middle; text-align: center; border-style: dotted">Ариза рақами</th>
+                                                    <th class="w-auto" style="vertical-align: middle; text-align: center; border-style: dotted">Холати</th>
+                                                    <th style="vertical-align: middle; text-align: center; border-style: dotted">Ариза санаси</th>
+                                                    <th class="w-auto" style="vertical-align: middle; text-align: center; border-style: dotted">Манфаатдор шахс</th>
+                                                    <th style="vertical-align: middle; text-align: center; border-style: dotted">Қарор рақами</th>
+                                                    <th style="vertical-align: middle; text-align: center; border-style: dotted">Қарор санаси</th>
+                                                    <th class="w-auto" style="vertical-align: middle; text-align: center; border-style: dotted">Амал қилиш муддати</th>
+                                                    <th style="vertical-align: middle; text-align: center; border-style: dotted">Шартнома ёки товарни етказиб бериш асоси</th>
+                                                    <th class="w-auto" style="vertical-align: middle; text-align: center; border-style: dotted">Товар коди ТИФ ТН</th>
+                                                    <th class="w-auto" style="vertical-align: middle; text-align: center; border-style: dotted">Товар қисқача номи</th>
+                                                    <th style="vertical-align: middle; text-align: center; border-style: dotted">Усул</th>
+                                                    <th style="vertical-align: middle; text-align: center; border-style: dotted">Бекор қилиш санаси</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>

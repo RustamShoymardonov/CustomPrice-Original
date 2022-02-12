@@ -159,8 +159,8 @@
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="x_content">
                             <div class="table-responsive mt-4">
-                                <table id="example1" class="table table-striped table-bordered border-primary" style="width:100%; border-style: dotted">
-                                    <thead class="bg-primary">
+                                <table id="example1" class="table table-striped table-bordered border-primary" style="width:100%; border-style: dashed solid">
+                                    <thead class="bg-primary bg-gradient text-white">
                                     <tr>
                                         <th style="border-style: dotted">Name</th>
                                         <th style="border-style: dotted">Position</th>
@@ -641,15 +641,36 @@
                                 </table>
                                 <script>
                                     $(document).ready(function() {
-                                        $('#example1').DataTable();
+                                        $('#example1').DataTable({
+                                            "language": {
+                                                "paginate": {
+                                                    "next": "Кейинги",
+                                                    "previous": "Олдинги"
+                                                }
+                                            }
+                                        });
                                     } );
 
                                     $(document).ready(function() {
-                                        $('#example2').DataTable();
+                                        $('#example2').DataTable({
+                                            "language": {
+                                                "paginate": {
+                                                    "next": "Кейинги",
+                                                    "previous": "Олдинги"
+                                                }
+                                            }
+                                        });
                                     } );
 
                                     $(document).ready(function() {
-                                        $('#example3').DataTable();
+                                        $('#example3').DataTable({
+                                            "language": {
+                                                "paginate": {
+                                                "next": "Кейинги",
+                                                "previous": "Олдинги"
+                                                }
+                                            }
+                                        });
                                     } );
                                 </script>
                             </div>
@@ -658,15 +679,15 @@
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                         <div class="x_content h-100">
                             <div class="table-responsive mt-4">
-                                <table id="example2" class="table table-striped table-bordered border-primary" style="width:100%">
-                                    <thead class="bg-primary">
+                                <table id="example2" class="table table-striped table-bordered border-primary" style="width:100%; border-style: dashed solid">
+                                    <thead class="bg-primary bg-gradient text-white">
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th style="border-style: dotted">Name</th>
+                                        <th style="border-style: dotted">Position</th>
+                                        <th style="border-style: dotted">Office</th>
+                                        <th style="border-style: dotted">Age</th>
+                                        <th style="border-style: dotted">Start date</th>
+                                        <th style="border-style: dotted">Salary</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -1144,15 +1165,15 @@
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="x_content">
                             <div class="table-responsive mt-4">
-                                <table id="example3" class="table table-striped table-bordered border-primary" style="width:100%">
-                                    <thead class="bg-primary">
+                                <table id="example3" class="table table-striped table-bordered border-primary" style="width:100%; border-style: dashed solid">
+                                    <thead class="bg-primary bg-gradient text-white">
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th style="border-style: dotted">Name</th>
+                                        <th style="border-style: dotted">Position</th>
+                                        <th style="border-style: dotted">Office</th>
+                                        <th style="border-style: dotted">Age</th>
+                                        <th style="border-style: dotted">Start date</th>
+                                        <th style="border-style: dotted">Salary</th>
                                     </tr>
                                     </thead>
                                     <tbody>

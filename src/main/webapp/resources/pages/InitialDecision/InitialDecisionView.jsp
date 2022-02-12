@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<div class="">
+<div class="row-fluid">
     <div class="page-title">
         <div class="title_left">
             <!--<h3>Form Wizards</h3>-->
@@ -41,10 +41,10 @@
                 <div class="x_content">
                     <!-- Smart Wizard -->
 
-                    <div id="wizard" class="form_wizard wizard_verticle" style="height: 0">
+                    <div id="wizard" class="form_wizard wizard_horizontal">
                         <div class="shadow p-3 mb-5 bg-white rounded x_panel">
                             <div class="x_title collapse-link">
-                                <h2 >Ариза бўйича дастлабки маълумот<!--<small>Sample user invoice design</small>--></h2>
+                                <h2 style="text-align: center">Ариза бўйича дастлабки маълумот</h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link ml-5"><i class="fa fa-chevron-up"></i></a>
                                     </li>
@@ -102,14 +102,13 @@
 
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModal12">Божхона қиймати индекси бўйича хавф даражаси</h5>
+                                                    <h5 class="modal-title" id="exampleModal123">Божхона қиймати индекси бўйича хавф даражаси</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="col-md-12">
-
                                                         <table class="table table-bordered">
                                                             <thead class="text-center">
                                                             <tr >
@@ -173,7 +172,6 @@
                                                             </tr>
                                                             </tbody>
                                                         </table>
-
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -182,7 +180,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <!-- endmodal-->
                                 </section>
                             </div>
@@ -221,7 +218,17 @@
                                 </a>
                             </li>
                         </ul>
-                        <div id="step-1">
+                        <div class="row">
+                        <div class="col-2 col-md-1">
+                            <fieldset class="border-primary" style="border-style: dashed double none">
+                                <div><button class="btn btn-primary btn-outline-dark btn-block">Товар №:1</button></div>
+                                <div><button class="btn btn-primary btn-outline-dark btn-block">Товар №:2</button></div>
+                                <div><button class="btn btn-primary btn-outline-dark btn-block">Товар №:3</button></div>
+                                <div><button class="btn btn-primary btn-outline-dark btn-block">Товар №:4</button></div>
+                            </fieldset>
+                        </div>
+                        <div class="col-12 col-md-11">
+                            <div  id="step-1">
                             <div class="col-md-12">
                                 <div class="shadow p-3 mb-5 bg-white rounded  x_panel">
                                     <div class="x_title collapse-link">
@@ -232,12 +239,12 @@
                                         </ul>
                                         <div class="clearfix"></div>
                                     </div>
-                                    <div class="x_content">
+                                    <fieldset class="border-primary" style="border-style: dashed solid">
+                                        <div class="x_content">
                                         <br>
                                         <div class="col-md-4 col-sm-6  form-group has-feedback">
                                             <h6 style="border-bottom: 1px solid green"><i class="fa fa-barcode fa-lg mr-2"></i><b>ТИФ ТН коди:</b> 2202 10 000 0</h6>
                                         </div>
-
                                         <div class="col-md-8 col-sm-6  form-group has-feedback">
                                             <h6 style="border-bottom: 1px solid green"><i class="fa fa-dropbox fa-lg mr-2"></i><b>Товар номи:</b> воды, включая минеральные и газированные, содержащие добавки сахара или других подслащивающих или вкусо-ароматических веществ</h6>
                                         </div>
@@ -283,7 +290,7 @@
                                             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLongTitle">Транспорт харакати йўналиши ва харажатлари</h5>
+                                                        <h5 class="modal-title" id="exampleModalLongTitle1">Транспорт харакати йўналиши ва харажатлари</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -335,11 +342,12 @@
                                         </div>
                                         <!-- Транспорт тури Modal end -->
                                     </div>
+                                    </fieldset>
                                 </div>
 
                             </div>
                         </div>
-                        <div id="step-2">
+                            <div  id="step-2">
                             <div class="col-md-12">
                                 <div class="shadow p-3 mb-5 bg-white rounded x_panel">
                                     <div class="x_title collapse-link">
@@ -350,7 +358,8 @@
                                         </ul>
                                         <div class="clearfix"></div>
                                     </div>
-                                    <div class="x_content">
+                                    <fieldset class="border-primary" style="border-style: dashed solid">
+                                        <div class="x_content">
                                         <br>
                                         <div class="col-md-3 col-sm-3  form-group has-feedback">
                                             <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-text-o fa-lg mr-2"></i><b>Тижорат номи:</b> Газли ичимлик</h6>
@@ -455,11 +464,12 @@
                                         </div>
                                         <!-- Усул тури Modal end -->
                                     </div>
+                                    </fieldset>
                                 </div>
 
                             </div>
                         </div>
-                        <div id="step-3">
+                            <div  id="step-3">
                             <div class="col-md-12 col-sm-12">
                                 <div class="shadow p-3 mb-5 bg-white rounded x_panel">
                                     <div class="x_title collapse-link">
@@ -470,22 +480,18 @@
                                         </ul>
                                         <div class="clearfix"></div>
                                     </div>
-
-                                    <div class="x_content">
-
+                                        <div class="x_content">
                                         <div class="table-responsive">
-                                            <table class="table table-striped jambo_table bulk_action">
-                                                <thead>
-                                                <tr class="headings">
-
-                                                    <th class="column-title">№ </th>
-                                                    <th class="column-title">Хужжат тури</th>
-                                                    <th class="column-title">Хужжат рақами</th>
-                                                    <th class="column-title">Хужжат санаси</th>
-                                                    <th class="column-title">Хужжат файли</th>
+                                            <table id="example" class="table table-striped table-bordered border-primary" style="width:100%; border-style: dashed solid">
+                                                <thead class="bg-gradient text-black" style="background-color: #B5CAF9;">
+                                                <tr class="">
+                                                    <th style="border-style: dotted" class="column-title">№ </th>
+                                                    <th style="border-style: dotted" class="column-title">Хужжат тури</th>
+                                                    <th style="border-style: dotted" class="column-title">Хужжат рақами</th>
+                                                    <th style="border-style: dotted" class="column-title">Хужжат санаси</th>
+                                                    <th style="border-style: dotted" class="column-title">Хужжат файли</th>
                                                 </tr>
                                                 </thead>
-
                                                 <tbody>
                                                 <tr class="even pointer">
 
@@ -514,16 +520,26 @@
 
                                                 </tbody>
                                             </table>
+                                            <script>
+                                                $(document).ready(function() {
+                                                    $('#example').DataTable({
+                                                        "language": {
+                                                            "paginate": {
+                                                                "next": "Кейинги",
+                                                                "previous": "Олдинги"
+                                                            }
+                                                        }
+                                                    });
+                                                } );
+                                            </script>
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div id="step-4">
+                            <div  id="step-4">
                             <div class="col-md-12">
-                                <div class="shadow p-3 mb-5 bg-white rounded x_panel" style="min-height: 500px; height: auto">
+                                <div class="shadow p-3 mb-5 bg-white rounded x_panel" style="height: auto">
                                     <div class="x_title collapse-link">
                                         <h2>Ариза бўйича қарор<small>4-қадам</small></h2>
                                         <ul class="nav navbar-right panel_toolbox">
@@ -545,14 +561,14 @@
                                             <a id="contact1-tab" data-toggle="tab" href="#contact1" role="tab" aria-controls="contact1" aria-selected="false" class="nav-link text-uppercase font-weight-normal rounded-0 border">Аризани тузатиш учун қайтариш</a>
                                         </li>
                                     </ul>
-                                    <div id="myTab1Content" class="tab-content">
-                                        <div id="home1" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade py-4 show active">
-                                            <h4>Божхона тўловлари ва йиғимлари тўғрисида маълумот<a class="btn btn-primary rounded-0" id="insertRow" style="margin-left: 65%" href="#">Қўшиш</a></h4>
 
+                                    <div id="myTab1Content" class="tab-content border-primary">
+                                        <div id="home1" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade py-4 show active">
+                                            <h4 style="text-align: center">Божхона тўловлари ва йиғимлари тўғрисида маълумот<a class="btn btn-primary rounded-0 pull-right" id="insertRow" href="#">Қўшиш</a></h4>
                                             <!-- -->
                                             <!--  Bootstrap table-->
                                             <div class="table-responsive">
-                                                <table class="table tolovlar">
+                                                <table class="table tolovlar border-primary" style="border-style: dashed double none">
                                                     <thead>
                                                     <tr>
                                                         <th scope="col">Тўлов тури</th>
@@ -569,7 +585,7 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <button type="button" class="btn btn-success">Жўнатиш</button>
+                                            <button type="button" class="btn btn-success ml-2">Жўнатиш</button>
                                             <!-- Add rows button-->
 
                                             <script>
@@ -614,8 +630,8 @@
                                         </div>
                                         <div id="profile1" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade py-4">
                                             <!-- Text editor -->
-                                            <h4>Аризани қайтариш сабаблари</h4>
-                                            <form method="">
+                                            <h4 style="text-align: center">Аризани қайтариш сабаблари</h4>
+                                            <form method="" class="border-primary" style="border-style: dashed double none">
                                                 <textarea class="resizable_textarea form-control" placeholder="Киритинг... " style="height: 150px; max-height: 300px;"></textarea>
                                             </form>
                                             <button type="button" class="btn btn-success mt-3">Жўнатиш</button>
@@ -623,8 +639,8 @@
                                         </div>
                                         <div id="contact1" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade py-4">
                                             <!-- Text editor -->
-                                            <h4>Аризани қайтариш сабаблари ва тузатиш киритиладиган бўлимлар</h4>
-                                            <form method="">
+                                            <h4 style="text-align: center">Аризани қайтариш сабаблари ва тузатиш киритиладиган бўлимлар</h4>
+                                            <form method="" class="border-primary" style="border-style: dashed double none">
                                                 <textarea class="resizable_textarea form-control" placeholder="Киритинг... " style="height: 150px; max-height: 300px;"></textarea>
                                             </form>
                                             <button type="button" class="btn btn-success mt-3">Жўнатиш</button>
@@ -635,13 +651,33 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
+                        </div>
                     </div>
                     <!-- End SmartWizard Content -->
                 </div>
 
         </div>
     </div>
-    <script src="<%=request.getContextPath()%>/resources/build/js/custom.min.js"></script>
+    <script >
+        $(document).ready(function(){
+            init_SmartWizard();
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(".collapse-link").on("click", function() {
+                var e = $(this).closest(".x_panel"),
+                    a = $(this).find("i"),
+                    t = e.find(".x_content");
+                e.attr("style") ? t.slideToggle(200, function() {
+                    e.removeAttr("style")
+                }) : (t.slideToggle(200), e.css("height", "auto")), a.toggleClass("fa-chevron-up fa-chevron-down")
+            }), $(".close-link").click(function() {
+                $(this).closest(".x_panel").remove()
+            })
+        })
+    </script>
 </div>
 
 
