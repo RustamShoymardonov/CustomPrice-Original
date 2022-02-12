@@ -6,30 +6,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import uz.customs.customsprice.entity.InitialDecision.Docs;
-import uz.customs.customsprice.entity.InitialDecision.Persons;
-import uz.customs.customsprice.service.DocsService;
-import uz.customs.customsprice.service.PersonsService;
+import uz.customs.customsprice.entity.InitialDecision.Apps;
+import uz.customs.customsprice.service.AppsService;
 
 @Controller
 @RequestMapping("/savevalue")
 public class SaveController {
-    private final PersonsService personsService;
-    //private final DocsService docsService;
+    private final AppsService appsService;
 
-    public SaveController(PersonsService personsService) {
-        this.personsService = personsService;
-      //  this.docsService = docsService;
+    public SaveController(AppsService appsService) {
+        this.appsService = appsService;
     }
 
     @PostMapping
-    public ResponseEntity valuesave(@RequestBody Persons persons, Docs docs) {
+    public ResponseEntity valuesave(@RequestBody Apps apps) {
         try {
-            personsService.savepersons(persons);
-            //docsService.savedocs(docs);
-            return ResponseEntity.ok("Persons smalumotlari saqlandi");
+            appsService.saveApps(apps);
+            return ResponseEntity.ok("Apps smalumotlari saqlandi");
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Persons malumotlari saqlanmadi");
+            return ResponseEntity.badRequest().body("Apps malumotlari saqlanmadi");
         }
 
     }

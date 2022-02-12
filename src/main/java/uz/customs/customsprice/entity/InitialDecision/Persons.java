@@ -22,28 +22,28 @@ public class Persons extends AbstractAuditingEntity {
     @Column(name = "id", columnDefinition = "VARCHAR(50)")
     private String id;
 
-    @Column(name = "firstName", nullable = false, columnDefinition = "VARCHAR(180) CCSID 1208")
+    @Column(name = "firstName", columnDefinition = "VARCHAR(180) CCSID 1208")
     private String firstName;
 
-    @Column(name = "surName", nullable = false, columnDefinition = "VARCHAR(180) CCSID 1208")
+    @Column(name = "surName", columnDefinition = "VARCHAR(180) CCSID 1208")
     private String surName;
 
-    @Column(name = "lastName", nullable = false, columnDefinition = "VARCHAR(180) CCSID 1208")
+    @Column(name = "lastName", columnDefinition = "VARCHAR(180) CCSID 1208")
     private String lastName;
 
-    @Column(name = "email", length = 30, nullable = false, unique = true)
+    @Column(name = "email", length = 30, unique = true)
     private String eMail;
 
-    @Column(name = "pin", length = 14, nullable = false, unique = true)
+    @Column(name = "pin", length = 14, unique = true)
     private String pin;
 
-    @Column(name = "tin", length = 9, nullable = false, unique = true)
+    @Column(name = "tin", length = 9, unique = true)
     private String tin;
 
-    @Column(name = "per_adr", nullable = false, columnDefinition = "VARCHAR(765) CCSID 1208")
+    @Column(name = "per_adr", columnDefinition = "VARCHAR(765) CCSID 1208")
     private String perAdr;
 
-    @Column(name = "phone", length = 20, nullable = false)
+    @Column(name = "phone", length = 20)
     private String phone;
 
     public Persons() {
@@ -134,3 +134,4 @@ public class Persons extends AbstractAuditingEntity {
         this.phone = phone;
     }
 }
+

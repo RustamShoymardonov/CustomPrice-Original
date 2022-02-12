@@ -10,6 +10,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "METHOD_CAUSE")
 public class MethodCause extends AbstractAuditingEntity {
     @Id
     @GeneratedValue(generator = "uuid4")
