@@ -26,11 +26,11 @@ public class Docs extends AbstractAuditingEntity {
     @Column(name = "doc_file", nullable = false)
     private String docFile;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "app_id", insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "app_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private Applications appId;
+    private Apps appId;
 
     @Column(name = "doc_id", nullable = false)
     private String docId;
@@ -38,7 +38,8 @@ public class Docs extends AbstractAuditingEntity {
     public Docs() {
     }
 
-    public Docs(String id, String docNumber, Date doc_date, String docFile, Applications appId, String docId) {
+    public Docs(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, String docNumber, Date doc_date, String docFile, Apps appId, String docId) {
+        super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
         this.docNumber = docNumber;
         this.doc_date = doc_date;
@@ -79,11 +80,11 @@ public class Docs extends AbstractAuditingEntity {
         this.docFile = docFile;
     }
 
-    public Applications getAppId() {
+    public Apps getAppId() {
         return appId;
     }
 
-    public void setAppId(Applications appId) {
+    public void setAppId(Apps appId) {
         this.appId = appId;
     }
 
@@ -95,3 +96,4 @@ public class Docs extends AbstractAuditingEntity {
         this.docId = docId;
     }
 }
+

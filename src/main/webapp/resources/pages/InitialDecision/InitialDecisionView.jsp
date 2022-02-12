@@ -30,8 +30,7 @@
 
     <div class="row">
 
-        <div class="col-md-12 col-sm-12 ">
-            <div class="x_panel bg-light">
+        <div class="col-md-12">
                 <div class="x_title">
                     <h4>
                         <i class="fa fa-edit"></i>АРИЗА
@@ -40,11 +39,9 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-
-
                     <!-- Smart Wizard -->
 
-                    <div class="col-md-12">
+                    <div id="wizard" class="form_wizard wizard_verticle" style="height: 0">
                         <div class="shadow p-3 mb-5 bg-white rounded x_panel">
                             <div class="x_title collapse-link">
                                 <h2 >Ариза бўйича дастлабки маълумот<!--<small>Sample user invoice design</small>--></h2>
@@ -63,8 +60,8 @@
                                             <address>
                                                 <strong><i class="fa fa-user mr-2"></i>Аризачи:</strong>
                                                 <br><strong><i class="fa fa-phone mr-2"></i>Телефон рақами:</strong>
-                                                <br><strong><i class="fa fa-barcode mr-2"></i>ТИФ ТН коди:</strong>
-                                                <br><strong><i class="fa fa-money mr-2"></i>Фактура қиймати</strong>
+                                                <br><strong><i class="fa fa-barcode mr-2"></i>Юк жўнатувчи:</strong>
+                                                <br><strong><i class="fa fa-money mr-2"></i>Сотувчи</strong>
 
                                             </address>
                                         </div>
@@ -73,14 +70,14 @@
                                             <address>
                                                 <i>Абдуллаев Сарвар Ботирович
                                                     <br>+998 (90) 888 88 88
-                                                    <br>2202 10 000 0
-                                                    <br>3 250 АҚШ доллари</i>
+                                                    <br>Россия
+                                                    <br>Қозоғистион</i>
                                             </address>
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-sm-3 invoice-col">
                                             <address>
-                                                <strong><i class="fa fa-delicious mr-2"></i>Ўлчов бирлигидаги миқдори:</strong>
+                                                <strong><i class="fa fa-money mr-2"></i>Фактура қиймати</strong>
                                                 <br><strong><i class="fa fa-balance-scale mr-2"></i>Нетто оғирлиги:</strong>
                                                 <br><strong><i class="fa fa-balance-scale mr-2"></i>Брутто оғирлиги:</strong>
                                                 <br><strong><i class="fa fa-money mr-2"></i>Бир бирлик нархи:</strong>
@@ -89,7 +86,7 @@
                                         <!-- /.col -->
                                         <div class="col-sm-3 invoice-col">
                                             <address>
-                                                <i>1 2000 та</strong><a href="#"><i class="fa fa-calculator fa-2x" data-toggle="modal" data-target="#exampleModal12" style="margin-left: 65%"></i></a>
+                                                <i>3 250 АҚШ</strong><a href="#"><i class="fa fa-calculator fa-2x" data-toggle="modal" data-target="#exampleModal12" style="margin-left: 65%"></i></a>
                                                     <br>1 500 кг
                                                     <br>1 450 кг
                                                     <br><mark>0,6 АҚШ доллари</mark></i>
@@ -190,16 +187,12 @@
                                 </section>
                             </div>
                         </div>
-                    </div>
-
-
-                    <div id="wizard" class="form_wizard wizard_horizontal">
                         <ul class="wizard_steps">
                             <li>
                                 <a href="#step-1">
                                     <span class="step_no">1</span>
                                     <span class="step_descr">
-								 Умумий маълумотлар<br />
+
 							</span>
                                 </a>
                             </li>
@@ -207,7 +200,7 @@
                                 <a href="#step-2">
                                     <span class="step_no">2</span>
                                     <span class="step_descr">
-								  Товар таснифи<br />
+
 							</span>
                                 </a>
                             </li>
@@ -215,7 +208,7 @@
                                 <a href="#step-3">
                                     <span class="step_no">3</span>
                                     <span class="step_descr">
-								  Юк-кузатув ҳужжатлари<br />
+
 							 </span>
                                 </a>
                             </li>
@@ -223,7 +216,7 @@
                                 <a href="#step-4">
                                     <span class="step_no">4</span>
                                     <span class="step_descr">
-								  Ариза бўйича қарор<br />
+
 							</span>
                                 </a>
                             </li>
@@ -554,8 +547,7 @@
                                     </ul>
                                     <div id="myTab1Content" class="tab-content">
                                         <div id="home1" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade py-4 show active">
-                                            <h4>Божхона тўловлари ва йиғимлари тўғрисида маълумот</h4>
-
+                                            <h4>Божхона тўловлари ва йиғимлари тўғрисида маълумот<a class="btn btn-primary rounded-0" id="insertRow" style="margin-left: 65%" href="#">Қўшиш</a></h4>
 
                                             <!-- -->
                                             <!--  Bootstrap table-->
@@ -568,7 +560,7 @@
                                                         <th scope="col">Ставка</th>
                                                         <th scope="col">Миқдори</th>
                                                         <th scope="col">Тўлов тури</th>
-                                                        <th><a class="btn btn-primary rounded-0" id="insertRow" href="#">Add new row</a></th>
+                                                        <th scope="col">Амал</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -646,10 +638,11 @@
                     </div>
                     <!-- End SmartWizard Content -->
                 </div>
-            </div>
+
         </div>
     </div>
+    <script src="<%=request.getContextPath()%>/resources/build/js/custom.min.js"></script>
 </div>
 
-<script src="<%=request.getContextPath()%>/resources/build/js/custom.min.js"></script>
+
 
