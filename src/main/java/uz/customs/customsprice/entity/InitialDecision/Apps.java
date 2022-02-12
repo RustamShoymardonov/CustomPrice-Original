@@ -27,166 +27,116 @@ public class Apps extends AbstractAuditingEntity {
     @Column(name = "CUSTOMER_COUNTRY", length = 3)
     private String customer_country;
 
-    @Column(name = "CUSTOMER_COUNTRY_NM", length = 40, columnDefinition = "VARCHAR(120) CCSID 1208")
-    private String customer_country_nm;
+    @Column(name = "CUSTOMER_COUNTRY_NM", columnDefinition = "VARCHAR(120) CCSID 1208")
+    private String customerCountryNm;
 
     @Column(name = "SENDER_COUNTRY", length = 3)
-    private String sender_country;
+    private String senderCountry;
 
-    @Column(name = "SENDER_COUNTRY_NM", length = 40, columnDefinition = "VARCHAR(120) CCSID 1208")
-    private String sender_country_nm;
+    @Column(name = "SENDER_COUNTRY_NM", columnDefinition = "VARCHAR(120) CCSID 1208")
+    private String senderCountryNm;
 
     @Column(name = "ORIGIN_COUNTRY", length = 3)
-    private String origin_country;
+    private String originCountry;
 
-    @Column(name = "ORIGIN_COUNTRY_NM", length = 40, columnDefinition = "VARCHAR(120) CCSID 1208")
-    private String orign_countr_nm;
+    @Column(name = "ORIGIN_COUNTRY_NM", columnDefinition = "VARCHAR(120) CCSID 1208")
+    private String orignCountrNm;
 
-    @Column(name = "TRADE_NAME", length = 255, columnDefinition = "VARCHAR(765) CCSID 1208")
-    private String trade_name;
+    @Column(name = "SENDER_ORG", columnDefinition = "VARCHAR(900) CCSID 1208")
+    private String senderOrg;
 
-    @Column(name = "TRADE_MARK", length = 255, columnDefinition = "VARCHAR(765) CCSID 1208")
-    private String trade_mark;
+    @Column(name = "SELLER_ORG", columnDefinition = "VARCHAR(900) CCSID 1208")
+    private String sellerOrg;
 
-    @Column(name = "MARK", length = 255, columnDefinition = "VARCHAR(765) CCSID 1208")
-    private String mark;
-
-    @Column(name = "MODEL", length = 255, columnDefinition = "VARCHAR(765) CCSID 1208")
-    private String model;
-
-    @Column(name = "ARTICLE", length = 255, columnDefinition = "VARCHAR(765) CCSID 1208")
-    private String article;
-
-    @Column(name = "SORT", length = 255, columnDefinition = "VARCHAR(765) CCSID 1208")
-    private String sort;
-
-    @Column(name = "STANDARTS", length = 500, columnDefinition = "VARCHAR(1500) CCSID 1208")
-    private String standarts;
-
-    @Column(name = "FUNCTIONS", length = 500, columnDefinition = "VARCHAR(1500) CCSID 1208")
-    private String functions;
-
-    @Column(name = "COMMERCIAL_PROPERTIES", length = 2000, columnDefinition = "VARCHAR(6000) CCSID 1208")
-    private String commercial_properties;
-
-    @Column(name = "TECHNICAL_CHARACTERISTICS", length = 500, columnDefinition = "VARCHAR(1500) CCSID 1208")
-    private String technical_characteristics;
-
-    @Column(name = "PRODUCT_GOAL", length = 300, columnDefinition = "VARCHAR(900) CCSID 1208")
-    private String product_goal;
-
-    @Column(name = "HS_CODE", length = 10)
-    private String hs_code;
-
-    @Column(name = "SENDER_ORG", length = 300, columnDefinition = "VARCHAR(900) CCSID 1208")
-    private String sender_org;
-
-    @Column(name = "SELLER_ORG", length = 300, columnDefinition = "VARCHAR(900) CCSID 1208")
-    private String seller_org;
-
-    @Column(name = "ORIGIN_ORG", length = 300, columnDefinition = "VARCHAR(900) CCSID 1208")
-    private String origin_org;
+    @Column(name = "ORIGIN_ORG", columnDefinition = "VARCHAR(900) CCSID 1208")
+    private String originOrg;
 
     @Column(name = "TERMS", length = 3)
     private String terms;
 
     @Column(name = "TERMS_ADDR", length = 50)
-    private String terms_addr;
+    private String termsAddr;
 
     @Column(name = "IN_DEC_DATE")
-    private Date in_dec_date;
+    private Date inDecDate;
 
-    @Column(name = "IN_DEC_NUM", length = 2000)
-    private String initial_decision_number;
+    @Column(name = "IN_DEC_NUM", length = 30)
+    private String initialDecisionNumber;
 
-    //++++//
+    @Column(name = "PERSON_FIO", columnDefinition = "VARCHAR(180) CCSID 1208")
+    private String personFio;
 
-    @Column(name = "PERSON_FIO", length = 60, columnDefinition = "VARCHAR(180) CCSID 1208")
-    private String person_fio;
-
-    @Column(name = "ORG_NAME", length = 300, columnDefinition = "VARCHAR(900) CCSID 1208")
-    private String org_name;
+    @Column(name = "ORG_NAME", columnDefinition = "VARCHAR(900) CCSID 1208")
+    private String orgName;
 
     @Column(name = "PERSON_POSITION", length = 2)
-    private String person_position;
+    private String personPosition;
 
-    @Column(name = "PERSON_ADDR", length = 300, columnDefinition = "VARCHAR(900) CCSID 1208")
-    private String person_addr;
+    @Column(name = "PERSON_ADDR", columnDefinition = "VARCHAR(900) CCSID 1208")
+    private String personAddr;
 
     @Column(name = "PERSON_TIN", length = 9)
-    private String person_tin;
+    private String personTin;
 
     @Column(name = "PERSON_PIN", length = 14)
-    private String person_pin;
+    private String personPin;
 
     @Column(name = "PERSON_MAIL", length = 100)
-    private String person_mail;
+    private String personMail;
 
     @Column(name = "PERSON_PHONE", length = 20)
-    private String person_phone;
+    private String personPhone;
 
     @Column(name = "LOCATION_ID", length = 4)
-    private String location_id;
+    private String locationId;
 
     @Column(name = "LOCATION_NM", precision = 5, scale = 2)
-    private BigDecimal location_nm;
+    private BigDecimal locationNm;
 
     @Column(name = "TRANS_EXP", length = 4)
-    private BigDecimal trans_exp;
+    private BigDecimal transExp;
 
     @Column(name = "STATUS", columnDefinition = "SMALLINT DEFAULT 0")
     private int status;
 
     @Column(name = "STATUS_NM", length = 4)
-    private int status_nm;
+    private int statusNm;
 
     //end//
 
     public Apps() {
     }
 
-    public Apps(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Persons persons, String customer_country, String customer_country_nm, String sender_country, String sender_country_nm, String origin_country, String orign_countr_nm, String trade_name, String trade_mark, String mark, String model, String article, String sort, String standarts, String functions, String commercial_properties, String technical_characteristics, String product_goal, String hs_code, String sender_org, String seller_org, String origin_org, String terms, String terms_addr, Date in_dec_date, String initial_decision_number, String person_fio, String org_name, String person_position, String person_addr, String person_tin, String person_pin, String person_mail, String person_phone, String location_id, BigDecimal location_nm, BigDecimal trans_exp, int status, int status_nm) {
+    public Apps(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Persons persons, String customer_country, String customerCountryNm, String senderCountry, String senderCountryNm, String originCountry, String orignCountrNm, String senderOrg, String sellerOrg, String originOrg, String terms, String termsAddr, Date inDecDate, String initialDecisionNumber, String personFio, String orgName, String personPosition, String personAddr, String personTin, String personPin, String personMail, String personPhone, String locationId, BigDecimal locationNm, BigDecimal transExp, int status, int statusNm) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
         this.persons = persons;
         this.customer_country = customer_country;
-        this.customer_country_nm = customer_country_nm;
-        this.sender_country = sender_country;
-        this.sender_country_nm = sender_country_nm;
-        this.origin_country = origin_country;
-        this.orign_countr_nm = orign_countr_nm;
-        this.trade_name = trade_name;
-        this.trade_mark = trade_mark;
-        this.mark = mark;
-        this.model = model;
-        this.article = article;
-        this.sort = sort;
-        this.standarts = standarts;
-        this.functions = functions;
-        this.commercial_properties = commercial_properties;
-        this.technical_characteristics = technical_characteristics;
-        this.product_goal = product_goal;
-        this.hs_code = hs_code;
-        this.sender_org = sender_org;
-        this.seller_org = seller_org;
-        this.origin_org = origin_org;
+        this.customerCountryNm = customerCountryNm;
+        this.senderCountry = senderCountry;
+        this.senderCountryNm = senderCountryNm;
+        this.originCountry = originCountry;
+        this.orignCountrNm = orignCountrNm;
+        this.senderOrg = senderOrg;
+        this.sellerOrg = sellerOrg;
+        this.originOrg = originOrg;
         this.terms = terms;
-        this.terms_addr = terms_addr;
-        this.in_dec_date = in_dec_date;
-        this.initial_decision_number = initial_decision_number;
-        this.person_fio = person_fio;
-        this.org_name = org_name;
-        this.person_position = person_position;
-        this.person_addr = person_addr;
-        this.person_tin = person_tin;
-        this.person_pin = person_pin;
-        this.person_mail = person_mail;
-        this.person_phone = person_phone;
-        this.location_id = location_id;
-        this.location_nm = location_nm;
-        this.trans_exp = trans_exp;
+        this.termsAddr = termsAddr;
+        this.inDecDate = inDecDate;
+        this.initialDecisionNumber = initialDecisionNumber;
+        this.personFio = personFio;
+        this.orgName = orgName;
+        this.personPosition = personPosition;
+        this.personAddr = personAddr;
+        this.personTin = personTin;
+        this.personPin = personPin;
+        this.personMail = personMail;
+        this.personPhone = personPhone;
+        this.locationId = locationId;
+        this.locationNm = locationNm;
+        this.transExp = transExp;
         this.status = status;
-        this.status_nm = status_nm;
+        this.statusNm = statusNm;
     }
 
     public String getId() {
@@ -213,164 +163,68 @@ public class Apps extends AbstractAuditingEntity {
         this.customer_country = customer_country;
     }
 
-    public String getCustomer_country_nm() {
-        return customer_country_nm;
+    public String getCustomerCountryNm() {
+        return customerCountryNm;
     }
 
-    public void setCustomer_country_nm(String customer_country_nm) {
-        this.customer_country_nm = customer_country_nm;
+    public void setCustomerCountryNm(String customerCountryNm) {
+        this.customerCountryNm = customerCountryNm;
     }
 
-    public String getSender_country() {
-        return sender_country;
+    public String getSenderCountry() {
+        return senderCountry;
     }
 
-    public void setSender_country(String sender_country) {
-        this.sender_country = sender_country;
+    public void setSenderCountry(String senderCountry) {
+        this.senderCountry = senderCountry;
     }
 
-    public String getSender_country_nm() {
-        return sender_country_nm;
+    public String getSenderCountryNm() {
+        return senderCountryNm;
     }
 
-    public void setSender_country_nm(String sender_country_nm) {
-        this.sender_country_nm = sender_country_nm;
+    public void setSenderCountryNm(String senderCountryNm) {
+        this.senderCountryNm = senderCountryNm;
     }
 
-    public String getOrigin_country() {
-        return origin_country;
+    public String getOriginCountry() {
+        return originCountry;
     }
 
-    public void setOrigin_country(String origin_country) {
-        this.origin_country = origin_country;
+    public void setOriginCountry(String originCountry) {
+        this.originCountry = originCountry;
     }
 
-    public String getOrign_countr_nm() {
-        return orign_countr_nm;
+    public String getOrignCountrNm() {
+        return orignCountrNm;
     }
 
-    public void setOrign_countr_nm(String orign_countr_nm) {
-        this.orign_countr_nm = orign_countr_nm;
+    public void setOrignCountrNm(String orignCountrNm) {
+        this.orignCountrNm = orignCountrNm;
     }
 
-    public String getTrade_name() {
-        return trade_name;
+    public String getSenderOrg() {
+        return senderOrg;
     }
 
-    public void setTrade_name(String trade_name) {
-        this.trade_name = trade_name;
+    public void setSenderOrg(String senderOrg) {
+        this.senderOrg = senderOrg;
     }
 
-    public String getTrade_mark() {
-        return trade_mark;
+    public String getSellerOrg() {
+        return sellerOrg;
     }
 
-    public void setTrade_mark(String trade_mark) {
-        this.trade_mark = trade_mark;
+    public void setSellerOrg(String sellerOrg) {
+        this.sellerOrg = sellerOrg;
     }
 
-    public String getMark() {
-        return mark;
+    public String getOriginOrg() {
+        return originOrg;
     }
 
-    public void setMark(String mark) {
-        this.mark = mark;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public String getArticle() {
-        return article;
-    }
-
-    public void setArticle(String article) {
-        this.article = article;
-    }
-
-    public String getSort() {
-        return sort;
-    }
-
-    public void setSort(String sort) {
-        this.sort = sort;
-    }
-
-    public String getStandarts() {
-        return standarts;
-    }
-
-    public void setStandarts(String standarts) {
-        this.standarts = standarts;
-    }
-
-    public String getFunctions() {
-        return functions;
-    }
-
-    public void setFunctions(String functions) {
-        this.functions = functions;
-    }
-
-    public String getCommercial_properties() {
-        return commercial_properties;
-    }
-
-    public void setCommercial_properties(String commercial_properties) {
-        this.commercial_properties = commercial_properties;
-    }
-
-    public String getTechnical_characteristics() {
-        return technical_characteristics;
-    }
-
-    public void setTechnical_characteristics(String technical_characteristics) {
-        this.technical_characteristics = technical_characteristics;
-    }
-
-    public String getProduct_goal() {
-        return product_goal;
-    }
-
-    public void setProduct_goal(String product_goal) {
-        this.product_goal = product_goal;
-    }
-
-    public String getHs_code() {
-        return hs_code;
-    }
-
-    public void setHs_code(String hs_code) {
-        this.hs_code = hs_code;
-    }
-
-    public String getSender_org() {
-        return sender_org;
-    }
-
-    public void setSender_org(String sender_org) {
-        this.sender_org = sender_org;
-    }
-
-    public String getSeller_org() {
-        return seller_org;
-    }
-
-    public void setSeller_org(String seller_org) {
-        this.seller_org = seller_org;
-    }
-
-    public String getOrigin_org() {
-        return origin_org;
-    }
-
-    public void setOrigin_org(String origin_org) {
-        this.origin_org = origin_org;
+    public void setOriginOrg(String originOrg) {
+        this.originOrg = originOrg;
     }
 
     public String getTerms() {
@@ -381,116 +235,116 @@ public class Apps extends AbstractAuditingEntity {
         this.terms = terms;
     }
 
-    public String getTerms_addr() {
-        return terms_addr;
+    public String getTermsAddr() {
+        return termsAddr;
     }
 
-    public void setTerms_addr(String terms_addr) {
-        this.terms_addr = terms_addr;
+    public void setTermsAddr(String termsAddr) {
+        this.termsAddr = termsAddr;
     }
 
-    public Date getIn_dec_date() {
-        return in_dec_date;
+    public Date getInDecDate() {
+        return inDecDate;
     }
 
-    public void setIn_dec_date(Date in_dec_date) {
-        this.in_dec_date = in_dec_date;
+    public void setInDecDate(Date inDecDate) {
+        this.inDecDate = inDecDate;
     }
 
-    public String getInitial_decision_number() {
-        return initial_decision_number;
+    public String getInitialDecisionNumber() {
+        return initialDecisionNumber;
     }
 
-    public void setInitial_decision_number(String initial_decision_number) {
-        this.initial_decision_number = initial_decision_number;
+    public void setInitialDecisionNumber(String initialDecisionNumber) {
+        this.initialDecisionNumber = initialDecisionNumber;
     }
 
-    public String getPerson_fio() {
-        return person_fio;
+    public String getPersonFio() {
+        return personFio;
     }
 
-    public void setPerson_fio(String person_fio) {
-        this.person_fio = person_fio;
+    public void setPersonFio(String personFio) {
+        this.personFio = personFio;
     }
 
-    public String getOrg_name() {
-        return org_name;
+    public String getOrgName() {
+        return orgName;
     }
 
-    public void setOrg_name(String org_name) {
-        this.org_name = org_name;
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
     }
 
-    public String getPerson_position() {
-        return person_position;
+    public String getPersonPosition() {
+        return personPosition;
     }
 
-    public void setPerson_position(String person_position) {
-        this.person_position = person_position;
+    public void setPersonPosition(String personPosition) {
+        this.personPosition = personPosition;
     }
 
-    public String getPerson_addr() {
-        return person_addr;
+    public String getPersonAddr() {
+        return personAddr;
     }
 
-    public void setPerson_addr(String person_addr) {
-        this.person_addr = person_addr;
+    public void setPersonAddr(String personAddr) {
+        this.personAddr = personAddr;
     }
 
-    public String getPerson_tin() {
-        return person_tin;
+    public String getPersonTin() {
+        return personTin;
     }
 
-    public void setPerson_tin(String person_tin) {
-        this.person_tin = person_tin;
+    public void setPersonTin(String personTin) {
+        this.personTin = personTin;
     }
 
-    public String getPerson_pin() {
-        return person_pin;
+    public String getPersonPin() {
+        return personPin;
     }
 
-    public void setPerson_pin(String person_pin) {
-        this.person_pin = person_pin;
+    public void setPersonPin(String personPin) {
+        this.personPin = personPin;
     }
 
-    public String getPerson_mail() {
-        return person_mail;
+    public String getPersonMail() {
+        return personMail;
     }
 
-    public void setPerson_mail(String person_mail) {
-        this.person_mail = person_mail;
+    public void setPersonMail(String personMail) {
+        this.personMail = personMail;
     }
 
-    public String getPerson_phone() {
-        return person_phone;
+    public String getPersonPhone() {
+        return personPhone;
     }
 
-    public void setPerson_phone(String person_phone) {
-        this.person_phone = person_phone;
+    public void setPersonPhone(String personPhone) {
+        this.personPhone = personPhone;
     }
 
-    public String getLocation_id() {
-        return location_id;
+    public String getLocationId() {
+        return locationId;
     }
 
-    public void setLocation_id(String location_id) {
-        this.location_id = location_id;
+    public void setLocationId(String locationId) {
+        this.locationId = locationId;
     }
 
-    public BigDecimal getLocation_nm() {
-        return location_nm;
+    public BigDecimal getLocationNm() {
+        return locationNm;
     }
 
-    public void setLocation_nm(BigDecimal location_nm) {
-        this.location_nm = location_nm;
+    public void setLocationNm(BigDecimal locationNm) {
+        this.locationNm = locationNm;
     }
 
-    public BigDecimal getTrans_exp() {
-        return trans_exp;
+    public BigDecimal getTransExp() {
+        return transExp;
     }
 
-    public void setTrans_exp(BigDecimal trans_exp) {
-        this.trans_exp = trans_exp;
+    public void setTransExp(BigDecimal transExp) {
+        this.transExp = transExp;
     }
 
     public int getStatus() {
@@ -501,11 +355,11 @@ public class Apps extends AbstractAuditingEntity {
         this.status = status;
     }
 
-    public int getStatus_nm() {
-        return status_nm;
+    public int getStatusNm() {
+        return statusNm;
     }
 
-    public void setStatus_nm(int status_nm) {
-        this.status_nm = status_nm;
+    public void setStatusNm(int statusNm) {
+        this.statusNm = statusNm;
     }
 }

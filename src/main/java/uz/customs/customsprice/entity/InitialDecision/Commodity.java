@@ -19,46 +19,46 @@ public class Commodity extends AbstractAuditingEntity {
     private String id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "app_id", insertable = false, updatable = false)
+    @JoinColumn(name = "APP_ID", insertable = false, updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private Apps applications;
+    private Apps apps;
 
-    @Column(name = "TRADE_NAME", columnDefinition = "VARCHAR(255) CCSID 1208")
-    private String trade_name;
+    @Column(name = "TRADE_NAME", columnDefinition = "VARCHAR(765) CCSID 1208")
+    private String tradeName;
 
-    @Column(name = "TRADE_MARK", columnDefinition = "VARCHAR(255) CCSID 1208")
-    private String trade_mark;
+    @Column(name = "TRADE_MARK", columnDefinition = "VARCHAR(765) CCSID 1208")
+    private String tradeMark;
 
-    @Column(name = "MARK", columnDefinition = "VARCHAR(255) CCSID 1208")
+    @Column(name = "MARK", columnDefinition = "VARCHAR(765) CCSID 1208")
     private String mark;
 
-    @Column(name = "MODEL", columnDefinition = "VARCHAR(255) CCSID 1208")
+    @Column(name = "MODEL", columnDefinition = "VARCHAR(765) CCSID 1208")
     private String model;
 
-    @Column(name = "ARTICLE", columnDefinition = "VARCHAR(255) CCSID 1208")
+    @Column(name = "ARTICLE", columnDefinition = "VARCHAR(765) CCSID 1208")
     private String article;
 
-    @Column(name = "SORT", columnDefinition = "VARCHAR(255) CCSID 1208")
+    @Column(name = "SORT", columnDefinition = "VARCHAR(765) CCSID 1208")
     private String sort;
 
-    @Column(name = "STANDARTS", columnDefinition = "VARCHAR(500) CCSID 1208")
+    @Column(name = "STANDARTS", columnDefinition = "VARCHAR(1500) CCSID 1208")
     private String standarts;
 
-    @Column(name = "FUNCTIONS", columnDefinition = "VARCHAR(500) CCSID 1208")
+    @Column(name = "FUNCTIONS", columnDefinition = "VARCHAR(1500) CCSID 1208")
     private String functions;
 
-    @Column(name = "COM_PROP", columnDefinition = "VARCHAR(2000) CCSID 1208")
-    private String com_prop;
+    @Column(name = "COM_PROP", columnDefinition = "VARCHAR(4000) CCSID 1208")
+    private String comProp;
 
-    @Column(name = "TECH_CHAR", columnDefinition = "VARCHAR(1000) CCSID 1208")
-    private String tech_char;
+    @Column(name = "TECH_CHAR", columnDefinition = "VARCHAR(2000) CCSID 1208")
+    private String techChar;
 
-    @Column(name = "PRODUCT_GOAL", columnDefinition = "VARCHAR(300) CCSID 1208")
-    private String product_goal;
+    @Column(name = "PRODUCT_GOAL", columnDefinition = "VARCHAR(900) CCSID 1208")
+    private String productGoal;
 
     @Column(name = "HS_CODE", length = 10)
-    private String hs_code;
+    private String hsCode;
 
     @Column(name = "BRUTTO", precision = 5, scale = 2)
     private BigDecimal brutto;
@@ -67,82 +67,82 @@ public class Commodity extends AbstractAuditingEntity {
     private BigDecimal netto;
 
     @Column(name = "BASIC_QTY", precision = 5, scale = 2)
-    private BigDecimal basic_qty;
+    private BigDecimal basicQty;
 
     @Column(name = "EXTRA_UNITS", length = 3)
-    private String extra_units;
+    private String extraUnits;
 
     @Column(name = "EXTRA_QTY", precision = 5, scale = 2)
-    private BigDecimal extra_qty;
+    private BigDecimal extraQty;
 
     @Column(name = "PRICE", precision = 5, scale = 2)
     private BigDecimal price;
 
     @Column(name = "CURRENCY_TYPE", length = 3)
-    private String currency_type;
+    private String currencyType;
 
     @Column(name = "CARGO_SPACE", precision = 5, scale = 2)
-    private BigDecimal cargo_space;
+    private BigDecimal cargoSpace;
 
     @Column(name = "PACK_TYPE", length = 3)
-    private String pack_type;
+    private String packType;
 
     @Column(name = "PACK_TYPE_NM", columnDefinition = "VARCHAR(90) CCSID 1208")
-    private String pack_type_nm;
+    private String packTypeNm;
 
     @Column(name = "PACK_QTY", precision = 5, scale = 2)
-    private BigDecimal pack_qty;
+    private BigDecimal packQty;
 
     @Column(name = "EXTRA_INFO", columnDefinition = "VARCHAR(2000) CCSID 1208")
-    private String extra_info;
+    private String extraInfo;
 
     @Column(name = "HS_DEC_NUM", length = 20)
-    private String hs_dec_num;
+    private String hsDecNum;
 
     @Column(name = "HS_DEC_DATE")
-    private Date hs_dec_date;
+    private Date hsDecDate;
 
     @Column(name = "METHOD", length = 2)
     private String method;
 
     @Column(name = "METHOD_NM", columnDefinition = "VARCHAR(90) CCSID 1208")
-    private String method_nm;
+    private String methodNm;
 
     public Commodity() {
     }
 
-    public Commodity(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps applications, String trade_name, String trade_mark, String mark, String model, String article, String sort, String standarts, String functions, String com_prop, String tech_char, String product_goal, String hs_code, BigDecimal brutto, BigDecimal netto, BigDecimal basic_qty, String extra_units, BigDecimal extra_qty, BigDecimal price, String currency_type, BigDecimal cargo_space, String pack_type, String pack_type_nm, BigDecimal pack_qty, String extra_info, String hs_dec_num, Date hs_dec_date, String method, String method_nm) {
+    public Commodity(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, String tradeName, String tradeMark, String mark, String model, String article, String sort, String standarts, String functions, String comProp, String techChar, String productGoal, String hsCode, BigDecimal brutto, BigDecimal netto, BigDecimal basicQty, String extraUnits, BigDecimal extraQty, BigDecimal price, String currencyType, BigDecimal cargoSpace, String packType, String packTypeNm, BigDecimal packQty, String extraInfo, String hsDecNum, Date hsDecDate, String method, String methodNm) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
-        this.applications = applications;
-        this.trade_name = trade_name;
-        this.trade_mark = trade_mark;
+        this.apps = apps;
+        this.tradeName = tradeName;
+        this.tradeMark = tradeMark;
         this.mark = mark;
         this.model = model;
         this.article = article;
         this.sort = sort;
         this.standarts = standarts;
         this.functions = functions;
-        this.com_prop = com_prop;
-        this.tech_char = tech_char;
-        this.product_goal = product_goal;
-        this.hs_code = hs_code;
+        this.comProp = comProp;
+        this.techChar = techChar;
+        this.productGoal = productGoal;
+        this.hsCode = hsCode;
         this.brutto = brutto;
         this.netto = netto;
-        this.basic_qty = basic_qty;
-        this.extra_units = extra_units;
-        this.extra_qty = extra_qty;
+        this.basicQty = basicQty;
+        this.extraUnits = extraUnits;
+        this.extraQty = extraQty;
         this.price = price;
-        this.currency_type = currency_type;
-        this.cargo_space = cargo_space;
-        this.pack_type = pack_type;
-        this.pack_type_nm = pack_type_nm;
-        this.pack_qty = pack_qty;
-        this.extra_info = extra_info;
-        this.hs_dec_num = hs_dec_num;
-        this.hs_dec_date = hs_dec_date;
+        this.currencyType = currencyType;
+        this.cargoSpace = cargoSpace;
+        this.packType = packType;
+        this.packTypeNm = packTypeNm;
+        this.packQty = packQty;
+        this.extraInfo = extraInfo;
+        this.hsDecNum = hsDecNum;
+        this.hsDecDate = hsDecDate;
         this.method = method;
-        this.method_nm = method_nm;
+        this.methodNm = methodNm;
     }
 
     public String getId() {
@@ -153,28 +153,28 @@ public class Commodity extends AbstractAuditingEntity {
         this.id = id;
     }
 
-    public Apps getApplications() {
-        return applications;
+    public Apps getApps() {
+        return apps;
     }
 
-    public void setApplications(Apps applications) {
-        this.applications = applications;
+    public void setApps(Apps apps) {
+        this.apps = apps;
     }
 
-    public String getTrade_name() {
-        return trade_name;
+    public String getTradeName() {
+        return tradeName;
     }
 
-    public void setTrade_name(String trade_name) {
-        this.trade_name = trade_name;
+    public void setTradeName(String tradeName) {
+        this.tradeName = tradeName;
     }
 
-    public String getTrade_mark() {
-        return trade_mark;
+    public String getTradeMark() {
+        return tradeMark;
     }
 
-    public void setTrade_mark(String trade_mark) {
-        this.trade_mark = trade_mark;
+    public void setTradeMark(String tradeMark) {
+        this.tradeMark = tradeMark;
     }
 
     public String getMark() {
@@ -225,36 +225,36 @@ public class Commodity extends AbstractAuditingEntity {
         this.functions = functions;
     }
 
-    public String getCom_prop() {
-        return com_prop;
+    public String getComProp() {
+        return comProp;
     }
 
-    public void setCom_prop(String com_prop) {
-        this.com_prop = com_prop;
+    public void setComProp(String comProp) {
+        this.comProp = comProp;
     }
 
-    public String getTech_char() {
-        return tech_char;
+    public String getTechChar() {
+        return techChar;
     }
 
-    public void setTech_char(String tech_char) {
-        this.tech_char = tech_char;
+    public void setTechChar(String techChar) {
+        this.techChar = techChar;
     }
 
-    public String getProduct_goal() {
-        return product_goal;
+    public String getProductGoal() {
+        return productGoal;
     }
 
-    public void setProduct_goal(String product_goal) {
-        this.product_goal = product_goal;
+    public void setProductGoal(String productGoal) {
+        this.productGoal = productGoal;
     }
 
-    public String getHs_code() {
-        return hs_code;
+    public String getHsCode() {
+        return hsCode;
     }
 
-    public void setHs_code(String hs_code) {
-        this.hs_code = hs_code;
+    public void setHsCode(String hsCode) {
+        this.hsCode = hsCode;
     }
 
     public BigDecimal getBrutto() {
@@ -273,28 +273,28 @@ public class Commodity extends AbstractAuditingEntity {
         this.netto = netto;
     }
 
-    public BigDecimal getBasic_qty() {
-        return basic_qty;
+    public BigDecimal getBasicQty() {
+        return basicQty;
     }
 
-    public void setBasic_qty(BigDecimal basic_qty) {
-        this.basic_qty = basic_qty;
+    public void setBasicQty(BigDecimal basicQty) {
+        this.basicQty = basicQty;
     }
 
-    public String getExtra_units() {
-        return extra_units;
+    public String getExtraUnits() {
+        return extraUnits;
     }
 
-    public void setExtra_units(String extra_units) {
-        this.extra_units = extra_units;
+    public void setExtraUnits(String extraUnits) {
+        this.extraUnits = extraUnits;
     }
 
-    public BigDecimal getExtra_qty() {
-        return extra_qty;
+    public BigDecimal getExtraQty() {
+        return extraQty;
     }
 
-    public void setExtra_qty(BigDecimal extra_qty) {
-        this.extra_qty = extra_qty;
+    public void setExtraQty(BigDecimal extraQty) {
+        this.extraQty = extraQty;
     }
 
     public BigDecimal getPrice() {
@@ -305,68 +305,68 @@ public class Commodity extends AbstractAuditingEntity {
         this.price = price;
     }
 
-    public String getCurrency_type() {
-        return currency_type;
+    public String getCurrencyType() {
+        return currencyType;
     }
 
-    public void setCurrency_type(String currency_type) {
-        this.currency_type = currency_type;
+    public void setCurrencyType(String currencyType) {
+        this.currencyType = currencyType;
     }
 
-    public BigDecimal getCargo_space() {
-        return cargo_space;
+    public BigDecimal getCargoSpace() {
+        return cargoSpace;
     }
 
-    public void setCargo_space(BigDecimal cargo_space) {
-        this.cargo_space = cargo_space;
+    public void setCargoSpace(BigDecimal cargoSpace) {
+        this.cargoSpace = cargoSpace;
     }
 
-    public String getPack_type() {
-        return pack_type;
+    public String getPackType() {
+        return packType;
     }
 
-    public void setPack_type(String pack_type) {
-        this.pack_type = pack_type;
+    public void setPackType(String packType) {
+        this.packType = packType;
     }
 
-    public String getPack_type_nm() {
-        return pack_type_nm;
+    public String getPackTypeNm() {
+        return packTypeNm;
     }
 
-    public void setPack_type_nm(String pack_type_nm) {
-        this.pack_type_nm = pack_type_nm;
+    public void setPackTypeNm(String packTypeNm) {
+        this.packTypeNm = packTypeNm;
     }
 
-    public BigDecimal getPack_qty() {
-        return pack_qty;
+    public BigDecimal getPackQty() {
+        return packQty;
     }
 
-    public void setPack_qty(BigDecimal pack_qty) {
-        this.pack_qty = pack_qty;
+    public void setPackQty(BigDecimal packQty) {
+        this.packQty = packQty;
     }
 
-    public String getExtra_info() {
-        return extra_info;
+    public String getExtraInfo() {
+        return extraInfo;
     }
 
-    public void setExtra_info(String extra_info) {
-        this.extra_info = extra_info;
+    public void setExtraInfo(String extraInfo) {
+        this.extraInfo = extraInfo;
     }
 
-    public String getHs_dec_num() {
-        return hs_dec_num;
+    public String getHsDecNum() {
+        return hsDecNum;
     }
 
-    public void setHs_dec_num(String hs_dec_num) {
-        this.hs_dec_num = hs_dec_num;
+    public void setHsDecNum(String hsDecNum) {
+        this.hsDecNum = hsDecNum;
     }
 
-    public Date getHs_dec_date() {
-        return hs_dec_date;
+    public Date getHsDecDate() {
+        return hsDecDate;
     }
 
-    public void setHs_dec_date(Date hs_dec_date) {
-        this.hs_dec_date = hs_dec_date;
+    public void setHsDecDate(Date hsDecDate) {
+        this.hsDecDate = hsDecDate;
     }
 
     public String getMethod() {
@@ -377,11 +377,11 @@ public class Commodity extends AbstractAuditingEntity {
         this.method = method;
     }
 
-    public String getMethod_nm() {
-        return method_nm;
+    public String getMethodNm() {
+        return methodNm;
     }
 
-    public void setMethod_nm(String method_nm) {
-        this.method_nm = method_nm;
+    public void setMethodNm(String methodNm) {
+        this.methodNm = methodNm;
     }
 }

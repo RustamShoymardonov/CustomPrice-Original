@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Docs extends AbstractAuditingEntity {
+public class StatusM extends AbstractAuditingEntity {
     @Id
     @GeneratedValue(generator = "uuid4")
     @GenericGenerator(name = "uuid4", strategy = "org.hibernate.id.UUIDGenerator")
@@ -23,29 +23,21 @@ public class Docs extends AbstractAuditingEntity {
     @JsonIgnore
     private Apps apps;
 
-    @Column(name = "doc_number")
-    private String docNumber;
+    @Column(name = "STATUS", length = 3)
+    private String status;
 
-    @Column(name = "doc_date")
-    private Date doc_date;
+    @Column(name = "STATUS_COMMENT", columnDefinition = "VARCHAR(1500) CCSID 1208")
+    private String statusComment;
 
-    @Column(name = "doc_file")
-    private String docFile;
-
-    @Column(name = "doc_id")
-    private String docId;
-
-    public Docs() {
+    public StatusM() {
     }
 
-    public Docs(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, String docNumber, Date doc_date, String docFile, String docId) {
+    public StatusM(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, String status, String statusComment) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
         this.apps = apps;
-        this.docNumber = docNumber;
-        this.doc_date = doc_date;
-        this.docFile = docFile;
-        this.docId = docId;
+        this.status = status;
+        this.statusComment = statusComment;
     }
 
     public String getId() {
@@ -64,36 +56,19 @@ public class Docs extends AbstractAuditingEntity {
         this.apps = apps;
     }
 
-    public String getDocNumber() {
-        return docNumber;
+    public String getStatus() {
+        return status;
     }
 
-    public void setDocNumber(String docNumber) {
-        this.docNumber = docNumber;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public Date getDoc_date() {
-        return doc_date;
+    public String getStatusComment() {
+        return statusComment;
     }
 
-    public void setDoc_date(Date doc_date) {
-        this.doc_date = doc_date;
-    }
-
-    public String getDocFile() {
-        return docFile;
-    }
-
-    public void setDocFile(String docFile) {
-        this.docFile = docFile;
-    }
-
-    public String getDocId() {
-        return docId;
-    }
-
-    public void setDocId(String docId) {
-        this.docId = docId;
+    public void setStatusComment(String statusComment) {
+        this.statusComment = statusComment;
     }
 }
-
