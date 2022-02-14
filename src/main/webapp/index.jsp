@@ -26,19 +26,16 @@
           rel="stylesheet">
 
 </head>
-<body class="nav-md">
+<body class="nav-md menu_fixed">
 
 <div class="container body">
-    <div class="main_container">
-        <div class="col-md-3 left_col">
+    <div class="container body">
+        <div class="col-md-3 left_col" style="margin-top: 5%;">
             <div class="left_col scroll-view">
-                <div class="navbar nav_title" style="border: 0;">
-                    <a href="<%=request.getContextPath()%>/index.jsp" class="site_title"><i
-                            class="fa fa-list"></i><span>Божхона қиймати</span></a>
+                <div class="navbar nav_title">
+                    <a href="#" class="site_title"><i class="fa fa-list"></i><span>Божхона қиймати</span></a>
                 </div>
-
                 <div class="clearfix"></div>
-
                 <!-- menu profile quick info -->
                 <div class="profile clearfix">
                     <div class="profile_pic">
@@ -51,9 +48,7 @@
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
-
                 <br/>
-
                 <!-- sidebar menu -->
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section">
@@ -91,128 +86,121 @@
                 <!-- /menu footer buttons -->
             </div>
         </div>
-
         <!-- top navigation -->
-        <div class="top_nav">
-            <div class="nav_menu">
-                <div class="nav toggle">
-                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                </div>
-                <nav class="nav navbar-nav">
-                    <ul class=" navbar-right">
-                        <li class="nav-item dropdown open" style="padding-left: 15px;">
-                            <a href="" class="user-profile dropdown-toggle" aria-haspopup="true"
-                               id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                <img src="<%=request.getContextPath()%>/resources/images/img.jpg" alt="">Абдиев
-                                Ботир
-                            </a>
-                            <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href=""> Фойдаланувчи</a>
-                                <a class="dropdown-item" href="">
-                                    <span>Созлаш</span>
-                                </a>
-                                <a class="dropdown-item" href="">Ёрдам</a>
-                                <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i>
-                                    Чиқиш</a>
-                            </div>
-                        </li>
-
-                        <li role="presentation" class="nav-item dropdown open">
-                            <a href="" class="dropdown-toggle info-number" id="navbarDropdown1"
-                               data-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-envelope-o"></i>
-                                <span class="badge bg-green">6</span>
-                            </a>
-                            <ul class="dropdown-menu list-unstyled msg_list" role="menu"
-                                aria-labelledby="navbarDropdown1">
-                                <li class="nav-item">
-                                    <a class="dropdown-item">
-                                        <span class="image"><img
-                                                src="<%=request.getContextPath()%>/resources/images/img.jpg"
-                                                alt="Profile Image"/></span>
-                                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="dropdown-item">
-                                        <span class="image"><img
-                                                src="<%=request.getContextPath()%>/resources/images/img.jpg"
-                                                alt="Profile Image"/></span>
-                                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="dropdown-item">
-                                        <span class="image"><img
-                                                src="<%=request.getContextPath()%>/resources/images/img.jpg"
-                                                alt="Profile Image"/></span>
-                                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="dropdown-item">
-                                        <span class="image"><img
-                                                src="<%=request.getContextPath()%>/resources/images/img.jpg"
-                                                alt="Profile Image"/></span>
-                                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="text-center">
-                                        <a class="dropdown-item">
-                                            <strong>See All Alerts</strong>
-                                            <i class="fa fa-angle-right"></i>
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
+        <div class="top_nav bg-primary">
+            <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
             </div>
-        </div>
-        <!-- /top navigation -->
+            <nav class="nav navbar-nav" style="color: #FFFFFF!important;">
+                <ul class=" navbar-right">
+                    <li class="nav-item dropdown open" style="padding-left: 15px;">
+                        <a href="" class="user-profile dropdown-toggle" aria-haspopup="true"
+                           id="navbarDropdown" data-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF!important;">
+                            <img src="<%=request.getContextPath()%>/resources/images/img.jpg" alt="">Абдиев Ботир
+                        </a>
+                        <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href=""> Фойдаланувчи</a>
+                            <a class="dropdown-item" href="">
+                                <span>Созлаш</span>
+                            </a>
+                            <a class="dropdown-item" href="">Ёрдам</a>
+                            <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i>Чиқиш</a>
+                        </div>
+                    </li>
+                    <li role="presentation" class="nav-item dropdown open">
+                        <a href="" class="dropdown-toggle info-number text-white" id="navbarDropdown1"
+                           data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="badge bg-green">6</span>
+                        </a>
+                        <ul class="dropdown-menu list-unstyled msg_list" role="menu"
+                            aria-labelledby="navbarDropdown1">
+                            <li class="nav-item">
+                                <a class="dropdown-item">
+                                        <span class="image"><img
+                                                src="<%=request.getContextPath()%>/resources/images/img.jpg"
+                                                alt="Profile Image"/></span>
+                                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="dropdown-item">
+                                        <span class="image"><img
+                                                src="<%=request.getContextPath()%>/resources/images/img.jpg"
+                                                alt="Profile Image"/></span>
+                                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="dropdown-item">
+                                        <span class="image"><img
+                                                src="<%=request.getContextPath()%>/resources/images/img.jpg"
+                                                alt="Profile Image"/></span>
+                                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="dropdown-item">
+                                        <span class="image"><img
+                                                src="<%=request.getContextPath()%>/resources/images/img.jpg"
+                                                alt="Profile Image"/></span>
+                                    <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                                    <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <div class="text-center">
+                                    <a class="dropdown-item">
+                                        <strong>See All Alerts</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div></div>
+    <!-- /top navigation -->
 
-
-        <%--todo Асосий----------------------------------------------------қисми------------------------дан--%>
-        <div class="right_col" id="MainContent" role="main">
-            <%--todo страницаларни чақириш жойи--%>
-        </div>
-        <%--todo Асосий----------------------------------------------------қисми------------------------гача--%>
+    <%--todo Асосий----------------------------------------------------қисми------------------------дан--%>
+    <div class="right_col" id="MainContent" role="main">
+        <%--todo страницаларни чақириш жойи--%>
     </div>
-    <!-- /page content -->
-    <!-- footer content -->
-    <footer>
-        <div class="pull-right">
-            Божхона қиймати
-        </div>
-        <div class="clearfix"></div>
-    </footer>
-    <!-- /footer content -->
+    <%--todo Асосий----------------------------------------------------қисми------------------------гача--%>
+</div>
+<!-- /page content -->
+<!-- footer content -->
+<footer>
+    <div class="pull-right">
+        Божхона қиймати
+    </div>
+    <div class="clearfix"></div>
+</footer>
+<!-- /footer content -->
 </div>
 
 <script src="<%=request.getContextPath()%>/resources/vendors/jquery/dist/jquery.min.js"></script>
@@ -352,6 +340,5 @@
 </script>
 <script src="<%=request.getContextPath()%>/resources/build/js/custom.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
-
 </body>
 </html>

@@ -9,25 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <div class="row-fluid">
-    <div class="page-title">
-        <div class="title_left">
-            <!--<h3>Form Wizards</h3>-->
-        </div>
-
-        <div class="title_right">
-            <div class="col-md-5 col-sm-5  form-group row pull-right top_search">
-                <!--<div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search for...">
-                  <span class="input-group-btn">
-                      <button class="btn btn-secondary" type="button">Go!</button>
-                  </span>
-                </div>-->
-            </div>
-        </div>
-    </div>
-    <div class="clearfix"></div>
-
     <div class="row">
 
         <div class="col-md-12 col-sm-12 ">
@@ -516,7 +499,7 @@
                                     </div>
                                         <div class="x_content">
                                         <div class="table-responsive">
-                                            <table id="example" class="table table-striped table-bordered border-primary" style="width:100%; border-style: dashed solid">
+                                            <table id="example" class="table table-bordered border-primary" style="width:100%; border-style: dashed solid">
                                                 <thead class="bg-gradient text-black" style="background-color: #B5CAF9;">
                                                 <tr class="">
                                                     <th style="border-style: dotted" class="column-title">№ </th>

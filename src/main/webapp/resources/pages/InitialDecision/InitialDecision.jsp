@@ -41,7 +41,7 @@
                                             The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
                                             </p>-->
                                             <table id="example1" class="table table-striped table-bordered border-primary" style="width:100%; border-style: dashed solid">
-                                                <thead class="bg-primary bg-gradient text-white">
+                                                <thead class="bg-gradient text-black" style="background-color: #B5CAF9;">
                                                 <tr>
                                                     <th style="border-style: dotted">т/р</th>
                                                     <th style="border-style: dotted">Ариза рақами</th>
@@ -218,7 +218,7 @@
                                             KeyTable provides Excel like cell navigation on any table. Events (focus, blur, action etc) can be assigned to individual cells, columns, rows or all cells.
                                             </p>-->
                                             <table id="example2" class="table table-striped table-bordered border-primary" style="width:100%; border-style: dashed solid">
-                                                <thead class="bg-primary bg-gradient text-white">
+                                                <thead class="bg-gradient text-black" style="background-color: #B5CAF9;">
                                                 <tr>
                                                     <th class="w-auto" style="vertical-align: middle;  text-align: center; border-style: dotted">т/р</th>
                                                     <th style="vertical-align: middle; text-align: center; border-style: dotted">Ариза рақами</th>
