@@ -19,7 +19,7 @@ spring:
       max-request-size: 10MB
   datasource:
     driver-class-name: com.ibm.as400.access.AS400JDBCDriver
-    url: jdbc:as400://192.168.212.231/EDO
+    url: jdbc:as400://192.168.212.231/CPID
     username: rustam
     password: 9061648
     type: com.zaxxer.hikari.HikariDataSource

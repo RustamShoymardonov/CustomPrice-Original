@@ -24,6 +24,9 @@ public class Apps extends AbstractAuditingEntity {
     @JsonIgnore
     private Persons persons;
 
+    @Column(name = "PERSON_ID", length = 50)
+    private String personId;
+
     @Column(name = "CUSTOMER_COUNTRY", length = 3)
     private String customer_country;
 
