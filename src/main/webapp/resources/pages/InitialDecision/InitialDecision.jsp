@@ -40,7 +40,7 @@
                                             <!--<p class="text-muted font-13 m-b-30">
                                             The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
                                             </p>-->
-                                            <table id="example1" class="table table-striped table-bordered border-primary" style="width:100%; border-style: dashed solid">
+                                            <table id="example1" class="table table-striped table-bordered border-primary table-sm" style="width:100%; border-style: dashed solid">
                                                 <thead class="bg-gradient text-black" style="background-color: #B5CAF9;">
                                                 <tr>
                                                     <th style="border-style: dotted">т/р</th>
@@ -198,10 +198,38 @@
                                             </table>
                                             <script>
                                                 $(document).ready(function() {
-                                                    $('#example1').DataTable();
+                                                    $('#example1').DataTable({
+                                                        "language": {
+                                                            "zeroRecords": "Сиз излаган маълумот мавжуд эмас!",
+                                                            "infoFiltered": "(_MAX_ та маълумот сараланди)",
+                                                            "infoEmpty": "Маълумотлар топилмади",
+                                                            "info": "Жами _PAGES_ та, _PAGE_-сахифа ",
+                                                            "lengthMenu": "Кўрсатилмоқда _MENU_ та ариза",
+                                                            "Show": "Кўрсатилмоқда",
+                                                            "search": "Излаш",
+                                                            "paginate": {
+                                                                "next": "Кейинги",
+                                                                "previous": "Олдинги",
+                                                            }
+                                                        }
+                                                    });
                                                 } );
                                                 $(document).ready(function() {
-                                                    $('#example2').DataTable();
+                                                    $('#example2').DataTable({
+                                                        "language": {
+                                                            "zeroRecords": "Сиз излаган маълумот мавжуд эмас!",
+                                                            "infoFiltered": "(_MAX_ та маълумот сараланди)",
+                                                            "infoEmpty": "Маълумотлар топилмади",
+                                                            "info": "Жами _PAGES_ та, _PAGE_-сахифа ",
+                                                            "lengthMenu": "Кўрсатилмоқда _MENU_ та ариза",
+                                                            "Show": "Кўрсатилмоқда",
+                                                            "search": "Излаш",
+                                                            "paginate": {
+                                                                "next": "Кейинги",
+                                                                "previous": "Олдинги",
+                                                            }
+                                                        }
+                                                    });
                                                 } );
                                             </script>
                                         </div>
@@ -217,7 +245,7 @@
                                             <!--<p class="text-muted font-13 m-b-30">
                                             KeyTable provides Excel like cell navigation on any table. Events (focus, blur, action etc) can be assigned to individual cells, columns, rows or all cells.
                                             </p>-->
-                                            <table id="example2" class="table table-striped table-bordered border-primary" style="width:100%; border-style: dashed solid">
+                                            <table id="example2" class="table table-striped table-bordered border-primary table-sm" style="width:100%; border-style: dashed solid">
                                                 <thead class="bg-gradient text-black" style="background-color: #B5CAF9;">
                                                 <tr>
                                                     <th class="w-auto" style="vertical-align: middle;  text-align: center; border-style: dotted">т/р</th>

@@ -169,6 +169,7 @@
                                         <th style="border-style: dotted">Мафаатдор шахс</th>
                                         <th style="border-style: dotted">Савдо қилувчи мамлакат</th>
                                         <th style="border-style: dotted">Ишлаб чиқарувчи мамлакат</th>
+                                        <th style="border-style: dotted">Сотувчи мамлакат</th>
                                         <th style="border-style: dotted">Тақсимлаш</th>
                                     </tr>
                                     </thead>
@@ -178,9 +179,10 @@
                                         <td>0001-27</td>
                                         <td>Янги</td>
                                         <td>27-01-2022</td>
-                                        <td>"ООО" Логистикс</td>
+                                        <td>"111" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                                 <option></option>
                                                 <option>ст.инспектор Ж.Халилов</option>
@@ -198,6 +200,7 @@
                                         <td>"ООО" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                             <option></option>
                                             <option>ст.инспектор Ж.Халилов</option>
@@ -215,6 +218,7 @@
                                         <td>"ООО" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                             <option></option>
                                             <option>ст.инспектор Ж.Халилов</option>
@@ -232,6 +236,7 @@
                                         <td>"ООО" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                             <option></option>
                                             <option>ст.инспектор Ж.Халилов</option>
@@ -249,6 +254,7 @@
                                         <td>"ООО" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                             <option></option>
                                             <option>ст.инспектор Ж.Халилов</option>
@@ -266,6 +272,7 @@
                                         <td>"ООО" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                             <option></option>
                                             <option>ст.инспектор Ж.Халилов</option>
@@ -283,6 +290,7 @@
                                         <td>"ООО" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                             <option></option>
                                             <option>ст.инспектор Ж.Халилов</option>
@@ -300,6 +308,7 @@
                                         <td>"ООО" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                             <option></option>
                                             <option>ст.инспектор Ж.Халилов</option>
@@ -317,6 +326,7 @@
                                         <td>"ООО" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                             <option></option>
                                             <option>ст.инспектор Ж.Халилов</option>
@@ -334,6 +344,7 @@
                                         <td>"ООО" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                             <option></option>
                                             <option>ст.инспектор Ж.Халилов</option>
@@ -351,6 +362,7 @@
                                         <td>"ООО" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                             <option></option>
                                             <option>ст.инспектор Ж.Халилов</option>
@@ -368,6 +380,7 @@
                                         <td>"ООО" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                             <option></option>
                                             <option>ст.инспектор Ж.Халилов</option>
@@ -385,6 +398,7 @@
                                         <td>"ООО" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                             <option></option>
                                             <option>ст.инспектор Ж.Халилов</option>
@@ -402,6 +416,7 @@
                                         <td>"ООО" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                             <option></option>
                                             <option>ст.инспектор Ж.Халилов</option>
@@ -419,6 +434,7 @@
                                         <td>"ООО" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                             <option></option>
                                             <option>ст.инспектор Ж.Халилов</option>
@@ -436,6 +452,7 @@
                                         <td>"ООО" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                             <option></option>
                                             <option>ст.инспектор Ж.Халилов</option>
@@ -453,6 +470,7 @@
                                         <td>"ООО" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                             <option></option>
                                             <option>ст.инспектор Ж.Халилов</option>
@@ -470,6 +488,7 @@
                                         <td>"ООО" Логистикс</td>
                                         <td>Россия</td>
                                         <td>Қозоғистон</td>
+                                        <td>Хитой</td>
                                         <td><select class="form-control">
                                             <option></option>
                                             <option>ст.инспектор Ж.Халилов</option>
@@ -489,6 +508,7 @@
                                         <th style="border-style: dotted">Мафаатдор шахс</th>
                                         <th style="border-style: dotted">Савдо қилувчи мамлакат</th>
                                         <th style="border-style: dotted">Ишлаб чиқарувчи мамлакат</th>
+                                        <th style="border-style: dotted">Сотувчи мамлакат</th>
                                         <th style="border-style: dotted"><button type="submit" class="btn btn-success btn-block">Тақсимлаш</button></th>
                                     </tr>
                                     </tfoot>
@@ -497,9 +517,16 @@
                                     $(document).ready(function() {
                                         $('#example1').DataTable({
                                             "language": {
+                                                "zeroRecords": "Сиз излаган маълумот мавжуд эмас!",
+                                                "infoFiltered": "(_MAX_ та маълумот сараланди)",
+                                                "infoEmpty": "Маълумотлар топилмади",
+                                                "info": "Жами _PAGES_ та, _PAGE_-сахифа ",
+                                                "lengthMenu": "Кўрсатилмоқда _MENU_ та ариза",
+                                                "Show": "Кўрсатилмоқда",
+                                                "search": "Излаш",
                                                 "paginate": {
                                                     "next": "Кейинги",
-                                                    "previous": "Олдинги"
+                                                    "previous": "Олдинги",
                                                 }
                                             }
                                         });
@@ -508,9 +535,16 @@
                                     $(document).ready(function() {
                                         $('#example2').DataTable({
                                             "language": {
+                                                "zeroRecords": "Сиз излаган маълумот мавжуд эмас!",
+                                                "infoFiltered": "(_MAX_ та маълумот сараланди)",
+                                                "infoEmpty": "Маълумотлар топилмади",
+                                                "info": "Жами _PAGES_ та, _PAGE_-сахифа ",
+                                                "lengthMenu": "Кўрсатилмоқда _MENU_ та ариза",
+                                                "Show": "Кўрсатилмоқда",
+                                                "search": "Излаш",
                                                 "paginate": {
                                                     "next": "Кейинги",
-                                                    "previous": "Олдинги"
+                                                    "previous": "Олдинги",
                                                 }
                                             }
                                         });
@@ -519,9 +553,16 @@
                                     $(document).ready(function() {
                                         $('#example3').DataTable({
                                             "language": {
+                                                "zeroRecords": "Сиз излаган маълумот мавжуд эмас!",
+                                                "infoFiltered": "(_MAX_ та маълумот сараланди)",
+                                                "infoEmpty": "Маълумотлар топилмади",
+                                                "info": "Жами _PAGES_ та, _PAGE_-сахифа ",
+                                                "lengthMenu": "Кўрсатилмоқда _MENU_ та ариза",
+                                                "Show": "Кўрсатилмоқда",
+                                                "search": "Излаш",
                                                 "paginate": {
-                                                "next": "Кейинги",
-                                                "previous": "Олдинги"
+                                                    "next": "Кейинги",
+                                                    "previous": "Олдинги",
                                                 }
                                             }
                                         });
@@ -1019,7 +1060,7 @@
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="x_content">
                             <div class="table-responsive mt-4">
-                                <table id="example3" class="table table-striped table-bordered border-primary table-" style="width:100%; border-style: dashed solid">
+                                <table id="example3" class="table table-striped table-bordered border-primary table-sm" style="width:100%; border-style: dashed solid">
                                     <thead class="bg-gradient text-black" style="background-color: #B5CAF9;">
                                     <tr>
                                         <th style="border-style: dotted">Name</th>

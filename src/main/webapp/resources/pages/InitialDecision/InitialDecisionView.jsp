@@ -93,7 +93,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="col-md-12">
-                                                        <table class="table table-bordered">
+                                                        <table class="table table-bordered table-sm">
                                                             <thead class="text-center">
                                                             <tr >
                                                                 <th rowspan="2" style="vertical-align: middle">№</th>
@@ -499,7 +499,7 @@
                                     </div>
                                         <div class="x_content">
                                         <div class="table-responsive">
-                                            <table id="example" class="table table-bordered border-primary" style="width:100%; border-style: dashed solid">
+                                            <table id="example" class="table table-bordered border-primary table-sm" style="width:100%; border-style: dashed solid">
                                                 <thead class="bg-gradient text-black" style="background-color: #B5CAF9;">
                                                 <tr class="">
                                                     <th style="border-style: dotted" class="column-title">№ </th>
@@ -541,14 +541,16 @@
                                                 $(document).ready(function() {
                                                     $('#example').DataTable({
                                                         "language": {
+                                                            "zeroRecords": "Сиз излаган маълумот мавжуд эмас!",
+                                                            "infoFiltered": "(_MAX_ та маълумот сараланди)",
+                                                            "infoEmpty": "Маълумотлар топилмади",
+                                                            "info": "Жами _PAGES_ та, _PAGE_-сахифа ",
+                                                            "lengthMenu": "Кўрсатилмоқда _MENU_ та ариза",
+                                                            "Show": "Кўрсатилмоқда",
+                                                            "search": "Излаш",
                                                             "paginate": {
                                                                 "next": "Кейинги",
                                                                 "previous": "Олдинги",
-                                                                "showing" : "Кўрсатилмоқда",
-                                                                "Search": "Излаш",
-                                                                "to": "дан",
-                                                                "of": "гача",
-                                                                "entries": "та дан"
                                                             }
                                                         }
                                                     });
