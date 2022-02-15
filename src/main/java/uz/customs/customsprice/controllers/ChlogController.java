@@ -10,10 +10,10 @@ import uz.customs.customsprice.service.ChlogService;
 
 @Controller
 @RequestMapping("/saveChlog")
-public class SaveChlogController {
+public class ChlogController {
     private final ChlogService chlogService;
 
-    public SaveChlogController(ChlogService chlogService) {
+    public ChlogController(ChlogService chlogService) {
         this.chlogService = chlogService;
     }
 
@@ -23,7 +23,7 @@ public class SaveChlogController {
             chlogService.saveChlog(chlog);
             return ResponseEntity.ok(" <<-- CHLOG -->> маълумотлари сақланди ! ");
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(" Маълумотлар сақлашда хатолик ! ");
+            return ResponseEntity.badRequest().body(" <<-- CHLOG -->> Маълумотлар сақлашда хатолик ! ");
         }
 
     }

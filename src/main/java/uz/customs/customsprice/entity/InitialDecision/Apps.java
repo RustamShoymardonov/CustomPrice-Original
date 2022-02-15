@@ -1,12 +1,12 @@
 package uz.customs.customsprice.entity.InitialDecision;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import uz.customs.customsprice.entity.AbstractAuditingEntity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -18,14 +18,17 @@ public class Apps extends AbstractAuditingEntity {
     @Column(name = "id", columnDefinition = "VARCHAR(50)")
     private String id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "PERSON_ID", insertable = false, updatable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private Persons persons;
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "PERSON_ID", insertable = false, updatable = false)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JsonIgnore
+//    private Persons persons;
 
     @Column(name = "PERSON_ID", length = 50)
     private String personId;
+
+    @Column(name = "APP_NUM", length = 50)
+    private String appNum;
 
     @Column(name = "CUSTOMER_COUNTRY", length = 3)
     private String customer_country;
@@ -110,10 +113,10 @@ public class Apps extends AbstractAuditingEntity {
     public Apps() {
     }
 
-    public Apps(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Persons persons, String customer_country, String customerCountryNm, String senderCountry, String senderCountryNm, String originCountry, String orignCountrNm, String senderOrg, String sellerOrg, String originOrg, String terms, String termsAddr, Date inDecDate, String initialDecisionNumber, String personFio, String orgName, String personPosition, String personAddr, String personTin, String personPin, String personMail, String personPhone, String locationId, BigDecimal locationNm, BigDecimal transExp, int status, int statusNm) {
+    public Apps(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, String personId, String customer_country, String customerCountryNm, String senderCountry, String senderCountryNm, String originCountry, String orignCountrNm, String senderOrg, String sellerOrg, String originOrg, String terms, String termsAddr, Date inDecDate, String initialDecisionNumber, String personFio, String orgName, String personPosition, String personAddr, String personTin, String personPin, String personMail, String personPhone, String locationId, BigDecimal locationNm, BigDecimal transExp, int status, int statusNm, String appNum) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
-        this.persons = persons;
+        this.personId = personId;
         this.customer_country = customer_country;
         this.customerCountryNm = customerCountryNm;
         this.senderCountry = senderCountry;
@@ -140,6 +143,7 @@ public class Apps extends AbstractAuditingEntity {
         this.transExp = transExp;
         this.status = status;
         this.statusNm = statusNm;
+        this.appNum = appNum;
     }
 
     public String getId() {
@@ -150,12 +154,12 @@ public class Apps extends AbstractAuditingEntity {
         this.id = id;
     }
 
-    public Persons getPersons() {
-        return persons;
+    public String getPersonId() {
+        return personId;
     }
 
-    public void setPersons(Persons persons) {
-        this.persons = persons;
+    public void setPersonId(String personId) {
+        this.personId = personId;
     }
 
     public String getCustomer_country() {
@@ -364,5 +368,13 @@ public class Apps extends AbstractAuditingEntity {
 
     public void setStatusNm(int statusNm) {
         this.statusNm = statusNm;
+    }
+
+    public String getAppNum() {
+        return appNum;
+    }
+
+    public void setAppNum(String appNum) {
+        this.appNum = appNum;
     }
 }
