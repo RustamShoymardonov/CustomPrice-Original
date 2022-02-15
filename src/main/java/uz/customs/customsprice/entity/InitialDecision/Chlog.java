@@ -1,9 +1,11 @@
 package uz.customs.customsprice.entity.InitialDecision;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -36,9 +38,12 @@ public class Chlog {
     @Basic
     @Column(name = "IP")
     private String ip;
-    @Basic
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATE_CHANGE")
-    private Timestamp dateChange;
+    private Date dateChange;
+
     @Basic
     @Column(name = "REASON")
     private String reason;
@@ -113,7 +118,7 @@ public class Chlog {
         this.ip = ip;
     }
 
-    public Timestamp getDateChange() {
+    public Date getDateChange() {
         return dateChange;
     }
 
