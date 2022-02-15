@@ -16,21 +16,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Божхона тўлови| Божхона қиймати</title>
-
-
     <link href="<%=request.getContextPath()%>/resources/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/resources/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/resources/build/css/custom.min.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/resources/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <link href="<%=request.getContextPath()%>/resources/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css"
-          rel="stylesheet">
-
+    <link href="<%=request.getContextPath()%>/resources/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="nav-md menu_fixed">
 
 <div class="container body">
     <div class="container body">
-        <div class="col-md-3 left_col" style="margin-top: 5%;">
+        <div class="col-md-3 left_col" style="height: 110vh">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title">
                     <a href="#" class="site_title"><i class="fa fa-list"></i><span>Божхона қиймати</span></a>
@@ -87,7 +83,7 @@
             </div>
         </div>
         <!-- top navigation -->
-        <div class="top_nav bg-primary">
+        <div class="top_nav" style="background-color: #0d82ff !important;">
             <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
             </div>
@@ -183,8 +179,9 @@
                     </li>
                 </ul>
             </nav>
-        </div></div>
-    <!-- /top navigation -->
+        </div>
+        <!-- /top navigation -->
+    </div>
 
     <%--todo Асосий----------------------------------------------------қисми------------------------дан--%>
     <div class="right_col" id="MainContent" role="main">
@@ -192,7 +189,6 @@
     </div>
     <%--todo Асосий----------------------------------------------------қисми------------------------гача--%>
 </div>
-<!-- /page content -->
 <!-- footer content -->
 <footer>
     <div class="pull-right">
