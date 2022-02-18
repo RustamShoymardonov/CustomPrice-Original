@@ -2130,7 +2130,7 @@ h2 {
 }
 
 .x_title {
-    border-bottom: 2px solid #E6E9ED;
+    border-bottom: 2px solid #0d81fe;
     padding: 1px 5px 6px;
     margin-bottom: 10px
 }
@@ -6025,4 +6025,9 @@ ul.notifications {
 
 #slash {
     display: none;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #f8f9fa!important;
+    background-color: #007bff!important;
+    border-color: #f8f9fa #dee2e6 #f8f9fa!important;
 }

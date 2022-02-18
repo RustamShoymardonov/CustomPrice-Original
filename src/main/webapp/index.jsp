@@ -32,28 +32,17 @@
                     <a href="#" class="site_title"><i class="fa fa-list"></i><span>Божхона қиймати</span></a>
                 </div>
                 <div class="clearfix"></div>
-                <!-- menu profile quick info -->
-                <div class="profile clearfix">
-                    <div class="profile_pic">
-                        <img src="<%=request.getContextPath()%>/resources/images/img.jpg" alt="..."
-                             class="img-circle profile_img">
-                    </div>
-                    <div class="profile_info">
-                        <span>Хуш келибсиз!</span>
-                        <h2>Абдиев Ботир</h2>
-                    </div>
-                </div>
-                <!-- /menu profile quick info -->
+
                 <br/>
                 <!-- sidebar menu -->
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section">
-                        <h3>Асосий</h3>
+
                         <ul class="nav side-menu">
                             <li><a href="javascript:void(0)"><i class="fa fa-bar-chart-o"></i>Товарларни тоифалаш</a></li>
-                            <li><a href="javascript:Main(6, 0)"><i class="fa fa-edit"></i>Тақсимлаш</a></li>
-                            <li><a href="javascript:Main(7, 0)"><i class="fa fa-edit"></i>Мурожаатлар</a>
-                            <li><a href="javascript:Main(8, 0)"><i class="fa fa-edit"></i>Хулоса</a>
+                            <li><a href="javascript:InitialDecisionRasp(0)"><i class="fa fa-edit"></i>Тақсимлаш</a></li>
+                            <li><a href="javascript:InitialDecision(0)"><i class="fa fa-edit"></i>Мурожаатлар</a>
+                            <li><a href="javascript:InitialDecisionView(0)"><i class="fa fa-edit"></i>Хулоса</a>
                             <li><a href="javascript:void(0)"><i class="fa fa-desktop"></i>Қиймат мониторинги</a></li>
                             <li><a href="javascript:void(0)"><i class="fa fa-sitemap"></i>Мантиқий назорат</a></li>
                             <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i>Халқаро сўровнома</a></li>
@@ -63,7 +52,6 @@
                     </div>
 
                 </div>
-
                 <!-- /menu footer buttons -->
                 <div class="sidebar-footer hidden-small">
                     <a data-toggle="tooltip" data-placement="top" title="Settings">
@@ -209,8 +197,7 @@
         var dataS = {
             "x": '0',
         };
-        var tipform = '';
-        tipform = "<%=request.getContextPath()%>/resources/pages/ClassProduct/ListClassProduct.jsp";
+        var tipform = "<%=request.getContextPath()%>/resources/pages/ClassProduct/ListClassProduct.jsp";
         document.body.style.cursor = 'wait';
         $.post({
             async: false,
@@ -229,15 +216,16 @@
             }
         });
     });
-    <!--                                                                                                 -->
-    function CostMonitoring(x) {
+
+    /* Маълумотларни твқсимлаш */
+    function InitialDecisionRasp(x) {
         var dataS = {
             "id": x
         }
         $.ajax({
             type: "POST",
             data: dataS,
-            url: "<%=request.getContextPath()%>/sent/resources/pages/CostMonitoring/CostMonitoring",
+            url: "<%=request.getContextPath()%>/apps/resources/pages/InitialDecision/InitialDecisionRasp",
             dataType: "html",
             header: 'Content-type: text/html; charset=utf-8',
             success: function (res) {
@@ -246,10 +234,9 @@
             error: function (res) {
             }
         });
-
-
     }
 
+    /* Маълумотларнинг инспектор қисми */
     function InitialDecision(x) {
         var dataS = {
             "id": x
@@ -257,7 +244,7 @@
         $.ajax({
             type: "POST",
             data: dataS,
-            url: "<%=request.getContextPath()%>/sent/resources/pages/InitialDecision/InitialDecision",
+            url: "<%=request.getContextPath()%>/apps/resources/pages/InitialDecision/InitialDecision",
             dataType: "html",
             header: 'Content-type: text/html; charset=utf-8',
             success: function (res) {
@@ -268,71 +255,109 @@
         });
     }
 
-    function Main(x, y) {
+    /* Ариза тафсилоти */
+    function InitialDecisionView(x) {
         var dataS = {
-            "y": y
-        };
-
-        if (x === 2) {
-            CostMonitoring(x);
-        } else if (x === 66) {
-            InitialDecision(x);
-        } else {
-            var tipform = '';
-            switch (x) {
-                case 1:
-                <%--tipform = "<%=request.getContextPath()%>/resources/pages/ClassProduct/ClassProduct.jsp";--%>
-                <%--tipform = "<%=request.getContextPath()%>/resources/pages/InitialDecision/InitialDecisionRasp.jsp";--%>
-                    tipform = "<%=request.getContextPath()%>/resources/pages/ClassProduct/ClassProduct.jsp";
-                    break;
-                case 2:
-                    tipform = "<%=request.getContextPath()%>/resources/pages/CostMonitoring/CostMonitoring.jsp";
-                    break;
-                case 3:
-                    tipform = "<%=request.getContextPath()%>/resources/pages/LogicalControl/LogicalControl.jsp";
-                    break;
-                case 4:
-                    tipform = "<%=request.getContextPath()%>/resources/pages/InitialDecision/InitialDecision.jsp";
-                    break;
-                case 6:
-                    tipform = "<%=request.getContextPath()%>/resources/pages/InitialDecision/InitialDecisionRasp.jsp";
-                    break;
-                case 7:
-                    tipform = "<%=request.getContextPath()%>/resources/pages/InitialDecision/InitialDecision.jsp";
-                    break;
-                case 8:
-                    tipform = "<%=request.getContextPath()%>/resources/pages/InitialDecision/InitialDecisionView.jsp";
-                    break;
-                case 90:
-                    tipform = "/Welcome";
-                    break;
-                default:
-                    "<%=request.getContextPath()%>/";
-            }
-            if (x !== 100) {
-                document.body.style.cursor = 'wait';
-                $.post({
-                    async: false,
-                    url: tipform,
-                    data: dataS,
-                    dataType: "html",
-                    header: 'Content-type: text/html; charset=utf-8',
-                    success: function (res) {
-                        $('div#MainContent').html(res);
-                        document.body.style.cursor = 'default';
-                    },
-                    error: function (res) {
-                        if (res.status == 401) {
-                            $(".logOutForm").submit();
-                        }
-                    }
-                });
-            }
-
+            "id": x
         }
-        // console.log("sdf")
-        // $('.selectpicker').selectpicker();
+
+        $.ajax({
+            type: "POST",
+            data: dataS,
+            url: "<%=request.getContextPath()%>/apps/resources/pages/InitialDecision/InitialDecisionView",
+            dataType: "html",
+            header: 'Content-type: text/html; charset=utf-8',
+            success: function (res) {
+                $('div#MainContent').html(res);
+            },
+            error: function (res) {
+            }
+        });
     }
+
+    // function CostMonitoring(x) {
+    //     var dataS = {
+    //         "id": x
+    //     }
+    //     $.ajax({
+    //         type: "POST",
+    //         data: dataS,
+    //         url: "<%=request.getContextPath()%>/sent/resources/pages/CostMonitoring/CostMonitoring",
+    //         dataType: "html",
+    //         header: 'Content-type: text/html; charset=utf-8',
+    //         success: function (res) {
+    //             $('div#MainContent').html(res);
+    //         },
+    //         error: function (res) {
+    //         }
+    //     });
+    //
+    //
+    // }
+
+
+    //function Main(x, y) {
+    //    var dataS = {
+    //        "y": y
+    //    };
+    //
+    //    if (x === 2) {
+    //        CostMonitoring(x);
+    //    } else if (x === 66) {
+    //        InitialDecision(x);
+    //    } else {
+    //        var tipform = '';
+    //        switch (x) {
+    //            case 1:
+    //                tipform = "<%=request.getContextPath()%>/resources/pages/ClassProduct/ClassProduct.jsp";
+    //                break;
+    //            case 2:
+    //                tipform = "<%=request.getContextPath()%>/resources/pages/CostMonitoring/CostMonitoring.jsp";
+    //                break;
+    //            case 3:
+    //                tipform = "<%=request.getContextPath()%>/resources/pages/LogicalControl/LogicalControl.jsp";
+    //                break;
+    //            case 4:
+    //                tipform = "<%=request.getContextPath()%>/resources/pages/InitialDecision/InitialDecision.jsp";
+    //                break;
+    //            case 6:
+    //                tipform = "<%=request.getContextPath()%>/resources/pages/InitialDecision/InitialDecisionRasp.jsp";
+    //                break;
+    //            case 7:
+    //                tipform = "<%=request.getContextPath()%>/resources/pages/InitialDecision/InitialDecision.jsp";
+    //                break;
+    //            case 8:
+    //                tipform = "<%=request.getContextPath()%>/resources/pages/InitialDecision/InitialDecisionView.jsp";
+    //                break;
+    //            case 90:
+    //                tipform = "/Welcome";
+    //                break;
+    //            default:
+    //                "<%=request.getContextPath()%>/";
+    //        }
+    //        if (x !== 100) {
+    //            document.body.style.cursor = 'wait';
+    //            $.post({
+    //                async: false,
+    //                url: tipform,
+    //                data: dataS,
+    //                dataType: "html",
+    //                header: 'Content-type: text/html; charset=utf-8',
+    //                success: function (res) {
+    //                    $('div#MainContent').html(res);
+    //                    document.body.style.cursor = 'default';
+    //                },
+    //                error: function (res) {
+    //                    if (res.status == 401) {
+    //                        $(".logOutForm").submit();
+    //                    }
+    //                }
+    //            });
+    //        }
+    //
+    //    }
+    //}
+
 </script>
 <script src="<%=request.getContextPath()%>/resources/build/js/custom.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>

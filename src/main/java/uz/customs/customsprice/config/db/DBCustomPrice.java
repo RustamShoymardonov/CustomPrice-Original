@@ -33,7 +33,7 @@ import static uz.customs.customsprice.CustomspriceApplication.MODEL_PACKAGE;
         transactionManagerRef = "transactionManagerEtranzit",
         basePackages = {"uz.customs.customsprice.repository"}
 )
-public class DBEtranzit {
+public class DBCustomPrice {
 
     private static HikariDataSource hikariDataSource;
 

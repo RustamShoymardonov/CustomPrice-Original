@@ -17,6 +17,8 @@ public class Chlog {
     @Column(name = "id", columnDefinition = "VARCHAR(50)")
     private String id;
 
+
+
     @Basic
     @Column(name = "TABLE_NAME")
     private String tableName;

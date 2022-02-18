@@ -3,7 +3,7 @@ package uz.customs.customsprice.entity.InitialDecision;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-import uz.customs.customsprice.entity.AbstractAuditingEntity;
+import uz.customs.customsprice.entity.entityConfig.AbstractAuditingEntity;
 
 import javax.persistence.*;
 

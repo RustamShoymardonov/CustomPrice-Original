@@ -1,5 +1,4 @@
-package uz.customs.customsprice.entity;
-
+package uz.customs.customsprice.entity.entityConfig;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;

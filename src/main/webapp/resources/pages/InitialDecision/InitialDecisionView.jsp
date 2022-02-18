@@ -14,8 +14,8 @@
     <div class="row">
 
         <div class="col-md-12 col-sm-12 ">
-            <div class="x_panel border rounded" style="background: rgba(23, 101, 185, 0.08);">
-                <div class="x_title">
+            <div class="x_panel border rounded mt-4" style="background: rgba(23, 101, 185, 0.08);">
+                <div>
                     <h4>
                         <i class="fa fa-edit"></i>АРИЗА
                         <small>№:01-10/0012</small>
@@ -30,13 +30,12 @@
                             <div class="x_title collapse-link">
                                 <h2 style="text-align: center">Ариза бўйича дастлабки маълумот</h2>
                                 <ul class="nav navbar-right panel_toolbox">
-                                    <li><a class="collapse-link ml-5"><i class="fa fa-chevron-up"></i></a>
+                                    <li><a class="ml-5"><i class="fa fa-chevron-up"></i></a>
                                     </li>
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content " style="display: none;">
-
                                 <section class="content invoice">
                                     <!-- info row -->
                                     <div class="row invoice-info">
@@ -46,7 +45,6 @@
                                                 <br><strong><i class="fa fa-phone mr-2"></i>Телефон рақами:</strong>
                                                 <br><strong><i class="fa fa-barcode mr-2"></i>Юк жўнатувчи:</strong>
                                                 <br><strong><i class="fa fa-money mr-2"></i>Сотувчи</strong>
-
                                             </address>
                                         </div>
                                         <!-- /.col -->
@@ -248,12 +246,8 @@
                             <div  id="step-1">
                             <div class="col-md-12">
                                 <div class="shadow p-3 mb-5 bg-white rounded  x_panel">
-                                    <div class="x_title collapse-link">
+                                    <div class="x_title">
                                         <h2>Умумий маълумотлар <small>1-қадам</small></h2>
-                                        <ul class="nav navbar-right panel_toolbox">
-                                            <li><a class="collapse-link ml-5"><i class="fa fa-chevron-up"></i></a>
-                                            </li>
-                                        </ul>
                                         <div class="clearfix"></div>
                                     </div>
                                     <fieldset class="border-primary" style="border-style: dashed solid">
@@ -367,12 +361,8 @@
                             <div  id="step-2">
                             <div class="col-md-12">
                                 <div class="shadow p-3 mb-5 bg-white rounded x_panel">
-                                    <div class="x_title collapse-link">
+                                    <div class="x_title ">
                                         <h2>Товар таснифи<small>2-қадам</small></h2>
-                                        <ul class="nav navbar-right panel_toolbox">
-                                            <li><a class="collapse-link ml-5"><i class="fa fa-chevron-up"></i></a>
-                                            </li>
-                                        </ul>
                                         <div class="clearfix"></div>
                                     </div>
                                     <fieldset class="border-primary" style="border-style: dashed solid">
@@ -489,12 +479,8 @@
                             <div  id="step-3">
                             <div class="col-md-12 col-sm-12">
                                 <div class="shadow p-3 mb-5 bg-white rounded x_panel">
-                                    <div class="x_title collapse-link">
+                                    <div class="x_title">
                                         <h2>Товарнинг юк-кузатув хужжатлари<small>3-қадам</small></h2>
-                                        <ul class="nav navbar-right panel_toolbox">
-                                            <li><a class="collapse-link ml-5"><i class="fa fa-chevron-up"></i></a>
-                                            </li>
-                                        </ul>
                                         <div class="clearfix"></div>
                                     </div>
                                         <div class="x_content">
@@ -564,12 +550,8 @@
                             <div  id="step-4">
                             <div class="col-md-12">
                                 <div class="shadow p-3 mb-5 bg-white rounded x_panel" style="height: auto">
-                                    <div class="x_title collapse-link">
+                                    <div class="x_title">
                                         <h2>Ариза бўйича қарор<small>4-қадам</small></h2>
-                                        <ul class="nav navbar-right panel_toolbox">
-                                            <li><a class="collapse-link ml-5"><i class="fa fa-chevron-up"></i></a>
-                                            </li>
-                                        </ul>
                                         <div class="clearfix"></div>
                                     </div>
 

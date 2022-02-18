@@ -17,8 +17,7 @@ public class ModalsController {
 
     private final String LOGICALCONTROL = "/resources/pages/Modals/LogicalControlModal";
     private final String COSTMONITORING = "/resources/pages/CostMonitoring/CostMonitoring";
-    private final String INITIALDECISION = "/resources/pages/InitialDecision/InitialDecision";
-    private final String INITIALDECISIONVIEW = "/resources/pages/InitialDecision/InitialDecisionView";
+//    private final String INITIALDECISIONVIEW = "/resources/pages/InitialDecision/InitialDecisionView";
     private final CostMonitoringService costMonitoringService;
 
     public ModalsController(CostMonitoringService costMonitoringService) {
@@ -40,20 +39,13 @@ public class ModalsController {
         return mav;
     }
 
-    @PostMapping(value = INITIALDECISION)
-    @ResponseBody
-    public ModelAndView InitialDecision(HttpSession session, @RequestParam(name = "id") String status) {
-        ModelAndView mav = new ModelAndView("/resources/pages/InitialDecision/InitialDecision");
-        mav.addObject("applications", costMonitoringService.getInitialDecision("1"));
-        return mav;
-    }
 
-    @PostMapping(value = INITIALDECISIONVIEW)
-    @ResponseBody
-    public ModelAndView InitialDecisionView(HttpSession session, @RequestParam int app_id) {
-        ModelAndView mav = new ModelAndView("InitialDecisionView2");
-        mav.addObject("applicationId", costMonitoringService.getInitialDecisionView(app_id));
-        return mav;
-    }
+//    @PostMapping(value = INITIALDECISIONVIEW)
+//    @ResponseBody
+//    public ModelAndView InitialDecisionView(HttpSession session, @RequestParam int app_id) {
+//        ModelAndView mav = new ModelAndView("InitialDecisionView2");
+//        mav.addObject("applicationId", costMonitoringService.getInitialDecisionView(app_id));
+//        return mav;
+//    }
 
 }

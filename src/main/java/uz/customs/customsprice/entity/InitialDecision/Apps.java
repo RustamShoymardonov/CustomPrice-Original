@@ -1,7 +1,7 @@
 package uz.customs.customsprice.entity.InitialDecision;
 
 import org.hibernate.annotations.GenericGenerator;
-import uz.customs.customsprice.entity.AbstractAuditingEntity;
+import uz.customs.customsprice.entity.entityConfig.AbstractAuditingEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,9 +23,6 @@ public class Apps extends AbstractAuditingEntity {
 //    @OnDelete(action = OnDeleteAction.CASCADE)
 //    @JsonIgnore
 //    private Persons persons;
-
-    @Column(name = "PERSON_ID", length = 50)
-    private String personId;
 
     @Column(name = "APP_NUM", length = 50)
     private String appNum;
@@ -102,21 +99,20 @@ public class Apps extends AbstractAuditingEntity {
     @Column(name = "TRANS_EXP", length = 4)
     private BigDecimal transExp;
 
-    @Column(name = "STATUS", columnDefinition = "SMALLINT DEFAULT 0")
-    private int status;
+    @Column(name = "STATUS", columnDefinition = "SMALLINT DEFAULT 100")
+    private int status=100;
 
-    @Column(name = "STATUS_NM", length = 4)
-    private int statusNm;
+    @Column(name = "STATUS_NM", columnDefinition = "VARCHAR(450) CCSID 1208")
+    private String statusNm;
 
     //end//
 
     public Apps() {
     }
 
-    public Apps(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, String personId, String customer_country, String customerCountryNm, String senderCountry, String senderCountryNm, String originCountry, String orignCountrNm, String senderOrg, String sellerOrg, String originOrg, String terms, String termsAddr, Date inDecDate, String initialDecisionNumber, String personFio, String orgName, String personPosition, String personAddr, String personTin, String personPin, String personMail, String personPhone, String locationId, BigDecimal locationNm, BigDecimal transExp, int status, int statusNm, String appNum) {
-        super(insUser, updUser, insTime, updTime, isDeleted);
+    public Apps(String id, String appNum, String customer_country, String customerCountryNm, String senderCountry, String senderCountryNm, String originCountry, String orignCountrNm, String senderOrg, String sellerOrg, String originOrg, String terms, String termsAddr, Date inDecDate, String initialDecisionNumber, String personFio, String orgName, String personPosition, String personAddr, String personTin, String personPin, String personMail, String personPhone, String locationId, BigDecimal locationNm, BigDecimal transExp, int status, String statusNm) {
         this.id = id;
-        this.personId = personId;
+        this.appNum = appNum;
         this.customer_country = customer_country;
         this.customerCountryNm = customerCountryNm;
         this.senderCountry = senderCountry;
@@ -143,7 +139,6 @@ public class Apps extends AbstractAuditingEntity {
         this.transExp = transExp;
         this.status = status;
         this.statusNm = statusNm;
-        this.appNum = appNum;
     }
 
     public String getId() {
@@ -154,12 +149,12 @@ public class Apps extends AbstractAuditingEntity {
         this.id = id;
     }
 
-    public String getPersonId() {
-        return personId;
+    public String getAppNum() {
+        return appNum;
     }
 
-    public void setPersonId(String personId) {
-        this.personId = personId;
+    public void setAppNum(String appNum) {
+        this.appNum = appNum;
     }
 
     public String getCustomer_country() {
@@ -362,19 +357,11 @@ public class Apps extends AbstractAuditingEntity {
         this.status = status;
     }
 
-    public int getStatusNm() {
+    public String getStatusNm() {
         return statusNm;
     }
 
-    public void setStatusNm(int statusNm) {
+    public void setStatusNm(String statusNm) {
         this.statusNm = statusNm;
-    }
-
-    public String getAppNum() {
-        return appNum;
-    }
-
-    public void setAppNum(String appNum) {
-        this.appNum = appNum;
     }
 }

@@ -2,7 +2,7 @@ package uz.customs.customsprice.entity.InitialDecision;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.*;
-import uz.customs.customsprice.entity.AbstractAuditingEntity;
+import uz.customs.customsprice.entity.entityConfig.AbstractAuditingEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.*;

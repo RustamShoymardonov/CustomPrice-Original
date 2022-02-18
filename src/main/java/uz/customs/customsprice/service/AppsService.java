@@ -20,6 +20,176 @@ public class AppsService {
     @PersistenceContext
     private EntityManager entityManager;
 
+    /* Барча статуси "Янги" бўлган аризалар */
+    public List<Apps> getListNotSorted() {
+        String queryForList = "select\n" +
+                "    a.id,\n" +
+                "    a.instime,\n" +
+                "    a.insuser,\n" +
+                "    a.isdeleted,\n" +
+                "    a.updtime,\n" +
+                "    a.upduser,\n" +
+                "    a.app_num,\n" +
+                "    c.cd_nm customer_country_nm,\n" +
+                "    a.customer_country,\n" +
+                "    a.in_dec_date,\n" +
+                "    a.in_dec_num,\n" +
+                "    a.location_id,\n" +
+                "    a.location_nm,\n" +
+                "    a.org_name,\n" +
+                "    a.origin_country,\n" +
+                "    a.origin_org,\n" +
+                "    c2.cd_nm origin_country_nm,\n" +
+                "    a.person_addr,\n" +
+                "    a.person_fio,\n" +
+                "    a.person_mail,\n" +
+                "    a.person_phone,\n" +
+                "    a.person_pin,\n" +
+                "    a.person_position,\n" +
+                "    a.person_tin,\n" +
+                "    a.seller_org,\n" +
+                "    a.sender_country,\n" +
+                "    a.sender_country_nm,\n" +
+                "    a.sender_org,\n" +
+                "    a.status,\n" +
+                "    s.name status_nm,\n" +
+                "    a.terms,\n" +
+                "    a.terms_addr,\n" +
+                "    a.trans_exp\n" +
+                "from\n" +
+                "    apps a\n" +
+                "left join\n" +
+                "    cpid.status_type s\n" +
+                "on\n" +
+                "    s.id=a.status\n" +
+                "left join\n" +
+                "    cpid.country c\n" +
+                "on\n" +
+                "   c.code= a.customer_country\n" +
+                " and c.lnga_tpcd='UZ' "+
+                "left join\n" +
+                "    cpid.country c2\n" +
+                "on\n" +
+                "   c2.code= a.ORIGIN_COUNTRY\n" +
+                " and c2.lnga_tpcd='UZ' "+
+                "where\n" +
+                "    a.isdeleted=0 \n" +
+                "and a.status=100\n" +
+                "order by\n" +
+                "    a.instime desc";
+        return (List<Apps>) entityManager.createNativeQuery(queryForList, Apps.class).getResultList();
+    }
+
+    /*Барча статуси "Янги"+"Имзоланган"+"Бекор қилинган" дан ташқари бўлган аризалар*/
+    public List<Apps> getListSorted() {
+        String queryForList = "select\n" +
+                "    a.id,\n" +
+                "    a.instime,\n" +
+                "    a.insuser,\n" +
+                "    a.isdeleted,\n" +
+                "    a.updtime,\n" +
+                "    a.upduser,\n" +
+                "    a.app_num,\n" +
+                "    a.customer_country_nm,\n" +
+                "    a.customer_country,\n" +
+                "    a.in_dec_date,\n" +
+                "    a.in_dec_num,\n" +
+                "    a.location_id,\n" +
+                "    a.location_nm,\n" +
+                "    a.org_name,\n" +
+                "    a.origin_country,\n" +
+                "    a.origin_org,\n" +
+                "    a.origin_country_nm,\n" +
+                "    a.person_addr,\n" +
+                "    a.person_fio,\n" +
+                "    a.person_mail,\n" +
+                "    a.person_phone,\n" +
+                "    a.person_pin,\n" +
+                "    a.person_position,\n" +
+                "    a.person_tin,\n" +
+                "    a.seller_org,\n" +
+                "    a.sender_country,\n" +
+                "    a.sender_country_nm,\n" +
+                "    a.sender_org,\n" +
+                "    a.status,\n" +
+                "    s.name status_nm,\n" +
+                "    a.terms,\n" +
+                "    a.terms_addr,\n" +
+                "    a.trans_exp\n" +
+                "from\n" +
+                "    apps a\n" +
+                "left join\n" +
+                "    cpid.status_type s\n" +
+                "on\n" +
+                "    s.id=a.status\n" +
+                "and s.isdeleted=0\n" +
+                "where\n" +
+                "    a.isdeleted=0 \n" +
+                "and a.status !=100\n" +
+                "and a.status !=170\n" +
+                "and a.status !=175\n" +
+                "order by\n" +
+                "    a.instime desc";
+        return (List<Apps>) entityManager.createNativeQuery(queryForList, Apps.class).getResultList();
+    }
+
+    /*Статуси "фақат "Имзоланган"+"Бекор қилинган" бўлган аризалар*/
+    public List<Apps> getListTerms() {
+        String queryForList = "select\n" +
+                "    a.id,\n" +
+                "    a.instime,\n" +
+                "    a.insuser,\n" +
+                "    a.isdeleted,\n" +
+                "    a.updtime,\n" +
+                "    a.upduser,\n" +
+                "    a.app_num,\n" +
+                "    a.customer_country_nm,\n" +
+                "    a.customer_country,\n" +
+                "    a.in_dec_date,\n" +
+                "    a.in_dec_num,\n" +
+                "    a.location_id,\n" +
+                "    a.location_nm,\n" +
+                "    a.org_name,\n" +
+                "    a.origin_country,\n" +
+                "    a.origin_org,\n" +
+                "    a.origin_country_nm,\n" +
+                "    a.person_addr,\n" +
+                "    a.person_fio,\n" +
+                "    a.person_mail,\n" +
+                "    a.person_phone,\n" +
+                "    a.person_pin,\n" +
+                "    a.person_position,\n" +
+                "    a.person_tin,\n" +
+                "    a.seller_org,\n" +
+                "    a.sender_country,\n" +
+                "    a.sender_country_nm,\n" +
+                "    a.sender_org,\n" +
+                "    a.status,\n" +
+                "    d.sign terms,\n" +
+                "    a.terms_addr,\n" +
+                "    a.trans_exp,\n" +
+                "    s.name status_nm\n" +
+                "from\n" +
+                "    apps a\n" +
+                "left join\n" +
+                "    cpid.status_type s\n" +
+                "on\n" +
+                "    s.id=a.status\n" +
+                "and s.isdeleted=0\n" +
+                "left join\n" +
+                "    cpid.delivery_terms d\n" +
+                "on\n" +
+                "    d.raqam= a.terms\n" +
+                "and d.lnga_tpcd='UZ'\n" +
+                "where\n" +
+                "    a.isdeleted=0\n" +
+                "and a.status in (170,175)\n" +
+                "order by\n" +
+                "    a.instime desc";
+        return (List<Apps>) entityManager.createNativeQuery(queryForList, Apps.class).getResultList();
+    }
+
+    /* "app_num" га ариза рафамини киритади */
     public Apps saveApps(Apps apps) {
         LocalDateTime now = LocalDateTime.now();
         String appsNum = getMaxNumber();
@@ -38,6 +208,7 @@ public class AppsService {
         return appsRepo.save(apps);
     }
 
+    /* "app_num" учун рақам генерация қилади */
     public String getMaxNumber() {
         String queryForList = "select\n" +
                 "    a.APP_NUM as maxno\n" +
@@ -87,5 +258,66 @@ public class AppsService {
             }
         }
         return result;
+    }
+
+    public List<Apps> listAll() {
+        return appsRepo.findAll();
+    }
+
+    public List getInitialDecisionView(String id) {
+        String queryForList = "select\n" +
+                "    a.id,\n" +
+                "    a.instime,\n" +
+                "    a.insuser,\n" +
+                "    a.isdeleted,\n" +
+                "    a.updtime,\n" +
+                "    a.upduser,\n" +
+                "    a.app_num,\n" +
+                "    a.customer_country_nm,\n" +
+                "    a.customer_country,\n" +
+                "    a.in_dec_date,\n" +
+                "    a.in_dec_num,\n" +
+                "    a.location_id,\n" +
+                "    a.location_nm,\n" +
+                "    a.org_name,\n" +
+                "    a.origin_country,\n" +
+                "    a.origin_org,\n" +
+                "    a.origin_country_nm,\n" +
+                "    a.person_addr,\n" +
+                "    a.person_fio,\n" +
+                "    a.person_mail,\n" +
+                "    a.person_phone,\n" +
+                "    a.person_pin,\n" +
+                "    a.person_position,\n" +
+                "    a.person_tin,\n" +
+                "    a.seller_org,\n" +
+                "    a.sender_country,\n" +
+                "    a.sender_country_nm,\n" +
+                "    a.sender_org,\n" +
+                "    a.status,\n" +
+                "    d.sign terms,\n" +
+                "    a.terms_addr,\n" +
+                "    a.trans_exp,\n" +
+                "    s.name status_nm\n" +
+                "from\n" +
+                "    apps a\n" +
+                "left join\n" +
+                "    cpid.status_type s\n" +
+                "on\n" +
+                "    s.id=a.status\n" +
+                "and s.isdeleted=0\n" +
+                "left join\n" +
+                "    cpid.delivery_terms d\n" +
+                "on\n" +
+                "    d.raqam= a.terms\n" +
+                "and d.lnga_tpcd='UZ'\n" +
+                "where\n" +
+                "    a.isdeleted=0\n" +
+                "and a.id = + 'id'"+
+                "and a.status in (110)\n"+
+                "order by\n" +
+                "    a.instime desc";
+        return entityManager.createNativeQuery(queryForList).getResultList();
+//        return (List<Apps>) entityManager.createNativeQuery(queryForList, Apps.class).getResultList();
     }
 }
