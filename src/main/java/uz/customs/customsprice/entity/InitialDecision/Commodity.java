@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 import uz.customs.customsprice.entity.entityConfig.AbstractAuditingEntity;
 
 import javax.persistence.*;
@@ -23,6 +24,9 @@ public class Commodity extends AbstractAuditingEntity {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Apps apps;
+
+    @Column(name = "app_id", length = 50)
+    private String appId;
 
     @Column(name = "TRADE_NAME", columnDefinition = "VARCHAR(765) CCSID 1208")
     private String tradeName;
@@ -100,6 +104,9 @@ public class Commodity extends AbstractAuditingEntity {
     private String hsDecNum;
 
     @Column(name = "HS_DEC_DATE")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+//    @NotNull(message = "")
+    @Temporal(TemporalType.DATE)
     private Date hsDecDate;
 
     @Column(name = "METHOD", length = 2)
@@ -111,10 +118,11 @@ public class Commodity extends AbstractAuditingEntity {
     public Commodity() {
     }
 
-    public Commodity(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, String tradeName, String tradeMark, String mark, String model, String article, String sort, String standarts, String functions, String comProp, String techChar, String productGoal, String hsCode, BigDecimal brutto, BigDecimal netto, BigDecimal basicQty, String extraUnits, BigDecimal extraQty, BigDecimal price, String currencyType, BigDecimal cargoSpace, String packType, String packTypeNm, BigDecimal packQty, String extraInfo, String hsDecNum, Date hsDecDate, String method, String methodNm) {
+    public Commodity(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, String appId, String tradeName, String tradeMark, String mark, String model, String article, String sort, String standarts, String functions, String comProp, String techChar, String productGoal, String hsCode, BigDecimal brutto, BigDecimal netto, BigDecimal basicQty, String extraUnits, BigDecimal extraQty, BigDecimal price, String currencyType, BigDecimal cargoSpace, String packType, String packTypeNm, BigDecimal packQty, String extraInfo, String hsDecNum, Date hsDecDate, String method, String methodNm) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
         this.apps = apps;
+        this.appId = appId;
         this.tradeName = tradeName;
         this.tradeMark = tradeMark;
         this.mark = mark;
@@ -159,6 +167,14 @@ public class Commodity extends AbstractAuditingEntity {
 
     public void setApps(Apps apps) {
         this.apps = apps;
+    }
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 
     public String getTradeName() {
@@ -385,3 +401,35 @@ public class Commodity extends AbstractAuditingEntity {
         this.methodNm = methodNm;
     }
 }
+
+/*
+"id":"id",
+"apps":"apps",
+"tradeName": "Тижорат номи",
+"tradeMark": "Савдо белгиси",
+"mark": "Маркаси",
+"model": "Модел",
+"article": "артикул",
+"sort": "Нави",
+"standarts": "стандартлар",
+"functions": "Вазифаси",
+"comProp": "тижорат ҳусусияти",
+"techChar": "техник ҳусусияти",
+"productGoal": "фойдаланиш мақсади",
+"hsCode": "0101210000",
+"brutto": "77887.23",
+"netto": "88787.96",
+"basicQty": "57887.96",
+"extraUnits": "840",
+"extraQty": "97887.96",
+"price": "37887.96",
+"currencyType": "840",
+"cargoSpace": "47887.96",
+"packType": "018",
+"packTypeNm": "картонли коробкалар",
+"packQty": "41187.96",
+"extraInfo": "қўшимча маълумот ва изоҳлар",
+"hsDecNum": "220017895",
+"hsDecDate": "2022-01-11",
+"method": "01",
+"methodNm": "олиб кириладиган товарга доир битимнинг қиймати бўйича"*/

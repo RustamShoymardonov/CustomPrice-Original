@@ -12,7 +12,6 @@ import java.util.List;
 @Service
 public class AppsService {
     private final AppsRepo appsRepo;
-
     public AppsService(AppsRepo appsRepo) {
         this.appsRepo = appsRepo;
     }
@@ -20,7 +19,7 @@ public class AppsService {
     @PersistenceContext
     private EntityManager entityManager;
 
-    /* Барча статуси "Янги" бўлган аризалар */
+    /* 1) Барча статуси "Янги" бўлган аризалар */
     public List<Apps> getListNotSorted() {
         String queryForList = "select\n" +
                 "    a.id,\n" +
@@ -66,12 +65,12 @@ public class AppsService {
                 "    cpid.country c\n" +
                 "on\n" +
                 "   c.code= a.customer_country\n" +
-                " and c.lnga_tpcd='UZ' "+
+                " and c.lnga_tpcd='UZ' " +
                 "left join\n" +
                 "    cpid.country c2\n" +
                 "on\n" +
                 "   c2.code= a.ORIGIN_COUNTRY\n" +
-                " and c2.lnga_tpcd='UZ' "+
+                " and c2.lnga_tpcd='UZ' " +
                 "where\n" +
                 "    a.isdeleted=0 \n" +
                 "and a.status=100\n" +
@@ -80,7 +79,7 @@ public class AppsService {
         return (List<Apps>) entityManager.createNativeQuery(queryForList, Apps.class).getResultList();
     }
 
-    /*Барча статуси "Янги"+"Имзоланган"+"Бекор қилинган" дан ташқари бўлган аризалар*/
+    /* 2)Барча статуси "Янги"+"Имзоланган"+"Бекор қилинган" дан ташқари бўлган аризалар*/
     public List<Apps> getListSorted() {
         String queryForList = "select\n" +
                 "    a.id,\n" +
@@ -133,7 +132,7 @@ public class AppsService {
         return (List<Apps>) entityManager.createNativeQuery(queryForList, Apps.class).getResultList();
     }
 
-    /*Статуси "фақат "Имзоланган"+"Бекор қилинган" бўлган аризалар*/
+    /* 3) Статуси фақат "Имзоланган"+"Бекор қилинган" бўлган аризалар*/
     public List<Apps> getListTerms() {
         String queryForList = "select\n" +
                 "    a.id,\n" +
@@ -189,7 +188,7 @@ public class AppsService {
         return (List<Apps>) entityManager.createNativeQuery(queryForList, Apps.class).getResultList();
     }
 
-    /* "app_num" га ариза рафамини киритади */
+    /* 4) <<app_num>> га ариза рафамини киритади */
     public Apps saveApps(Apps apps) {
         LocalDateTime now = LocalDateTime.now();
         String appsNum = getMaxNumber();
@@ -208,7 +207,7 @@ public class AppsService {
         return appsRepo.save(apps);
     }
 
-    /* "app_num" учун рақам генерация қилади */
+    /* 5) <<app_num>> учун рақам генерация қилади */
     public String getMaxNumber() {
         String queryForList = "select\n" +
                 "    a.APP_NUM as maxno\n" +
@@ -260,12 +259,10 @@ public class AppsService {
         return result;
     }
 
-    public List<Apps> listAll() {
-        return appsRepo.findAll();
-    }
-
-    public List getInitialDecisionView(String id) {
-        String queryForList = "select\n" +
+    /* 6) <<Мурожаатлар, Тақсимланган мурожаатларб Даст.қарор.реестри>> учун битта "id" бўйича тўлиқ малумот */
+    public List<Apps> getInitialDecisionView(String app_id) {
+        String queryForList = "";
+        queryForList = "select\n" +
                 "    a.id,\n" +
                 "    a.instime,\n" +
                 "    a.insuser,\n" +
@@ -312,12 +309,17 @@ public class AppsService {
                 "    d.raqam= a.terms\n" +
                 "and d.lnga_tpcd='UZ'\n" +
                 "where\n" +
-                "    a.isdeleted=0\n" +
-                "and a.id = + 'id'"+
-                "and a.status in (110)\n"+
+                " a.id = '" + app_id + "' " +
+//                " and a.status in (170, 175)\n" +
+                " and a.isdeleted=0\n" +
                 "order by\n" +
                 "    a.instime desc";
-        return entityManager.createNativeQuery(queryForList).getResultList();
+        return (List<Apps>) entityManager.createNativeQuery(queryForList, Apps.class).getResultList();
 //        return (List<Apps>) entityManager.createNativeQuery(queryForList, Apps.class).getResultList();
     }
+
+    public List<Apps> listAll() {
+        return appsRepo.findAll();
+    }
+
 }

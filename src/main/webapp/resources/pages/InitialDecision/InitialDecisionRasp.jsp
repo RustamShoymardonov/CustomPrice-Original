@@ -175,80 +175,27 @@
                                     </thead>
                                     <tbody>
                                     <c:forEach var="notSorted" items="${notSortedList}" varStatus="i">
-                                    <tr>
-                                        <td>${i.index + 1}</td>
-                                        <td>${notSorted.appNum}</td>
-                                        <td>${notSorted.statusNm}</td>
-                                        <td>${notSorted.insTime.toLocaleString()}</td>
-                                        <td>${notSorted.personFio}</td>
-                                        <td>${notSorted.customer_country}-${notSorted.customerCountryNm}</td>
-                                        <td>${notSorted.originCountry}-${notSorted.orignCountrNm}</td>
-                                        <td>${notSorted.customer_country}-${notSorted.customerCountryNm}</td>
-                                        <td><select class="form-control">
+                                        <tr>
+                                            <td>${i.index + 1}</td>
+                                            <td><a href="javascript:InitialDecisionView('${notSorted.id}')" class="text-primary font-weight-bold"><u>${notSorted.appNum}</u></a></td>
+                                            <td>${notSorted.statusNm}</td>
+                                            <td>${notSorted.insTime.toLocaleString()}</td>
+                                            <td>${notSorted.personFio}</td>
+                                            <td>${notSorted.customer_country}-${notSorted.customerCountryNm}</td>
+                                            <td>${notSorted.originCountry}-${notSorted.orignCountrNm}</td>
+                                            <td>${notSorted.customer_country}-${notSorted.customerCountryNm}</td>
+                                            <td><select class="form-control">
                                                 <option></option>
                                                 <option>ст.инспектор Ж.Халилов</option>
                                                 <option>ст.инспектор С.Ярашев</option>
                                                 <option>инспектор Б.Обидов</option>
                                                 <option>инспектор Х.Вохидов</option>
                                             </select>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
                                     </c:forEach>
                                     </tbody>
                                 </table>
-                                <script>
-                                    $(document).ready(function() {
-                                        $('#example1').DataTable({
-                                            "language": {
-                                                "zeroRecords": "Сиз излаган маълумот мавжуд эмас!",
-                                                "infoFiltered": "(_MAX_ та маълумот сараланди)",
-                                                "infoEmpty": "Маълумотлар топилмади",
-                                                "info": "Жами _PAGES_ та, _PAGE_-сахифа ",
-                                                "lengthMenu": "Кўрсатилмоқда _MENU_ та ариза",
-                                                "Show": "Кўрсатилмоқда",
-                                                "search": "Излаш",
-                                                "paginate": {
-                                                    "next": "Кейинги",
-                                                    "previous": "Олдинги",
-                                                }
-                                            }
-                                        });
-                                    } );
-                                    $(document).ready(function() {
-                                        $('#example2').DataTable({
-                                            "language": {
-                                                "zeroRecords": "Сиз излаган маълумот мавжуд эмас!",
-                                                "infoFiltered": "(_MAX_ та маълумот сараланди)",
-                                                "infoEmpty": "Маълумотлар топилмади",
-                                                "info": "Жами _PAGES_ та, _PAGE_-сахифа ",
-                                                "lengthMenu": "Кўрсатилмоқда _MENU_ та ариза",
-                                                "Show": "Кўрсатилмоқда",
-                                                "search": "Излаш",
-                                                "paginate": {
-                                                    "next": "Кейинги",
-                                                    "previous": "Олдинги",
-                                                }
-                                            }
-                                        });
-                                    } );
-                                    $(document).ready(function() {
-                                        $('#example3').DataTable({
-                                            "language": {
-                                                "zeroRecords": "Сиз излаган маълумот мавжуд эмас!",
-                                                "infoFiltered": "(_MAX_ та маълумот сараланди)",
-                                                "infoEmpty": "Маълумотлар топилмади",
-                                                "info": "Жами _PAGES_ та, _PAGE_-сахифа ",
-                                                "lengthMenu": "Кўрсатилмоқда _MENU_ та ариза",
-                                                "Show": "Кўрсатилмоқда",
-                                                "search": "Излаш",
-                                                "paginate": {
-                                                    "next": "Кейинги",
-                                                    "previous": "Олдинги",
-                                                }
-                                            }
-                                        });
-                                    } );
-                                </script>
                             </div>
                         </div>
                     </div>
@@ -271,17 +218,17 @@
                                     </thead>
                                     <tbody>
                                     <c:forEach var="sorted" items="${sortedList}" varStatus="i">
-                                    <tr>
-                                        <td>${i.index+1}</td>
-                                        <td>${sorted.appNum}</td>
-                                        <td>${sorted.statusNm}</td>
-                                        <td>${sorted.insTime.toLocaleString()}</td>
-                                        <td>${sorted.personFio}</td>
-                                        <td>${sorted.customer_country}-${sorted.customerCountryNm}</td>
-                                        <td>${sorted.originCountry}-${sorted.orignCountrNm}</td>
-                                        <td>${sorted.customer_country}-${sorted.customerCountryNm}</td>
-                                        <td>ст.инспектор Ж.Халилов</td>
-                                    </tr>
+                                        <tr>
+                                            <td>${i.index+1}</td>
+                                            <td><a href="javascript:InitialDecisionView('${sorted.id}')" class="text-primary font-weight-bold"><u>${sorted.appNum}</u></a></td>
+                                            <td>${sorted.statusNm}</td>
+                                            <td>${sorted.insTime.toLocaleString()}</td>
+                                            <td>${sorted.personFio}</td>
+                                            <td>${sorted.customer_country}-${sorted.customerCountryNm}</td>
+                                            <td>${sorted.originCountry}-${sorted.orignCountrNm}</td>
+                                            <td>${sorted.customer_country}-${sorted.customerCountryNm}</td>
+                                            <td>ст.инспектор Ж.Халилов</td>
+                                        </tr>
                                     </c:forEach>
                                     </tbody>
                                 </table>
@@ -310,19 +257,19 @@
                                     </thead>
                                     <tbody>
                                     <c:forEach var="terms" items="${termsList}" varStatus="i">
-                                    <tr>
-                                        <td>${i.index+1}</td>
-                                        <td><a href="javascript:InitialDecisionView('${terms.id}')"> ${terms.appNum} </a></td>
-                                        <td>${terms.statusNm}</td>
-                                        <td>${terms.insTime.toLocaleString()}</td>
-                                        <td>${terms.personFio}</td>
-                                        <td>${terms.customer_country}-${terms.customerCountryNm}</td>
-                                        <td>${terms.originCountry}-${terms.orignCountrNm}</td>
-                                        <td>${terms.customer_country}-${terms.customerCountryNm}</td>
-                                        <td>${terms.terms}-${terms.termsAddr}</td>
-                                        <td>${terms.originCountry}-${terms.orignCountrNm}</td>
-                                        <td>ст.инспектор Ж.Халилов</td>
-                                    </tr>
+                                        <tr>
+                                            <td>${i.index+1}</td>
+                                            <td><a href="javascript:InitialDecisionView('${terms.id}')" class="text-primary font-weight-bold"><u>${terms.appNum}</u></a></td>
+                                            <td>${terms.statusNm}</td>
+                                            <td>${terms.insTime.toLocaleString()}</td>
+                                            <td>${terms.personFio}</td>
+                                            <td>${terms.customer_country}-${terms.customerCountryNm}</td>
+                                            <td>${terms.originCountry}-${terms.orignCountrNm}</td>
+                                            <td>${terms.customer_country}-${terms.customerCountryNm}</td>
+                                            <td>${terms.terms}-${terms.termsAddr}</td>
+                                            <td>${terms.originCountry}-${terms.orignCountrNm}</td>
+                                            <td>ст.инспектор Ж.Халилов</td>
+                                        </tr>
                                     </c:forEach>
                                     </tbody>
                                 </table>
@@ -334,3 +281,57 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#example1').DataTable({
+            "language": {
+                "zeroRecords": "Сиз излаган маълумот мавжуд эмас!",
+                "infoFiltered": "(_MAX_ та маълумот сараланди)",
+                "infoEmpty": "Маълумотлар топилмади",
+                "info": "Жами _PAGES_ та, _PAGE_-сахифа ",
+                "lengthMenu": "Кўрсатилмоқда _MENU_ та ариза",
+                "Show": "Кўрсатилмоқда",
+                "search": "Излаш",
+                "paginate": {
+                    "next": "Кейинги",
+                    "previous": "Олдинги",
+                }
+            }
+        });
+    });
+    $(document).ready(function () {
+        $('#example2').DataTable({
+            "language": {
+                "zeroRecords": "Сиз излаган маълумот мавжуд эмас!",
+                "infoFiltered": "(_MAX_ та маълумот сараланди)",
+                "infoEmpty": "Маълумотлар топилмади",
+                "info": "Жами _PAGES_ та, _PAGE_-сахифа ",
+                "lengthMenu": "Кўрсатилмоқда _MENU_ та ариза",
+                "Show": "Кўрсатилмоқда",
+                "search": "Излаш",
+                "paginate": {
+                    "next": "Кейинги",
+                    "previous": "Олдинги",
+                }
+            }
+        });
+    });
+    $(document).ready(function () {
+        $('#example3').DataTable({
+            "language": {
+                "zeroRecords": "Сиз излаган маълумот мавжуд эмас!",
+                "infoFiltered": "(_MAX_ та маълумот сараланди)",
+                "infoEmpty": "Маълумотлар топилмади",
+                "info": "Жами _PAGES_ та, _PAGE_-сахифа ",
+                "lengthMenu": "Кўрсатилмоқда _MENU_ та ариза",
+                "Show": "Кўрсатилмоқда",
+                "search": "Излаш",
+                "paginate": {
+                    "next": "Кейинги",
+                    "previous": "Олдинги",
+                }
+            }
+        });
+    });
+</script>

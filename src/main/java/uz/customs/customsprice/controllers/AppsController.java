@@ -1,24 +1,17 @@
 package uz.customs.customsprice.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import uz.customs.customsprice.entity.InitialDecision.Apps;
-import uz.customs.customsprice.entity.InitialDecision.Persons;
 import uz.customs.customsprice.repository.AppsRepo;
 import uz.customs.customsprice.service.AppsService;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/apps")
@@ -29,13 +22,11 @@ public class AppsController {
     private final String INITIALDECISIONRASP = "/resources/pages/InitialDecision/InitialDecisionRasp";
     private final String INITIALDECISIONVIEW = "/resources/pages/InitialDecision/InitialDecisionView";
 
+
+    /*---------------------------------------------------------------------------------------------------------start*/
+    /* Apps маълумотларини чиқариш учун*/
     @Autowired
     private AppsService appsservice;
-
-    public AppsController(AppsService appsService, AppsRepo appsRepo) {
-        this.appsService = appsService;
-        this.appsRepo = appsRepo;
-    }
 
     @PostMapping
     public ResponseEntity valuesave(@RequestBody Apps apps) {
@@ -47,14 +38,23 @@ public class AppsController {
         }
 
     }
+    /*-----------------------------------------------------------------------------------------------------------end*/
+
+
+    /*---------------------------------------------------------------------------------------------------------start*/
+    /* Apps маълумотларини сақлаш учун учун*/
+    public AppsController(AppsService appsService, AppsRepo appsRepo) {
+        this.appsService = appsService;
+        this.appsRepo = appsRepo;
+    }
 
     @PostMapping(value = INITIALDECISIONRASP)
     @ResponseBody
     public ModelAndView InitialDecisionRasp(HttpSession session, @RequestParam(name = "id") String status) {
-        ModelAndView mav = new ModelAndView("/resources/pages/InitialDecision/InitialDecisionRasp");
+        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionRasp");
 
         List<Apps> termsList = new ArrayList<>();
-        termsList= appsservice.getListTerms();
+        termsList = appsservice.getListTerms();
         mav.addObject("termsList", termsList);
 
         List<Apps> notSortedList = new ArrayList<>();
@@ -76,21 +76,15 @@ public class AppsController {
         return mav;
     }
 
-//    @PostMapping(value = INITIALDECISIONVIEW)
-//    @ResponseBody
-//    public ModelAndView InitialDecisionView(HttpSession session, @RequestParam(name = "id") String status) {
-//        ModelAndView mav = new ModelAndView("/resources/pages/InitialDecision/InitialDecisionView");
-//        Iterable<Apps> arizalar = appsservice.listAll();
-//        mav.addObject("apps", arizalar);
-//        return mav;
-//    }
-
     @PostMapping(value = INITIALDECISIONVIEW)
     @ResponseBody
-    public ModelAndView InitialDecisionView(HttpSession session, @RequestParam String id) {
-        ModelAndView mav = new ModelAndView("/resources/pages/InitialDecision/InitialDecisionView");
-        mav.addObject("appId", appsservice.getInitialDecisionView(id));
+    public ModelAndView InitialDecisionView(HttpSession session, @RequestParam String app_id) {
+        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionView");
+
+        List<Apps> getInitialDecisionViewApp = new ArrayList<>();
+        getInitialDecisionViewApp = appsservice.getInitialDecisionView(app_id);
+        mav.addObject("appInfo", getInitialDecisionViewApp);
         return mav;
     }
-
+    /*-----------------------------------------------------------------------------------------------------------end*/
 }

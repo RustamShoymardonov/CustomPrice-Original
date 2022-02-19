@@ -176,15 +176,15 @@
         <%--todo страницаларни чақириш жойи--%>
     </div>
     <%--todo Асосий----------------------------------------------------қисми------------------------гача--%>
-</div>
-<!-- footer content -->
-<footer>
-    <div class="pull-right">
-        Божхона қиймати
-    </div>
-    <div class="clearfix"></div>
-</footer>
-<!-- /footer content -->
+    <%--</div>--%>
+    <!-- footer content -->
+    <footer>
+        <div class="pull-right">
+            Божхона қиймати
+        </div>
+        <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
 </div>
 
 <script src="<%=request.getContextPath()%>/resources/vendors/jquery/dist/jquery.min.js"></script>
@@ -256,11 +256,10 @@
     }
 
     /* Ариза тафсилоти */
-    function InitialDecisionView(x) {
+    function InitialDecisionView(app_id) {
         var dataS = {
-            "id": x
+            "app_id": app_id
         }
-
         $.ajax({
             type: "POST",
             data: dataS,
@@ -274,89 +273,6 @@
             }
         });
     }
-
-    // function CostMonitoring(x) {
-    //     var dataS = {
-    //         "id": x
-    //     }
-    //     $.ajax({
-    //         type: "POST",
-    //         data: dataS,
-    //         url: "<%=request.getContextPath()%>/sent/resources/pages/CostMonitoring/CostMonitoring",
-    //         dataType: "html",
-    //         header: 'Content-type: text/html; charset=utf-8',
-    //         success: function (res) {
-    //             $('div#MainContent').html(res);
-    //         },
-    //         error: function (res) {
-    //         }
-    //     });
-    //
-    //
-    // }
-
-
-    //function Main(x, y) {
-    //    var dataS = {
-    //        "y": y
-    //    };
-    //
-    //    if (x === 2) {
-    //        CostMonitoring(x);
-    //    } else if (x === 66) {
-    //        InitialDecision(x);
-    //    } else {
-    //        var tipform = '';
-    //        switch (x) {
-    //            case 1:
-    //                tipform = "<%=request.getContextPath()%>/resources/pages/ClassProduct/ClassProduct.jsp";
-    //                break;
-    //            case 2:
-    //                tipform = "<%=request.getContextPath()%>/resources/pages/CostMonitoring/CostMonitoring.jsp";
-    //                break;
-    //            case 3:
-    //                tipform = "<%=request.getContextPath()%>/resources/pages/LogicalControl/LogicalControl.jsp";
-    //                break;
-    //            case 4:
-    //                tipform = "<%=request.getContextPath()%>/resources/pages/InitialDecision/InitialDecision.jsp";
-    //                break;
-    //            case 6:
-    //                tipform = "<%=request.getContextPath()%>/resources/pages/InitialDecision/InitialDecisionRasp.jsp";
-    //                break;
-    //            case 7:
-    //                tipform = "<%=request.getContextPath()%>/resources/pages/InitialDecision/InitialDecision.jsp";
-    //                break;
-    //            case 8:
-    //                tipform = "<%=request.getContextPath()%>/resources/pages/InitialDecision/InitialDecisionView.jsp";
-    //                break;
-    //            case 90:
-    //                tipform = "/Welcome";
-    //                break;
-    //            default:
-    //                "<%=request.getContextPath()%>/";
-    //        }
-    //        if (x !== 100) {
-    //            document.body.style.cursor = 'wait';
-    //            $.post({
-    //                async: false,
-    //                url: tipform,
-    //                data: dataS,
-    //                dataType: "html",
-    //                header: 'Content-type: text/html; charset=utf-8',
-    //                success: function (res) {
-    //                    $('div#MainContent').html(res);
-    //                    document.body.style.cursor = 'default';
-    //                },
-    //                error: function (res) {
-    //                    if (res.status == 401) {
-    //                        $(".logOutForm").submit();
-    //                    }
-    //                }
-    //            });
-    //        }
-    //
-    //    }
-    //}
 
 </script>
 <script src="<%=request.getContextPath()%>/resources/build/js/custom.min.js"></script>
