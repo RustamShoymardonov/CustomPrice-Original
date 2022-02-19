@@ -1,11 +1,14 @@
 package uz.customs.customsprice.entity.InitialDecision;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 import uz.customs.customsprice.entity.entityConfig.AbstractAuditingEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
@@ -19,11 +22,11 @@ public class Persons extends AbstractAuditingEntity {
     @Column(name = "id", columnDefinition = "VARCHAR(50)")
     private String id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "APP_ID", insertable = false, updatable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private Apps apps;
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "APP_ID", insertable = false, updatable = false)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @JsonIgnore
+//    private Apps apps;
 
     @Column(name = "firstName", columnDefinition = "VARCHAR(180) CCSID 1208")
     private String firstName;
@@ -52,10 +55,9 @@ public class Persons extends AbstractAuditingEntity {
     public Persons() {
     }
 
-    public Persons(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, String firstName, String surName, String lastName, String eMail, String pin, String tin, String perAdr, String phone) {
+    public Persons(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, String firstName, String surName, String lastName, String eMail, String pin, String tin, String perAdr, String phone) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
-        this.apps = apps;
         this.firstName = firstName;
         this.surName = surName;
         this.lastName = lastName;
@@ -72,14 +74,6 @@ public class Persons extends AbstractAuditingEntity {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public Apps getApps() {
-        return apps;
-    }
-
-    public void setApps(Apps apps) {
-        this.apps = apps;
     }
 
     public String getFirstName() {

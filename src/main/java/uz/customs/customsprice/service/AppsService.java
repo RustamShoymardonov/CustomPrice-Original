@@ -54,7 +54,8 @@ public class AppsService {
                 "    s.name status_nm,\n" +
                 "    a.terms,\n" +
                 "    a.terms_addr,\n" +
-                "    a.trans_exp\n" +
+                "    a.trans_exp,\n" +
+                "    a.person_id\n" +
                 "from\n" +
                 "    apps a\n" +
                 "left join\n" +
@@ -261,8 +262,7 @@ public class AppsService {
 
     /* 6) <<Мурожаатлар, Тақсимланган мурожаатларб Даст.қарор.реестри>> учун битта "id" бўйича тўлиқ малумот */
     public List<Apps> getInitialDecisionView(String app_id) {
-        String queryForList = "";
-        queryForList = "select\n" +
+        String queryForList = "SELECT\n" +
                 "    a.id,\n" +
                 "    a.instime,\n" +
                 "    a.insuser,\n" +
@@ -295,25 +295,46 @@ public class AppsService {
                 "    d.sign terms,\n" +
                 "    a.terms_addr,\n" +
                 "    a.trans_exp,\n" +
-                "    s.name status_nm\n" +
-                "from\n" +
+                "    a.person_id,\n" +
+                "    s.name status_nm,        \n" +
+                "    p.email,\n" +
+                "    p.firstname,\n" +
+                "    p.lastname,\n" +
+                "    p.per_adr,\n" +
+                "    p.phone,\n" +
+                "    p.pin,\n" +
+                "    p.surname,\n" +
+                "    p.tin\n" +
+                "    cm.brutto\n" +
+                "FROM\n" +
                 "    apps a\n" +
-                "left join\n" +
+                "LEFT JOIN\n" +
                 "    cpid.status_type s\n" +
-                "on\n" +
+                "ON\n" +
                 "    s.id=a.status\n" +
-                "and s.isdeleted=0\n" +
-                "left join\n" +
+                "AND s.isdeleted=0\n" +
+                "LEFT JOIN\n" +
                 "    cpid.delivery_terms d\n" +
-                "on\n" +
+                "ON\n" +
                 "    d.raqam= a.terms\n" +
-                "and d.lnga_tpcd='UZ'\n" +
-                "where\n" +
+                "AND d.lnga_tpcd='UZ'\n" +
+                "LEFT JOIN\n" +
+                "    cpid.PERSONS p\n" +
+                "ON\n" +
+                "    a.PERSON_ID= p.ID\n" +
+                "AND p.ISDELETED=0\n" +
+                "LEFT JOIN\n" +
+                "   cpid.COMMODITY cm\n" +
+                "ON\n" +
+                "    a.ID = cm.APP_ID\n" +
+                "AND cm.ISDELETED=0\n" +
+                "WHERE\n" +
                 " a.id = '" + app_id + "' " +
 //                " and a.status in (170, 175)\n" +
                 " and a.isdeleted=0\n" +
                 "order by\n" +
                 "    a.instime desc";
+
         return (List<Apps>) entityManager.createNativeQuery(queryForList, Apps.class).getResultList();
 //        return (List<Apps>) entityManager.createNativeQuery(queryForList, Apps.class).getResultList();
     }

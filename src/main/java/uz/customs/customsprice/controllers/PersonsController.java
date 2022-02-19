@@ -10,7 +10,7 @@ import uz.customs.customsprice.service.PersonsService;
 
 
 @Controller
-@RequestMapping("/personsrecord")
+@RequestMapping("/persons")
 public class PersonsController {
     private final PersonsService personsService;
 
@@ -22,9 +22,9 @@ public class PersonsController {
     public ResponseEntity valuesave(@RequestBody Persons persons) {
         try {
             personsService.savepersons(persons);
-            return ResponseEntity.ok("Persons smalumotlari saqlandi");
+            return ResponseEntity.ok("Persons маълумотлари сақланди PersonId := " + persons.getId());
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Persons malumotlari saqlanmadi");
+            return ResponseEntity.badRequest().body(" <<--- Persons --->> хатолик юз берди ! ");
         }
 
     }

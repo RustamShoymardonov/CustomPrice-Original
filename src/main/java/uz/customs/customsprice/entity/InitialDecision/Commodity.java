@@ -64,28 +64,28 @@ public class Commodity extends AbstractAuditingEntity {
     @Column(name = "HS_CODE", length = 10)
     private String hsCode;
 
-    @Column(name = "BRUTTO", precision = 5, scale = 2)
+    @Column(name = "BRUTTO", length = 4)
     private BigDecimal brutto;
 
-    @Column(name = "NETTO", precision = 5, scale = 2)
+    @Column(name = "NETTO", length = 4)
     private BigDecimal netto;
 
-    @Column(name = "BASIC_QTY", precision = 5, scale = 2)
+    @Column(name = "BASIC_QTY", length = 4)
     private BigDecimal basicQty;
 
     @Column(name = "EXTRA_UNITS", length = 3)
     private String extraUnits;
 
-    @Column(name = "EXTRA_QTY", precision = 5, scale = 2)
+    @Column(name = "EXTRA_QTY", length = 4)
     private BigDecimal extraQty;
 
-    @Column(name = "PRICE", precision = 5, scale = 2)
+    @Column(name = "PRICE", length = 4)
     private BigDecimal price;
 
     @Column(name = "CURRENCY_TYPE", length = 3)
     private String currencyType;
 
-    @Column(name = "CARGO_SPACE", precision = 5, scale = 2)
+    @Column(name = "CARGO_SPACE", length = 4)
     private BigDecimal cargoSpace;
 
     @Column(name = "PACK_TYPE", length = 3)
@@ -94,7 +94,7 @@ public class Commodity extends AbstractAuditingEntity {
     @Column(name = "PACK_TYPE_NM", columnDefinition = "VARCHAR(90) CCSID 1208")
     private String packTypeNm;
 
-    @Column(name = "PACK_QTY", precision = 5, scale = 2)
+    @Column(name = "PACK_QTY", length = 4)
     private BigDecimal packQty;
 
     @Column(name = "EXTRA_INFO", columnDefinition = "VARCHAR(2000) CCSID 1208")
@@ -112,7 +112,7 @@ public class Commodity extends AbstractAuditingEntity {
     @Column(name = "METHOD", length = 2)
     private String method;
 
-    @Column(name = "METHOD_NM", columnDefinition = "VARCHAR(90) CCSID 1208")
+    @Column(name = "METHOD_NM", columnDefinition = "VARCHAR(180) CCSID 1208")
     private String methodNm;
 
     public Commodity() {

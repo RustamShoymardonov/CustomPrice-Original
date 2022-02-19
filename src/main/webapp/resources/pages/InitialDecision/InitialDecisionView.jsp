@@ -17,8 +17,10 @@
             <div class="x_panel border rounded mt-4" style="background: rgba(23, 101, 185, 0.08);">
                 <div>
                     <h4>
-                        <i class="fa fa-edit"></i>АРИЗА
-                        <small>№:01-10/0012</small>
+                        <c:forEach var="getAppNum" items="${appInfo}" varStatus="i">
+                            <i class="fa fa-edit"></i>АРИЗА
+                            <small>№:${getAppNum.appNum}</small>
+                        </c:forEach>
                     </h4>
                     <div class="clearfix"></div>
                 </div>
@@ -53,9 +55,10 @@
                                                 <i>
                                                     <c:forEach var="getAppInfo" items="${appInfo}" varStatus="i">
                                                         ${getAppInfo.personFio}
-                                                    <br>+998 (90) 888 88 88
-                                                    <br>Россия
-                                                    <br>Қозоғистион</i>
+                                                    <br>${getAppInfo.personPhone}
+                                                    <br>${getAppInfo.senderCountryNm}/${getAppInfo.senderOrg}
+                                                    <br>${getAppInfo.customerCountryNm}/${getAppInfo.sellerOrg}</i>
+                                                    ${getAppInfo.brutto}
                                                 </c:forEach>
                                             </address>
                                         </div>
@@ -71,7 +74,7 @@
                                         <!-- /.col -->
                                         <div class="col-sm-3 invoice-col">
                                             <address>
-                                                <i>3 250 АҚШ</strong><a href="#"><i class="fa fa-calculator fa-2x" data-toggle="modal" data-target="#exampleModal12" style="margin-left: 65%"></i></a>
+                                                <i> АҚШ</strong><a href="#"><i class="fa fa-calculator fa-2x" data-toggle="modal" data-target="#exampleModal12" style="margin-left: 65%"></i></a>
                                                     <br>1 500 кг
                                                     <br>1 450 кг
                                                     <br>

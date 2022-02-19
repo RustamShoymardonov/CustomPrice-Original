@@ -24,6 +24,9 @@ public class Apps extends AbstractAuditingEntity {
 //    @JsonIgnore
 //    private Persons persons;
 
+    @Column(name = "PERSON_ID", length = 50)
+    private String personId;
+
     @Column(name = "APP_NUM", length = 50)
     private String appNum;
 
@@ -93,14 +96,14 @@ public class Apps extends AbstractAuditingEntity {
     @Column(name = "LOCATION_ID", length = 4)
     private String locationId;
 
-    @Column(name = "LOCATION_NM", precision = 5, scale = 2)
-    private BigDecimal locationNm;
+    @Column(name = "LOCATION_NM", length = 180)
+    private String locationNm;
 
     @Column(name = "TRANS_EXP", length = 4)
     private BigDecimal transExp;
 
     @Column(name = "STATUS", columnDefinition = "SMALLINT DEFAULT 100")
-    private int status=100;
+    private int status = 100;
 
     @Column(name = "STATUS_NM", columnDefinition = "VARCHAR(450) CCSID 1208")
     private String statusNm;
@@ -110,8 +113,10 @@ public class Apps extends AbstractAuditingEntity {
     public Apps() {
     }
 
-    public Apps(String id, String appNum, String customer_country, String customerCountryNm, String senderCountry, String senderCountryNm, String originCountry, String orignCountrNm, String senderOrg, String sellerOrg, String originOrg, String terms, String termsAddr, Date inDecDate, String initialDecisionNumber, String personFio, String orgName, String personPosition, String personAddr, String personTin, String personPin, String personMail, String personPhone, String locationId, BigDecimal locationNm, BigDecimal transExp, int status, String statusNm) {
+    public Apps(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, String personId, String appNum, String customer_country, String customerCountryNm, String senderCountry, String senderCountryNm, String originCountry, String orignCountrNm, String senderOrg, String sellerOrg, String originOrg, String terms, String termsAddr, Date inDecDate, String initialDecisionNumber, String personFio, String orgName, String personPosition, String personAddr, String personTin, String personPin, String personMail, String personPhone, String locationId, String locationNm, BigDecimal transExp, int status, String statusNm) {
+        super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
+        this.personId = personId;
         this.appNum = appNum;
         this.customer_country = customer_country;
         this.customerCountryNm = customerCountryNm;
@@ -147,6 +152,14 @@ public class Apps extends AbstractAuditingEntity {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(String personId) {
+        this.personId = personId;
     }
 
     public String getAppNum() {
@@ -333,11 +346,11 @@ public class Apps extends AbstractAuditingEntity {
         this.locationId = locationId;
     }
 
-    public BigDecimal getLocationNm() {
+    public String getLocationNm() {
         return locationNm;
     }
 
-    public void setLocationNm(BigDecimal locationNm) {
+    public void setLocationNm(String locationNm) {
         this.locationNm = locationNm;
     }
 
