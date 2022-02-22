@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import uz.customs.customsprice.entity.InitialDecision.Apps;
+import uz.customs.customsprice.entity.InitialDecision.Commodity;
 import uz.customs.customsprice.repository.AppsRepo;
 import uz.customs.customsprice.service.AppsService;
 
@@ -18,7 +19,7 @@ import java.util.List;
 public class AppsController {
     private final AppsService appsService;
     private final AppsRepo appsRepo;
-    private final String INITIALDECISION = "/resources/pages/InitialDecision/InitialDecision";
+    private final String INITIALDECISION = "/resources/pages/InitialDecision/InitialDecision1";
     private final String INITIALDECISIONRASP = "/resources/pages/InitialDecision/InitialDecisionRasp";
     private final String INITIALDECISIONVIEW = "/resources/pages/InitialDecision/InitialDecisionView";
 
@@ -81,9 +82,14 @@ public class AppsController {
     public ModelAndView InitialDecisionView(HttpSession session, @RequestParam String app_id) {
         ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionView");
 
-        List<Apps> getInitialDecisionViewApp = new ArrayList<>();
-        getInitialDecisionViewApp = appsservice.getInitialDecisionView(app_id);
-        mav.addObject("appInfo", getInitialDecisionViewApp);
+        List<Apps> InitialDecisionViewApp = new ArrayList<>();
+        InitialDecisionViewApp = appsservice.getInitialDecisionView(app_id);
+        mav.addObject("appInfo", InitialDecisionViewApp);
+
+        List<Commodity> getInitialDecisionViewCommodity = new ArrayList<>();
+        getInitialDecisionViewCommodity = appsservice.getInitialDecisionViewCommodity(app_id);
+        mav.addObject("allCommodityFor", getInitialDecisionViewCommodity);
+
         return mav;
     }
     /*-----------------------------------------------------------------------------------------------------------end*/

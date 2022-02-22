@@ -1777,7 +1777,9 @@ function init_daterangepicker_reservation() {
 
 function init_SmartWizard() {
 
-    if (typeof ($.fn.smartWizard) === 'undefined') { return; }
+    if (typeof ($.fn.smartWizard) === 'undefined') {
+        return;
+    }
     console.log('init_SmartWizard');
 
     $('#wizard').smartWizard();
@@ -1786,8 +1788,8 @@ function init_SmartWizard() {
         transitionEffect: 'slide'
     });
 
-    $('.buttonNext').addClass('btn btn-success');
-    $('.buttonPrevious').addClass('btn btn-primary');
+    $('.buttonNext').addClass('btn btn-success fa fa-chevron-right');
+    $('.buttonPrevious').addClass('btn btn-primary fa fa-chevron-left');
     $('.buttonFinish').addClass('btn btn-default');
 
 };

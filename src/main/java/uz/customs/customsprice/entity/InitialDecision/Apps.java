@@ -1,12 +1,11 @@
 package uz.customs.customsprice.entity.InitialDecision;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 import uz.customs.customsprice.entity.entityConfig.AbstractAuditingEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -30,8 +29,14 @@ public class Apps extends AbstractAuditingEntity {
     @Column(name = "APP_NUM", length = 50)
     private String appNum;
 
+    @CreatedDate
+    @Column(name = "APP_DATE", columnDefinition = " date default current_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date appDate;
+
     @Column(name = "CUSTOMER_COUNTRY", length = 3)
-    private String customer_country;
+    private String customerCountry;
 
     @Column(name = "CUSTOMER_COUNTRY_NM", columnDefinition = "VARCHAR(120) CCSID 1208")
     private String customerCountryNm;
@@ -64,10 +69,12 @@ public class Apps extends AbstractAuditingEntity {
     private String termsAddr;
 
     @Column(name = "IN_DEC_DATE")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     private Date inDecDate;
 
     @Column(name = "IN_DEC_NUM", length = 30)
-    private String initialDecisionNumber;
+    private String inDecNum;
 
     @Column(name = "PERSON_FIO", columnDefinition = "VARCHAR(180) CCSID 1208")
     private String personFio;
@@ -113,12 +120,13 @@ public class Apps extends AbstractAuditingEntity {
     public Apps() {
     }
 
-    public Apps(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, String personId, String appNum, String customer_country, String customerCountryNm, String senderCountry, String senderCountryNm, String originCountry, String orignCountrNm, String senderOrg, String sellerOrg, String originOrg, String terms, String termsAddr, Date inDecDate, String initialDecisionNumber, String personFio, String orgName, String personPosition, String personAddr, String personTin, String personPin, String personMail, String personPhone, String locationId, String locationNm, BigDecimal transExp, int status, String statusNm) {
+    public Apps(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, String personId, String appNum, Date appDate, String customerCountry, String customerCountryNm, String senderCountry, String senderCountryNm, String originCountry, String orignCountrNm, String senderOrg, String sellerOrg, String originOrg, String terms, String termsAddr, Date inDecDate, String inDecNum, String personFio, String orgName, String personPosition, String personAddr, String personTin, String personPin, String personMail, String personPhone, String locationId, String locationNm, BigDecimal transExp, int status, String statusNm) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
         this.personId = personId;
         this.appNum = appNum;
-        this.customer_country = customer_country;
+        this.appDate = appDate;
+        this.customerCountry = customerCountry;
         this.customerCountryNm = customerCountryNm;
         this.senderCountry = senderCountry;
         this.senderCountryNm = senderCountryNm;
@@ -130,7 +138,7 @@ public class Apps extends AbstractAuditingEntity {
         this.terms = terms;
         this.termsAddr = termsAddr;
         this.inDecDate = inDecDate;
-        this.initialDecisionNumber = initialDecisionNumber;
+        this.inDecNum = inDecNum;
         this.personFio = personFio;
         this.orgName = orgName;
         this.personPosition = personPosition;
@@ -170,12 +178,20 @@ public class Apps extends AbstractAuditingEntity {
         this.appNum = appNum;
     }
 
-    public String getCustomer_country() {
-        return customer_country;
+    public Date getAppDate() {
+        return appDate;
     }
 
-    public void setCustomer_country(String customer_country) {
-        this.customer_country = customer_country;
+    public void setAppDate(Date appDate) {
+        this.appDate = appDate;
+    }
+
+    public String getCustomerCountry() {
+        return customerCountry;
+    }
+
+    public void setCustomerCountry(String customerCountry) {
+        this.customerCountry = customerCountry;
     }
 
     public String getCustomerCountryNm() {
@@ -266,12 +282,12 @@ public class Apps extends AbstractAuditingEntity {
         this.inDecDate = inDecDate;
     }
 
-    public String getInitialDecisionNumber() {
-        return initialDecisionNumber;
+    public String getInDecNum() {
+        return inDecNum;
     }
 
-    public void setInitialDecisionNumber(String initialDecisionNumber) {
-        this.initialDecisionNumber = initialDecisionNumber;
+    public void setInDecNum(String inDecNum) {
+        this.inDecNum = inDecNum;
     }
 
     public String getPersonFio() {

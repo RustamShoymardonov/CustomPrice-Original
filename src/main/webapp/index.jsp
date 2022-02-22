@@ -244,7 +244,7 @@
         $.ajax({
             type: "POST",
             data: dataS,
-            url: "<%=request.getContextPath()%>/apps/resources/pages/InitialDecision/InitialDecision",
+            url: "<%=request.getContextPath()%>/apps/resources/pages/InitialDecision/InitialDecision1",
             dataType: "html",
             header: 'Content-type: text/html; charset=utf-8',
             success: function (res) {
@@ -275,7 +275,7 @@
     }
 
 </script>
-<script src="<%=request.getContextPath()%>/resources/build/js/custom.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/build/js/custom.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
 </body>
 </html>

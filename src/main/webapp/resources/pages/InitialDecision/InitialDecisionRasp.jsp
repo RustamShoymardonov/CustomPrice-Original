@@ -181,9 +181,9 @@
                                             <td>${notSorted.statusNm}</td>
                                             <td>${notSorted.insTime.toLocaleString()}</td>
                                             <td>${notSorted.personFio}</td>
-                                            <td>${notSorted.customer_country}-${notSorted.customerCountryNm}</td>
+                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>
                                             <td>${notSorted.originCountry}-${notSorted.orignCountrNm}</td>
-                                            <td>${notSorted.customer_country}-${notSorted.customerCountryNm}</td>
+                                            <td>${notSorted.senderCountry}-${notSorted.senderCountryNm}</td>
                                             <td><select class="form-control">
                                                 <option></option>
                                                 <option>ст.инспектор Ж.Халилов</option>
@@ -224,9 +224,9 @@
                                             <td>${sorted.statusNm}</td>
                                             <td>${sorted.insTime.toLocaleString()}</td>
                                             <td>${sorted.personFio}</td>
-                                            <td>${sorted.customer_country}-${sorted.customerCountryNm}</td>
+                                            <td>${sorted.customerCountry}-${sorted.customerCountryNm}</td>
                                             <td>${sorted.originCountry}-${sorted.orignCountrNm}</td>
-                                            <td>${sorted.customer_country}-${sorted.customerCountryNm}</td>
+                                            <td>${sorted.senderCountry}-${sorted.senderCountryNm}</td>
                                             <td>ст.инспектор Ж.Халилов</td>
                                         </tr>
                                     </c:forEach>
