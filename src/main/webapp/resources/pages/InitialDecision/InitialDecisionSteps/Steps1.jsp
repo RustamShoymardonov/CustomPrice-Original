@@ -27,12 +27,11 @@
             <c:forEach var="var" items="${oneCommodityFor}">
                 <br>
                 <div class="col-md-4 col-sm-6  form-group has-feedback">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-barcode fa-lg mr-2"></i><b>ТИФ ТН коди:</b> ${var.id}</h6>
+                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-barcode fa-lg mr-2"></i><b>ТИФ ТН коди:</b> ${var.hsCode}</h6>
                 </div>
 
                 <div class="col-md-8 col-sm-6  form-group has-feedback">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-dropbox fa-lg mr-2"></i><b>Товар номи:</b> воды, включая минеральные и газированные,
-                        содержащие добавки сахара или других подслащивающих или вкусо-ароматических веществ</h6>
+                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-dropbox fa-lg mr-2"></i><b>Товар номи:</b> ${var.tradeName}${var.tradeMark}${var.model}${var.article}</h6>
                 </div>
 
                 <div class="col-md-4 col-sm-6  form-group has-feedback mt-3">

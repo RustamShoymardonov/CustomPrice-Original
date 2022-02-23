@@ -111,8 +111,8 @@ function SmartWizard(target, options) {
 
     var _prepareSteps = function($this) {
         if(! $this.options.enableAllSteps){
-            $($this.steps, $this.target).removeClass("selected").removeClass("done").addClass("disabled");
-            $($this.steps, $this.target).attr("isDone",0);
+            $($this.steps, $this.target).removeClass("selected").addClass("done");
+            $($this.steps, $this.target).attr("isDone", 1);
         }else{
             $($this.steps, $this.target).removeClass("selected").removeClass("disabled").addClass("done");
             $($this.steps, $this.target).attr("isDone",1);

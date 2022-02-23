@@ -179,36 +179,28 @@
                             </div>
                         </div>
                         <ul class="wizard_steps">
-                            <li>
-                                <a href="#step-1">
+                            <li done>
+                                <a href="#step-1" class="done">
                                     <span class="step_no">1</span>
-                                    <span class="step_descr">
-
-							</span>
+                                    <span class="step_descr"></span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#step-2">
+                            <li done>
+                                <a href="#step-2" class="done">
                                     <span class="step_no">2</span>
-                                    <span class="step_descr">
-
-							</span>
+                                    <span class="step_descr"></span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#step-3">
+                                <a href="#step-3" class="done">
                                     <span class="step_no">3</span>
-                                    <span class="step_descr">
-
-							 </span>
+                                    <span class="step_descr"></span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#step-4">
+                                <a href="#step-4" class="done">
                                     <span class="step_no">4</span>
-                                    <span class="step_descr">
-
-							</span>
+                                    <span class="step_descr"></span>
                                 </a>
                             </li>
                         </ul>
@@ -221,8 +213,8 @@
                                     <c:forEach var="val" items="${allCommodityFor}" varStatus="i">
                                         <tr>
                                             <td>
-                                                <button class="btn btn-primary btn-outline-dark btn-sm btn-block" id="btnCmdt_${i.index+1}" onclick="checkCmdt('${val.id}',1)">Товар
-                                                    №:${i.index+1}</button>
+                                                <button class="btn btn-primary btn-outline-dark btn-sm btn-block" id="btnCmdt_${i.index+1}" onclick="checkCmdt('${val.id}',1)">${i.index+1}:
+                                                        ${val.hsCode}</button>
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -298,9 +290,6 @@
                         case 1:
                             $('div#div_CmdtStep_1').html(res);
                             $('#wizard').smartWizard('goToStep', 1);
-                            $("#wizard").smartWizard("disableStep", "2");
-                            $("#wizard").smartWizard("disableStep", "3");
-                            $("#wizard").smartWizard("disableStep", "4");
                             break;
                         case 2:
                             $('div#div_CmdtStep_2').html(res);
@@ -319,9 +308,7 @@
                     // $("#wizard").smartWizard("disableStep","4");
                     init_SmartWizard();
                     // $("#wizard").smartWizard("disableStep","1");
-                    $("#wizard").smartWizard("disableStep", "2");
-                    $("#wizard").smartWizard("disableStep", "3");
-                    $("#wizard").smartWizard("disableStep", "4");
+
                 },
                 error: function (res) {
                 }
