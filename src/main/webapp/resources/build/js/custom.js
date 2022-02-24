@@ -1962,9 +1962,7 @@ function init_charts() {
 
     console.log('run_charts  typeof [' + typeof (Chart) + ']');
 
-    if (typeof (Chart) === 'undefined') {
-        return;
-    }
+    if (typeof (Chart) === 'undefined') { return; }
 
     console.log('init_charts');
 
@@ -1972,6 +1970,7 @@ function init_charts() {
     // Chart.defaults.global.legend = {
     //     enabled: false
     // };
+
 
 
     if ($('#canvas_line').length) {

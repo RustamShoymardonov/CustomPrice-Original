@@ -23,6 +23,7 @@ public class AppsService {
 
     /* 1) Барча статуси "Янги" бўлган аризалар */
     public List<Apps> getListNotSorted() {
+//        appsRepo.findByStatus(100);
         String queryForList = "select\n" +
                 "    a.id,\n" +
                 "    a.instime,\n" +

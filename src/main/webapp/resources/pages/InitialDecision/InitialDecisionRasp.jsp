@@ -7,8 +7,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
@@ -176,7 +174,6 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-
                                     <c:forEach var="notSorted" items="${notSortedList}" varStatus="i">
                                         <tr>
                                             <td>${i.index + 1}</td>
@@ -186,7 +183,7 @@
                                             <td>${notSorted.personFio}</td>
                                             <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>
                                             <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>
-                                                <%--                                            <td>${notSorted.originCountry}-${notSorted.orignCountrNm}</td>--%>
+<%--                                            <td>${notSorted.originCountry}-${notSorted.orignCountrNm}</td>--%>
                                             <td>${notSorted.senderCountry}-${notSorted.senderCountryNm}</td>
                                             <td><select class="form-control">
                                                 <option></option>
@@ -221,19 +218,19 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <%--                                    <c:forEach var="sorted" items="${sortedList}" varStatus="i">--%>
-                                    <%--                                        <tr>--%>
-                                    <%--                                            <td>${i.index+1}</td>--%>
-                                    <%--                                            <td><a href="javascript:InitialDecisionView('${sorted.id}')" class="text-primary font-weight-bold"><u>${sorted.appNum}</u></a></td>--%>
-                                    <%--                                            <td>${sorted.statusNm}</td>--%>
-                                    <%--                                            <td>${sorted.insTime.toLocaleString()}</td>--%>
-                                    <%--                                            <td>${sorted.personFio}</td>--%>
-                                    <%--                                            <td>${sorted.customerCountry}-${sorted.customerCountryNm}</td>--%>
-                                    <%--                                            <td>${sorted.originCountry}-${sorted.orignCountrNm}</td>--%>
-                                    <%--                                            <td>${sorted.senderCountry}-${sorted.senderCountryNm}</td>--%>
-                                    <%--                                            <td>ст.инспектор Ж.Халилов</td>--%>
-                                    <%--                                        </tr>--%>
-                                    <%--                                    </c:forEach>--%>
+                                    <c:forEach var="sorted" items="${sortedList}" varStatus="i">
+                                        <tr>
+                                            <td>${i.index+1}</td>
+                                            <td><a href="javascript:InitialDecisionView('${sorted.id}')" class="text-primary font-weight-bold"><u>${sorted.appNum}</u></a></td>
+                                            <td>${sorted.statusNm}</td>
+                                            <td>${sorted.insTime.toLocaleString()}</td>
+                                            <td>${sorted.personFio}</td>
+                                            <td>${sorted.customerCountry}-${sorted.customerCountryNm}</td>
+                                            <td>${sorted.originCountry}-${sorted.orignCountrNm}</td>
+                                            <td>${sorted.senderCountry}-${sorted.senderCountryNm}</td>
+                                            <td>ст.инспектор Ж.Халилов</td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -260,21 +257,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <%--                                    <c:forEach var="terms" items="${termsList}" varStatus="i">--%>
-                                    <%--                                        <tr>--%>
-                                    <%--                                            <td>${i.index+1}</td>--%>
-                                    <%--                                            <td><a href="javascript:InitialDecisionView('${terms.id}')" class="text-primary font-weight-bold"><u>${terms.appNum}</u></a></td>--%>
-                                    <%--                                            <td>${terms.statusNm}</td>--%>
-                                    <%--                                            <td>${terms.insTime.toLocaleString()}</td>--%>
-                                    <%--                                            <td>${terms.personFio}</td>--%>
-                                    <%--                                            <td>${terms.customer_country}-${terms.customerCountryNm}</td>--%>
-                                    <%--                                            <td>${terms.originCountry}-${terms.orignCountrNm}</td>--%>
-                                    <%--                                            <td>${terms.customer_country}-${terms.customerCountryNm}</td>--%>
-                                    <%--                                            <td>${terms.terms}-${terms.termsAddr}</td>--%>
-                                    <%--                                            <td>${terms.originCountry}-${terms.orignCountrNm}</td>--%>
-                                    <%--                                            <td>ст.инспектор Ж.Халилов</td>--%>
-                                    <%--                                        </tr>--%>
-                                    <%--                                    </c:forEach>--%>
+                                    <c:forEach var="terms" items="${termsList}" varStatus="i">
+                                        <tr>
+                                            <td>${i.index+1}</td>
+                                            <td><a href="javascript:InitialDecisionView('${terms.id}')" class="text-primary font-weight-bold"><u>${terms.appNum}</u></a></td>
+                                            <td>${terms.statusNm}</td>
+                                            <td>${terms.insTime.toLocaleString()}</td>
+                                            <td>${terms.personFio}</td>
+                                            <td>${terms.customer_country}-${terms.customerCountryNm}</td>
+                                            <td>${terms.originCountry}-${terms.orignCountrNm}</td>
+                                            <td>${terms.customer_country}-${terms.customerCountryNm}</td>
+                                            <td>${terms.terms}-${terms.termsAddr}</td>
+                                            <td>${terms.originCountry}-${terms.orignCountrNm}</td>
+                                            <td>ст.инспектор Ж.Халилов</td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>

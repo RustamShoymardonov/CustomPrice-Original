@@ -1673,9 +1673,7 @@ function init_charts() {
     console.log('init_charts');
 
 
-    Chart.defaults.global.legend = {
-        enabled: false
-    };
+
 
 
 

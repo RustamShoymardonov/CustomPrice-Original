@@ -55,12 +55,12 @@
                                         <div class="col-sm-3 invoice-col">
                                             <address>
                                                 <i>
-                                                    <c:forEach var="val" items="${appInfo}" varStatus="i">
-                                                        ${val[14]}
-                                                        <br>${val[16]}
-                                                        <br>${val[22]}/${val[23]}
-                                                        <br>${val[3]}/${val[20]}
-                                                    </c:forEach>
+<%--                                                    <c:forEach var="val" items="${appInfo}" varStatus="i">--%>
+<%--                                                        ${val[14]}--%>
+<%--                                                        <br>${val[16]}--%>
+<%--                                                        <br>${val[22]}/${val[23]}--%>
+<%--                                                        <br>${val[3]}/${val[20]}--%>
+<%--                                                    </c:forEach>--%>
                                                 </i>
                                             </address>
                                         </div>
@@ -77,14 +77,14 @@
                                         <div class="col-sm-3 invoice-col">
                                             <address>
                                                 <i>
-                                                    <c:forEach var="val" items="${appInfo}" varStatus="i">
-                                                        ${val[33]} АҚШ</strong>
-                                                        <a href="#"><i class="fa fa-calculator fa-2x" data-toggle="modal" data-target="#exampleModal12" style="margin-left: 45%"></i></a>
-                                                        <br>${val[31]} кг
-                                                        <br>${val[32]} кг
-                                                        <br>
-                                                        <mark>0,6 АҚШ доллари</mark>
-                                                    </c:forEach>
+<%--                                                    <c:forEach var="val" items="${appInfo}" varStatus="i">--%>
+<%--                                                        ${val[33]} АҚШ</strong>--%>
+<%--                                                        <a href="#"><i class="fa fa-calculator fa-2x" data-toggle="modal" data-target="#exampleModal12" style="margin-left: 45%"></i></a>--%>
+<%--                                                        <br>${val[31]} кг--%>
+<%--                                                        <br>${val[32]} кг--%>
+<%--                                                        <br>--%>
+<%--                                                        <mark>0,6 АҚШ доллари</mark>--%>
+<%--                                                    </c:forEach>--%>
                                                 </i>
                                             </address>
                                         </div>

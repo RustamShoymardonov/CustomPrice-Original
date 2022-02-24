@@ -21,13 +21,14 @@
     <link href="<%=request.getContextPath()%>/resources/build/css/custom.min.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/resources/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/resources/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body class="nav-md menu_fixed">
 
-<div class="container body">
+<div class="container body position-fixed">
     <div class="container body">
         <div class="col-md-3 left_col" style="height: 110vh">
-            <div class="left_col scroll-view">
+            <div class="left_col scroll-view ">
                 <div class="navbar nav_title">
                     <a href="#" class="site_title"><i class="fa fa-list"></i><span>Божхона қиймати</span></a>
                 </div>
@@ -38,7 +39,7 @@
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section">
 
-                        <ul class="nav side-menu">
+                        <ul class="nav side-menu menu_fixed">
                             <li><a href="javascript:void(0)"><i class="fa fa-bar-chart-o"></i>Товарларни тоифалаш</a></li>
                             <li><a href="javascript:InitialDecisionRasp(0)"><i class="fa fa-edit"></i>Тақсимлаш</a></li>
                             <li><a href="javascript:InitialDecision(0)"><i class="fa fa-edit"></i>Мурожаатлар</a>
@@ -190,6 +191,7 @@
 <script src="<%=request.getContextPath()%>/resources/vendors/jquery/dist/jquery.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/src/js/chartjs.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/iCheck/icheck.min.js"></script>
 <script>
@@ -275,7 +277,12 @@
     }
 
 </script>
+
 <script src="<%=request.getContextPath()%>/resources/build/js/custom.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+
+
+
+
 </body>
 </html>
