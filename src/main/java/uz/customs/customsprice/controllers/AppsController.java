@@ -1,14 +1,11 @@
 package uz.customs.customsprice.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import uz.customs.customsprice.entity.InitialDecision.Apps;
-import uz.customs.customsprice.entity.InitialDecision.Commodity;
-import uz.customs.customsprice.repository.AppsRepo;
-import uz.customs.customsprice.service.AppsService;
+import uz.customs.customsprice.entity.InitialDecision.*;
+import uz.customs.customsprice.service.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -18,24 +15,49 @@ import java.util.List;
 @RequestMapping("/apps")
 public class AppsController {
     private final AppsService appsService;
-    private final AppsRepo appsRepo;
+    private final ConturyService conturyService;
+    private final LocationService locationService;
+    private final StatusService statusService;
+    private final TermsService termsService;
+    private final AppsService appsservice;
     private final String INITIALDECISION = "/resources/pages/InitialDecision/InitialDecision1";
     private final String INITIALDECISIONRASP = "/resources/pages/InitialDecision/InitialDecisionRasp";
     private final String INITIALDECISIONVIEW = "/resources/pages/InitialDecision/InitialDecisionView";
 
+    public AppsController(AppsService appsService, ConturyService conturyService, LocationService locationService, StatusService statusService, TermsService termsService, AppsService appsservice) {
+        this.appsService = appsService;
+        this.conturyService = conturyService;
+        this.locationService = locationService;
+        this.statusService = statusService;
+        this.termsService = termsService;
+        this.appsservice = appsservice;
+    }
 
     /*---------------------------------------------------------------------------------------------------------start*/
     /* Apps маълумотларини чиқариш учун*/
-    @Autowired
-    private AppsService appsservice;
 
     @PostMapping
     public ResponseEntity valuesave(@RequestBody Apps apps) {
         try {
+            Country country = conturyService.getByCodeAndLngaTpcd(apps.getCustomerCountry(), "UZ");
+            apps.setCustomerCountryNm(country.getCdNm());
+
+            country = conturyService.getByCodeAndLngaTpcd(apps.getSenderCountry(), "UZ");
+            apps.setSenderCountryNm(country.getCdNm());
+
+            Location location = locationService.getById(apps.getLocationId());
+            apps.setLocationNm(location.getName1());
+
+            Status status = statusService.getById(apps.getStatus());
+            apps.setStatusNm(status.getName());
+
+            Terms terms = termsService.findByIdAndLngaTpcd(apps.getTerms(), "UZ");
+            apps.setTermsNm(terms.getName());
+
             appsService.saveApps(apps);
-            return ResponseEntity.ok(apps);
+            return ResponseEntity.ok(" <<--- Apps (success) --->> - маълумотларини сақлаш муваффақиятли бажарилди ! \n" + apps);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(" <<>--APPS-->> malumotlari saqlanmadi");
+            return ResponseEntity.badRequest().body(" <<--- Apps (error) --->> маълумотларини сақлашда хатолик юз берди ! ");
         }
 
     }
@@ -44,19 +66,10 @@ public class AppsController {
 
     /*---------------------------------------------------------------------------------------------------------start*/
     /* Apps маълумотларини сақлаш учун учун*/
-    public AppsController(AppsService appsService, AppsRepo appsRepo) {
-        this.appsService = appsService;
-        this.appsRepo = appsRepo;
-    }
-
     @PostMapping(value = INITIALDECISIONRASP)
     @ResponseBody
     public ModelAndView InitialDecisionRasp(HttpSession session, @RequestParam(name = "id") String status) {
-        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionRasp");
-
-        List<Apps> termsList = new ArrayList<>();
-        termsList = appsservice.getListTerms();
-        mav.addObject("termsList", termsList);
+        ModelAndView mav = new ModelAndView("/resources/pages/InitialDecision/InitialDecisionRasp");
 
         List<Apps> notSortedList = new ArrayList<>();
         notSortedList = appsservice.getListNotSorted();
@@ -65,6 +78,11 @@ public class AppsController {
         List<Apps> sortedList = new ArrayList<>();
         sortedList = appsservice.getListSorted();
         mav.addObject("sortedList", sortedList);
+
+        List<Apps> termsList = new ArrayList<>();
+        termsList = appsservice.getListTerms();
+        mav.addObject("termsList", termsList);
+
         return mav;
     }
 

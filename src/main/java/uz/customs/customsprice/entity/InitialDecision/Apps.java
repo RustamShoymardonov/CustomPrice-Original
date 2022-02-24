@@ -47,23 +47,17 @@ public class Apps extends AbstractAuditingEntity {
     @Column(name = "SENDER_COUNTRY_NM", columnDefinition = "VARCHAR(120) CCSID 1208")
     private String senderCountryNm;
 
-    @Column(name = "ORIGIN_COUNTRY", length = 3)
-    private String originCountry;
-
-    @Column(name = "ORIGIN_COUNTRY_NM", columnDefinition = "VARCHAR(120) CCSID 1208")
-    private String orignCountrNm;
-
     @Column(name = "SENDER_ORG", columnDefinition = "VARCHAR(900) CCSID 1208")
     private String senderOrg;
 
     @Column(name = "SELLER_ORG", columnDefinition = "VARCHAR(900) CCSID 1208")
     private String sellerOrg;
 
-    @Column(name = "ORIGIN_ORG", columnDefinition = "VARCHAR(900) CCSID 1208")
-    private String originOrg;
-
     @Column(name = "TERMS", length = 3)
     private String terms;
+
+    @Column(name = "TERMS_NM", columnDefinition = "VARCHAR(450) CCSID 1208")
+    private String termsNm;
 
     @Column(name = "TERMS_ADDR", length = 50)
     private String termsAddr;
@@ -103,7 +97,7 @@ public class Apps extends AbstractAuditingEntity {
     @Column(name = "LOCATION_ID", length = 4)
     private String locationId;
 
-    @Column(name = "LOCATION_NM", length = 180)
+    @Column(name = "LOCATION_NM", columnDefinition = "VARCHAR(180) CCSID 1208")
     private String locationNm;
 
     @Column(name = "TRANS_EXP", length = 4)
@@ -120,7 +114,7 @@ public class Apps extends AbstractAuditingEntity {
     public Apps() {
     }
 
-    public Apps(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, String personId, String appNum, Date appDate, String customerCountry, String customerCountryNm, String senderCountry, String senderCountryNm, String originCountry, String orignCountrNm, String senderOrg, String sellerOrg, String originOrg, String terms, String termsAddr, Date inDecDate, String inDecNum, String personFio, String orgName, String personPosition, String personAddr, String personTin, String personPin, String personMail, String personPhone, String locationId, String locationNm, BigDecimal transExp, int status, String statusNm) {
+    public Apps(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, String personId, String appNum, Date appDate, String customerCountry, String customerCountryNm, String senderCountry, String senderCountryNm, String senderOrg, String sellerOrg, String terms, String termsNm, String termsAddr, Date inDecDate, String inDecNum, String personFio, String orgName, String personPosition, String personAddr, String personTin, String personPin, String personMail, String personPhone, String locationId, String locationNm, BigDecimal transExp, int status, String statusNm) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
         this.personId = personId;
@@ -130,12 +124,10 @@ public class Apps extends AbstractAuditingEntity {
         this.customerCountryNm = customerCountryNm;
         this.senderCountry = senderCountry;
         this.senderCountryNm = senderCountryNm;
-        this.originCountry = originCountry;
-        this.orignCountrNm = orignCountrNm;
         this.senderOrg = senderOrg;
         this.sellerOrg = sellerOrg;
-        this.originOrg = originOrg;
         this.terms = terms;
+        this.termsNm = termsNm;
         this.termsAddr = termsAddr;
         this.inDecDate = inDecDate;
         this.inDecNum = inDecNum;
@@ -218,22 +210,6 @@ public class Apps extends AbstractAuditingEntity {
         this.senderCountryNm = senderCountryNm;
     }
 
-    public String getOriginCountry() {
-        return originCountry;
-    }
-
-    public void setOriginCountry(String originCountry) {
-        this.originCountry = originCountry;
-    }
-
-    public String getOrignCountrNm() {
-        return orignCountrNm;
-    }
-
-    public void setOrignCountrNm(String orignCountrNm) {
-        this.orignCountrNm = orignCountrNm;
-    }
-
     public String getSenderOrg() {
         return senderOrg;
     }
@@ -250,20 +226,20 @@ public class Apps extends AbstractAuditingEntity {
         this.sellerOrg = sellerOrg;
     }
 
-    public String getOriginOrg() {
-        return originOrg;
-    }
-
-    public void setOriginOrg(String originOrg) {
-        this.originOrg = originOrg;
-    }
-
     public String getTerms() {
         return terms;
     }
 
     public void setTerms(String terms) {
         this.terms = terms;
+    }
+
+    public String getTermsNm() {
+        return termsNm;
+    }
+
+    public void setTermsNm(String termsNm) {
+        this.termsNm = termsNm;
     }
 
     public String getTermsAddr() {

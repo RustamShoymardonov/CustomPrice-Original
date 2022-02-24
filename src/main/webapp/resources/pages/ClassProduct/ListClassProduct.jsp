@@ -11,8 +11,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <body>
-    <h1>Товарларни тоифалаш lll</h1>
+<h1>Товарларни тоифалаш lll</h1>
 </body>
-
-
 

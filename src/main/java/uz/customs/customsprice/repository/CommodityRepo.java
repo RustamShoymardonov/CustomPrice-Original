@@ -6,5 +6,4 @@ import uz.customs.customsprice.entity.InitialDecision.Commodity;
 
 public interface CommodityRepo extends JpaRepository<Commodity, String> {
 //    List<Apps> findByStatus(int param);
-
 }

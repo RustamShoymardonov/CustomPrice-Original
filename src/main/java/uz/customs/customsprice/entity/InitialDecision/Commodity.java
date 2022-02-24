@@ -25,8 +25,20 @@ public class Commodity extends AbstractAuditingEntity {
     @JsonIgnore
     private Apps apps;
 
-//    @Column(name = "app_id", length = 50)
-//    private String appId;
+    @Column(name = "APP_ID", columnDefinition = "VARCHAR(50)")
+    private String appId;
+
+    @Column(name = "CMDT_NUM")
+    private Integer cmdtNum;
+
+    @Column(name = "ORIGIN_COUNTRY", length = 3)
+    private String originCountry;
+
+    @Column(name = "ORIGIN_COUNTRY_NM", columnDefinition = "VARCHAR(120) CCSID 1208")
+    private String orignCountrNm;
+
+    @Column(name = "ORIGIN_ORG", columnDefinition = "VARCHAR(900) CCSID 1208")
+    private String originOrg;
 
     @Column(name = "TRADE_NAME", columnDefinition = "VARCHAR(765) CCSID 1208")
     private String tradeName;
@@ -118,10 +130,15 @@ public class Commodity extends AbstractAuditingEntity {
     public Commodity() {
     }
 
-    public Commodity(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, String tradeName, String tradeMark, String mark, String model, String article, String sort, String standarts, String functions, String comProp, String techChar, String productGoal, String hsCode, BigDecimal brutto, BigDecimal netto, BigDecimal basicQty, String extraUnits, BigDecimal extraQty, BigDecimal price, String currencyType, BigDecimal cargoSpace, String packType, String packTypeNm, BigDecimal packQty, String extraInfo, String hsDecNum, Date hsDecDate, String method, String methodNm) {
+    public Commodity(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, String appId, Integer cmdtNum, String originCountry, String orignCountrNm, String originOrg, String tradeName, String tradeMark, String mark, String model, String article, String sort, String standarts, String functions, String comProp, String techChar, String productGoal, String hsCode, BigDecimal brutto, BigDecimal netto, BigDecimal basicQty, String extraUnits, BigDecimal extraQty, BigDecimal price, String currencyType, BigDecimal cargoSpace, String packType, String packTypeNm, BigDecimal packQty, String extraInfo, String hsDecNum, Date hsDecDate, String method, String methodNm) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
         this.apps = apps;
+        this.appId = appId;
+        this.cmdtNum = cmdtNum;
+        this.originCountry = originCountry;
+        this.orignCountrNm = orignCountrNm;
+        this.originOrg = originOrg;
         this.tradeName = tradeName;
         this.tradeMark = tradeMark;
         this.mark = mark;
@@ -166,6 +183,46 @@ public class Commodity extends AbstractAuditingEntity {
 
     public void setApps(Apps apps) {
         this.apps = apps;
+    }
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
+    }
+
+    public Integer getCmdtNum() {
+        return cmdtNum;
+    }
+
+    public void setCmdtNum(Integer cmdtNum) {
+        this.cmdtNum = cmdtNum;
+    }
+
+    public String getOriginCountry() {
+        return originCountry;
+    }
+
+    public void setOriginCountry(String originCountry) {
+        this.originCountry = originCountry;
+    }
+
+    public String getOrignCountrNm() {
+        return orignCountrNm;
+    }
+
+    public void setOrignCountrNm(String orignCountrNm) {
+        this.orignCountrNm = orignCountrNm;
+    }
+
+    public String getOriginOrg() {
+        return originOrg;
+    }
+
+    public void setOriginOrg(String originOrg) {
+        this.originOrg = originOrg;
     }
 
     public String getTradeName() {

@@ -32,16 +32,13 @@ public class AppsService {
                 "    a.upduser,\n" +
                 "    a.app_num,\n" +
                 "    a.app_date,\n" +
-                "    c.cd_nm customer_country_nm,\n" +
+                "    a.customer_country_nm,\n" +
                 "    a.customer_country,\n" +
                 "    a.in_dec_date,\n" +
                 "    a.in_dec_num,\n" +
                 "    a.location_id,\n" +
                 "    a.location_nm,\n" +
                 "    a.org_name,\n" +
-                "    a.origin_country,\n" +
-                "    a.origin_org,\n" +
-                "    c2.cd_nm origin_country_nm,\n" +
                 "    a.person_addr,\n" +
                 "    a.person_fio,\n" +
                 "    a.person_mail,\n" +
@@ -54,30 +51,17 @@ public class AppsService {
                 "    a.sender_country_nm,\n" +
                 "    a.sender_org,\n" +
                 "    a.status,\n" +
-                "    s.name status_nm,\n" +
+                "    a.status_nm,\n" +
                 "    a.terms,\n" +
+                "    a.terms_nm,\n" +
                 "    a.terms_addr,\n" +
                 "    a.trans_exp,\n" +
                 "    a.person_id\n" +
                 "from\n" +
                 "    apps a\n" +
-                "left join\n" +
-                "    cpid.status_type s\n" +
-                "on\n" +
-                "    s.id=a.status\n" +
-                "left join\n" +
-                "    cpid.country c\n" +
-                "on\n" +
-                "   c.code= a.customer_country\n" +
-                " and c.lnga_tpcd='UZ' " +
-                "left join\n" +
-                "    cpid.country c2\n" +
-                "on\n" +
-                "   c2.code= a.ORIGIN_COUNTRY\n" +
-                " and c2.lnga_tpcd='UZ' " +
                 "where\n" +
-                "    a.isdeleted=0 \n" +
-                "and a.status=100\n" +
+                "    a.status=100\n" +
+                "and a.isdeleted=0\n" +
                 "order by\n" +
                 "    a.instime desc";
         return (List<Apps>) entityManager.createNativeQuery(queryForList, Apps.class).getResultList();
@@ -101,9 +85,6 @@ public class AppsService {
                 "    a.location_id,\n" +
                 "    a.location_nm,\n" +
                 "    a.org_name,\n" +
-                "    a.origin_country,\n" +
-                "    a.origin_org,\n" +
-                "    a.origin_country_nm,\n" +
                 "    a.person_addr,\n" +
                 "    a.person_fio,\n" +
                 "    a.person_mail,\n" +
@@ -116,22 +97,18 @@ public class AppsService {
                 "    a.sender_country_nm,\n" +
                 "    a.sender_org,\n" +
                 "    a.status,\n" +
-                "    s.name status_nm,\n" +
+                "    a.status_nm,\n" +
                 "    a.terms,\n" +
+                "    a.terms_nm,\n" +
                 "    a.terms_addr,\n" +
                 "    a.trans_exp\n" +
                 "from\n" +
                 "    apps a\n" +
-                "left join\n" +
-                "    cpid.status_type s\n" +
-                "on\n" +
-                "    s.id=a.status\n" +
-                "and s.isdeleted=0\n" +
                 "where\n" +
-                "    a.isdeleted=0 \n" +
-                "and a.status !=100\n" +
-                "and a.status !=170\n" +
-                "and a.status !=175\n" +
+                "    a.status not in (100,\n" +
+                "                     170,\n" +
+                "                     175)\n" +
+                "and a.isdeleted=0\n" +
                 "order by\n" +
                 "    a.instime desc";
         return (List<Apps>) entityManager.createNativeQuery(queryForList, Apps.class).getResultList();
@@ -154,10 +131,7 @@ public class AppsService {
                 "    a.in_dec_num,\n" +
                 "    a.location_id,\n" +
                 "    a.location_nm,\n" +
-                "    a.org_name,\n" +
-                "    a.origin_country,\n" +
-                "    a.origin_org,\n" +
-                "    a.origin_country_nm,\n" +
+                "    a.org_name,        \n" +
                 "    a.person_addr,\n" +
                 "    a.person_fio,\n" +
                 "    a.person_mail,\n" +
@@ -170,22 +144,12 @@ public class AppsService {
                 "    a.sender_country_nm,\n" +
                 "    a.sender_org,\n" +
                 "    a.status,\n" +
-                "    d.sign terms,\n" +
+                "    a.terms_nm,\n" +
                 "    a.terms_addr,\n" +
                 "    a.trans_exp,\n" +
-                "    s.name status_nm\n" +
+                "    a.status_nm\n" +
                 "from\n" +
                 "    apps a\n" +
-                "left join\n" +
-                "    cpid.status_type s\n" +
-                "on\n" +
-                "    s.id=a.status\n" +
-                "and s.isdeleted=0\n" +
-                "left join\n" +
-                "    cpid.delivery_terms d\n" +
-                "on\n" +
-                "    d.raqam= a.terms\n" +
-                "and d.lnga_tpcd='UZ'\n" +
                 "where\n" +
                 "    a.isdeleted=0\n" +
                 "and a.status in (170,175)\n" +
@@ -227,7 +191,8 @@ public class AppsService {
         String lastNumber = "000001";
         if (resultList.size() > 0) {
             lastNumber = String.valueOf(resultList.get(0));
-            if (lastNumber == "null") {
+//            if (lastNumber == "null") {
+            if (lastNumber == null || lastNumber.equals("null") || lastNumber.equals("")) {
                 lastNumber = "000001";
             }
         }

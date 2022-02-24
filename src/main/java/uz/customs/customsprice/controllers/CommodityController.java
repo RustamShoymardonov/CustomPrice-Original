@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import uz.customs.customsprice.entity.InitialDecision.Commodity;
-import uz.customs.customsprice.service.AppsService;
-import uz.customs.customsprice.service.CommodityService;
+import uz.customs.customsprice.entity.InitialDecision.Country;
+import uz.customs.customsprice.entity.InitialDecision.Method;
+import uz.customs.customsprice.entity.InitialDecision.Packaging;
+import uz.customs.customsprice.service.*;
 import uz.customs.customsprice.utils.Utils;
 
 import javax.servlet.http.HttpSession;
@@ -23,6 +25,15 @@ public class CommodityController {
     @Autowired
     private AppsService appsservice;
 
+    @Autowired
+    private ConturyService conturyService;
+
+    @Autowired
+    private MethodService methodService;
+
+    @Autowired
+    private PackagingService packagingService;
+
     public CommodityController(CommodityService commodityService) {
         this.commodityService = commodityService;
     }
@@ -30,11 +41,20 @@ public class CommodityController {
     @PostMapping
     public ResponseEntity valuesave(@RequestBody Commodity commodity) {
         try {
+            Country country = conturyService.getByCodeAndLngaTpcd(commodity.getOriginCountry(), "UZ");
+            commodity.setOrignCountrNm(country.getCdNm());
+
+            Method method = methodService.getById(commodity.getMethod());
+            commodity.setMethodNm(method.getName());
+
+            Packaging packaging = packagingService.getByIdAndLngaTpcd(commodity.getPackType(), "UZ");
+            commodity.setPackTypeNm(packaging.getCdNm());
+
             commodityService.saveCommodity(commodity);
 //            return ResponseEntity.ok(apps);
-            return ResponseEntity.ok(" Commodity - да Ҳаммаси ок ! ");
+            return ResponseEntity.ok(" <<--- Commodity (success) --->> - маълумотларини сақлаш муваффақиятли бажарилди ! ");
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(" <<--- Commodity --->> хатолик юз берди ! ");
+            return ResponseEntity.badRequest().body(" <<--- Commodity (error) --->> маълумотларини сақлашда хатолик юз берди ! ");
         }
 
     }
