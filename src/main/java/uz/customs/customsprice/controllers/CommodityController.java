@@ -79,15 +79,18 @@ public class CommodityController {
                 mav = mav1;
                 break;
             case 2:
-                mav2.addObject("COMMODITY_ID", COMMODITY_ID);
+                List<Commodity> commodityList2 = appsservice.getCommodityList(COMMODITY_ID);
+                mav2.addObject("commodity", commodityList2);
+//                commodityList2.clear();
                 mav = mav2;
                 break;
             case 3:
-                mav2.addObject("COMMODITY_ID", COMMODITY_ID);
+                List<Commodity> commodityList3 = appsservice.getCommodityList(COMMODITY_ID);
+                mav2.addObject("commodity", commodityList3);
                 mav = mav3;
                 break;
             case 4:
-                mav2.addObject("COMMODITY_ID", COMMODITY_ID);
+                mav2.addObject("commodity", COMMODITY_ID);
                 mav = mav4;
                 break;
             default:

@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="col-md-8 col-sm-6  form-group has-feedback">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-dropbox fa-lg mr-2"></i><b>Товар номи:</b> ${var.tradeName}${var.tradeMark}${var.model}${var.article}</h6>
+                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-dropbox fa-lg mr-2"></i><b>Товар номи:</b> ${var.tradeName} ${var.tradeMark} ${var.model} ${var.article}</h6>
                 </div>
 
                 <div class="col-md-4 col-sm-6  form-group has-feedback mt-3">

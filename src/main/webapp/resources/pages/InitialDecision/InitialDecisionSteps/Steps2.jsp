@@ -24,10 +24,10 @@
     </div>
     <fieldset class="border-primary" style="border-style: dashed solid">
         <div class="x_content">
-            <%--            <c:forEach var="var" items="${commodity}">--%>
+            <c:forEach var="var" items="${commodity}">
             <br>
             <div class="col-md-3 col-sm-3  form-group has-feedback">
-                <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-text-o fa-lg mr-2"></i><b>Тижорат номи:</b> <%--${var.tradeName}${var.tradeMark}${var.model}${var.article}--%></h6>
+                <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-text-o fa-lg mr-2"></i><b>Тижорат номи:</b> ${var.tradeName}</h6>
             </div>
 
             <div class="col-md-3 col-sm-3  form-group has-feedback">
@@ -133,7 +133,7 @@
             <!-- Усул тури Modal end -->
         </div>
     </fieldset>
-    <%--    </c:forEach>--%>
+    </c:forEach>
 </div>
 
 </body>
