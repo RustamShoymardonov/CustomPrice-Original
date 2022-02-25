@@ -7,17 +7,20 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <body>
 
 <div class="col-md-12 col-sm-12">
-        <div class="x_panel shadow">
-            <div class="x_title ">
-                <h2><i class="fa fa-bars"></i> Товарларни тоифалаш </h2>
-                <div class="clearfix"></div>
-            </div>
+    <div class="x_panel shadow">
+        <div class="x_title ">
+            <h2><i class="fa fa-bars"></i> Товарларни тоифалаш </h2>
+            <div class="clearfix"></div>
+        </div>
             <div class="col-md-9">
                 <div class="x_content m-0">
                 <form class="form-label-left input_mask mt-2">

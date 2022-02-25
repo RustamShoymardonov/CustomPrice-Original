@@ -33,7 +33,7 @@ public class Apps extends AbstractAuditingEntity {
     @Column(name = "APP_DATE", columnDefinition = " date default current_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
-    private Date appDate;
+    private Date appDate = new Date(new Date().getTime());
 
     @Column(name = "CUSTOMER_COUNTRY", length = 3)
     private String customerCountry;

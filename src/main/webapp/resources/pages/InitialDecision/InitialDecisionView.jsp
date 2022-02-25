@@ -7,7 +7,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <div class="row-fluid">
@@ -54,10 +57,10 @@
                                             <address>
                                                 <i>
                                                     <c:forEach var="val" items="${appInfo}" varStatus="i">
-                                                        ${val[14]}
-                                                        <br>${val[16]}
-                                                        <br>${val[22]}/${val[23]}
-                                                        <br>${val[3]}/${val[20]}
+                                                        ${val[11]} <%--todo Аризачи:  --%>
+                                                        <br>${val[13]} <%--todo Телефон рақами:  --%>
+                                                        <br>${val[19]}/${val[20]} <%--todo Юк жўнатувчи: (sender_country_nm + trans_exp)  --%>
+                                                        <br>${val[3]}/${val[17]} <%--todo >Сотувчи (customer_country_nm) --%>
                                                     </c:forEach>
                                                 </i>
                                             </address>
@@ -76,10 +79,10 @@
                                             <address>
                                                 <i>
                                                     <c:forEach var="val" items="${appInfo}" varStatus="i">
-                                                        ${val[33]} АҚШ</strong>
+                                                        ${val[31]} АҚШ</strong>
                                                         <a href="#"><i class="fa fa-calculator fa-2x" data-toggle="modal" data-target="#exampleModal12" style="margin-left: 45%"></i></a>
-                                                        <br>${val[31]} кг
-                                                        <br>${val[32]} кг
+                                                        <br>${val[29]} кг
+                                                        <br>${val[30]} кг
                                                         <br>
                                                         <mark>0,6 АҚШ доллари</mark>
                                                     </c:forEach>
@@ -213,8 +216,8 @@
                                     <c:forEach var="val" items="${allCommodityFor}" varStatus="i">
                                         <tr>
                                             <td>
-                                                <button class="btn btn-primary btn-outline-dark btn-sm btn-block" id="btnCmdt_${i.index+1}" onclick="checkCmdt('${val.id}',1)">${i.index+1}:
-                                                        ${val.hsCode}</button>
+                                                <button class="btn btn-primary btn-outline-dark btn-sm btn-block" id="btnCmdt_${i.index+1}"
+                                                        onclick="checkCmdt('${val.id}',1)">${i.index+1}: ${val.hsCode}</button>
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -325,7 +328,8 @@
 
             function leaveAStepCallback(obj, context) {
                 // alert("Leaving step " + context.fromStep + " to go to step " + context.toStep);
-                checkCmdt('', context.toStep);
+                if (context.toStep !== 1)
+                    checkCmdt('', context.toStep);
                 return true;
                 // return validateSteps(context.fromStep);
             }

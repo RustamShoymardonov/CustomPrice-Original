@@ -13,7 +13,6 @@ import uz.customs.customsprice.service.*;
 import uz.customs.customsprice.utils.Utils;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -70,10 +69,13 @@ public class CommodityController {
         String COMMODITY_ID = Utils.nullClear(String.valueOf(session.getAttribute("COMMODITY_ID")));
         switch (x) {
             case 1:
-                List<Commodity> getInitialDecisionViewCommodityOne = new ArrayList<>();
-                getInitialDecisionViewCommodityOne = appsservice.getInitialDecisionViewCommodityOne(cmdt_id);
-                mav1.addObject("oneCommodityFor", getInitialDecisionViewCommodityOne);
-                session.setAttribute("COMMODITY_ID", getInitialDecisionViewCommodityOne.get(0).getId());
+                mav1.addObject("commodityF", new Commodity());
+                List<Commodity> commodityList = appsservice.getCommodityList(cmdt_id);
+                if (commodityList.size() > 0)
+                    mav1.addObject("commodity", commodityList);
+                else
+                    mav1.addObject("commodity", "0");
+                session.setAttribute("COMMODITY_ID", commodityList.get(0).getId());
                 mav = mav1;
                 break;
             case 2:

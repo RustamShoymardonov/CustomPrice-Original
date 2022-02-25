@@ -6,7 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
@@ -21,9 +24,10 @@
     </div>
     <fieldset class="border-primary" style="border-style: dashed solid">
         <div class="x_content">
+            <%--            <c:forEach var="var" items="${commodity}">--%>
             <br>
             <div class="col-md-3 col-sm-3  form-group has-feedback">
-                <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-text-o fa-lg mr-2"></i><b>Тижорат номи:</b> Газли ичимлик</h6>
+                <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-text-o fa-lg mr-2"></i><b>Тижорат номи:</b> <%--${var.tradeName}${var.tradeMark}${var.model}${var.article}--%></h6>
             </div>
 
             <div class="col-md-3 col-sm-3  form-group has-feedback">
@@ -129,6 +133,7 @@
             <!-- Усул тури Modal end -->
         </div>
     </fieldset>
+    <%--    </c:forEach>--%>
 </div>
 
 </body>
