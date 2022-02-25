@@ -14,9 +14,9 @@
 <html>
 <head>
     <title>Title</title>
-    <%
-        System.out.println("Step1");
-    %>
+    <%--    <%--%>
+    <%--        System.out.println("Step1");--%>
+    <%--    %>--%>
 </head>
 <body>
 
