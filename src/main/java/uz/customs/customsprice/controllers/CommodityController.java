@@ -5,10 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import uz.customs.customsprice.entity.InitialDecision.Commodity;
-import uz.customs.customsprice.entity.InitialDecision.Country;
-import uz.customs.customsprice.entity.InitialDecision.Method;
-import uz.customs.customsprice.entity.InitialDecision.Packaging;
+import uz.customs.customsprice.entity.InitialDecision.*;
 import uz.customs.customsprice.service.*;
 import uz.customs.customsprice.utils.Utils;
 
@@ -33,6 +30,9 @@ public class CommodityController {
     @Autowired
     private PackagingService packagingService;
 
+    @Autowired
+    private Tnved2Service tnved2Service;
+
     public CommodityController(CommodityService commodityService) {
         this.commodityService = commodityService;
     }
@@ -49,13 +49,14 @@ public class CommodityController {
             Packaging packaging = packagingService.getByIdAndLngaTpcd(commodity.getPackType(), "UZ");
             commodity.setPackTypeNm(packaging.getCdNm());
 
+            Tnved2 tnved2 = tnved2Service.getByIdAndFinishdate(commodity.getHsCode());
+            commodity.setHsName(tnved2.getName());
+
             commodityService.saveCommodity(commodity);
-//            return ResponseEntity.ok(apps);
             return ResponseEntity.ok(" <<--- Commodity (success) --->> - маълумотларини сақлаш муваффақиятли бажарилди ! ");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(" <<--- Commodity (error) --->> маълумотларини сақлашда хатолик юз берди ! ");
         }
-
     }
 
     @PostMapping(value = INITIALDECISIONVIEWCMDT)
@@ -81,7 +82,6 @@ public class CommodityController {
             case 2:
                 List<Commodity> commodityList2 = appsservice.getCommodityList(COMMODITY_ID);
                 mav2.addObject("commodity", commodityList2);
-//                commodityList2.clear();
                 mav = mav2;
                 break;
             case 3:

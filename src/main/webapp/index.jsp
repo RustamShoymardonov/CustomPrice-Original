@@ -28,7 +28,7 @@
 </head>
 <body class="nav-md menu_fixed">
 
-<div class="container body position-fixed">
+<div class="container body">
     <div class="container body">
         <div class="col-md-3 left_col" style="height: 110vh">
             <div class="left_col scroll-view ">

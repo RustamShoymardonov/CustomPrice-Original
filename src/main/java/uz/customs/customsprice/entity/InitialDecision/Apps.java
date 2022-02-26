@@ -62,14 +62,6 @@ public class Apps extends AbstractAuditingEntity {
     @Column(name = "TERMS_ADDR", length = 50)
     private String termsAddr;
 
-    @Column(name = "IN_DEC_DATE")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
-    private Date inDecDate;
-
-    @Column(name = "IN_DEC_NUM", length = 30)
-    private String inDecNum;
-
     @Column(name = "PERSON_FIO", columnDefinition = "VARCHAR(180) CCSID 1208")
     private String personFio;
 
@@ -114,7 +106,7 @@ public class Apps extends AbstractAuditingEntity {
     public Apps() {
     }
 
-    public Apps(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, String personId, String appNum, Date appDate, String customerCountry, String customerCountryNm, String senderCountry, String senderCountryNm, String senderOrg, String sellerOrg, String terms, String termsNm, String termsAddr, Date inDecDate, String inDecNum, String personFio, String orgName, String personPosition, String personAddr, String personTin, String personPin, String personMail, String personPhone, String locationId, String locationNm, BigDecimal transExp, int status, String statusNm) {
+    public Apps(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, String personId, String appNum, Date appDate, String customerCountry, String customerCountryNm, String senderCountry, String senderCountryNm, String senderOrg, String sellerOrg, String terms, String termsNm, String termsAddr, String personFio, String orgName, String personPosition, String personAddr, String personTin, String personPin, String personMail, String personPhone, String locationId, String locationNm, BigDecimal transExp, int status, String statusNm) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
         this.personId = personId;
@@ -129,8 +121,6 @@ public class Apps extends AbstractAuditingEntity {
         this.terms = terms;
         this.termsNm = termsNm;
         this.termsAddr = termsAddr;
-        this.inDecDate = inDecDate;
-        this.inDecNum = inDecNum;
         this.personFio = personFio;
         this.orgName = orgName;
         this.personPosition = personPosition;
@@ -248,22 +238,6 @@ public class Apps extends AbstractAuditingEntity {
 
     public void setTermsAddr(String termsAddr) {
         this.termsAddr = termsAddr;
-    }
-
-    public Date getInDecDate() {
-        return inDecDate;
-    }
-
-    public void setInDecDate(Date inDecDate) {
-        this.inDecDate = inDecDate;
-    }
-
-    public String getInDecNum() {
-        return inDecNum;
-    }
-
-    public void setInDecNum(String inDecNum) {
-        this.inDecNum = inDecNum;
     }
 
     public String getPersonFio() {

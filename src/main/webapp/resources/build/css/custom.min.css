@@ -6031,3 +6031,9 @@ ul.notifications {
     background-color: #007bff!important;
     border-color: #f8f9fa #dee2e6 #f8f9fa!important;
 }
+
+.hoveroverflowvisible:hover{
+    transition: .55s opacity, .55s visibility;
+    overflow: visible!important;
+    white-space: normal!important;
+}

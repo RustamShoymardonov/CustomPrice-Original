@@ -22,7 +22,7 @@
                     <h4>
                         <c:forEach var="val" items="${appInfo}">
                             <i class="fa fa-edit"></i>АРИЗА
-                            <small>№:${val[1]}</small>
+                            <small>№: ${val[1]}</small>
                         </c:forEach>
                     </h4>
                     <div class="clearfix"></div>
@@ -44,54 +44,115 @@
                                 <section class="content invoice">
                                     <!-- info row -->
                                     <div class="row invoice-info">
-                                        <div class="col-sm-3 invoice-col">
+                                        <div class="col-sm-3 invoice-col border-blue border-left">
                                             <address>
                                                 <strong><i class="fa fa-user mr-2"></i>Аризачи:</strong>
                                                 <br><strong><i class="fa fa-phone mr-2"></i>Телефон рақами:</strong>
                                                 <br><strong><i class="fa fa-barcode mr-2"></i>Юк жўнатувчи:</strong>
                                                 <br><strong><i class="fa fa-money mr-2"></i>Сотувчи</strong>
+                                                <br><strong><i class="fa fa-money mr-2"></i>Транспорт харажатлари</strong>
                                             </address>
                                         </div>
                                         <!-- /.col -->
-                                        <div class="col-sm-3 invoice-col">
+                                        <div class="col-sm-3 invoice-col border-blue border-right">
                                             <address>
                                                 <i>
                                                     <c:forEach var="val" items="${appInfo}" varStatus="i">
-                                                        ${val[11]} <%--todo Аризачи:  --%>
-                                                        <br>${val[13]} <%--todo Телефон рақами:  --%>
-                                                        <br>${val[19]}/${val[20]} <%--todo Юк жўнатувчи: (sender_country_nm + trans_exp)  --%>
-                                                        <br>${val[3]}/${val[17]} <%--todo >Сотувчи (customer_country_nm) --%>
+                                                        ${val[9]} <%--todo Аризачи:  --%>
+                                                        <br>${val[11]} <%--todo Телефон рақами:  --%>
+                                                        <br>${val[16]} - "${val[18]}" <%--todo Юк жўнатувчи: (sender_country_nm + senderOrg)  --%>
+                                                        <br>${val[3]} - "${val[15]}" <%--todo >Сотувчи (customer_country_nm) --%>
+                                                        <br>${val[24]} сўм<i class="fa fa-info-circle ml-4 fa-lg" data-toggle="modal"
+                                                        data-target="#exampleModalCenter"></i><%--todo >ранспорт харажати (TRAN_EXP) --%>
                                                     </c:forEach>
                                                 </i>
                                             </address>
                                         </div>
                                         <!-- /.col -->
-                                        <div class="col-sm-3 invoice-col">
+                                        <div class="col-sm-3 invoice-col border-blue border-left">
                                             <address>
                                                 <strong><i class="fa fa-money mr-2"></i>Фактура қиймати</strong>
                                                 <br><strong><i class="fa fa-balance-scale mr-2"></i>Нетто оғирлиги:</strong>
                                                 <br><strong><i class="fa fa-balance-scale mr-2"></i>Брутто оғирлиги:</strong>
-                                                <br><strong><i class="fa fa-money mr-2"></i>Бир бирлик нархи:</strong>
+                                                <br><strong><i class="fa fa-money mr-2"></i>Етказиб бериш шарти:</strong>
                                             </address>
                                         </div>
                                         <!-- /.col -->
-                                        <div class="col-sm-3 invoice-col">
+                                        <div class="col-sm-2 invoice-col border-blue border-right">
                                             <address>
                                                 <i>
                                                     <c:forEach var="val" items="${appInfo}" varStatus="i">
-                                                        ${val[31]} АҚШ</strong>
-                                                        <a href="#"><i class="fa fa-calculator fa-2x" data-toggle="modal" data-target="#exampleModal12" style="margin-left: 45%"></i></a>
-                                                        <br>${val[29]} кг
-                                                        <br>${val[30]} кг
+                                                        ${val[29]} АҚШ</strong>
+                                                        <br>${val[27]} кг
+                                                        <br>${val[28]} кг
+                                                        <br>${val[22]} - ${val[23]}
                                                         <br>
-                                                        <mark>0,6 АҚШ доллари</mark>
                                                     </c:forEach>
                                                 </i>
                                             </address>
                                         </div>
+                                        <div class="col-sm-1 invoice-col">
+                                            <a href="#"><i class="fa fa-calculator fa-2x" data-toggle="modal" data-target="#exampleModal12" style="margin-left: 0%"></i></a>
+                                        </div>
                                         <!-- /.col -->
                                     </div>
-                                    <!-- Modal Calculator -->
+
+                                    <!-- Транспорт тури Modal -->
+                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle1">Транспорт харакати йўналиши ва харажатлари</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <div class="col-md-12">
+
+                                                        <div class="table-responsive">
+                                                            <table class="table">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>Бошлағич пункт</th>
+                                                                    <th>Тугаш пункти</th>
+                                                                    <th>Транспорт тури</th>
+                                                                    <th>Ҳаражатлар</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <th>Россия</th>
+                                                                    <td>Қозоғистон</td>
+                                                                    <td><i class="fa fa-subway fa-2x mr-3"></i>20 - ЖД</td>
+                                                                    <td>120 $</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Қозоғистон</th>
+                                                                    <td>Ўзбекистон</td>
+                                                                    <td><i class="fa fa-truck fa-2x mr-3"></i>30- АВТО</td>
+                                                                    <td>380 $</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th></th>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>Жами: 500 $</td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Ёпиш</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Транспорт тури Modal end -->
 
                                     <!-- Modal -->
                                     <div class="modal fade bd-example-modal-lg" id="exampleModal12" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -52,7 +52,7 @@ public class AppsController {
             apps.setStatusNm(status.getName());
 
             Terms terms = termsService.findByIdAndLngaTpcd(apps.getTerms(), "UZ");
-            apps.setTermsNm(terms.getName());
+            apps.setTermsNm(terms.getSign());
 
             appsService.saveApps(apps);
             return ResponseEntity.ok(" <<--- Apps (success) --->> - маълумотларини сақлаш муваффақиятли бажарилди ! \n" + apps);

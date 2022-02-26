@@ -35,8 +35,6 @@ public class AppsService {
                 "    a.app_date,\n" +
                 "    a.customer_country_nm,\n" +
                 "    a.customer_country,\n" +
-                "    a.in_dec_date,\n" +
-                "    a.in_dec_num,\n" +
                 "    a.location_id,\n" +
                 "    a.location_nm,\n" +
                 "    a.org_name,\n" +
@@ -81,8 +79,6 @@ public class AppsService {
                 "    a.app_date,\n" +
                 "    a.customer_country_nm,\n" +
                 "    a.customer_country,\n" +
-                "    a.in_dec_date,\n" +
-                "    a.in_dec_num,\n" +
                 "    a.location_id,\n" +
                 "    a.location_nm,\n" +
                 "    a.org_name,\n" +
@@ -128,11 +124,9 @@ public class AppsService {
                 "    a.app_date,\n" +
                 "    a.customer_country_nm,\n" +
                 "    a.customer_country,\n" +
-                "    a.in_dec_date,\n" +
-                "    a.in_dec_num,\n" +
                 "    a.location_id,\n" +
                 "    a.location_nm,\n" +
-                "    a.org_name,        \n" +
+                "    a.org_name, \n" +
                 "    a.person_addr,\n" +
                 "    a.person_fio,\n" +
                 "    a.person_mail,\n" +
@@ -236,38 +230,36 @@ public class AppsService {
         String queryForList = "";
         queryForList = "select\n" +
                 /*0 - */"    a.id,\n" +
-                /*1 - */"    a.app_num,\n" +
-                /*2 - */"    a.app_date,\n" +
-                /*3 - */"    a.customer_country_nm,\n" +
-                /*4 - */"    a.customer_country,\n" +
-                /*5 - */"    a.in_dec_date,\n" +
-                /*6 - */"    a.in_dec_num,\n" +
-                /*7 - */"    a.location_id,\n" +
-                /*8 - */"    a.location_nm,\n" +
-                /*9 - */"    a.org_name,\n" +
-                /*10 - */"    a.person_addr,\n" +
-                /*11 - */"    a.person_fio,\n" +
-                /*12 - */"    a.person_mail,\n" +
-                /*13 - */"    a.person_phone,\n" +
-                /*14 - */"    a.person_pin,\n" +
-                /*15 - */"    a.person_position,\n" +
-                /*16 - */"    a.person_tin,\n" +
-                /*17 - */"    a.seller_org,\n" +
-                /*18 - */"    a.sender_country,\n" +
-                /*19 - */"    a.sender_country_nm,\n" +
-                /*20 - */"    a.sender_org,\n" +
-                /*21 - */"    a.status,\n" +
-                /*22 - */"    a.status_nm,\n" +
-                /*23 - */"    a.terms,\n" +
-                /*24 - */"    a.terms_nm,\n" +
-                /*25 - */"    a.terms_addr,\n" +
-                /*26 - */"    a.trans_exp,\n" +
-                /*27 - */"    a.person_id,\n" +
-                /*28 - */"    a.instime,\n" +
-                /*29 - */"    sum(cm.netto)  allnetto,\n" +
-                /*30 - */"    sum(cm.brutto) allbrutto,\n" +
-                /*31 - */"    sum(cm.price)  allprice,\n" +
-                /*32 - */"    count(cm.id)   cntcmdt\n" +
+                /*1- */"    a.app_num,\n" +
+                /*2- */"    a.app_date,\n" +
+                /*3- */"    a.customer_country_nm,\n" +
+                /*4- */"    a.customer_country,\n" +
+                /*5- */"    a.location_id,\n" +
+                /*6- */"    a.location_nm,\n" +
+                /*7- */"    a.org_name,\n" +
+                /*8- */"    a.person_addr,\n" +
+                /*9- */"    a.person_fio,\n" +
+                /*10 - */"    a.person_mail,\n" +
+                /*11 - */"    a.person_phone,\n" +
+                /*12 - */"    a.person_pin,\n" +
+                /*13 - */"    a.person_position,\n" +
+                /*14 - */"    a.person_tin,\n" +
+                /*15 - */"    a.seller_org,\n" +
+                /*16 - */"    a.sender_country,\n" +
+                /*17 - */"    a.sender_country_nm,\n" +
+                /*18 - */"    a.sender_org,\n" +
+                /*19 - */"    a.status,\n" +
+                /*20 - */"    a.status_nm,\n" +
+                /*21 - */"    a.terms,\n" +
+                /*22 - */"    a.terms_nm,\n" +
+                /*23 - */"    a.terms_addr,\n" +
+                /*24 - */"    a.trans_exp,\n" +
+                /*25 - */"    a.person_id,\n" +
+                /*26 - */"    a.instime,\n" +
+                /*27 - */"    sum(cm.netto)  allnetto,\n" +
+                /*28 - */"    sum(cm.brutto) allbrutto,\n" +
+                /*29 - */"    sum(cm.price)  allprice,\n" +
+                /*30 - */"    count(cm.id)   cntcmdt\n" +
                 "from\n" +
                 "    apps a\n" +
                 "left join\n" +
@@ -284,8 +276,6 @@ public class AppsService {
                 "    a.app_date,\n" +
                 "    a.customer_country_nm,\n" +
                 "    a.customer_country,\n" +
-                "    a.in_dec_date,\n" +
-                "    a.in_dec_num,\n" +
                 "    a.location_id,\n" +
                 "    a.location_nm,\n" +
                 "    a.org_name,    \n" +
@@ -306,7 +296,7 @@ public class AppsService {
                 "    a.terms_nm,\n" +
                 "    a.terms_addr,\n" +
                 "    a.trans_exp,\n" +
-                "    a.person_id,    \n" +
+                "    a.person_id, \n" +
                 "    a.instime\n" +
                 "order by\n" +
                 "    a.instime desc";
@@ -338,24 +328,27 @@ public class AppsService {
                 /*18 - */"    c.hs_code,\n" +
                 /*19 - */"    c.hs_dec_date,\n" +
                 /*20 - */"    c.hs_dec_num,\n" +
-                /*21 - */"    c.mark,\n" +
-                /*22 - */"    c.method,\n" +
-                /*23 - */"    c.method_nm,\n" +
-                /*24 - */"    c.model,\n" +
-                /*25 - */"    c.netto,\n" +
-                /*26 - */"    c.origin_country,\n" +
-                /*27 - */"    c.origin_org,\n" +
-                /*28 - */"    c.origin_country_nm,\n" +
-                /*29 - */"    c.pack_qty,\n" +
-                /*30 - */"    c.pack_type,\n" +
-                /*31 - */"    c.pack_type_nm,\n" +
-                /*32 - */"    c.price,\n" +
-                /*33 - */"    c.product_goal,\n" +
-                /*34 - */"    c.sort,\n" +
-                /*35 - */"    c.standarts,\n" +
-                /*36 - */"    c.tech_char,\n" +
-                /*37 - */"    c.trade_mark,\n" +
-                /*38 - */"    c.trade_name\n" +
+                /*21 - */"    c.in_dec_date,\n" +
+                /*22 - */"    c.in_dec_num,\n" +
+                /*23 - */"    c.HS_NAME, \n" +
+                /*24 - */"    c.mark,\n" +
+                /*25 - */"    c.method,\n" +
+                /*26 - */"    c.method_nm,\n" +
+                /*27 - */"    c.model,\n" +
+                /*28 - */"    c.netto,\n" +
+                /*29 - */"    c.origin_country,\n" +
+                /*30 - */"    c.origin_org,\n" +
+                /*31 - */"    c.origin_country_nm,\n" +
+                /*32 - */"    c.pack_qty,\n" +
+                /*33 - */"    c.pack_type,\n" +
+                /*34 - */"    c.pack_type_nm,\n" +
+                /*35 - */"    c.price,\n" +
+                /*36 - */"    c.product_goal,\n" +
+                /*37 - */"    c.sort,\n" +
+                /*38 - */"    c.standarts,\n" +
+                /*39 - */"    c.tech_char,\n" +
+                /*40 - */"    c.trade_mark,\n" +
+                /*41 - */"    c.trade_name\n" +
                 "from\n" +
                 "    cpid.commodity c\n" +
                 "left join\n" +
@@ -393,24 +386,28 @@ public class AppsService {
                 /*18 - */"    c.hs_code, \n" +
                 /*19 - */"    c.hs_dec_date, \n" +
                 /*20 - */"    c.hs_dec_num, \n" +
-                /*21 - */"    c.mark, \n" +
-                /*22 - */"    c.method, \n" +
-                /*23 - */"    c.method_nm, \n" +
-                /*24 - */"    c.model, \n" +
-                /*25 - */"    c.netto, \n" +
-                /*26 - */"    c.origin_country, \n" +
-                /*27 - */"    c.origin_org, \n" +
-                /*28 - */"    c.origin_country_nm, \n" +
-                /*29 - */"    c.pack_qty, \n" +
-                /*30 - */"    c.pack_type, \n" +
-                /*31 - */"    c.pack_type_nm, \n" +
-                /*32 - */"    c.price, \n" +
-                /*33 - */"    c.product_goal, \n" +
-                /*34 - */"    c.sort, \n" +
-                /*35 - */"    c.standarts, \n" +
-                /*36 - */"    c.tech_char, \n" +
-                /*37 - */"    c.trade_mark, \n" +
-                /*38 - */"    c.trade_name\n" +
+                /*21 - */"    c.in_dec_date,\n" +
+                /*22 - */"    c.in_dec_num,\n" +
+                /*23 - */"    c.HS_NAME, \n" +
+                /*24 - */"    c.mark, \n" +
+                /*25 - */"    c.method, \n" +
+                /*26 - */"    c.method_nm, \n" +
+                /*27 - */"    c.model, \n" +
+                /*28 - */"    c.netto, \n" +
+                /*29 - */"    c.origin_country, \n" +
+                /*30 - */"    c.origin_org, \n" +
+                /*31 - */"    c.origin_country_nm, \n" +
+                /*32 - */"    c.pack_qty, \n" +
+                /*33 - */"    c.pack_type, \n" +
+                /*34 - */"    c.pack_type_nm, \n" +
+                /*35 - */"    c.price, \n" +
+                /*36 - */"    c.product_goal, \n" +
+                /*37 - */"    c.sort, \n" +
+                /*38 - */"    c.standarts, \n" +
+                /*39 - */"    c.tech_char, \n" +
+                /*40 - */"    c.trade_mark, \n" +
+                /*41 - */"    c.trade_name\n" +
+
                 "from\n" +
                 "    cpid.commodity c\n" +
                 "left join\n" +

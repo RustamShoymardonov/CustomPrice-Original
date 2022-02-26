@@ -76,6 +76,9 @@ public class Commodity extends AbstractAuditingEntity {
     @Column(name = "HS_CODE", length = 10)
     private String hsCode;
 
+    @Column(name = "HS_NAME", columnDefinition = "VARCHAR(2000) CCSID 1208")
+    private String hsName;
+
     @Column(name = "BRUTTO", length = 4)
     private BigDecimal brutto;
 
@@ -121,6 +124,14 @@ public class Commodity extends AbstractAuditingEntity {
     @Temporal(TemporalType.DATE)
     private Date hsDecDate;
 
+    @Column(name = "IN_DEC_DATE")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date inDecDate;
+
+    @Column(name = "IN_DEC_NUM", length = 30)
+    private String inDecNum;
+
     @Column(name = "METHOD", length = 2)
     private String method;
 
@@ -130,7 +141,7 @@ public class Commodity extends AbstractAuditingEntity {
     public Commodity() {
     }
 
-    public Commodity(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, String appId, Integer cmdtNum, String originCountry, String orignCountrNm, String originOrg, String tradeName, String tradeMark, String mark, String model, String article, String sort, String standarts, String functions, String comProp, String techChar, String productGoal, String hsCode, BigDecimal brutto, BigDecimal netto, BigDecimal basicQty, String extraUnits, BigDecimal extraQty, BigDecimal price, String currencyType, BigDecimal cargoSpace, String packType, String packTypeNm, BigDecimal packQty, String extraInfo, String hsDecNum, Date hsDecDate, String method, String methodNm) {
+    public Commodity(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, String appId, Integer cmdtNum, String originCountry, String orignCountrNm, String originOrg, String tradeName, String tradeMark, String mark, String model, String article, String sort, String standarts, String functions, String comProp, String techChar, String productGoal, String hsCode, String hsName, BigDecimal brutto, BigDecimal netto, BigDecimal basicQty, String extraUnits, BigDecimal extraQty, BigDecimal price, String currencyType, BigDecimal cargoSpace, String packType, String packTypeNm, BigDecimal packQty, String extraInfo, String hsDecNum, Date hsDecDate, Date inDecDate, String inDecNum, String method, String methodNm) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
         this.apps = apps;
@@ -151,6 +162,7 @@ public class Commodity extends AbstractAuditingEntity {
         this.techChar = techChar;
         this.productGoal = productGoal;
         this.hsCode = hsCode;
+        this.hsName = hsName;
         this.brutto = brutto;
         this.netto = netto;
         this.basicQty = basicQty;
@@ -165,6 +177,8 @@ public class Commodity extends AbstractAuditingEntity {
         this.extraInfo = extraInfo;
         this.hsDecNum = hsDecNum;
         this.hsDecDate = hsDecDate;
+        this.inDecDate = inDecDate;
+        this.inDecNum = inDecNum;
         this.method = method;
         this.methodNm = methodNm;
     }
@@ -321,6 +335,14 @@ public class Commodity extends AbstractAuditingEntity {
         this.hsCode = hsCode;
     }
 
+    public String getHsName() {
+        return hsName;
+    }
+
+    public void setHsName(String hsName) {
+        this.hsName = hsName;
+    }
+
     public BigDecimal getBrutto() {
         return brutto;
     }
@@ -431,6 +453,22 @@ public class Commodity extends AbstractAuditingEntity {
 
     public void setHsDecDate(Date hsDecDate) {
         this.hsDecDate = hsDecDate;
+    }
+
+    public Date getInDecDate() {
+        return inDecDate;
+    }
+
+    public void setInDecDate(Date inDecDate) {
+        this.inDecDate = inDecDate;
+    }
+
+    public String getInDecNum() {
+        return inDecNum;
+    }
+
+    public void setInDecNum(String inDecNum) {
+        this.inDecNum = inDecNum;
     }
 
     public String getMethod() {
