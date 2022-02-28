@@ -29,19 +29,27 @@
 
             <div class="col-md-12">
                 <div class="col-md-3 col-sm-3  form-group has-feedback">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-text-o fa-lg mr-2"></i><b>Тижорат номи:</b> ${var.tradeName}</h6>
+                    <h6 style="border-bottom: 1px solid green">
+                        <i class="fa fa-file-text-o fa-lg mr-2"></i><b>Тижорат номи:</b> ${var.tradeName}
+                    </h6>
                 </div>
 
                 <div class="col-md-3 col-sm-3  form-group has-feedback">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-text-o fa-lg mr-2"></i><b>Савдо белгиси:</b> ${var.tradeMark}</h6>
+                    <h6 style="border-bottom: 1px solid green">
+                        <i class="fa fa-file-text-o fa-lg mr-2"></i><b>Савдо белгиси:</b> ${var.tradeMark}
+                    </h6>
                 </div>
 
                 <div class="col-md-3 col-sm-3  form-group has-feedback">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-text-o fa-lg mr-2"></i><b>Маркаси:</b> ${var.mark}</h6>
+                    <h6 style="border-bottom: 1px solid green">
+                        <i class="fa fa-file-text-o fa-lg mr-2"></i><b>Маркаси:</b> ${var.mark}
+                    </h6>
                 </div>
 
                 <div class="col-md-3 col-sm-3  form-group has-feedback">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-text-o fa-lg mr-2"></i><b>Модели:</b> ${var.model}</h6>
+                    <h6 style="border-bottom: 1px solid green">
+                        <i class="fa fa-file-text-o fa-lg mr-2"></i><b>Модели:</b> ${var.model}
+                    </h6>
                 </div>
             </div>
 
@@ -106,9 +114,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-
                             <div class="col-md-12">
-
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
