@@ -280,6 +280,18 @@
                                                 <button class="btn btn-primary btn-outline-dark btn-sm btn-block" id="btnCmdt_${i.index+1}"
                                                         onclick="checkCmdt('${val.id}',1)">${i.index+1}: ${val.hsCode}</button>
                                             </td>
+                                                <%--                                            <style>--%>
+                                                <%--                                                .btn-success:hover, .btn-success:active, .btn-success:focus {--%>
+                                                <%--                                                    color: #ffffff !important;--%>
+                                                <%--                                                    background-color: #1F2838 !important;--%>
+                                                <%--                                                    border-color: #494F57 !important;--%>
+                                                <%--                                                }--%>
+                                                <%--                                            </style>--%>
+                                            <script>
+                                                $('.btn').click(function () {
+                                                    $(this).toggleClass('btn-primary').toggleClass('btn-success');
+                                                });
+                                            </script>
                                         </tr>
                                     </c:forEach>
                                     </tbody>

@@ -1096,7 +1096,7 @@
 }
 
 .nav-sm .container.body .right_col {
-    padding: 10px 20px;
+    padding: 65px 20px;
     margin-left: 70px;
     z-index: 2
 }
@@ -1332,8 +1332,13 @@ body .container.body .right_col {
 }
 
 .nav-md .container.body .right_col {
-    padding: 10px 20px 0;
+    padding-top: 65px!important;
     margin-left: 230px
+}
+
+.nav-md .container.body .right_col {
+    padding: 65px 10px 0;
+    margin-left: 230px;
 }
 
 .nav_title {
@@ -6037,3 +6042,127 @@ ul.notifications {
     overflow: visible!important;
     white-space: normal!important;
 }
+
+.underlined {
+    color: black;
+    flex: 1;
+    font-size: 2em;
+    line-height: 1.2;
+    text-decoration: none;
+    background-image: linear-gradient(to right, yellow 0, yellow 100%);
+    background-position: 0 1.2em;
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+    transition: background 0.2s;
+}
+.underlined:hover {
+    background-size: 100% 100%;
+}
+.underlined--thin {
+    background-image: linear-gradient(to right, black 0, black 100%);
+}
+.underlined--thick {
+    background-position: 0 -0.1em;
+}
+.underlined--offset {
+    background-position: 0 0.2em;
+    box-shadow: inset 0 -0.5em 0 0 white;
+}
+.underlined--gradient {
+    background-position: 0 -0.1em;
+    background-image: linear-gradient(to right, yellow 0, lightgreen 100%);
+}
+.underlined--reverse {
+    background-position: 100% -0.1em;
+    transition: background 0.5s;
+    background-image: linear-gradient(to right, yellow 0, yellow 100%);
+}
+
+}
+
+/*.title {*/
+/*    font-family: "Montserrat";*/
+/*    text-align: center;*/
+/*    color: #FFF;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    height: 100vh;*/
+/*    letter-spacing: 1px;*/
+/*}*/
+
+/*h1 {*/
+/*    background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);*/
+/*    background-size: cover;*/
+/*    color: transparent;*/
+/*    -moz-background-clip: text;*/
+/*    -webkit-background-clip: text;*/
+/*    text-transform: uppercase;*/
+/*    font-size: 120px;*/
+/*    line-height: .75;*/
+/*    margin: 10px 0;*/
+/*}*/
+/*!* styling my button *!*/
+
+/*.white-mode {*/
+/*    text-decoration: none;*/
+/*    padding: 7px 10px;*/
+/*    background-color: #122;*/
+/*    border-radius: 3px;*/
+/*    color: #FFF;*/
+/*    transition: .35s ease-in-out;*/
+/*    position: absolute;*/
+/*    left: 15px;*/
+/*    bottom: 15px;*/
+/*    font-family: "Montserrat";*/
+/*}*/
+
+/*.white-mode:hover {*/
+/*    background-color: #FFF;*/
+/*    color: #122;*/
+/*}*/
+
+
+
+/*.title {*/
+/*    font-family: "Montserrat";*/
+/*    text-align: center;*/
+/*    color: #FFF;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    letter-spacing: 1px;*/
+/*}*/
+
+/*.spanclass {*/
+/*    background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);*/
+/*    background-size: cover;*/
+/*    color: transparent;*/
+/*    -moz-background-clip: text;*/
+/*    -webkit-background-clip: text;*/
+/*    text-transform: uppercase;*/
+/*    font-size: 20px;*/
+/*    line-height: .75;*/
+/*    margin: 10px 0;*/
+/*}*/
+/*!* styling my button *!*/
+
+/*.white-mode {*/
+/*    text-decoration: none;*/
+/*    padding: 7px 10px;*/
+/*    background-color: #122;*/
+/*    border-radius: 3px;*/
+/*    color: #FFF;*/
+/*    transition: .35s ease-in-out;*/
+/*    position: absolute;*/
+/*    left: 15px;*/
+/*    bottom: 15px;*/
+/*    font-family: "Montserrat";*/
+/*}*/
+
+/*.white-mode:hover {*/
+/*    background-color: #FFF;*/
+/*    color: #122;*/
+/*}*/

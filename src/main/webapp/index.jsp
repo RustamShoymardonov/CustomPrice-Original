@@ -24,34 +24,34 @@
     <link href="<%=request.getContextPath()%>/resources/build/css/custom.min.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/resources/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/resources/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-
 </head>
 <body class="nav-md menu_fixed">
 
 <div class="container body">
     <div class="container body">
-        <div class="col-md-3 left_col" style="height: 110vh">
+        <div class="col-md-3 left_col position-fixed" style="height: 110vh">
             <div class="left_col scroll-view ">
+                <%--                <img src="<%=request.getContextPath()%>/resources/images/gtk.jpg" width="50" height="50"></img>--%>
                 <div class="navbar nav_title">
-                    <a href="#" class="site_title"><i class="fa fa-list"></i><span>Божхона қиймати</span></a>
+                    <a href="#" class="">
+                        <span class="title spanclass">Божхона<br/> қиймати</span>
+                    </a>
                 </div>
                 <div class="clearfix"></div>
-
                 <br/>
                 <!-- sidebar menu -->
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section">
-
                         <ul class="nav side-menu menu_fixed">
                             <li><a href="javascript:void(0)"><i class="fa fa-bar-chart-o"></i>Товарларни тоифалаш</a></li>
                             <li><a href="javascript:InitialDecisionRasp(0)"><i class="fa fa-edit"></i>Тақсимлаш</a></li>
                             <li><a href="javascript:InitialDecision(0)"><i class="fa fa-edit"></i>Мурожаатлар</a>
-                            <li><a href="javascript:InitialDecisionView(0)"><i class="fa fa-edit"></i>Хулоса</a>
+<%--                            <li><a href="javascript:InitialDecisionView(0)"><i class="fa fa-edit"></i>Хулоса</a>--%>
                             <li><a href="javascript:void(0)"><i class="fa fa-desktop"></i>Қиймат мониторинги</a></li>
                             <li><a href="javascript:void(0)"><i class="fa fa-sitemap"></i>Мантиқий назорат</a></li>
                             <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i>Халқаро сўровнома</a></li>
                             <li><a href="javascript:void(0)"><i class="fa fa-clone"></i>Кўрсатма хатлар</a></li>
-                            <li><a href="javascript:void(0)"><i class="fa fa-windows"></i>Справочник</a></li>
+                            <li><a href="javascript:Digests(0)"><i class="fa fa-windows"></i>Справочник</a></li>
                         </ul>
                     </div>
 
@@ -74,8 +74,7 @@
                 <!-- /menu footer buttons -->
             </div>
         </div>
-        <!-- top navigation -->
-        <div class="top_nav" style="background-color: #0d82ff !important;">
+        <div class="top_nav fixed-top" style="background-color: #0d82ff !important;">
             <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
             </div>
@@ -172,23 +171,12 @@
                 </ul>
             </nav>
         </div>
-        <!-- /top navigation -->
     </div>
-
     <%--todo Асосий----------------------------------------------------қисми------------------------дан--%>
     <div class="right_col" id="MainContent" role="main">
         <%--todo страницаларни чақириш жойи--%>
     </div>
     <%--todo Асосий----------------------------------------------------қисми------------------------гача--%>
-    <%--</div>--%>
-    <!-- footer content -->
-    <footer>
-        <div class="pull-right">
-            Божхона қиймати
-        </div>
-        <div class="clearfix"></div>
-    </footer>
-    <!-- /footer content -->
 </div>
 
 <script src="<%=request.getContextPath()%>/resources/vendors/jquery/dist/jquery.min.js"></script>
@@ -279,13 +267,28 @@
         });
     }
 
-</script>
+    /* Справочник */
+    function Digests(x) {
+        var dataS = {
+            "x": x
+        }
+        $.ajax({
+            type: "POST",
+            data: dataS,
+            url: "<%=request.getContextPath()%>/digests/resources/pages/Digests/DigestsPage",
+            dataType: "html",
+            header: 'Content-type: text/html; charset=utf-8',
+            success: function (res) {
+                $('div#MainContent').html(res);
+            },
+            error: function (res) {
+            }
+        });
+    }
 
+</script>
 <script src="<%=request.getContextPath()%>/resources/build/js/custom.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
-
-
-
 
 </body>
 </html>

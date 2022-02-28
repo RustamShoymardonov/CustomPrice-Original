@@ -29,33 +29,42 @@
         <div class="x_content">
             <c:forEach var="var" items="${commodity}">
                 <br>
-                <div class="col-md-4 col-sm-6  form-group has-feedback">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-barcode fa-lg mr-2"></i><b>ТИФ ТН коди:</b> ${var.hsCode}</h6>
+                <div class="col-md-4 col-sm-6  form-group has-feedback underlined underlined--gradient">
+                    <h6 style="border-bottom: 1px solid green">
+                        <i class="fa fa-barcode fa-lg mr-2"></i><b>ТИФ ТН коди:</b> ${var.hsCode}
+                    </h6>
                 </div>
 
-                <div class="col-md-8 col-sm-6  form-group has-feedback">
+                <div class="col-md-8 col-sm-6  form-group has-feedback underlined underlined--gradient">
                     <h6 class="hoveroverflowvisible"
-                        style="border-bottom: 1px solid green; text-overflow: ellipsis; transition: .55s opacity, .55s visibility; white-space: nowrap;  overflow: hidden;"><i
-                            class="fa fa-dropbox fa-lg mr-2"></i><b>Товар номи:</b>
-                            ${var.hsName}</h6>
+                        style="border-bottom: 1px solid green; text-overflow: ellipsis; transition: .55s opacity, .55s visibility; white-space: nowrap;  overflow: hidden;">
+                        <i class="fa fa-dropbox fa-lg mr-2"></i><b>Товар номи:</b>${var.hsName}
+                    </h6>
                 </div>
 
-                <div class="col-md-4 col-sm-6  form-group has-feedback mt-3">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-flag fa-lg mr-2"></i><b>Ишлаб чиқарувчи:</b> ${var.orignCountrNm}</h6>
+                <div class="col-md-4 col-sm-6  form-group has-feedback mt-3 underlined underlined--gradient">
+                    <h6 style="border-bottom: 1px solid green">
+                        <i class="fa fa-flag fa-lg mr-2"></i><b>Ишлаб чиқарувчи:</b> ${var.orignCountrNm}
+                    </h6>
                 </div>
 
-                <div class="col-md-8 col-sm-6  form-group has-feedback mt-3">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-building fa-lg mr-2"></i><b>Ишлаб чиқарувчи номи:</b> ${var.originOrg}</h6>
+                <div class="col-md-8 col-sm-6  form-group has-feedback mt-3 underlined underlined--gradient">
+                    <h6 style="border-bottom: 1px solid green">
+                        <i class="fa fa-building fa-lg mr-2"></i><b>Ишлаб чиқарувчи номи:</b> ${var.originOrg}
+                    </h6>
                 </div>
 
-                <div class="col-md-6 col-sm-6  form-group has-feedback mt-4">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-o fa-lg mr-2"></i><b>Илгари берилган дастлабки қарор:</b> ${var.inDecNum} / ${var.inDecDate}</h6>
+                <div class="col-md-6 col-sm-6  form-group has-feedback mt-4 underlined underlined--gradient">
+                    <h6 style="border-bottom: 1px solid green">
+                        <i class="fa fa-file-o fa-lg mr-2"></i><b>Илгари берилган дастлабки қарор:</b> ${var.inDecNum} / ${var.inDecDate}
+                    </h6>
                 </div>
 
-                <div class="col-md-6 col-sm-6  form-group has-feedback mt-4">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-text-o fa-lg mr-2"></i><b>Илгари б.ТИФ ТН бўй.дастл.қарор:</b> ${var.hsDecNum} / ${var.hsDecDate}</h6>
+                <div class="col-md-6 col-sm-6  form-group has-feedback mt-4 underlined underlined--gradient">
+                    <h6 style="border-bottom: 1px solid green">
+                        <i class="fa fa-file-text-o fa-lg mr-2"></i><b>Илгари б.ТИФ ТН бўй.дастл.қарор:</b> ${var.hsDecNum} / ${var.hsDecDate}
+                    </h6>
                 </div>
-
             </c:forEach>
         </div>
     </fieldset>
