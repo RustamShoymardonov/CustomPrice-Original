@@ -122,24 +122,14 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
+                                                                <c:forEach var="val" items="${transports}">
                                                                 <tr>
-                                                                    <th>Россия</th>
-                                                                    <td>Қозоғистон</td>
-                                                                    <td><i class="fa fa-subway fa-2x mr-3"></i>20 - ЖД</td>
-                                                                    <td>120 $</td>
+                                                                    <th>${val.finishCountry}</th>
+                                                                    <td>${val.endCountry}</td>
+                                                                    <td><i class="fa fa-subway fa-2x mr-3"></i>${val.tarnsportType}</td>
+                                                                    <td>${val.transportPrice}</td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <th>Қозоғистон</th>
-                                                                    <td>Ўзбекистон</td>
-                                                                    <td><i class="fa fa-truck fa-2x mr-3"></i>30- АВТО</td>
-                                                                    <td>380 $</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th></th>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td>Жами: 500 $</td>
-                                                                </tr>
+                                                                </c:forEach>
                                                                 </tbody>
                                                             </table>
                                                         </div>

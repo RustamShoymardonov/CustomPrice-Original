@@ -20,17 +20,19 @@ public class AppsController {
     private final StatusService statusService;
     private final TermsService termsService;
     private final AppsService appsservice;
+    private final TransportTypeService transportTypeService;
     private final String INITIALDECISION = "/resources/pages/InitialDecision/InitialDecision1";
     private final String INITIALDECISIONRASP = "/resources/pages/InitialDecision/InitialDecisionRasp";
     private final String INITIALDECISIONVIEW = "/resources/pages/InitialDecision/InitialDecisionView";
 
-    public AppsController(AppsService appsService, ConturyService conturyService, LocationService locationService, StatusService statusService, TermsService termsService, AppsService appsservice) {
+    public AppsController(AppsService appsService, ConturyService conturyService, LocationService locationService, StatusService statusService, TermsService termsService, AppsService appsservice, TransportTypeService transportTypeService) {
         this.appsService = appsService;
         this.conturyService = conturyService;
         this.locationService = locationService;
         this.statusService = statusService;
         this.termsService = termsService;
         this.appsservice = appsservice;
+        this.transportTypeService = transportTypeService;
     }
 
     /*---------------------------------------------------------------------------------------------------------start*/
@@ -107,6 +109,10 @@ public class AppsController {
         List<Commodity> getInitialDecisionViewCommodity = new ArrayList<>();
         getInitialDecisionViewCommodity = appsservice.getInitialDecisionViewCommodity(app_id);
         mav.addObject("allCommodityFor", getInitialDecisionViewCommodity);
+
+        List<TransportType> getInDecViewTrType = new ArrayList<>();
+        getInDecViewTrType = transportTypeService.getTransportTypeRepo(app_id);
+        mav.addObject("transports", getInDecViewTrType);
 
         return mav;
     }

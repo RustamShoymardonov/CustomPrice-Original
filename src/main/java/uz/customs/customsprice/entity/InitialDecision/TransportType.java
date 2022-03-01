@@ -24,6 +24,9 @@ public class TransportType extends AbstractAuditingEntity {
     @JsonIgnore
     private Apps apps;
 
+    @Column(name = "APP_ID", columnDefinition = "VARCHAR(50)")
+    private String appId;
+
     @Column(name = "finish_country", length = 3)
     private String finishCountry;
 
@@ -39,10 +42,11 @@ public class TransportType extends AbstractAuditingEntity {
     public TransportType() {
     }
 
-    public TransportType(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, String finishCountry, String endCountry, String tarnsportType, BigDecimal transportPrice) {
+    public TransportType(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, String appId, String finishCountry, String endCountry, String tarnsportType, BigDecimal transportPrice) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
         this.apps = apps;
+        this.appId = appId;
         this.finishCountry = finishCountry;
         this.endCountry = endCountry;
         this.tarnsportType = tarnsportType;
@@ -63,6 +67,14 @@ public class TransportType extends AbstractAuditingEntity {
 
     public void setApps(Apps apps) {
         this.apps = apps;
+    }
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 
     public String getFinishCountry() {
@@ -97,3 +109,11 @@ public class TransportType extends AbstractAuditingEntity {
         this.transportPrice = transportPrice;
     }
 }
+
+
+
+
+
+
+
+
