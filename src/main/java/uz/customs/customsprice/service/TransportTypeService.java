@@ -1,10 +1,10 @@
 package uz.customs.customsprice.service;
 
 import org.springframework.stereotype.Service;
+import uz.customs.customsprice.entity.InitialDecision.Status;
 import uz.customs.customsprice.entity.InitialDecision.TransportType;
 import uz.customs.customsprice.repository.TransportTypeRepo;
 
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -15,13 +15,15 @@ public class TransportTypeService {
         this.transportTypeRepo = transportTypeRepo;
     }
 
-    public TransportType savetrtype(TransportType transportType){
+    public TransportType savetrtype(TransportType transportType) {
         return transportTypeRepo.save(transportType);
     }
 
-    public List<TransportType> getTransportTypeRepo(String app_id) {
-        return transportTypeRepo.findAllById(Collections.singleton(app_id));
+    public TransportType getByAppId(String app_id) {
+        return transportTypeRepo.findByAppId(app_id);
     }
+
+
 }
 
 

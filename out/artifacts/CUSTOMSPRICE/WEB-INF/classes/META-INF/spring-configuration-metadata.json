@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "spring.datasource.etranzit",
+      "type": "uz.customs.customsprice.config.db.DBCustomPrice",
+      "sourceType": "uz.customs.customsprice.config.db.DBCustomPrice"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}

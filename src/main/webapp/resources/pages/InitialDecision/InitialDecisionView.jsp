@@ -124,10 +124,10 @@
                                                                 <tbody>
                                                                 <c:forEach var="val" items="${transports}">
                                                                 <tr>
-                                                                    <th>${val.finishCountry}</th>
-                                                                    <td>${val.endCountry}</td>
-                                                                    <td><i class="fa fa-subway fa-2x mr-3"></i>${val.tarnsportType}</td>
-                                                                    <td>${val.transportPrice}</td>
+                                                                    <th>${val[1]}</th>
+                                                                    <td>${val[2]}</td>
+                                                                    <td><i class="fa fa-subway fa-2x mr-3"></i>${val[3]}</td>
+                                                                    <td>${val[4]}</td>
                                                                 </tr>
                                                                 </c:forEach>
                                                                 </tbody>

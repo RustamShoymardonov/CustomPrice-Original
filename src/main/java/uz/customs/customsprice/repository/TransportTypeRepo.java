@@ -7,5 +7,5 @@ import java.util.Date;
 import java.util.Optional;
 
 public interface TransportTypeRepo extends JpaRepository<TransportType, String> {
-    Optional<TransportType> findByAppId(String id);
+    TransportType findByAppId(String app_id);
 }

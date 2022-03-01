@@ -110,8 +110,8 @@ public class AppsController {
         getInitialDecisionViewCommodity = appsservice.getInitialDecisionViewCommodity(app_id);
         mav.addObject("allCommodityFor", getInitialDecisionViewCommodity);
 
-        List<TransportType> getInDecViewTrType = new ArrayList<>();
-        getInDecViewTrType = transportTypeService.getTransportTypeRepo(app_id);
+        TransportType getInDecViewTrType = new TransportType();
+        getInDecViewTrType = transportTypeService.getByAppId(app_id);
         mav.addObject("transports", getInDecViewTrType);
 
         return mav;
