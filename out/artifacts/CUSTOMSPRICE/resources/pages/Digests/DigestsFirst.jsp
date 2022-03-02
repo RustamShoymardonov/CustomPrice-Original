@@ -18,124 +18,10 @@
     <div class="col-md-12 col-sm-12 ">
         <div class="x_panel shadow-lg">
             <div class="row w-100" style="display: inline-block;">
-                <div class="tile_count w-100">
-                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <marquee>
-                                    <div class="col-md-2 col-sm-4  tile_stats_count">
-                                        <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                        <div class="count">25</div>
-                                        <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                    </div>
-                                    <div class="col-md-2 col-sm-4  tile_stats_count">
-                                        <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                        <div class="count">25</div>
-                                        <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                    </div>
-                                    <div class="col-md-2 col-sm-4  tile_stats_count">
-                                        <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                        <div class="count">25</div>
-                                        <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                    </div>
-                                    <div class="col-md-2 col-sm-4  tile_stats_count">
-                                        <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                        <div class="count">25</div>
-                                        <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                    </div>
-                                    <div class="col-md-2 col-sm-4  tile_stats_count">
-                                        <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                        <div class="count">25</div>
-                                        <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                    </div>
-                                    <div class="col-md-2 col-sm-4  tile_stats_count">
-                                        <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                        <div class="count">25</div>
-                                        <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                    </div>
-                                </marquee>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                    <div class="count">25</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                </div>
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                    <div class="count">25</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                </div>
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                    <div class="count">25</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                </div>
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                    <div class="count">25</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                </div>
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                    <div class="count">25</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                </div>
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                    <div class="count">25</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                    <div class="count">25</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                </div>
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                    <div class="count">25</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                </div>
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                    <div class="count">25</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                </div>
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                    <div class="count">25</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                </div>
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                    <div class="count">25</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                </div>
-                                <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
-                                    <div class="count">25</div>
-                                    <span class="count_bottom"><i class="green"><i class="fa fa-bar-chart"></i></i></span>
-                                </div>
-
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                            <!--<span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-                            <span class="sr-only">Олдинги</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                            <!--<span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-                            <span class="sr-only">Кейинги</span>
-                        </a>
-                    </div>
-                </div>
+                <p>filter</p>
             </div>
             <div class="x_title">
-
                 <div class="clearfix"></div>
-
                 <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
                     <li class="nav-item ml-5" style="width: 30%">
                         <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab"
@@ -173,12 +59,12 @@
 <%--                                    <c:forEach var="val" items="${qiymatconsult}" varStatus="i">--%>
 <%--                                        <tr>--%>
 <%--                                            <td>${i.index + 1}</td>--%>
-<%--                                            <td><a href="javascript:InitialDecisionView('${val.id}')" class="text-primary font-weight-bold"><u>${val.id}</u></a></td>--%>
-<%--&lt;%&ndash;                                            <td>${notSorted.statusNm}</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                            <td>${notSorted.insTime.toLocaleString()}</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                            <td>${notSorted.personFio}</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>&ndash;%&gt;--%>
+<%--                                            <td><a href="javascript:InitialDecisionView('${val.id}')" class="text-primary font-weight-bold"><u>${val.}</u></a></td>--%>
+<%--                                            <td>${notSorted.statusNm}</td>--%>
+<%--                                            <td>${notSorted.insTime.toLocaleString()}</td>--%>
+<%--                                            <td>${notSorted.personFio}</td>--%>
+<%--                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>--%>
+<%--                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>--%>
 <%--                                        </tr>--%>
 <%--                                    </c:forEach>--%>
                                     </tbody>
@@ -196,23 +82,28 @@
                                         <th style="border-style: dotted">БЮД рақами</th>
                                         <th style="border-style: dotted">Сана</th>
                                         <th style="border-style: dotted">Товарлар сони</th>
+                                        <th style="border-style: dotted">БЮД да ҳисобланган бож. тўл.(млн. сўмда)</th>
+                                        <th style="border-style: dotted">Жами ҳисобланган бож. тўл.(млн. сўмда)</th>
                                         <th style="border-style: dotted">Қўшимча ҳисобланган бож. тўл.(млн. сўмда)</th>
                                         <th style="border-style: dotted">Товарлар бруттоси(кг)</th>
                                         <th style="border-style: dotted">Инспектор</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-<%--                                    <c:forEach var="notSorted" items="${notSortedList}" varStatus="i">--%>
-<%--                                    <tr>--%>
-<%--                                        <td>${i.index + 1}</td>--%>
-<%--                                        <td><a href="javascript:InitialDecisionView('${notSorted.id}')" class="text-primary font-weight-bold"><u>${notSorted.appNum}</u></a></td>--%>
-<%--                                        <td>${notSorted.statusNm}</td>--%>
-<%--                                        <td>${notSorted.insTime.toLocaleString()}</td>--%>
-<%--                                        <td>${notSorted.personFio}</td>--%>
-<%--                                        <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>--%>
-<%--                                        <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>--%>
-<%--                                    </tr>--%>
-<%--                                    </c:forEach>--%>
+                                    <c:forEach var="val" items="${qiymatconsult}" varStatus="i">
+                                    <tr>
+                                        <td>${i.index + 1}</td>
+                                        <td><a href="#" class="text-primary font-weight-bold"><u>${val[0]}</u></a></td>
+                                        <td>${val[13]}</td>
+<%--                                        <td>Товарлар сони${val[1]}</td>--%>
+                                        <td>${val[15]}</td>
+                                        <td>${val[3]}</td>
+                                        <td>${val[11]}</td>
+                                        <td>${val[12]}</td>
+                                        <td>${val[14]}</td>
+                                        <td>${val[5]}</td>
+                                    </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
