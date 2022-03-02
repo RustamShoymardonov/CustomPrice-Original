@@ -26,7 +26,6 @@
     <link href="<%=request.getContextPath()%>/resources/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="nav-md menu_fixed">
-
 <div class="container body">
     <div class="container body">
         <div class="col-md-3 left_col position-fixed" style="height: 110vh">
@@ -112,7 +111,7 @@
                                 <span>Созлаш</span>
                             </a>
                             <a class="dropdown-item" href="">Ёрдам</a>
-                            <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i>Чиқиш</a>
+                            <a class="dropdown-item" href="<%=request.getContextPath()%>/resources/pages/LoginPages/SignIn.jsp"><i class="fa fa-sign-out pull-right"></i>Чиқиш</a>
                         </div>
                     </li>
                     <li role="presentation" class="nav-item dropdown open">
@@ -199,7 +198,6 @@
     </div>
     <%--todo Асосий----------------------------------------------------қисми------------------------гача--%>
 </div>
-
 <script src="<%=request.getContextPath()%>/resources/vendors/jquery/dist/jquery.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
