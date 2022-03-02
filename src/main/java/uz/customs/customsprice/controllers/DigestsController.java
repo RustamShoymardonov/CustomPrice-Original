@@ -43,6 +43,7 @@ public class DigestsController {
     @ResponseBody
     public ModelAndView DigestsFirst(HttpSession session) {
         ModelAndView mav = new ModelAndView("/resources/pages/Digests/DigestsFirst");
+
         List<QiymatconsultEntity> qiymatconsultEntityList = qiymatconsultService.getListQiymatconsulting();
         mav.addObject("qiymatconsult", qiymatconsultEntityList);
         return mav;

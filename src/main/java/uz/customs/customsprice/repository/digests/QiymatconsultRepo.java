@@ -6,5 +6,5 @@ import uz.customs.customsprice.entity.Digests.QiymatconsultEntity;
 import java.util.List;
 
 public interface QiymatconsultRepo extends JpaRepository<QiymatconsultEntity, String> {
-//    QiymatconsultEntity findAllById(String id);
+    QiymatconsultEntity findAllById(String id);
 }

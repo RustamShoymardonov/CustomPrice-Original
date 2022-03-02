@@ -30,6 +30,7 @@ public class DBDigests {
     protected final Properties JPA_DIGESTS = new Properties() {{
         put("database-platform", "org.hibernate.dialect.DB2400Dialect");
         put("hibernate.ddl-auto", "none");
+        put("hibernate.hbm2ddl.auto", "none");
         put("show-sql", "true");
         put("generate-ddl", "false");
     }};

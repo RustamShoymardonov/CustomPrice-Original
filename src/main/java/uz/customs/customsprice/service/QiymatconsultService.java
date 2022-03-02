@@ -12,38 +12,42 @@ import java.util.List;
 public class QiymatconsultService {
     private final QiymatconsultRepo qiymatconsultRepo;
 
-    @PersistenceContext
-    private EntityManager entityManagery;
+    @PersistenceContext(unitName = "digests")
+    private EntityManager entityManagerDigests;
 
     public QiymatconsultService(QiymatconsultRepo qiymatconsultRepo) {
         this.qiymatconsultRepo = qiymatconsultRepo;
     }
 
-    public List<QiymatconsultEntity> getListQiymatconsulting() {
+    public List<QiymatconsultEntity> getListQiymatconsulting(){
         String queryForList = "select\n" +
-                "    t.id,\n" +
+                "    qt.g7a||'/'||char(date(qt.g7b),eur)||'/'||qt.g7c gtd,\n" +
+                "    qt.g32,\n" +
+                "    qt.g33,\n" +
+                "    qt.g45_ed,\n" +
+                "    qt.g22a,\n" +
                 "    t.havola,\n" +
                 "    t.tov_num,\n" +
                 "    t.tov_narx,\n" +
-                "    t.jami,\n" +
-                "    t.instime,\n" +
-                "    t.updtime,\n" +
-                "    t.status,\n" +
-                "    t.user_id,\n" +
+                "    t.curcod,\n" +
                 "    t.usul,\n" +
                 "    t.manba,\n" +
                 "    t.dastlabki,\n" +
-                "    t.curcod,\n" +
-                "    t.decl_id,\n" +
-                "    t.g32\n" +
+                "    t.jami, \n" +
+                "    t.instime, \n"+
+                "    qt.g38 \n" +
                 "from\n" +
                 "    epigued.qiymatconsult t\n" +
+                "left join\n" +
+                "    epigued.qiymattovar qt\n" +
+                "on\n" +
+                "    qt.decl_id = t.decl_id\n" +
+                "and qt.g32 = t.g32\n" +
                 "where\n" +
                 "    t.status=1\n" +
                 "order by\n" +
                 "    t.instime desc";
-//        qiymatconsultRepo.findAllById("21f56074c00d45dc9c49");
-        return (List<QiymatconsultEntity>) entityManagery.createNativeQuery(queryForList, QiymatconsultEntity.class).getResultList();
+        return (List<QiymatconsultEntity>) entityManagerDigests.createNativeQuery(queryForList).getResultList();
     }
 
 }
