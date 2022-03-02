@@ -421,6 +421,65 @@ public class AppsService {
                 "and c.isdeleted = 0";
         return (List<Commodity>) entityManager.createNativeQuery(queryForList, Commodity.class).getResultList();
     }
+//
+//    /* 9) Божхона қиймати индекси бўйича хавф даражаси */
+//    public List<Apps> getAppsCommodityXBBTList(String cmdt_id) {
+//        String queryForList = "select\n" +
+//                /*0 - */"    c.id, \n" +
+//                /*1 - */"    c.instime, \n" +
+//                /*2 - */"    c.insuser, \n" +
+//                /*3 - */"    c.isdeleted, \n" +
+//                /*4 - */"    c.updtime, \n" +
+//                /*5 - */"    c.upduser, \n" +
+//                /*6 - */"    c.app_id, \n" +
+//                /*7 - */"    c.article, \n" +
+//                /*8 - */"    c.basic_qty, \n" +
+//                /*9 - */"    c.brutto, \n" +
+//                /*10 - */"    c.cargo_space, \n" +
+//                /*11 - */"    c.cmdt_num, \n" +
+//                /*12 - */"    c.com_prop, \n" +
+//                /*13 - */"    c.currency_type, \n" +
+//                /*14 - */"    c.extra_info, \n" +
+//                /*15 - */"    c.extra_qty, \n" +
+//                /*16 - */"    c.extra_units, \n" +
+//                /*17 - */"    c.functions, \n" +
+//                /*18 - */"    c.hs_code, \n" +
+//                /*19 - */"    c.hs_dec_date, \n" +
+//                /*20 - */"    c.hs_dec_num, \n" +
+//                /*21 - */"    c.in_dec_date,\n" +
+//                /*22 - */"    c.in_dec_num,\n" +
+//                /*23 - */"    c.HS_NAME, \n" +
+//                /*24 - */"    c.mark, \n" +
+//                /*25 - */"    c.method, \n" +
+//                /*26 - */"    c.method_nm, \n" +
+//                /*27 - */"    c.model, \n" +
+//                /*28 - */"    c.netto, \n" +
+//                /*29 - */"    c.origin_country, \n" +
+//                /*30 - */"    c.origin_org, \n" +
+//                /*31 - */"    c.origin_country_nm, \n" +
+//                /*32 - */"    c.pack_qty, \n" +
+//                /*33 - */"    c.pack_type, \n" +
+//                /*34 - */"    c.pack_type_nm, \n" +
+//                /*35 - */"    c.price, \n" +
+//                /*36 - */"    c.product_goal, \n" +
+//                /*37 - */"    c.sort, \n" +
+//                /*38 - */"    c.standarts, \n" +
+//                /*39 - */"    c.tech_char, \n" +
+//                /*40 - */"    c.trade_mark, \n" +
+//                /*41 - */"    c.trade_name\n" +
+//
+//                "from\n" +
+//                "    cpid.commodity c\n" +
+//                "left join\n" +
+//                "    cpid.apps a\n" +
+//                "on\n" +
+//                "    c.app_id = a.id\n" +
+//                "and a.isdeleted = 0\n" +
+//                "where\n" +
+//                "    c.id = '" + cmdt_id + "'\n" +
+//                "and c.isdeleted = 0";
+//        return (List<Commodity>) entityManager.createNativeQuery(queryForList, Commodity.class).getResultList();
+//    }
 
     public List<Apps> listAll() {
         return appsRepo.findAll();
