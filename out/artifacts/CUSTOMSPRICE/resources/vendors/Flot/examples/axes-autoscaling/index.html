@@ -1,33 +1,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Flot Examples: Axes autoscaling options</title>
     <link href="../examples.css" rel="stylesheet" type="text/css">
-	<script language="javascript" src="../../source/jquery.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.canvaswrapper.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.colorhelpers.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.saturated.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.browser.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.drawSeries.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.errorbars.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.uiConstants.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.logaxis.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.symbol.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.flatdata.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.navigate.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.fillbetween.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.stack.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.touchNavigate.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.hover.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.touch.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.time.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.axislabels.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.selection.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.composeImages.js" type="text/javascript"></script>
-    <script language="javascript" src="../../source/jquery.flot.legend.js" type="text/javascript"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.canvaswrapper.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.colorhelpers.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.saturated.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.browser.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.drawSeries.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.errorbars.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.uiConstants.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.logaxis.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.symbol.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.flatdata.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.navigate.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.fillbetween.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.stack.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touchNavigate.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.hover.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touch.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.time.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.axislabels.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.selection.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.composeImages.js"></script>
+    <script language="javascript" type="text/javascript" src="../../source/jquery.flot.legend.js"></script>
     <script type="text/javascript">
 
     $(function() {
@@ -117,15 +117,15 @@
     <div id="content">
 
         <div class="demo-container">
-            <div class="demo-placeholder" id="placeholder"></div>
+            <div id="placeholder" class="demo-placeholder"></div>
         </div>
         <fieldset id="myForm">
             <legend>Vertical axis autoscaling options</legend>
-            <input checked="checked" name="myRadio" type="radio" value="1" /> None (min = -2.0, max = 2.0) <br />
-            <input name="myRadio" type="radio" value="2" /> fit loosely <br />
-            <input name="myRadio" type="radio" value="3" /> fit exactly <br />
-            <input name="myRadio" type="radio" value="4" /> grow loosely <br />
-            <input name="myRadio" type="radio" value="5" /> grow exactly <br />
+            <input type="radio" name="myRadio" value="1" checked="checked" /> None (min = -2.0, max = 2.0) <br />
+            <input type="radio" name="myRadio" value="2" /> fit loosely <br />
+            <input type="radio" name="myRadio" value="3" /> fit exactly <br />
+            <input type="radio" name="myRadio" value="4" /> grow loosely <br />
+            <input type="radio" name="myRadio" value="5" /> grow exactly <br />
         </fieldset>
     </div>
 </body>

@@ -5,8 +5,8 @@
         <script src="config.js"></script>
         <script src="lib/jquery.min.js"></script>
         <script src="lib/draggable.js"></script>
-        <link href="reset.css" rel="stylesheet">
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <link rel="stylesheet" href="reset.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body>
         <style>
@@ -47,14 +47,14 @@
                 <textarea id="code1">
 chart.setOption({backgroundColor: '#000'});
                 </textarea>
-                <input onclick="runCode('code1');" type="button" value="run"/>
+                <input type="button" value="run" onclick="runCode('code1');"/>
                 Then press restore buttton.
             </div>
             <div class="code-line">
                 <textarea id="code2">
 chart.setOption({backgroundColor: '#fff'});
                 </textarea>
-                <input onclick="runCode('code2');" type="button" value="run"/>
+                <input type="button" value="run" onclick="runCode('code2');"/>
             </div>
             <div class="code-line">
                 <textarea id="code3">
@@ -64,7 +64,7 @@ chart.setOption({
     ]
 });
                 </textarea>
-                <input onclick="runCode('code3');" type="button" value="run"/>
+                <input type="button" value="run" onclick="runCode('code3');"/>
             </div>
             <div class="code-line">
                 <textarea id="code4">
@@ -74,7 +74,7 @@ chart.setOption({
     }
 });
                 </textarea>
-                <input onclick="runCode('code4');" type="button" value="run"/>
+                <input type="button" value="run" onclick="runCode('code4');"/>
             </div>
         </div>
 

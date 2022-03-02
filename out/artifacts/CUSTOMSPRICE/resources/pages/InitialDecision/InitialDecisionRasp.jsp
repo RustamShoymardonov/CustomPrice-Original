@@ -186,7 +186,7 @@
                                             <td>${notSorted.personFio}</td>
                                             <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>
                                             <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>
-                                                <%--                                            <td>${notSorted.originCountry}-${notSorted.orignCountrNm}</td>--%>
+<%--                                            <td>${notSorted.originCountry}-${notSorted.orignCountrNm}</td>--%>
                                             <td>${notSorted.senderCountry}-${notSorted.senderCountryNm}</td>
                                             <td><select class="form-control">
                                                 <option></option>

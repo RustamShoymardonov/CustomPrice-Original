@@ -1,5 +1,5 @@
 <section>
-  <h1 class="page-header" id="programmatic-control">
+  <h1 id="programmatic-control" class="page-header">
     Programmatic control
   </h1>
 
@@ -51,7 +51,7 @@
 
   <pre data-fill-from=".js-code-events"></pre>
 
-<script class="js-code-events" type="text/javascript">
+<script type="text/javascript" class="js-code-events">
 var $eventLog = $(".js-event-log");
 var $eventSelect = $(".js-example-events");
 
@@ -95,13 +95,13 @@ function log (name, evt) {
       <select class="js-example-programmatic js-states form-control"></select>
     </p>
 
-    <div aria-label="Programmatic control" class="btn-toolbar" role="toolbar">
-      <div aria-label="Set Select2 option" class="btn-group btn-group-sm">
+    <div class="btn-toolbar" role="toolbar" aria-label="Programmatic control">
+      <div class="btn-group btn-group-sm" aria-label="Set Select2 option">
         <button class="js-programmatic-set-val btn btn-default">
           Set "California"
         </button>
       </div>
-      <div aria-label="Open and close" class="btn-group btn-group-sm" role="group">
+      <div class="btn-group btn-group-sm" role="group" aria-label="Open and close">
         <button class="js-programmatic-open btn btn-default">
           Open
         </button>
@@ -109,7 +109,7 @@ function log (name, evt) {
           Close
         </button>
       </div>
-      <div aria-label="Initialize and destroy" class="btn-group btn-group-sm" role="group">
+      <div class="btn-group btn-group-sm" role="group" aria-label="Initialize and destroy">
         <button class="js-programmatic-init btn btn-default">
           Init
         </button>
@@ -123,11 +123,11 @@ function log (name, evt) {
       <select class="js-example-programmatic-multi js-states form-control" multiple="multiple"></select>
     </p>
 
-    <div aria-label="Programmatic setting and clearing Select2 options" class="btn-group btn-group-sm" role="group">
-      <button class="js-programmatic-multi-set-val btn btn-default" type="button">
+    <div class="btn-group btn-group-sm" role="group" aria-label="Programmatic setting and clearing Select2 options">
+      <button type="button" class="js-programmatic-multi-set-val btn btn-default">
         Set to California and Alabama
       </button>
-      <button class="js-programmatic-multi-clear btn btn-default" type="button">
+      <button type="button" class="js-programmatic-multi-clear btn btn-default">
         Clear
       </button>
     </div>
@@ -136,7 +136,7 @@ function log (name, evt) {
 
   <pre data-fill-from=".js-code-programmatic"></pre>
 
-<script class="js-code-programmatic" type="text/javascript">
+<script type="text/javascript" class="js-code-programmatic">
 var $example = $(".js-example-programmatic").select2();
 var $exampleMulti = $(".js-example-programmatic-multi").select2();
 

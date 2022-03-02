@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <link href="images/favicon.ico" rel="icon" type="image/ico"/>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+	
     <title>DataTables | Gentelella</title>
 
     <!-- Bootstrap -->
@@ -20,7 +20,7 @@
     <!-- iCheck -->
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Datatables -->
-
+    
     <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
     <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
@@ -29,494 +29,492 @@
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
-</head>
+  </head>
 
-<body class="nav-md">
-<div class="container body">
-    <div class="main_container">
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
         <div class="col-md-3 left_col">
-            <div class="left_col scroll-view">
-                <div class="navbar nav_title" style="border: 0;">
-                    <a class="site_title" href="index.html"><i class="fa fa-list"></i><span>Божхона қиймати</span></a>
-                </div>
-
-                <div class="clearfix"></div>
-
-                <!-- menu profile quick info -->
-                <div class="profile clearfix">
-                    <div class="profile_pic">
-                        <img alt="..." class="img-circle profile_img" src="images/img.jpg">
-                    </div>
-                    <div class="profile_info">
-                        <span>Хуш келибсиз!</span>
-                        <h2>Абдиев Ботир</h2>
-                    </div>
-                </div>
-                <!-- /menu profile quick info -->
-
-                <br/>
-
-                <!-- sidebar menu -->
-                <div class="main_menu_side hidden-print main_menu" id="sidebar-menu">
-                    <div class="menu_section">
-                        <h3>Асосий</h3>
-                        <ul class="nav side-menu">
-                            <li><a href="javascript:void(0)"><i class="fa fa-bar-chart-o"></i>Товарларни тоифалаш</a></li>
-                            <li><a><i class="fa fa-edit"></i>Дастлабки қарор<span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="index.html">Тақсимлаш</a></li>
-                                    <li><a href="tables_dynamic.html">Мурожаатлар</a></li>
-                                    <li><a href="form_wizards.html">Хулоса</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="javascript:void(0)"><i class="fa fa-desktop"></i>Қиймат мониторинги</a></li>
-                            <li><a href="javascript:void(0)"><i class="fa fa-sitemap"></i>Мантиқий назорат</a></li>
-                            <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i>Халқаро сўровнома</a></li>
-                            <li><a href="javascript:void(0)"><i class="fa fa-clone"></i>Кўрсатма хатлар</a></li>
-                            <li><a href="javascript:void(0)"><i class="fa fa-windows"></i>Справочник</a></li>
-                        </ul>
-                    </div>
-
-                </div>
-                <!-- /sidebar menu -->
-
-                <!-- /menu footer buttons -->
-                <div class="sidebar-footer hidden-small">
-                    <a data-placement="top" data-toggle="tooltip" title="Settings">
-                        <span aria-hidden="true" class="glyphicon glyphicon-cog"></span>
-                    </a>
-                    <a data-placement="top" data-toggle="tooltip" title="FullScreen">
-                        <span aria-hidden="true" class="glyphicon glyphicon-fullscreen"></span>
-                    </a>
-                    <a data-placement="top" data-toggle="tooltip" title="Lock">
-                        <span aria-hidden="true" class="glyphicon glyphicon-eye-close"></span>
-                    </a>
-                    <a data-placement="top" data-toggle="tooltip" href="login.html" title="Logout">
-                        <span aria-hidden="true" class="glyphicon glyphicon-off"></span>
-                    </a>
-                </div>
-                <!-- /menu footer buttons -->
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+				<a href="index.html" class="site_title"><i class="fa fa-list"></i><span>Божхона қиймати</span></a>
             </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Хуш келибсиз!</span>
+                <h2>Абдиев Ботир</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>Асосий</h3>
+                <ul class="nav side-menu">
+				  <li><a href="javascript:void(0)"><i class="fa fa-bar-chart-o"></i>Товарларни тоифалаш</a></li>
+                  <li><a><i class="fa fa-edit"></i>Дастлабки қарор<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="index.html">Тақсимлаш</a></li>
+                      <li><a href="tables_dynamic.html">Мурожаатлар</a></li>
+                      <li><a href="form_wizards.html">Хулоса</a></li>
+                    </ul>
+                  </li>
+				  <li><a href="javascript:void(0)"><i class="fa fa-desktop"></i>Қиймат мониторинги</a></li>
+				  <li><a href="javascript:void(0)"><i class="fa fa-sitemap"></i>Мантиқий назорат</a></li>
+				  <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i>Халқаро сўровнома</a></li>
+				  <li><a href="javascript:void(0)"><i class="fa fa-clone"></i>Кўрсатма хатлар</a></li>
+				  <li><a href="javascript:void(0)"><i class="fa fa-windows"></i>Справочник</a></li>             
+                </ul>
+              </div>
+             
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
         </div>
 
         <!-- top navigation -->
         <div class="top_nav">
-            <div class="nav_menu">
-                <div class="nav toggle">
-                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                </div>
-                <nav class="nav navbar-nav">
-                    <ul class=" navbar-right">
-                        <li class="nav-item dropdown open" style="padding-left: 15px;">
-                            <a aria-expanded="false" aria-haspopup="true" class="user-profile dropdown-toggle" data-toggle="dropdown" href="javascript:;" id="navbarDropdown">
-                                <img alt="" src="images/img.jpg">Абдиев Ботир
-                            </a>
-                            <div aria-labelledby="navbarDropdown" class="dropdown-menu dropdown-usermenu pull-right">
-                                <a class="dropdown-item" href="javascript:;"> Фойдаланувчи</a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <span>Созлаш</span>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">Ёрдам</a>
-                                <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i> Чиқиш</a>
-                            </div>
-                        </li>
+          <div class="nav_menu">
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+              <nav class="nav navbar-nav">
+              <ul class=" navbar-right">
+                <li class="nav-item dropdown open" style="padding-left: 15px;">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">Абдиев Ботир
+                  </a>
+                  <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item"  href="javascript:;"> Фойдаланувчи</a>
+                      <a class="dropdown-item"  href="javascript:;">                      
+                        <span>Созлаш</span>
+                      </a>
+                  <a class="dropdown-item"  href="javascript:;">Ёрдам</a>
+                    <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Чиқиш</a>
+                  </div>
+                </li>
 
-                        <li class="nav-item dropdown open" role="presentation">
-                            <a aria-expanded="false" class="dropdown-toggle info-number" data-toggle="dropdown" href="javascript:;" id="navbarDropdown1">
-                                <i class="fa fa-envelope-o"></i>
-                                <span class="badge bg-green">6</span>
-                            </a>
-                            <ul aria-labelledby="navbarDropdown1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                                <li class="nav-item">
-                                    <a class="dropdown-item">
-                                        <span class="image"><img alt="Profile Image" src="images/img.jpg"/></span>
-                                        <span>
+                <li role="presentation" class="nav-item dropdown open">
+                  <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">6</span>
+                  </a>
+                  <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
                         </span>
-                                        <span class="message">
+                        <span class="message">
                           Film festivals used to be do-or-die moments for movie makers. They were where...
                         </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="dropdown-item">
-                                        <span class="image"><img alt="Profile Image" src="images/img.jpg"/></span>
-                                        <span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
                         </span>
-                                        <span class="message">
+                        <span class="message">
                           Film festivals used to be do-or-die moments for movie makers. They were where...
                         </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="dropdown-item">
-                                        <span class="image"><img alt="Profile Image" src="images/img.jpg"/></span>
-                                        <span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
                         </span>
-                                        <span class="message">
+                        <span class="message">
                           Film festivals used to be do-or-die moments for movie makers. They were where...
                         </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="dropdown-item">
-                                        <span class="image"><img alt="Profile Image" src="images/img.jpg"/></span>
-                                        <span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item">
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
                         </span>
-                                        <span class="message">
+                        <span class="message">
                           Film festivals used to be do-or-die moments for movie makers. They were where...
                         </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="text-center">
-                                        <a class="dropdown-item">
-                                            <strong>See All Alerts</strong>
-                                            <i class="fa fa-angle-right"></i>
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <div class="text-center">
+                        <a class="dropdown-item">
+                          <strong>See All Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
         <!-- /top navigation -->
 
         <!-- page content -->
         <div class="right_col" role="main">
-            <div class="">
+          <div class="">
+        
+            <div class="clearfix"></div>
 
-                <div class="clearfix"></div>
+            <div class="row">          
+			            
+				<div class="col-md-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Дастлабки қарор</small></h2>                   
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
 
-                <div class="row">
-
-                    <div class="col-md-12">
-                        <div class="x_panel">
-                            <div class="x_title">
-                                <h2>Дастлабки қарор</small></h2>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="x_content">
-
-                                <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
-                                    <li class="nav-item ml-4" style="width: 47%">
-                                        <a aria-controls="home" aria-selected="true" class="nav-link active h4" data-toggle="tab" href="#home" id="home-tab" role="tab"><i
-                                                class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
-                                    </li>
-                                    <li class="nav-item" style="width: 47%">
-                                        <a aria-controls="profile" aria-selected="false" class="nav-link h4" data-toggle="tab" href="#profile" id="profile-tab" role="tab"><i
-                                                class="fa fa-folder-open mr-3"></i>Дастлабки қарор реестри</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content" id="myTabContent">
-                                    <div aria-labelledby="home-tab" class="tab-pane fade show active" id="home" role="tabpanel">
-                                        <div class="x_content">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="card-box table-responsive mt-4">
-                                                        <!--<p class="text-muted font-13 m-b-30">
-                                                        The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
-                                                        </p>-->
-                                                        <table class="table table-striped table-bordered border border-dark" id="datatable" style="width:100%">
-                                                            <thead class="bg-info bg-gradient-primary text-light ">
-                                                            <tr>
-                                                                <th>т/р</th>
-                                                                <th>Ариза рақами</th>
-                                                                <th>Мақоми</th>
-                                                                <th>Ариза санаси</th>
-                                                                <th>Манқаатдор шахс</th>
-                                                                <th>Қарор рақами</th>
-                                                                <th>Қарор санаси</th>
-                                                                <th>Амал қилиш муддати</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td><a class="text-primary font-weight-bold" href="#"><u>0001278555</u></a></td>
-                                                                <td class="text-success font-weight-bold">Янги</td>
-                                                                <td>15.12.2021</td>
-                                                                <td>"BEST TRADE" МЧЖ</td>
-                                                                <td>-</td>
-                                                                <td>-</td>
-                                                                <td>-</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td><a class="text-primary font-weight-bold" href="#"><u>0001245485</u></a></td>
-                                                                <td class="text-success font-weight-bold">Қайтарилган</td>
-                                                                <td>29.01.2022</td>
-                                                                <td>Алиев Азиз Асилович</td>
-                                                                <td>-</td>
-                                                                <td>-</td>
-                                                                <td>-</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td><a class="text-primary font-weight-bold" href="#"><u>0001245555</u></a></td>
-                                                                <td class="text-success font-weight-bold">Қабул қилинган</td>
-                                                                <td>09.02.2022</td>
-                                                                <td>"BEST TRADE" МЧЖ</td>
-                                                                <td>ДБҚ-26/0001</td>
-                                                                <td>15.02.2022</td>
-                                                                <td>25.05.2022</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Garrett Winters</td>
-                                                                <td>Accountant</td>
-                                                                <td>Tokyo</td>
-                                                                <td>63</td>
-                                                                <td>2011/07/25</td>
-                                                                <td>$170,750</td>
-                                                                <td>2011/07/25</td>
-                                                                <td>$170,750</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Ashton Cox</td>
-                                                                <td>Junior Technical Author</td>
-                                                                <td>San Francisco</td>
-                                                                <td>66</td>
-                                                                <td>2009/01/12</td>
-                                                                <td>$86,000</td>
-                                                                <td>2009/01/12</td>
-                                                                <td>$86,000</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Tiger Nixon</td>
-                                                                <td>System Architect</td>
-                                                                <td>Edinburgh</td>
-                                                                <td>61</td>
-                                                                <td>2011/04/25</td>
-                                                                <td>$320,800</td>
-                                                                <td>$320,800</td>
-                                                                <td>$320,800</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Garrett Winters</td>
-                                                                <td>Accountant</td>
-                                                                <td>Tokyo</td>
-                                                                <td>63</td>
-                                                                <td>2011/07/25</td>
-                                                                <td>$170,750</td>
-                                                                <td>2011/07/25</td>
-                                                                <td>$170,750</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Ashton Cox</td>
-                                                                <td>Junior Technical Author</td>
-                                                                <td>San Francisco</td>
-                                                                <td>66</td>
-                                                                <td>2009/01/12</td>
-                                                                <td>$86,000</td>
-                                                                <td>2009/01/12</td>
-                                                                <td>$86,000</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Tiger Nixon</td>
-                                                                <td>System Architect</td>
-                                                                <td>Edinburgh</td>
-                                                                <td>61</td>
-                                                                <td>2011/04/25</td>
-                                                                <td>$320,800</td>
-                                                                <td>$320,800</td>
-                                                                <td>$320,800</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Garrett Winters</td>
-                                                                <td>Accountant</td>
-                                                                <td>Tokyo</td>
-                                                                <td>63</td>
-                                                                <td>2011/07/25</td>
-                                                                <td>$170,750</td>
-                                                                <td>2011/07/25</td>
-                                                                <td>$170,750</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Ashton Cox</td>
-                                                                <td>Junior Technical Author</td>
-                                                                <td>San Francisco</td>
-                                                                <td>66</td>
-                                                                <td>2009/01/12</td>
-                                                                <td>$86,000</td>
-                                                                <td>2009/01/12</td>
-                                                                <td>$86,000</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Tiger Nixon</td>
-                                                                <td>System Architect</td>
-                                                                <td>Edinburgh</td>
-                                                                <td>61</td>
-                                                                <td>2011/04/25</td>
-                                                                <td>$320,800</td>
-                                                                <td>$320,800</td>
-                                                                <td>$320,800</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Garrett Winters</td>
-                                                                <td>Accountant</td>
-                                                                <td>Tokyo</td>
-                                                                <td>63</td>
-                                                                <td>2011/07/25</td>
-                                                                <td>$170,750</td>
-                                                                <td>2011/07/25</td>
-                                                                <td>$170,750</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Ashton Cox</td>
-                                                                <td>Junior Technical Author</td>
-                                                                <td>San Francisco</td>
-                                                                <td>66</td>
-                                                                <td>2009/01/12</td>
-                                                                <td>$86,000</td>
-                                                                <td>2009/01/12</td>
-                                                                <td>$86,000</td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div aria-labelledby="profile-tab" class="tab-pane fade" id="profile" role="tabpanel">
-                                        <div class="x_content">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="card-box table-responsive mt-4">
-                                                        <!--<p class="text-muted font-13 m-b-30">
-                                                        KeyTable provides Excel like cell navigation on any table. Events (focus, blur, action etc) can be assigned to individual cells, columns, rows or all cells.
-                                                        </p>-->
-                                                        <table class="table table-striped table-bordered" id="datatable-keytable" style="width:100%">
-                                                            <thead class="bg-info bg-gradient-primary text-light">
-                                                            <tr>
-                                                                <th style="vertical-align: middle">т/р</th>
-                                                                <th style="vertical-align: middle">Холати</th>
-                                                                <th style="vertical-align: middle">Ариза санаси</th>
-                                                                <th style="vertical-align: middle">Ариза рақами</th>
-                                                                <th style="vertical-align: middle">Манқаатдор шахс</th>
-                                                                <th style="vertical-align: middle">Қарор рақами</th>
-                                                                <th style="vertical-align: middle">Қарор санаси</th>
-                                                                <th style="vertical-align: middle">Амал қилиш муддати</th>
-                                                                <th style="vertical-align: middle">Шартнома ёки товарни етказиб бериш асоси</th>
-                                                                <th style="vertical-align: middle">Товар коди ТИФ ТН</th>
-                                                                <th style="vertical-align: middle">Товар қисқача номи</th>
-                                                                <th style="vertical-align: middle">Усул</th>
-                                                                <th style="vertical-align: middle">Бекор қилиш санаси</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td><a class="text-primary font-weight-bold" href="#"><u>00012457</u></a></td>
-                                                                <td class="text-success font-weight-bold">Амалда</td>
-                                                                <td>29.11.2021</td>
-                                                                <td>"BEST TRADE" МЧЖ</td>
-                                                                <td>26/0001</td>
-                                                                <td>30.02.2022</td>
-                                                                <td>30.05.2022</td>
-                                                                <td>200197141300121555120200001</td>
-                                                                <td>4011100000</td>
-                                                                <td>Michelin автомабил шиналари</td>
-                                                                <td>1</td>
-                                                                <td>-</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td><a class="text-primary font-weight-bold" href="#"><u>00012457</u></a></td>
-                                                                <td class="text-success font-weight-bold">Бекор қилинган</td>
-                                                                <td>29.11.2021</td>
-                                                                <td>"BEST TRADE" МЧЖ</td>
-                                                                <td>26/0001</td>
-                                                                <td>30.02.2022</td>
-                                                                <td>30.02.2022</td>
-                                                                <td>200197141300121555120200001</td>
-                                                                <td>4011100000</td>
-                                                                <td>Michelin автомабил шиналари</td>
-                                                                <td>1</td>
-                                                                <td>-</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td><a class="text-primary font-weight-bold" href="#"><u>00012457</u></a></td>
-                                                                <td class="text-success font-weight-bold">Муддати тугаган</td>
-                                                                <td>29.11.2021</td>
-                                                                <td>"BEST TRADE" МЧЖ</td>
-                                                                <td>26/0001</td>
-                                                                <td>30.02.2022</td>
-                                                                <td>30.02.2022</td>
-                                                                <td>200197141300121555120200001</td>
-                                                                <td>4011100000</td>
-                                                                <td>Michelin автомабил шиналари</td>
-                                                                <td>1</td>
-                                                                <td>-</td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+                      <li class="nav-item ml-4" style="width: 47%">
+                        <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
+                      </li>
+                      <li class="nav-item" style="width: 47%">
+                        <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки қарор реестри</a>
+                      </li>                   
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+						<div class="x_content">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="card-box table-responsive mt-4">
+										<!--<p class="text-muted font-13 m-b-30">
+										The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
+										</p>-->
+										<table id="datatable" class="table table-striped table-bordered border border-dark" style="width:100%">
+									  <thead class="bg-info bg-gradient-primary text-light ">
+										<tr>
+										  <th>т/р</th>
+										  <th>Ариза рақами</th>
+										  <th>Мақоми</th>
+										  <th>Ариза санаси</th>
+										  <th>Манқаатдор шахс</th>
+										  <th>Қарор рақами</th>
+										  <th>Қарор санаси</th>
+										  <th>Амал қилиш муддати</th>
+										</tr>
+									  </thead>
+									  <tbody>
+										<tr>
+										  <td>1</td>
+										  <td><a href="#" class="text-primary font-weight-bold"><u>0001278555</u></a></td>
+										  <td class="text-success font-weight-bold">Янги</td>
+										  <td>15.12.2021</td>
+										  <td>"BEST TRADE" МЧЖ</td>
+										  <td>-</td>
+										  <td>-</td>
+										  <td>-</td>
+										</tr>
+										<tr>
+										  <td>2</td>
+										  <td><a href="#" class="text-primary font-weight-bold"><u>0001245485</u></a></td>
+										  <td class="text-success font-weight-bold">Қайтарилган</td>
+										  <td>29.01.2022</td>
+										  <td>Алиев Азиз Асилович</td>
+										  <td>-</td>
+										  <td>-</td>
+										  <td>-</td>
+										</tr>
+										<tr>
+										  <td>3</td>
+										  <td><a href="#" class="text-primary font-weight-bold"><u>0001245555</u></a></td>
+										  <td class="text-success font-weight-bold">Қабул қилинган</td>
+										  <td>09.02.2022</td>
+										  <td>"BEST TRADE" МЧЖ</td>
+										  <td>ДБҚ-26/0001</td>
+										  <td>15.02.2022</td>
+										  <td>25.05.2022</td>
+										</tr>
+										<tr>
+										  <td>Garrett Winters</td>
+										  <td>Accountant</td>
+										  <td>Tokyo</td>
+										  <td>63</td>
+										  <td>2011/07/25</td>
+										  <td>$170,750</td>
+										  <td>2011/07/25</td>
+										  <td>$170,750</td>
+										</tr>
+										<tr>
+										  <td>Ashton Cox</td>
+										  <td>Junior Technical Author</td>
+										  <td>San Francisco</td>
+										  <td>66</td>
+										  <td>2009/01/12</td>
+										  <td>$86,000</td>
+										  <td>2009/01/12</td>
+										  <td>$86,000</td>
+										</tr>
+										<tr>
+										  <td>Tiger Nixon</td>
+										  <td>System Architect</td>
+										  <td>Edinburgh</td>
+										  <td>61</td>
+										  <td>2011/04/25</td>
+										  <td>$320,800</td>
+										  <td>$320,800</td>
+										  <td>$320,800</td>
+										</tr>
+										<tr>
+										  <td>Garrett Winters</td>
+										  <td>Accountant</td>
+										  <td>Tokyo</td>
+										  <td>63</td>
+										  <td>2011/07/25</td>
+										  <td>$170,750</td>
+										  <td>2011/07/25</td>
+										  <td>$170,750</td>
+										</tr>
+										<tr>
+										  <td>Ashton Cox</td>
+										  <td>Junior Technical Author</td>
+										  <td>San Francisco</td>
+										  <td>66</td>
+										  <td>2009/01/12</td>
+										  <td>$86,000</td>
+										  <td>2009/01/12</td>
+										  <td>$86,000</td>
+										</tr>
+										<tr>
+										  <td>Tiger Nixon</td>
+										  <td>System Architect</td>
+										  <td>Edinburgh</td>
+										  <td>61</td>
+										  <td>2011/04/25</td>
+										  <td>$320,800</td>
+										  <td>$320,800</td>
+										  <td>$320,800</td>
+										</tr>
+										<tr>
+										  <td>Garrett Winters</td>
+										  <td>Accountant</td>
+										  <td>Tokyo</td>
+										  <td>63</td>
+										  <td>2011/07/25</td>
+										  <td>$170,750</td>
+										  <td>2011/07/25</td>
+										  <td>$170,750</td>
+										</tr>
+										<tr>
+										  <td>Ashton Cox</td>
+										  <td>Junior Technical Author</td>
+										  <td>San Francisco</td>
+										  <td>66</td>
+										  <td>2009/01/12</td>
+										  <td>$86,000</td>
+										  <td>2009/01/12</td>
+										  <td>$86,000</td>
+										</tr>
+										<tr>
+										  <td>Tiger Nixon</td>
+										  <td>System Architect</td>
+										  <td>Edinburgh</td>
+										  <td>61</td>
+										  <td>2011/04/25</td>
+										  <td>$320,800</td>
+										  <td>$320,800</td>
+										  <td>$320,800</td>
+										</tr>
+										<tr>
+										  <td>Garrett Winters</td>
+										  <td>Accountant</td>
+										  <td>Tokyo</td>
+										  <td>63</td>
+										  <td>2011/07/25</td>
+										  <td>$170,750</td>
+										  <td>2011/07/25</td>
+										  <td>$170,750</td>
+										</tr>
+										<tr>
+										  <td>Ashton Cox</td>
+										  <td>Junior Technical Author</td>
+										  <td>San Francisco</td>
+										  <td>66</td>
+										  <td>2009/01/12</td>
+										  <td>$86,000</td>
+										  <td>2009/01/12</td>
+										  <td>$86,000</td>
+										</tr>
+									  </tbody>
+									</table>
+									</div>
+								</div>
+							</div>
+						</div>
+                      </div>
+                      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+							<div class="x_content">
+								<div class="row">
+								  <div class="col-sm-12">
+									<div class="card-box table-responsive mt-4">
+										<!--<p class="text-muted font-13 m-b-30">
+										KeyTable provides Excel like cell navigation on any table. Events (focus, blur, action etc) can be assigned to individual cells, columns, rows or all cells.
+										</p>-->
+										<table id="datatable-keytable" class="table table-striped table-bordered" style="width:100%">
+										<thead class="bg-info bg-gradient-primary text-light">
+										<tr>
+										  <th style="vertical-align: middle">т/р</th>
+										  <th style="vertical-align: middle">Холати</th>
+										  <th style="vertical-align: middle">Ариза санаси</th>
+										  <th style="vertical-align: middle">Ариза рақами</th>
+										  <th style="vertical-align: middle">Манқаатдор шахс</th>
+										  <th style="vertical-align: middle">Қарор рақами</th>
+										  <th style="vertical-align: middle">Қарор санаси</th>
+										  <th style="vertical-align: middle">Амал қилиш муддати</th>
+										  <th style="vertical-align: middle">Шартнома ёки товарни етказиб бериш асоси</th>
+										  <th style="vertical-align: middle">Товар коди ТИФ ТН</th>
+										  <th style="vertical-align: middle">Товар қисқача номи</th>
+										  <th style="vertical-align: middle">Усул</th>
+										  <th style="vertical-align: middle">Бекор қилиш санаси</th>
+										</tr>
+									  </thead>
+									  <tbody>
+										<tr>
+										  <td>1</td>
+										  <td><a href="#" class="text-primary font-weight-bold"><u>00012457</u></a></td>
+										  <td class="text-success font-weight-bold">Амалда</td>
+										  <td>29.11.2021</td>
+										  <td>"BEST TRADE" МЧЖ</td>
+										  <td>26/0001</td>
+										  <td>30.02.2022</td>
+										  <td>30.05.2022</td>
+										  <td>200197141300121555120200001</td>
+										  <td>4011100000</td>
+										  <td>Michelin автомабил шиналари</td>
+										  <td>1</td>
+										  <td>-</td>
+										</tr>
+										<tr>
+										  <td>2</td>
+										  <td><a href="#" class="text-primary font-weight-bold"><u>00012457</u></a></td>
+										  <td class="text-success font-weight-bold">Бекор қилинган</td>
+										  <td>29.11.2021</td>
+										  <td>"BEST TRADE" МЧЖ</td>
+										  <td>26/0001</td>
+										  <td>30.02.2022</td>
+										  <td>30.02.2022</td>
+										  <td>200197141300121555120200001</td>
+										  <td>4011100000</td>
+										  <td>Michelin автомабил шиналари</td>
+										  <td>1</td>
+										  <td>-</td>
+										</tr>
+										<tr>
+										  <td>3</td>
+										  <td><a href="#" class="text-primary font-weight-bold"><u>00012457</u></a></td>
+										  <td class="text-success font-weight-bold">Муддати тугаган</td>
+										  <td>29.11.2021</td>
+										  <td>"BEST TRADE" МЧЖ</td>
+										  <td>26/0001</td>
+										  <td>30.02.2022</td>
+										  <td>30.02.2022</td>
+										  <td>200197141300121555120200001</td>
+										  <td>4011100000</td>
+										  <td>Michelin автомабил шиналари</td>
+										  <td>1</td>
+										  <td>-</td>
+										</tr>										
+										</tbody>
+									  </table>
+									</div>
+								  </div>
+								</div>
+							 </div>
+                      </div>                  
                     </div>
-
-
+                  </div>
                 </div>
+              </div>		
+						
+              
             </div>
+          </div>
         </div>
         <!-- /page content -->
 
         <!-- footer content -->
         <footer>
-            <div class="pull-right">
-                Дастлабки қарор
-            </div>
-            <div class="clearfix"></div>
+          <div class="pull-right">
+            Дастлабки қарор
+          </div>
+          <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
+      </div>
     </div>
-</div>
 
-<!-- jQuery -->
-<script src="../vendors/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<!-- FastClick -->
-<script src="../vendors/fastclick/lib/fastclick.js"></script>
-<!-- NProgress -->
-<script src="../vendors/nprogress/nprogress.js"></script>
-<!-- iCheck -->
-<script src="../vendors/iCheck/icheck.min.js"></script>
-<!-- Datatables -->
-<script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-<script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-<script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-<script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-<script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-<script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-<script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-<script src="../vendors/jszip/dist/jszip.min.js"></script>
-<script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
-<script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+   <script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
 
-<!-- Custom Theme Scripts -->
-<script src="../build/js/custom.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
 
-</body>
+  </body>
 </html>

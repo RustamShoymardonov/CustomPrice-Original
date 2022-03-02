@@ -1,32 +1,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Flot Examples: Axes tick labels options</title>
     <link href="../examples.css" rel="stylesheet" type="text/css">
-    <script language="javascript" src="../../source/jquery.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.canvaswrapper.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.colorhelpers.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.saturated.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.browser.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.drawSeries.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.errorbars.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.uiConstants.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.logaxis.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.symbol.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.flatdata.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.navigate.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.fillbetween.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.stack.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.touchNavigate.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.hover.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.touch.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.time.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.axislabels.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.selection.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.composeImages.js" type="text/javascript"></script>
-	<script language="javascript" src="../../source/jquery.flot.legend.js" type="text/javascript"></script>
+    <script language="javascript" type="text/javascript" src="../../source/jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.canvaswrapper.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.colorhelpers.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.saturated.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.browser.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.drawSeries.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.errorbars.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.uiConstants.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.logaxis.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.symbol.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.flatdata.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.navigate.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.fillbetween.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.stack.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touchNavigate.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.hover.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.touch.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.time.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.axislabels.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.selection.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.composeImages.js"></script>
+	<script language="javascript" type="text/javascript" src="../../source/jquery.flot.legend.js"></script>
     <style>
         fieldset {
             display: inline-block;
@@ -173,38 +173,38 @@
     <div id="content">
 
         <div class="demo-container">
-            <div class="demo-placeholder" id="placeholder"></div>
+            <div id="placeholder" class="demo-placeholder"></div>
         </div>
         <fieldset id="tickLabels">
             <legend>Axis tick labels options</legend>
-            <input name="tickLabels" type="radio" value="none" /> none <br />
-            <input name="tickLabels" type="radio" value="endpoints" /> endpoints <br />
-            <input checked="checked" name="tickLabels" type="radio" value="major"/> major <br />
-            <input name="tickLabels" type="radio" value="all" /> all <br />
+            <input type="radio" name="tickLabels" value="none" /> none <br />
+            <input type="radio" name="tickLabels" value="endpoints" /> endpoints <br />
+            <input type="radio" name="tickLabels" value="major" checked="checked"/> major <br />
+            <input type="radio" name="tickLabels" value="all" /> all <br />
         </fieldset>
         <fieldset id="tickMarks">
             <legend>Axis tick marks options</legend>
-            <input name="tickMarks" type="radio" value="none" /> none <br />
-            <input name="tickMarks" type="radio" value="major" /> major <br />
-            <input checked="checked" name="tickMarks" type="radio" value="all"/> all <br />
+            <input type="radio" name="tickMarks" value="none" /> none <br />
+            <input type="radio" name="tickMarks" value="major" /> major <br />
+            <input type="radio" name="tickMarks" value="all" checked="checked"/> all <br />
         </fieldset>
         <fieldset id="scaling">
             <legend>Vertical axis autoscaling options</legend>
-            <input checked="checked" name="scaling" type="radio" value="none" /> None (min = -3, max = 3) <br />
-            <input name="scaling" type="radio" value="fitLoosely"/> fit loosely <br />
-            <input name="scaling" type="radio" value="fitExactly" /> fit exactly <br />
-            <input name="scaling" type="radio" value="growLoosely" /> grow loosely <br />
-            <input name="scaling" type="radio" value="growExactly" /> grow exactly <br />
+            <input type="radio" name="scaling" value="none" checked="checked" /> None (min = -3, max = 3) <br />
+            <input type="radio" name="scaling" value="fitLoosely"/> fit loosely <br />
+            <input type="radio" name="scaling" value="fitExactly" /> fit exactly <br />
+            <input type="radio" name="scaling" value="growLoosely" /> grow loosely <br />
+            <input type="radio" name="scaling" value="growExactly" /> grow exactly <br />
         </fieldset>
         <fieldset id="verticalPosition">
             <legend>Vertical axis position options</legend>
-            <input name="verticalPosition" type="radio" value="right" /> right <br />
-            <input checked="checked" name="verticalPosition" type="radio" value="left"/> left <br />
+            <input type="radio" name="verticalPosition" value="right" /> right <br />
+            <input type="radio" name="verticalPosition" value="left" checked="checked"/> left <br />
         </fieldset>
         <fieldset id="horizontalPosition">
             <legend>Horizontal axis position options</legend>
-            <input name="horizontalPosition" type="radio" value="top" /> top <br />
-            <input checked="bottom" name="horizontalPosition" type="radio" value="bottom"/> left <br />
+            <input type="radio" name="horizontalPosition" value="top" /> top <br />
+            <input type="radio" name="horizontalPosition" value="bottom" checked="bottom"/> left <br />
         </fieldset>
     </div>
 </body>

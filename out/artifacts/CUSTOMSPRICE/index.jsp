@@ -31,12 +31,33 @@
     <div class="container body">
         <div class="col-md-3 left_col position-fixed" style="height: 110vh">
             <div class="left_col scroll-view ">
-                <%--                <img src="<%=request.getContextPath()%>/resources/images/gtk.jpg" width="50" height="50"></img>--%>
-                <div class="navbar nav_title">
-                    <a href="#" class="">
-                        <span class="title spanclass">Божхона<br/> қиймати</span>
-                    </a>
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="index.html" class="site_title"><img src="<%=request.getContextPath()%>/resources/images/gtk.jpg" width="50" height="50"> <span style="font-size: 18px!important;">Божхона қиймати </span></a>
                 </div>
+                    <style>
+                        .animate-charcter
+                        {
+                            text-transform: uppercase;
+                            background-image: linear-gradient(
+                                    -225deg,
+                                    #231557 0%,
+                                    #44107a 29%,
+                                    #ff1361 67%,
+                                    #fff800 100%
+                            );
+                            background-size: auto auto;
+                            background-clip: border-box;
+                            background-size: 200% auto;
+                            color: #fff;
+                            background-clip: text;
+                            text-fill-color: transparent;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            animation: textclip 2s linear infinite;
+                            display: inline-block;
+                            font-size: 20px;
+                        }
+                    </style>
                 <div class="clearfix"></div>
                 <br/>
                 <!-- sidebar menu -->

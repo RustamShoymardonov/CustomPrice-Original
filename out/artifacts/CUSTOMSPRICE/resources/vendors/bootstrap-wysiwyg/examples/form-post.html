@@ -2,11 +2,11 @@
 <html lang="en">
   	<head>
     	<meta charset="utf-8">
-    	<meta content="IE=edge" http-equiv="X-UA-Compatible">
-    	<meta content="width=device-width, initial-scale=1" name="viewport">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>A tiny, opensource, Bootstrap WYSIWYG rich text editor</title>
 		<link href="../bower_components/google-code-prettify/src/prettify.css" rel="stylesheet" />
-		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" />
 		<link href="../css/style.css" rel="stylesheet" />	
 	</head>
@@ -20,9 +20,9 @@
 				<div class="btn-group">
 					<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a class="fs-Five" data-edit="fontSize 5">Huge</a></li>
-						<li><a class="fs-Three" data-edit="fontSize 3">Normal</a></li>
-						<li><a class="fs-One" data-edit="fontSize 1">Small</a></li>
+						<li><a data-edit="fontSize 5" class="fs-Five">Huge</a></li>
+						<li><a data-edit="fontSize 3" class="fs-Three">Normal</a></li>
+						<li><a data-edit="fontSize 1" class="fs-One">Small</a></li>
 					</ul>
 				</div>
 				<div class="btn-group">
@@ -46,14 +46,14 @@
 				<div class="btn-group">
 					<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="fa fa-link"></i></a>
 					<div class="dropdown-menu input-append">
-						<input data-edit="createLink" placeholder="URL" type="text" />
+						<input placeholder="URL" type="text" data-edit="createLink" />
 						<button class="btn" type="button">Add</button>
 					</div>
 				</div>
 				<div class="btn-group">
 					<a class="btn btn-default" data-edit="unlink" title="Remove Hyperlink"><i class="fa fa-unlink"></i></a>
-					<span class="btn btn-default" id="pictureBtn" title="Insert picture (or just drag & drop)"> <i class="fa fa-picture-o"></i>
-						<input class="imgUpload" data-edit="insertImage" data-role="magic-overlay" data-target="#pictureBtn" type="file" />
+					<span class="btn btn-default" title="Insert picture (or just drag & drop)" id="pictureBtn"> <i class="fa fa-picture-o"></i>
+						<input class="imgUpload" type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
 					</span>
 				</div>
 				<div class="btn-group">
@@ -64,10 +64,10 @@
 			</div>
 			<div id="editorPreview"></div>
 			
-			<form action="php/upload.php" enctype="multipart/form-data" id='submitForm' method="post">
-					<div class="lead" data-placeholder="This is a basic example with a simple toolbar." id="editor"></div>
+			<form action="php/upload.php" method="post" enctype="multipart/form-data" id='submitForm'>
+					<div id="editor" class="lead" data-placeholder="This is a basic example with a simple toolbar."></div>
 					<a class="btn btn-large btn-default jumbo" href="#!" onClick="$('#mySubmission').val($('#editor').cleanHtml(true));$('#submitForm').submit();">Submit</a>
-				<input id='mySubmission' name='formSubmission' type='hidden'/>
+				<input type='hidden' name='formSubmission' id='mySubmission'/>
 			</form>
 		</div>
 

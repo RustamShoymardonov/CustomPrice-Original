@@ -3,16 +3,16 @@
         <meta charset="utf-8">
         <script src="esl.js"></script>
         <script src="config.js"></script>
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <link href="reset.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="reset.css">
     </head>
     <body>
         <style>
         </style>
         <div>
-            <input onclick="go.exchangeXY();" type="button" value="exchangeXY">
-            <input onclick="go.illegal();" type="button" value="illegal use getModel.option">
-            <input onclick="go.dataZoomRestore();" type="button" value="dataZoom restore (error if view changed)">
+            <input type="button" value="exchangeXY" onclick="go.exchangeXY();">
+            <input type="button" value="illegal use getModel.option" onclick="go.illegal();">
+            <input type="button" value="dataZoom restore (error if view changed)" onclick="go.dataZoomRestore();">
         </div>
         <div id="main"></div>
         <script>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title>JQVMap - World Map</title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -92,7 +92,7 @@
       }
     </style>
 
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="../dist/jquery.vmap.js" type="text/javascript"></script>
     <script src="../dist/maps/jquery.vmap.world.js" type="text/javascript"></script>
 
@@ -183,7 +183,7 @@
       <table>
         <tr id="pin1">
           <td class="pin-td">
-            <div class="pin" id="pin1_content">
+            <div id="pin1_content" class="pin">
               <div class="pin_content">
                 <div>
                   <span>09</span>
@@ -196,9 +196,9 @@
             </div>
           </td>
           <td>
-            <input name="cc" placeholder="Country code" type="text"/><br/>
-            <input onClick="placePin('pin1')" type="button" value="Copy"/>
-            <input onClick="movePin('pin1')" type="button" value="Move"/>
+            <input type="text" name="cc" placeholder="Country code"/><br/>
+            <input type="button" onClick="placePin('pin1')" value="Copy"/>
+            <input type="button" onClick="movePin('pin1')" value="Move"/>
           </td>
         </tr>
         <tr id="pin2">
@@ -206,9 +206,9 @@
             <img id="pin2_content" src="images/globe.png"/>
           </td>
           <td>
-            <input name="cc" placeholder="Country code" type="text"/><br/>
-            <input onClick="placePin('pin2')" type="button" value="Copy"/>
-            <input onClick="movePin('pin2')" type="button" value="Move"/>
+            <input type="text" name="cc" placeholder="Country code"/><br/>
+            <input type="button" onClick="placePin('pin2')" value="Copy"/>
+            <input type="button" onClick="movePin('pin2')" value="Move"/>
           </td>
         </tr>
         <tr id="pin3">
@@ -216,18 +216,18 @@
             <img id="pin3_content" src="images/flag.png"/>
           </td>
           <td>
-            <input name="cc" placeholder="Country code" type="text"/><br/>
-            <input onClick="placePin('pin3')" type="button" value="Copy"/>
-            <input onClick="movePin('pin3')" type="button" value="Move"/>
+            <input type="text" name="cc" placeholder="Country code"/><br/>
+            <input type="button" onClick="placePin('pin3')" value="Copy"/>
+            <input type="button" onClick="movePin('pin3')" value="Move"/>
           </td>
         </tr>
         <tr id="remove">
           <td class="pin-td">
-            <input name="cc" placeholder="Country code" type="text"/><br/>
-            <input onClick="removePin()" type="button" value="Remove"/>
+            <input type="text" name="cc" placeholder="Country code"/><br/>
+            <input type="button" onClick="removePin()" value="Remove"/>
           </td>
           <td>
-            <input onClick="removeAllPins()" type="button" value="Remove"/>
+            <input type="button" onClick="removeAllPins()" value="Remove"/>
           </td>
         </tr>
       </table>

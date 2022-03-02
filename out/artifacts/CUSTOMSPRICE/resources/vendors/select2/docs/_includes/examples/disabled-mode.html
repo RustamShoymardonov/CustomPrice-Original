@@ -14,13 +14,13 @@
     </p>
 
     <p>
-      <select class="js-example-disabled-multi js-states form-control" disabled="disabled" multiple="multiple"></select>
+      <select class="js-example-disabled-multi js-states form-control" multiple="multiple" disabled="disabled"></select>
     </p>
-    <div aria-label="Programmatic enabling and disabling" class="btn-group btn-group-sm" role="group">
-      <button class="js-programmatic-enable btn btn-default" type="button">
+    <div class="btn-group btn-group-sm" role="group" aria-label="Programmatic enabling and disabling">
+      <button type="button" class="js-programmatic-enable btn btn-default">
         Enable
       </button>
-      <button class="js-programmatic-disable btn btn-default" type="button">
+      <button type="button" class="js-programmatic-disable btn btn-default">
         Disable
       </button>
     </div>
@@ -28,7 +28,7 @@
 
   <pre data-fill-from=".js-code-disabled"></pre>
 
-<script class="js-code-disabled" type="text/javascript">
+<script type="text/javascript" class="js-code-disabled">
 $(".js-programmatic-enable").on("click", function () {
   $(".js-example-disabled").prop("disabled", false);
   $(".js-example-disabled-multi").prop("disabled", false);

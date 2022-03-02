@@ -1,6 +1,6 @@
 <section>
 
-  <h1 class="page-header" id="themes-templating-responsive-design">
+  <h1 id="themes-templating-responsive-design" class="page-header">
     Themes, templating and responsive design
   </h1>
 
@@ -63,7 +63,7 @@ $(".js-example-theme-multiple").select2({
 function formatState (state) {
   if (!state.id) { return state.text; }
   var $state = $(
-    '<span><img class="img-flag" src="vendor/images/flags/' + state.element.value.toLowerCase() + '.png" /> ' + state.text + '</span>'
+    '<span><img src="vendor/images/flags/' + state.element.value.toLowerCase() + '.png" class="img-flag" /> ' + state.text + '</span>'
   );
   return $state;
 };

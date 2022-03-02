@@ -18,7 +18,7 @@ include_js: false
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
         <a class="text-muted" href="#">
-          <svg class="mx-3" fill="none" focusable="false" height="20" role="img" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
         </a>
         <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
       </div>
@@ -46,7 +46,7 @@ include_js: false
     <div class="col-md-6 px-0">
       <h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
       <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-      <p class="lead mb-0"><a class="text-white font-weight-bold" href="#">Continue reading...</a></p>
+      <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
     </div>
   </div>
 
@@ -58,7 +58,7 @@ include_js: false
           <h3 class="mb-0">Featured post</h3>
           <div class="mb-1 text-muted">Nov 12</div>
           <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a class="stretched-link" href="#">Continue reading</a>
+          <a href="#" class="stretched-link">Continue reading</a>
         </div>
         <div class="col-auto d-none d-lg-block">
           {% include icons/placeholder.svg width="200" height="250" background="#55595c" color="#eceeef" text="Thumbnail" %}
@@ -72,7 +72,7 @@ include_js: false
           <h3 class="mb-0">Post title</h3>
           <div class="mb-1 text-muted">Nov 11</div>
           <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a class="stretched-link" href="#">Continue reading</a>
+          <a href="#" class="stretched-link">Continue reading</a>
         </div>
         <div class="col-auto d-none d-lg-block">
           {% include icons/placeholder.svg width="200" height="250" background="#55595c" color="#eceeef" text="Thumbnail" %}
@@ -82,7 +82,7 @@ include_js: false
   </div>
 </div>
 
-<main class="container" role="main">
+<main role="main" class="container">
   <div class="row">
     <div class="col-md-8 blog-main">
       <h3 class="pb-4 mb-4 font-italic border-bottom">
@@ -150,7 +150,7 @@ include_js: false
 
       <nav class="blog-pagination">
         <a class="btn btn-outline-primary" href="#">Older</a>
-        <a aria-disabled="true" class="btn btn-outline-secondary disabled" href="#" tabindex="-1">Newer</a>
+        <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
       </nav>
 
     </div><!-- /.blog-main -->

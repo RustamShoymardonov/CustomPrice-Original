@@ -36,7 +36,7 @@ public class TransportType extends AbstractAuditingEntity {
     @Column(name = "tarnsport_type", length = 2)
     private String tarnsportType;
 
-    @Column(name = "transport_price", precision = 5, scale = 2)
+    @Column(name = "transport_price", length = 4)
     private BigDecimal transportPrice;
 
     public TransportType() {

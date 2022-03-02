@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Total Form Validation</title>
-    <meta content="width=device-width, user-scalable=no" name="viewport">
-	<link href="fv.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+	<link rel="stylesheet" href="fv.css" type="text/css" />
 	<!--[if IE]>
 	<style>
 		.field .tooltip .content{ display:none; opacity:1; }
@@ -21,7 +21,7 @@
 				Vertical orientation
 			</label> -->
 			<label>
-				<input class='toggleValidationTooltips' type='checkbox' />
+				<input type='checkbox' class='toggleValidationTooltips' />
 				Disable vlidation tooltips
 			</label>
 		</div>
@@ -45,7 +45,7 @@
 					<div class="field">
 						<label>
 							<span>Occupation</span>
-							<input class='optional' data-validate-length-range="5,15" name="occupation" type="text" />
+							<input class='optional' name="occupation" data-validate-length-range="5,15" type="text" />
 						</label>
 						<div class='tooltip help'>
 							<span>?</span>
@@ -60,7 +60,7 @@
 						<label>
 							<span>HTML5 Regex</span>
 							<!--<input required="required" type="text" pattern='\d+' />-->
-							<input data-validate-length-range="2,6" pattern="alphanumeric" placeholder="eg. 123456" required="required"  type="text" />
+							<input type="text" data-validate-length-range="2,6" required="required" placeholder="eg. 123456"  pattern="alphanumeric" />
 						</label>
 						<div class='tooltip help'>
 							<span>?</span>
@@ -73,19 +73,19 @@
 					<div class="field">
 						<label>
 							<span>email</span>
-							<input class='email' name="email" required="required" type="email" />
+							<input name="email" class='email' required="required" type="email" />
 						</label>
 					</div>
 					<div class="field">
 						<label>
 							<span>Confirm email address</span>
-							<input class='email' data-validate-linked='email' name="confirm_email" required='required' type="email">
+							<input type="email" class='email' name="confirm_email" data-validate-linked='email' required='required'>
 						</label>
 					</div>
 					<div class="field">
 						<label>
 							<span>Number</span>
-							<input class='number' data-validate-minmax="10,100" name="number" required='required' type="number">
+							<input type="number" class='number' name="number" data-validate-minmax="10,100" required='required'>
 						</label>
 						<div class='tooltip help'>
 							<span>?</span>
@@ -98,13 +98,13 @@
 					<div class="field">
 						<label>
 							<span>Date</span>
-							<input class='date' name="date" required='required' type="date">
+							<input class='date' type="date" name="date" required='required'>
 						</label>
 					</div>
 					<div class="field">
 						<label>
 							<span>Time</span>
-							<input class='time' name="time" required='required' type="time">
+							<input class='time' type="time" name="time" required='required'>
 							<div class='tooltip help'>
 							<span>?</span>
 							<div class='content'>
@@ -117,7 +117,7 @@
 					<div class="field">
 						<label>
 							<span>Password</span>
-							<input data-validate-length="6,8" name="password" required='required' type="password">
+							<input type="password" name="password" data-validate-length="6,8" required='required'>
 						</label>
 						<div class='tooltip help'>
 							<span>?</span>
@@ -130,13 +130,13 @@
 					<div class="field">
 						<label>
 							<span>Repeat password</span>
-							<input data-validate-linked='password' name="password2" required='required' type="password">
+							<input type="password" name="password2" data-validate-linked='password' required='required'>
 						</label>
 					</div>
 					<div class="field">
 						<label>
 							<span>Telephone</span>
-							<input class='tel' data-validate-length-range="8,20" name="phone" required='required' type="tel">
+							<input type="tel" class='tel' name="phone" required='required' data-validate-length-range="8,20">
 						</label>
 						<div class='tooltip help'>
 							<span>?</span>
@@ -149,7 +149,7 @@
 					<div class="field">
 						<label>
 							<span>Drop down selection</span>
-							<select name="dropdown" required>
+							<select required name="dropdown">
 								<option value="">-- please select --</option>
 								<option value="o1">Option 1</option>
 								<option value="o2">Option 2</option>
@@ -192,13 +192,13 @@
 							<span>Multifield</span>
 						</label>
 						<div class='input'>
-							<input id='multi_first' maxlength='4' name="multi1" type="text">
-							<input maxlength='4' name="multi2" type="text">
-							<input maxlength='4' name="multi3" type="text">
-							<input maxlength='4' name="multi4" type="text">
-							<input maxlength='4' name="multi5" type="text">
-							<input maxlength='4' name="multi6" type="text">
-							<input data-validate-length-range="24" data-validate-pattern="alphanumeric" id="serial" name="serial" required='required' type="hidden" />
+							<input type="text" name="multi1" maxlength='4' id='multi_first'>
+							<input type="text" name="multi2" maxlength='4'>
+							<input type="text" name="multi3" maxlength='4'>
+							<input type="text" name="multi4" maxlength='4'>
+							<input type="text" name="multi5" maxlength='4'>
+							<input type="text" name="multi6" maxlength='4'>
+							<input data-validate-length-range="24" data-validate-pattern="alphanumeric" id="serial" name="serial" type="hidden" required='required' />
 						</div>
 						<div class='tooltip help'>
 							<span>?</span>
@@ -211,13 +211,13 @@
 					<div class="field">
 						<label>
 							<span>File upload</span>
-							<input required type='file'>
+							<input type='file' required>
 						</label>
 					</div>
 					<div class="field">
 						<label>
 							<span>message</span>
-							<textarea name='message' required="required"></textarea>
+							<textarea required="required" name='message'></textarea>
 						</label>
 					</div>
 				</fieldset>
@@ -227,7 +227,7 @@
 						The reason for this is that sometimes there is a section in a form that is not visible until some user "action" is taken,
 						and changing form fields to be "required" on-the-fly is undesirable.
 					</p>
-					<input name="somethingHidden" required="required" style='display:none' type="text" />
+					<input name="somethingHidden" required="required" type="text" style='display:none' />
 				</fieldset>
 				<button type='submit'>Submit</button>
                 <button type='reset'>Reset</button>

@@ -102,16 +102,17 @@ public class AppsController {
     public ModelAndView InitialDecisionView(HttpSession session, @RequestParam String app_id) {
         ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionView");
 
-        List<Apps> InitialDecisionViewApp = new ArrayList<>();
-        InitialDecisionViewApp = appsservice.getInitialDecisionView(app_id);
+        List<Apps> InitialDecisionViewApp = appsservice.getInitialDecisionView(app_id);
         mav.addObject("appInfo", InitialDecisionViewApp);
 
-        List<Commodity> getInitialDecisionViewCommodity = new ArrayList<>();
-        getInitialDecisionViewCommodity = appsservice.getInitialDecisionViewCommodity(app_id);
+        List<Commodity> getInitialDecisionViewCommodity = appsservice.getInitialDecisionViewCommodity(app_id);
         mav.addObject("allCommodityFor", getInitialDecisionViewCommodity);
 
         List<TransportType> getInDecViewTrType = transportTypeService.getByAppId(app_id);
         mav.addObject("transports", getInDecViewTrType);
+
+//        List<TransportType> getInDecViewTrTypePrice = transportTypeService.getByAppIdAllPrice(app_id);
+//        mav.addObject("sumTransportsPrice", getInDecViewTrTypePrice);
 
         return mav;
     }

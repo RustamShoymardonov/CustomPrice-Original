@@ -27,8 +27,7 @@
                             <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
                         </li>
                         <li class="nav-item" style="width: 47%">
-                            <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки
-                                қарор реестри</a>
+                            <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки қарор реестри</a>
                         </li>
                     </ul>
                     <div class="x_title">
@@ -201,7 +200,7 @@
                                                 </tbody>
                                             </table>
                                             <script>
-                                                $(document).ready(function () {
+                                                $(document).ready(function() {
                                                     $('#example1').DataTable({
                                                         "language": {
                                                             "zeroRecords": "Сиз излаган маълумот мавжуд эмас!",
@@ -217,8 +216,8 @@
                                                             }
                                                         }
                                                     });
-                                                });
-                                                $(document).ready(function () {
+                                                } );
+                                                $(document).ready(function() {
                                                     $('#example2').DataTable({
                                                         "language": {
                                                             "zeroRecords": "Сиз излаган маълумот мавжуд эмас!",
@@ -234,7 +233,7 @@
                                                             }
                                                         }
                                                     });
-                                                });
+                                                } );
                                             </script>
                                         </div>
                                     </div>

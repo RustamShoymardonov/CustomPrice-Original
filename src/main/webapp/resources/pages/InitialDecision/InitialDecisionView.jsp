@@ -1,3 +1,4 @@
+<%@ page import="uz.customs.customsprice.entity.InitialDecision.Docs" %>
 <!DOCTYPE html>
 <%--
   Created by IntelliJ IDEA.
@@ -57,13 +58,17 @@
                                         <div class="col-sm-3 invoice-col border-blue border-right">
                                             <address>
                                                 <i>
+                                                    <c:set var="total" value="${0.0}"/>
+                                                    <c:forEach var="val" items="${transports}" varStatus="i">
+                                                        <c:set var="total" value="${total + val.transportPrice}"/>
+                                                    </c:forEach>
                                                     <c:forEach var="val" items="${appInfo}" varStatus="i">
                                                         ${val[9]} <%--todo Аризачи:  --%>
                                                         <br>${val[11]} <%--todo Телефон рақами:  --%>
                                                         <br>${val[16]} - "${val[18]}" <%--todo Юк жўнатувчи: (sender_country_nm + senderOrg)  --%>
                                                         <br>${val[3]} - "${val[15]}" <%--todo >Сотувчи (customer_country_nm) --%>
-                                                        <br>${val[24]} сўм<i class="fa fa-info-circle ml-4 fa-lg" data-toggle="modal"
-                                                        data-target="#exampleModalCenter"></i><%--todo >ранспорт харажати (TRAN_EXP) --%>
+                                                        <br><c:out value="${total}"/> сўм<i class="fa fa-info-circle ml-4 fa-lg" data-toggle="modal"
+                                                        data-target="#exampleModalCenter" style="cursor: pointer;"></i><%--todo >ранспорт харажати (TRAN_EXP) --%>
                                                     </c:forEach>
                                                 </i>
                                             </address>
@@ -122,20 +127,22 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <c:forEach var="val" items="${transports}">
-                                                                <tr>
-                                                                    <th>${val.finishCountry}</th>
-                                                                    <td>${val.endCountry}</td>
-                                                                    <td><i class="fa fa-subway fa-2x mr-3"></i>${val.tarnsportType}</td>
-                                                                    <td>${val.transportPrice}</td>
-                                                                </tr>
+                                                                <c:set var="total" value="${0.0}"/>
+                                                                <c:forEach var="val" items="${transports}" varStatus="i">
+                                                                    <c:set var="total" value="${total + val.transportPrice}"/>
+                                                                    <tr>
+                                                                        <th>${val.finishCountry}</th>
+                                                                        <td>${val.endCountry}</td>
+                                                                        <td><i class="fa fa-subway fa-2x mr-3"></i>${val.tarnsportType}</td>
+                                                                        <td>${val.transportPrice}</td>
+                                                                    </tr>
+                                                                </c:forEach>
                                                                 <tr>
                                                                     <td>Жами</td>
                                                                     <td></td>
                                                                     <td></td>
-                                                                    <td>54654</td>
+                                                                    <td><c:out value="${total}"/></td>
                                                                 </tr>
-                                                                </c:forEach>
                                                                 </tbody>
                                                             </table>
                                                         </div>

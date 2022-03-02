@@ -67,10 +67,10 @@
 
 <body>
     <div id="canvas-holder">
-        <canvas height="50" id="chart-area1" width="50" />
+        <canvas id="chart-area1" width="50" height="50" />
     </div>
     <div id="canvas-holder">
-        <canvas height="300" id="chart-area2" width="300" />
+        <canvas id="chart-area2" width="300" height="300" />
     </div>
 
     <div id="chartjs-tooltip"></div>
@@ -122,7 +122,7 @@
 
         //Finding absolute position of the chart canvas
         var position = getPosition(tooltip.chart.canvas)
-
+        
         // Display, position, and set styles for font
         tooltipEl.css({
             opacity: 1,

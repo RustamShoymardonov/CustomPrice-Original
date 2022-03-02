@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         <script src="esl.js"></script>
         <script src="config.js"></script>
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body>
         <style>
@@ -66,16 +66,16 @@
         <div class="controller">
             <div class="mode-title">示例模式<br>(Mode)</div>
             <div class="mode-body">
-                <input checked="checked" id="area-meaning-0" name="area-meaning" onclick="areaMeasureChange(0);" type="radio"/>
+                <input type="radio" id="area-meaning-0" name="area-meaning" onclick="areaMeasureChange(0);" checked="checked"/>
                 <label for="area-meaning-0">面积代表“2012年预算额” (Area represents '2012 Amount)</label><br>
-                <input id="area-meaning-2" name="area-meaning" onclick="areaMeasureChange(2);" type="radio"/>
+                <input type="radio" id="area-meaning-2" name="area-meaning" onclick="areaMeasureChange(2);"/>
                 <label for="area-meaning-2">面积代表“2012年预算额”，明暗代表“2011年相比的增长率”<br>&nbsp;&nbsp;&nbsp;&nbsp; (Area represents '2012 Amount' and color-alpha represents 'Change from 2011')</label><br>
-                <input id="area-meaning-1" name="area-meaning" onclick="areaMeasureChange(1);" type="radio"/>
+                <input type="radio" id="area-meaning-1" name="area-meaning" onclick="areaMeasureChange(1);"/>
                 <label for="area-meaning-1">面积代表“2011年预算额” (Area represents '2011 Amount')</label>
             </div>
             <div class="query">
-                <input id="query-input" onkeypress="if (event.keyCode === 13) { query(); return false; }" placeholder="请输入节点名 (Please node name)" type="text"/>
-                <input class="query-btn" onclick="query();" type="button" value="检索节点(query)" />
+                <input id="query-input" type="text" placeholder="请输入节点名 (Please node name)" onkeypress="if (event.keyCode === 13) { query(); return false; }"/>
+                <input type="button" class="query-btn" value="检索节点(query)" onclick="query();" />
             </div>
         </div>
         <div id="main"></div>

@@ -79,9 +79,7 @@ function init_sidebar() {
 
         setContentHeight();
 
-        $('.dataTable').each(function () {
-            $(this).dataTable().fnDraw();
-        });
+        $('.dataTable').each(function () { $(this).dataTable().fnDraw(); });
     });
 
     // check active menu
@@ -105,11 +103,10 @@ function init_sidebar() {
         $('.menu_fixed').mCustomScrollbar({
             autoHideScrollbar: true,
             theme: 'minimal',
-            mouseWheel: {preventDefault: true}
+            mouseWheel: { preventDefault: true }
         });
     }
 }
-
 // /Sidebar
 
 // Panel toolbox

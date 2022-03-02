@@ -107,7 +107,7 @@
             <h1>jQuery Knob</h1>
         </div>
         <div>
-            <p>Nice, downward compatible, touchable, jQuery dial. <a href="http://flattr.com/thing/674900/jQuery-Knob" target="_blank"><img alt="Flattr this" border="0" src="http://api.flattr.com/button/flattr-badge-large.png" title="Flattr this" /></a></p>
+            <p>Nice, downward compatible, touchable, jQuery dial. <a href="http://flattr.com/thing/674900/jQuery-Knob" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a></p>
             <p style="font-size: 20px">* implemented interactions : mouse click and wheel mouse, keyboard (on focus) and fingers (touch events)</p>
         </div>
         <div class="demo">
@@ -116,7 +116,7 @@
 data-width="100"
 data-displayInput=false
             </pre>
-            <input class="knob" data-displayInput=false data-width="100" value="35">
+            <input class="knob" data-width="100" data-displayInput=false value="35">
         </div>
         <div class="demo">
             <p>&#215; 'cursor' mode</p>
@@ -126,7 +126,7 @@ data-cursor=true
 data-thickness=.3
 data-fgColor="#222222"
             </pre>
-            <input class="knob" data-cursor=true data-fgColor="#222222" data-thickness=.3 data-width="150" value="29">
+            <input class="knob" data-width="150" data-cursor=true data-fgColor="#222222" data-thickness=.3 value="29">
         </div>
         <div class="demo" >
             <p>&#215; Display previous value</p>
@@ -134,7 +134,7 @@ data-fgColor="#222222"
 data-displayPrevious=true
 data-min="-100"
             </pre>
-            <input class="knob" data-displayPrevious=true data-min="-100" data-width="200" value="44">
+            <input class="knob" data-width="200" data-min="-100" data-displayPrevious=true value="44">
         </div>
         <div style="clear:both"></div>
         <div class="demo">
@@ -153,7 +153,7 @@ data-angleOffset=-125
 data-angleArc=250
 data-rotation=anticlockwise
             </pre>
-            <input class="knob" data-angleArc=250 data-angleOffset=-125 data-fgColor="#66EE66" data-rotation="anticlockwise" value="35">
+            <input class="knob" data-angleOffset=-125 data-angleArc=250 data-fgColor="#66EE66" data-rotation="anticlockwise" value="35">
         </div>
         <div class="demo" >
             <p>&#215; 4-digit, step 0.1</p>
@@ -164,7 +164,7 @@ data-max="10000"
 value="0"
 data-displayPrevious=true
             </pre>
-            <input class="knob" data-displayPrevious=true data-max="10000" data-min="-10000" data-step=".1" value="0">
+            <input class="knob" data-min="-10000" data-displayPrevious=true data-max="10000" data-step=".1" value="0">
         </div>
         <div style="clear:both"></div>
         <div style="text-align: center">
@@ -179,7 +179,7 @@ data-displayPrevious=true
     data-thickness=".2"
     data-displayPrevious=true
                 </pre>
-                <input class="knob" data-cursor=true data-displayPrevious=true data-fgColor="#ffec03" data-skin="tron" data-thickness=".2" data-width="75" value="75">
+                <input class="knob" data-width="75" data-displayPrevious=true data-fgColor="#ffec03" data-skin="tron" data-cursor=true value="75" data-thickness=".2">
             </div>
             <div class="demo" style="background-color:#222; color:#FFF;">
                 <pre>
@@ -189,7 +189,7 @@ data-displayPrevious=true
     data-thickness=".2"
     data-displayPrevious=true
                 </pre>
-                <input class="knob" data-displayPrevious=true data-fgColor="#ffec03" data-skin="tron" data-thickness=".2" data-width="150" value="75">
+                <input class="knob" data-width="150" data-displayPrevious=true data-fgColor="#ffec03" data-skin="tron" data-thickness=".2" value="75">
             </div>
             <div class="demo" style="background-color:#222; color:#FFF;">
                 <pre>
@@ -199,7 +199,7 @@ data-displayPrevious=true
     data-thickness=".1"
     data-angleOffset="180"
                 </pre>
-                <input class="knob" data-angleOffset="180" data-fgColor="#C0ffff" data-skin="tron" data-thickness=".1" data-width="150" value="35">
+                <input class="knob" data-width="150" data-angleOffset="180" data-fgColor="#C0ffff" data-skin="tron" data-thickness=".1" value="35">
             </div>
         </div>
         <div style="clear:both"></div>
@@ -241,13 +241,13 @@ data-width="80%"
             <p>&#215; Superpose (clock)</p>
             <div style="position:relative;width:350px;margin:auto">
                 <div style="position:absolute;left:10px;top:10px">
-                    <input class="knob hour" data-bgColor="#333" data-displayInput=false data-fgColor="#ffec03" data-height="300" data-max="24" data-min="0" data-thickness=".3" data-width="300">
+                    <input class="knob hour" data-min="0" data-max="24" data-bgColor="#333" data-fgColor="#ffec03" data-displayInput=false data-width="300" data-height="300" data-thickness=".3">
                 </div>
                 <div style="position:absolute;left:60px;top:60px">
-                    <input class="knob minute" data-bgColor="#333" data-displayInput=false data-height="200" data-max="60" data-min="0" data-thickness=".45" data-width="200">
+                    <input class="knob minute" data-min="0" data-max="60" data-bgColor="#333" data-displayInput=false data-width="200" data-height="200" data-thickness=".45">
                 </div>
                 <div style="position:absolute;left:110px;top:110px">
-                    <input class="knob second" data-bgColor="#333" data-displayInput=false data-fgColor="rgb(127, 255, 0)" data-height="100" data-max="60" data-min="0" data-thickness=".3" data-width="100">
+                    <input class="knob second" data-min="0" data-max="60" data-bgColor="#333" data-fgColor="rgb(127, 255, 0)" data-displayInput=false data-width="100" data-height="100" data-thickness=".3">
                 </div>
             </div>
         </div>
@@ -266,14 +266,14 @@ data-fgColor="chartreuse"
             <pre>
 data-width="200"
             </pre>
-            <input onclick="$('.knob-dyn').knob();" type="button" value="knobify!">
-            <input class="knob-dyn" data-cursor=true data-width="200" type="text" value="56">
+            <input type="button" onclick="$('.knob-dyn').knob();" value="knobify!">
+            <input type="text" class="knob-dyn" data-width="200" data-cursor=true value="56">
             <pre>
 data-width="50"
 data-cursor=true
             </pre>
-            <input onclick="$('.knob-dyn2').knob();" type="button" value="knobify!">
-            <input class="knob-dyn2" data-thickness=".4" data-width="50" type="text" value="56">
+            <input type="button" onclick="$('.knob-dyn2').knob();" value="knobify!">
+            <input type="text" class="knob-dyn2" data-width="50" data-thickness=".4" value="56">
         </div>
         <div class="demo" style="height:440px;width:300px">
             <p>&#215; Infinite || iPod click wheel</p>
@@ -287,7 +287,7 @@ data-bgColor="#FFFFFF"
 data-displayInput="false"
 + some code
                 </pre>
-                <input class="infinite" data-bgColor="#FFFFFF" data-cursor=true data-displayInput="false" data-fgColor="#AAAAAA" data-thickness=".5" data-width="150" value="0">
+                <input class="infinite" value="0" data-width="150" data-thickness=".5" data-fgColor="#AAAAAA" data-bgColor="#FFFFFF" data-displayInput="false" data-cursor=true>
             </div>
             <div style="float:left;margin-top:200px;">
                 <div class="ival" style="width:80px;text-align:center;font-size:50px;color:#AAA">0</div>
