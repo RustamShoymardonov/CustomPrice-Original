@@ -125,9 +125,15 @@
                                                                 <c:forEach var="val" items="${transports}">
                                                                 <tr>
                                                                     <th>${val.finishCountry}</th>
-                                                                    <td>${val.tarnsportType}</td>
-<%--                                                                    <td><i class="fa fa-subway fa-2x mr-3"></i>${val[3]}</td>--%>
-<%--                                                                    <td>${val[4]}</td>--%>
+                                                                    <td>${val.endCountry}</td>
+                                                                    <td><i class="fa fa-subway fa-2x mr-3"></i>${val.tarnsportType}</td>
+                                                                    <td>${val.transportPrice}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Жами</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>54654</td>
                                                                 </tr>
                                                                 </c:forEach>
                                                                 </tbody>

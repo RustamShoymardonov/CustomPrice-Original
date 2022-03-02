@@ -170,17 +170,17 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach var="notSorted" items="${notSortedList}" varStatus="i">
-                                        <tr>
-                                            <td>${i.index + 1}</td>
-                                            <td><a href="javascript:InitialDecisionView('${notSorted.id}')" class="text-primary font-weight-bold"><u>${notSorted.appNum}</u></a></td>
-                                            <td>${notSorted.statusNm}</td>
-                                            <td>${notSorted.insTime.toLocaleString()}</td>
-                                            <td>${notSorted.personFio}</td>
-                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>
-                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>
-                                        </tr>
-                                    </c:forEach>
+<%--                                    <c:forEach var="val" items="${qiymatconsult}" varStatus="i">--%>
+<%--                                        <tr>--%>
+<%--                                            <td>${i.index + 1}</td>--%>
+<%--                                            <td><a href="javascript:InitialDecisionView('${val.id}')" class="text-primary font-weight-bold"><u>${val.id}</u></a></td>--%>
+<%--&lt;%&ndash;                                            <td>${notSorted.statusNm}</td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            <td>${notSorted.insTime.toLocaleString()}</td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            <td>${notSorted.personFio}</td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>&ndash;%&gt;--%>
+<%--                                        </tr>--%>
+<%--                                    </c:forEach>--%>
                                     </tbody>
                                 </table>
                             </div>
@@ -203,15 +203,15 @@
                                     </thead>
                                     <tbody>
 <%--                                    <c:forEach var="notSorted" items="${notSortedList}" varStatus="i">--%>
-                                    <tr>
-                                        <td>${i.index + 1}</td>
-                                        <td><a href="javascript:InitialDecisionView('${notSorted.id}')" class="text-primary font-weight-bold"><u>${notSorted.appNum}</u></a></td>
-                                        <td>${notSorted.statusNm}</td>
-                                        <td>${notSorted.insTime.toLocaleString()}</td>
-                                        <td>${notSorted.personFio}</td>
-                                        <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>
-                                        <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>
-                                    </tr>
+<%--                                    <tr>--%>
+<%--                                        <td>${i.index + 1}</td>--%>
+<%--                                        <td><a href="javascript:InitialDecisionView('${notSorted.id}')" class="text-primary font-weight-bold"><u>${notSorted.appNum}</u></a></td>--%>
+<%--                                        <td>${notSorted.statusNm}</td>--%>
+<%--                                        <td>${notSorted.insTime.toLocaleString()}</td>--%>
+<%--                                        <td>${notSorted.personFio}</td>--%>
+<%--                                        <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>--%>
+<%--                                        <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>--%>
+<%--                                    </tr>--%>
 <%--                                    </c:forEach>--%>
                                     </tbody>
                                 </table>
@@ -238,17 +238,17 @@
                                     </thead>
                                     <tbody>
 <%--                                    <c:forEach var="notSorted" items="${notSortedList}" varStatus="i">--%>
-                                        <tr>
-                                            <td>${i.index + 1}</td>
-                                            <td><a href="javascript:InitialDecisionView('${notSorted.id}')" class="text-primary font-weight-bold"><u>${notSorted.appNum}</u></a></td>
-                                            <td>${notSorted.statusNm}</td>
-                                            <td>${notSorted.insTime.toLocaleString()}</td>
-                                            <td>${notSorted.personFio}</td>
-                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>
-                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>
-                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>
-                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>
-                                        </tr>
+<%--                                        <tr>--%>
+<%--                                            <td>${i.index + 1}</td>--%>
+<%--                                            <td><a href="javascript:InitialDecisionView('${notSorted.id}')" class="text-primary font-weight-bold"><u>${notSorted.appNum}</u></a></td>--%>
+<%--                                            <td>${notSorted.statusNm}</td>--%>
+<%--                                            <td>${notSorted.insTime.toLocaleString()}</td>--%>
+<%--                                            <td>${notSorted.personFio}</td>--%>
+<%--                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>--%>
+<%--                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>--%>
+<%--                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>--%>
+<%--                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>--%>
+<%--                                        </tr>--%>
 <%--                                    </c:forEach>--%>
                                     </tbody>
                                 </table>

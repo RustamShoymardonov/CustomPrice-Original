@@ -21,6 +21,7 @@ public class AppsService {
     @PersistenceContext
     private EntityManager entityManager;
 
+
     /* 1) Барча статуси "Янги" бўлган аризалар */
     public List<Apps> getListNotSorted() {
 //        appsRepo.findByStatus(100);

@@ -1,9 +1,6 @@
 package uz.customs.customsprice.service;
 
-import org.springframework.boot.rsocket.server.RSocketServer;
 import org.springframework.stereotype.Service;
-import uz.customs.customsprice.entity.InitialDecision.Commodity;
-import uz.customs.customsprice.entity.InitialDecision.Status;
 import uz.customs.customsprice.entity.InitialDecision.TransportType;
 import uz.customs.customsprice.repository.TransportTypeRepo;
 
@@ -39,7 +36,8 @@ public class TransportTypeService {
                 "    c2.cd_nm end_country,\n" +
                 "    c1.cd_nm finish_country,\n" +
                 "    tt.name  tarnsport_type,\n" +
-                "    t.transport_price\n" +
+                "    t.transport_price,\n" +
+//                "    sum(t.transport_price) allprice \n"+
                 "from\n" +
                 "    transporttype t\n" +
                 "left join\n" +
