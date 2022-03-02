@@ -46,6 +46,10 @@ public class DigestsController {
 
         List<QiymatconsultEntity> qiymatconsultEntityList = qiymatconsultService.getListQiymatconsulting();
         mav.addObject("qiymatconsult", qiymatconsultEntityList);
+//        return mav;
+
+        List<QiymatconsultEntity> qiymatRejectEntityList = qiymatconsultService.getListQiymatReject();
+        mav.addObject("qiymatReject", qiymatRejectEntityList);
         return mav;
     }
 

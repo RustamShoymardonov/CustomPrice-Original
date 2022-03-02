@@ -56,17 +56,17 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-<%--                                    <c:forEach var="val" items="${qiymatconsult}" varStatus="i">--%>
-<%--                                        <tr>--%>
-<%--                                            <td>${i.index + 1}</td>--%>
-<%--                                            <td><a href="javascript:InitialDecisionView('${val.id}')" class="text-primary font-weight-bold"><u>${val.}</u></a></td>--%>
-<%--                                            <td>${notSorted.statusNm}</td>--%>
-<%--                                            <td>${notSorted.insTime.toLocaleString()}</td>--%>
-<%--                                            <td>${notSorted.personFio}</td>--%>
-<%--                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>--%>
-<%--                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>--%>
-<%--                                        </tr>--%>
-<%--                                    </c:forEach>--%>
+                                    <c:forEach var="val" items="${qiymatReject}" varStatus="i">
+                                        <tr>
+                                            <td>${i.index + 1}</td>
+                                            <td><a href="#" class="text-primary font-weight-bold"><u>${val[0]}</u></a></td>
+                                            <td>${val[10]}</td>
+                                            <td>${val[14]}</td>
+                                            <td>${val[13]}</td>
+                                            <td>${val[4]} ${val[5]} ${val[6]} ${val[7]}</td>
+                                            <td>ИМОМУДДИНОВ БАҲОДИР СУЛТОНБОЙ ЎҒЛИ</td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
