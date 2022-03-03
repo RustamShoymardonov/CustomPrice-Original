@@ -110,7 +110,7 @@
                     <label class="form-check-label" for="rememberMe">Сақлаб қолиш</label>
                   </div>
                   <div class="text-center">
-                    <button type="button" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Сайтга кириш</button>
+                    <button type="button" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Тизимга кириш</button>
                   </div>
                 </form>
               </div>

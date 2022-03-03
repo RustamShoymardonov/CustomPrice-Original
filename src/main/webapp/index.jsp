@@ -31,7 +31,7 @@
         <div class="col-md-3 left_col position-fixed" style="height: 110vh">
             <div class="left_col scroll-view ">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="index.html" class="site_title"><img src="<%=request.getContextPath()%>/resources/images/gtk.jpg" width="50" height="50"> <span style="font-size: 18px!important;">Божхона қиймати </span></a>
+                    <a href="index.jsp" class="site_title"><img src="<%=request.getContextPath()%>/resources/images/gtk.jpg" width="50" height="50"> <span style="font-size: 18px!important;">Божхона қиймати </span></a>
                 </div>
                     <style>
                         .animate-charcter
@@ -111,7 +111,7 @@
                                 <span>Созлаш</span>
                             </a>
                             <a class="dropdown-item" href="">Ёрдам</a>
-                            <a class="dropdown-item" href="<%=request.getContextPath()%>/resources/pages/LoginPages/SignIn.jsp"><i class="fa fa-sign-out pull-right"></i>Чиқиш</a>
+                            <a class="dropdown-item" href="<%=request.getContextPath()%>/resources/pages/LoginPages/SignInCopy.jsp"><i class="fa fa-sign-out pull-right"></i>Чиқиш</a>
                         </div>
                     </li>
                     <li role="presentation" class="nav-item dropdown open">
