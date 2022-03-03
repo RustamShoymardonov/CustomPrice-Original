@@ -24,6 +24,9 @@ public class Users {
     @Column(name = "ROLE")
     private Integer role;
 
+    @Column(name = "Email")
+    private Integer email;
+
     @Column(name = "LOCATION", length = 4)
     private String location;
 
@@ -36,12 +39,13 @@ public class Users {
     public Users() {
     }
 
-    public Users(String id, String login, String password, String userName, Integer role, String location, String post, int isDeleted) {
+    public Users(String id, String login, String password, String userName, Integer role, Integer email, String location, String post, int isDeleted) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.userName = userName;
         this.role = role;
+        this.email = email;
         this.location = location;
         this.post = post;
         this.isDeleted = isDeleted;
@@ -85,6 +89,14 @@ public class Users {
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+    public Integer getEmail() {
+        return email;
+    }
+
+    public void setEmail(Integer email) {
+        this.email = email;
     }
 
     public String getLocation() {
