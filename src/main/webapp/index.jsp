@@ -63,10 +63,9 @@
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section">
                         <ul class="nav side-menu menu_fixed">
-                            <li><a href="javascript:void(0)"><i class="fa fa-bar-chart-o"></i>Товарларни тоифалаш</a></li>
+                            <li><a href="javascript:ListClassProduct(0)"><i class="fa fa-bar-chart-o"></i>Товарларни тоифалаш</a></li>
                             <li><a href="javascript:InitialDecisionRasp(0)"><i class="fa fa-edit"></i>Тақсимлаш</a></li>
                             <li><a href="javascript:InitialDecision(0)"><i class="fa fa-edit"></i>Мурожаатлар</a>
-<%--                            <li><a href="javascript:InitialDecisionView(0)"><i class="fa fa-edit"></i>Хулоса</a>--%>
                             <li><a href="javascript:void(0)"><i class="fa fa-desktop"></i>Қиймат мониторинги</a></li>
                             <li><a href="javascript:void(0)"><i class="fa fa-sitemap"></i>Мантиқий назорат</a></li>
                             <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i>Халқаро сўровнома</a></li>
@@ -209,8 +208,7 @@
         var dataS = {
             "x": '0',
         };
-        var tipform = "<%=request.getContextPath()%>/resources/pages/ClassProduct/ListClassProduct.jsp";
-        document.body.style.cursor = 'wait';
+        var tipform ="<%=request.getContextPath()%>/resources/pages/ClassProduct/ListClassProduct.jsp";
         $.post({
             async: false,
             url: tipform,
@@ -228,6 +226,26 @@
             }
         });
     });
+
+    /*Tovarlarni toifalash */
+    function ListClassProduct(x) {
+        var dataS = {
+            "id": x
+        }
+        $.ajax({
+            type: "POST",
+            data: dataS,
+            url: "<%=request.getContextPath()%>/main/resources/pages/ClassProduct/ListClassProduct",
+            dataType: "html",
+            header: 'Content-type: text/html; charset=utf-8',
+            success: function (res) {
+                $('div#MainContent').html(res);
+            },
+            error: function (res) {
+            }
+        });
+    }
+
 
     /* Маълумотларни твқсимлаш */
     function InitialDecisionRasp(x) {

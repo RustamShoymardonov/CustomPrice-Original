@@ -124,10 +124,6 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>RELEASE</version>
@@ -137,21 +133,27 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.security</groupId>-->
-<!--            <artifactId>spring-security-taglibs</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.security</groupId>-->
-<!--            <artifactId>spring-security-test</artifactId>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
         </dependency>
-    </dependencies>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-test -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <version>5.6.2</version>
+            <scope>test</scope>
+        </dependency>
 
+    </dependencies>
     <build>
         <plugins>
             <plugin>
@@ -160,5 +162,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

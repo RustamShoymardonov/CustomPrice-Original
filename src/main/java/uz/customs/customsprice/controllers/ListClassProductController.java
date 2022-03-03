@@ -12,9 +12,10 @@ import uz.customs.customsprice.entity.InitialDecision.Apps;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/li")
+@RequestMapping("/main")
 public class ListClassProductController {
     private final String LISTCLASSPRODUCT = "/resources/pages/ClassProduct/ListClassProduct";
+
 
     @PostMapping(value = LISTCLASSPRODUCT)
     @ResponseBody
