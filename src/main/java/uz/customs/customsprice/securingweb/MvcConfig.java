@@ -8,10 +8,10 @@
 //public class MvcConfig implements WebMvcConfigurer {
 //
 //    public void addViewControllers(ViewControllerRegistry registry) {
-//        registry.addViewController("/templates/home.html").setViewName("home");
-//        registry.addViewController("/").setViewName("home");
-//        registry.addViewController("/templates/hello.html").setViewName("hello");
-//        registry.addViewController("/templates/login.html").setViewName("login");
+//        registry.addViewController("/home").setViewName("home");
+//        registry.addViewController("/main").setViewName("ListClassProductController");
+//        registry.addViewController("/hello").setViewName("hello");
+//        registry.addViewController("/login").setViewName("login");
 //    }
 //
 //}

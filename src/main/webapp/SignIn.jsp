@@ -98,21 +98,22 @@
                 <p class="mb-0">Логин ва паролингизни киритинг</p>
               </div>
               <div class="card-body">
-                <form role="form">
+                <form role="form" method="post">
                   <div class="mb-3">
-                    <input type="text" class="form-control form-control-lg" placeholder="Логин" aria-label="Email">
+                    <input type="text" class="form-control form-control-lg" placeholder="Логин" name="userId" aria-label="text">
                   </div>
                   <div class="mb-3">
-                    <input type="password" class="form-control form-control-lg" placeholder="Пароль" aria-label="Password">
+                    <input type="password" class="form-control form-control-lg" placeholder="Пароль" name="password" aria-label="Password">
                   </div>
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="rememberMe">
                     <label class="form-check-label" for="rememberMe">Сақлаб қолиш</label>
                   </div>
                   <div class="text-center">
-                    <button type="button" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Тизимга кириш</button>
+                    <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Сайтга кириш</button>
                   </div>
                 </form>
+                <h3>${errorMsg}</h3>
               </div>
               <div class="card-footer text-center pt-0 px-lg-2 px-1">
                 <p class="mb-4 text-sm mx-auto">

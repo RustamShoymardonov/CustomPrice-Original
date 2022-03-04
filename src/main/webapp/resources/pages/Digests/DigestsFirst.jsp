@@ -48,6 +48,7 @@
                                     <tr>
                                         <th style="border-style: dotted">т/р</th>
                                         <th style="border-style: dotted">БЮД рақами</th>
+                                        <th style="border-style: dotted">Қарор рақами</th>
                                         <th style="border-style: dotted">Сана</th>
                                         <th style="border-style: dotted">Товарлар сони</th>
                                         <th style="border-style: dotted">Товарлар бруттоси(кг)</th>
@@ -60,11 +61,12 @@
                                         <tr>
                                             <td>${i.index + 1}</td>
                                             <td><a href="#" class="text-primary font-weight-bold"><u>${val[0]}</u></a></td>
-                                            <td>${val[10]}</td>
+                                            <td>${val[1]}</td>
+                                            <td>${val[3]}</td>
                                             <td>${val[14]}</td>
-                                            <td>${val[13]}</td>
-                                            <td>${val[4]} ${val[5]} ${val[6]} ${val[7]}</td>
-                                            <td>ИМОМУДДИНОВ БАҲОДИР СУЛТОНБОЙ ЎҒЛИ</td>
+                                            <td>${val[12]}</td>
+                                            <td>${val[5]} ${val[6]} ${val[7]} ${val[8]}</td>
+                                            <td>ИМОМУДДИНОВ БАҲОДИР СУЛТОНБОЙ ЎҒЛИ${val[4]}</td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -80,6 +82,7 @@
                                     <tr>
                                         <th style="border-style: dotted">т/р</th>
                                         <th style="border-style: dotted">БЮД рақами</th>
+                                        <th style="border-style: dotted">Қарор рақами</th>
                                         <th style="border-style: dotted">Сана</th>
                                         <th style="border-style: dotted">Товарлар сони</th>
                                         <th style="border-style: dotted">БЮД да ҳисобланган бож. тўл.(млн. сўмда)</th>
@@ -91,16 +94,18 @@
                                     </thead>
                                     <tbody>
                                     <c:forEach var="val" items="${qiymatconsult}" varStatus="i">
+                                        <c:set var="total" value="${val[5]-val[6]}"/>
                                     <tr>
                                         <td>${i.index + 1}</td>
                                         <td><a href="#" class="text-primary font-weight-bold"><u>${val[0]}</u></a></td>
-                                        <td>${val[13]}</td>
-                                        <td>Товарлар сони${val[1]}</td>
+                                        <td>${val[1]}</td>
                                         <td>${val[3]}</td>
-                                        <td>${val[11]}</td>
-                                        <td>${val[12]}</td>
-                                        <td>${val[14]}</td>
+                                        <td>${val[9]}</td>
+                                        <td>${val[6]}</td>
                                         <td>${val[5]}</td>
+                                        <td><c:out value="${total}"/></td>
+                                        <td>${val[8]}</td>
+                                        <td>Машарипов Жамшид(${val[4]})</td>
                                     </tr>
                                     </c:forEach>
                                     </tbody>
@@ -117,29 +122,36 @@
                                     <tr>
                                         <th style="border-style: dotted">т/р</th>
                                         <th style="border-style: dotted">БЮД рақами</th>
-                                        <th style="border-style: dotted">Шартли чиқарилган сана</th>
-                                        <th style="border-style: dotted">Шартли чиқарилган товарлар сони</th>
+                                        <th style="border-style: dotted">Қарор рақами</th>
+                                        <th style="border-style: dotted">Сана</th>
+                                        <th style="border-style: dotted">Товарлар сони</th>
+                                        <th style="border-style: dotted">БЮД да ҳисобланган бож. тўл.(млн. сўмда)</th>
+                                        <th style="border-style: dotted">Жами ҳисобланган бож. тўл.(млн. сўмда)</th>
                                         <th style="border-style: dotted">Қўшимча ҳисобланган бож. тўл.(млн. сўмда)</th>
-                                        <th style="border-style: dotted">Шартли чиқарилган товарлар бруттоси(кг)</th>
-                                        <th style="border-style: dotted">Шартли чиқариш тугатилишига кун қолди</th>
-                                        <th style="border-style: dotted">Шартли чиқариш сабаби</th>
+                                        <th style="border-style: dotted">Товарлар бруттоси(кг)</th>
+                                        <th style="border-style: dotted">Амал қилиш санаси</th>
+                                        <th style="border-style: dotted">Амал қилиш муддати</th>
                                         <th style="border-style: dotted">Инспектор</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-<%--                                    <c:forEach var="notSorted" items="${notSortedList}" varStatus="i">--%>
-<%--                                        <tr>--%>
-<%--                                            <td>${i.index + 1}</td>--%>
-<%--                                            <td><a href="javascript:InitialDecisionView('${notSorted.id}')" class="text-primary font-weight-bold"><u>${notSorted.appNum}</u></a></td>--%>
-<%--                                            <td>${notSorted.statusNm}</td>--%>
-<%--                                            <td>${notSorted.insTime.toLocaleString()}</td>--%>
-<%--                                            <td>${notSorted.personFio}</td>--%>
-<%--                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>--%>
-<%--                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>--%>
-<%--                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>--%>
-<%--                                            <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>--%>
-<%--                                        </tr>--%>
-<%--                                    </c:forEach>--%>
+                                    <c:forEach var="val" items="${qiymatshartli}" varStatus="i">
+                                        <c:set var="total" value="${val[5]-val[6]}"/>
+                                        <tr>
+                                            <td>${i.index + 1}</td>
+                                            <td><a href="#" class="text-primary font-weight-bold"><u>${val[0]}</u></a></td>
+                                            <td>${val[1]}</td>
+                                            <td>${val[3]}</td>
+                                            <td>${val[9]}</td>
+                                            <td>${val[6]}</td>
+                                            <td>${val[5]}</td>
+                                            <td><c:out value="${total}"/></td>
+                                            <td>${val[8]}</td>
+                                            <td>${val[10]}</td>
+                                            <td>${val[11]} кун</td>
+                                            <td>Машарипов Жамшид(${val[4]})</td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
