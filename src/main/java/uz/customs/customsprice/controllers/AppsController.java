@@ -25,6 +25,7 @@ public class AppsController {
     private final String INITIALDECISION = "/resources/pages/InitialDecision/InitialDecision1";
     private final String INITIALDECISIONRASP = "/resources/pages/InitialDecision/InitialDecisionRasp";
     private final String INITIALDECISIONVIEW = "/resources/pages/InitialDecision/InitialDecisionView";
+    private final String INITIALDECISIONSAVERASP = "/resources/pages/InitialDecision/InitialDecisionRasp";
 
     public AppsController(AppsService appsService, ConturyService conturyService, LocationService locationService, StatusService statusService, TermsService termsService, AppsService appsservice, TransportTypeService transportTypeService) {
         this.appsService = appsService;
@@ -37,8 +38,7 @@ public class AppsController {
     }
 
     /*---------------------------------------------------------------------------------------------------------start*/
-    /* Apps маълумотларини чиқариш учун*/
-
+    /* Apps маълумотларини сақлаш учун учун*/
     @PostMapping
     public ResponseEntity valuesave(@RequestBody Apps apps) {
         try {
@@ -64,11 +64,28 @@ public class AppsController {
         }
 
     }
+
+
+    /*todo Тақсимланган аризалар рўйхатини сақлаш (инспекторлар кесимида)*/
+    @PostMapping(value = INITIALDECISIONSAVERASP)
+    @ResponseBody
+    public ModelAndView InitialDecisionViewSave(HttpSession session, @RequestParam String appIdS, @RequestParam String userIdS) {
+        System.out.println(appIdS);
+        System.out.println(userIdS);
+
+        ModelAndView mav = new ModelAndView("/resources/pages/InitialDecision/InitialDecisionRasp");
+//        AppsRasp appsRasp = new AppsRasp();
+//        appsRasp.setAppId(app_idList[]);
+
+
+        return mav;
+    }
+
     /*-----------------------------------------------------------------------------------------------------------end*/
 
 
     /*---------------------------------------------------------------------------------------------------------start*/
-    /* Apps маълумотларини сақлаш учун учун*/
+    /* Apps маълумотларини чиқариш учун*/
     @PostMapping(value = INITIALDECISIONRASP)
     @ResponseBody
     public ModelAndView InitialDecisionRasp(HttpSession session, @RequestParam(name = "id") String status) {
