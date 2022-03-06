@@ -12,6 +12,21 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<%
+    String userId = (String) request.getSession().getAttribute("userId");
+    String userName = (String) request.getSession().getAttribute("userName");
+    Integer userRole = (Integer) request.getSession().getAttribute("userRole");
+    String userRoleName = (String) request.getSession().getAttribute("userRoleName");
+    String userLocation = (String) request.getSession().getAttribute("userLocation");
+    String userLocationName = (String) request.getSession().getAttribute("userLocationName");
+    String userPost = (String) request.getSession().getAttribute("userPost");
+
+//    int cntRole = 0;
+//    if (userRole == 7) cntRole = cntRole + 1;
+
+%>
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -33,30 +48,29 @@
                 <div class="navbar nav_title" style="border: 0;">
                     <a href="index.html" class="site_title"><img src="<%=request.getContextPath()%>/resources/images/gtk.jpg" width="50" height="50"> <span style="font-size: 18px!important;">Божхона қиймати </span></a>
                 </div>
-                    <style>
-                        .animate-charcter
-                        {
-                            text-transform: uppercase;
-                            background-image: linear-gradient(
-                                    -225deg,
-                                    #231557 0%,
-                                    #44107a 29%,
-                                    #ff1361 67%,
-                                    #fff800 100%
-                            );
-                            background-size: auto auto;
-                            background-clip: border-box;
-                            background-size: 200% auto;
-                            color: #fff;
-                            background-clip: text;
-                            text-fill-color: transparent;
-                            -webkit-background-clip: text;
-                            -webkit-text-fill-color: transparent;
-                            animation: textclip 2s linear infinite;
-                            display: inline-block;
-                            font-size: 20px;
-                        }
-                    </style>
+                <style>
+                    .animate-charcter {
+                        text-transform: uppercase;
+                        background-image: linear-gradient(
+                                -225deg,
+                                #231557 0%,
+                                #44107a 29%,
+                                #ff1361 67%,
+                                #fff800 100%
+                        );
+                        background-size: auto auto;
+                        background-clip: border-box;
+                        background-size: 200% auto;
+                        color: #fff;
+                        background-clip: text;
+                        text-fill-color: transparent;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        animation: textclip 2s linear infinite;
+                        display: inline-block;
+                        font-size: 20px;
+                    }
+                </style>
                 <div class="clearfix"></div>
                 <br/>
                 <!-- sidebar menu -->
@@ -64,8 +78,13 @@
                     <div class="menu_section">
                         <ul class="nav side-menu menu_fixed">
                             <li><a href="javascript:ListClassProduct(0)"><i class="fa fa-bar-chart-o"></i>Товарларни тоифалаш</a></li>
+
+                            <%if (userRole == 1 || userRole == 7){%> <%--todo (ҲББ Тўловлар бошлиғи)--%>
                             <li><a href="javascript:InitialDecisionRasp(0)"><i class="fa fa-edit"></i>Тақсимлаш</a></li>
+                            <%}%>
+                            <%if (userRole == 1 || userRole == 8){%> <%--todo (ҲББ Тўловлар ходими)--%>
                             <li><a href="javascript:InitialDecision(0)"><i class="fa fa-edit"></i>Мурожаатлар</a>
+                            <%}%>
                             <li><a href="javascript:void(0)"><i class="fa fa-desktop"></i>Қиймат мониторинги</a></li>
                             <li><a href="javascript:void(0)"><i class="fa fa-sitemap"></i>Мантиқий назорат</a></li>
                             <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i>Халқаро сўровнома</a></li>
@@ -103,10 +122,11 @@
                         <a href="" class="user-profile dropdown-toggle" aria-haspopup="true"
                            id="navbarDropdown" data-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF!important;">
                             <img src="<%=request.getContextPath()%>/resources/images/img.jpg" alt="">
-<%--                            ${username}--%>
+                            <%=userName%>
                         </a>
                         <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href=""> Фойдаланувчи</a>
+                            <a class="dropdown-item" href=""><%=userRoleName%>
+                            </a>
                             <a class="dropdown-item" href="">
                                 <span>Созлаш</span>
                             </a>
@@ -209,7 +229,7 @@
         var dataS = {
             "x": '0',
         };
-        var tipform ="<%=request.getContextPath()%>/resources/pages/ClassProduct/ListClassProduct.jsp";
+        var tipform = "<%=request.getContextPath()%>/resources/pages/ClassProduct/ListClassProduct.jsp";
         $.post({
             async: false,
             url: tipform,

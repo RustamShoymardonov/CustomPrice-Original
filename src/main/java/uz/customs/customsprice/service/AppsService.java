@@ -68,7 +68,7 @@ public class AppsService {
     }
 
     /* 2)Барча статуси "Янги"+"Имзоланган"+"Бекор қилинган" дан ташқари бўлган аризалар*/
-    public List<Apps> getListSorted() {
+    public List getListSorted() {
         String queryForList = "select\n" +
                 "    a.id,\n" +
                 "    a.instime,\n" +
@@ -109,7 +109,7 @@ public class AppsService {
                 "and a.isdeleted=0\n" +
                 "order by\n" +
                 "    a.instime desc";
-        return (List<Apps>) entityManager.createNativeQuery(queryForList, Apps.class).getResultList();
+        return  entityManager.createNativeQuery(queryForList).getResultList();
     }
 
     /* 3) Статуси фақат "Имзоланган"+"Бекор қилинган" бўлган аризалар*/
@@ -483,6 +483,15 @@ public class AppsService {
 
     public List<Apps> listAll() {
         return appsRepo.findAll();
+    }
+
+    public Apps findById(String id) {
+        if (appsRepo.findById(id).isPresent())
+            return appsRepo.findById(id).get();
+        else return null;
+    }
+    public Apps saveAppsStatus(Apps apps){
+        return  appsRepo.save(apps);
     }
 
 }

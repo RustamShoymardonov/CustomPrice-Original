@@ -12,6 +12,21 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<%
+    String userId = (String) request.getSession().getAttribute("userId");
+    String userName = (String) request.getSession().getAttribute("userName");
+    Integer userRole = (Integer) request.getSession().getAttribute("userRole");
+    String userRoleName = (String) request.getSession().getAttribute("userRoleName");
+    String userLocation = (String) request.getSession().getAttribute("userLocation");
+    String userLocationName = (String) request.getSession().getAttribute("userLocationName");
+    String userPost = (String) request.getSession().getAttribute("userPost");
+
+//    int cntRole = 0;
+//    if (userRole == 7) cntRole = cntRole + 1;
+
+%>
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -26,7 +41,6 @@
     <link href="<%=request.getContextPath()%>/resources/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="nav-md menu_fixed">
-
 <div class="container body">
     <div class="container body">
         <div class="col-md-3 left_col position-fixed" style="height: 110vh">
@@ -34,40 +48,43 @@
                 <div class="navbar nav_title" style="border: 0;">
                     <a href="index.html" class="site_title"><img src="<%=request.getContextPath()%>/resources/images/gtk.jpg" width="50" height="50"> <span style="font-size: 18px!important;">Божхона қиймати </span></a>
                 </div>
-                    <style>
-                        .animate-charcter
-                        {
-                            text-transform: uppercase;
-                            background-image: linear-gradient(
-                                    -225deg,
-                                    #231557 0%,
-                                    #44107a 29%,
-                                    #ff1361 67%,
-                                    #fff800 100%
-                            );
-                            background-size: auto auto;
-                            background-clip: border-box;
-                            background-size: 200% auto;
-                            color: #fff;
-                            background-clip: text;
-                            text-fill-color: transparent;
-                            -webkit-background-clip: text;
-                            -webkit-text-fill-color: transparent;
-                            animation: textclip 2s linear infinite;
-                            display: inline-block;
-                            font-size: 20px;
-                        }
-                    </style>
+                <style>
+                    .animate-charcter {
+                        text-transform: uppercase;
+                        background-image: linear-gradient(
+                                -225deg,
+                                #231557 0%,
+                                #44107a 29%,
+                                #ff1361 67%,
+                                #fff800 100%
+                        );
+                        background-size: auto auto;
+                        background-clip: border-box;
+                        background-size: 200% auto;
+                        color: #fff;
+                        background-clip: text;
+                        text-fill-color: transparent;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        animation: textclip 2s linear infinite;
+                        display: inline-block;
+                        font-size: 20px;
+                    }
+                </style>
                 <div class="clearfix"></div>
                 <br/>
                 <!-- sidebar menu -->
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section">
                         <ul class="nav side-menu menu_fixed">
-                            <li><a href="javascript:void(0)"><i class="fa fa-bar-chart-o"></i>Товарларни тоифалаш</a></li>
+                            <li><a href="javascript:ListClassProduct(0)"><i class="fa fa-bar-chart-o"></i>Товарларни тоифалаш</a></li>
+
+                            <%if (userRole == 1 || userRole == 7){%> <%--todo (ҲББ Тўловлар бошлиғи)--%>
                             <li><a href="javascript:InitialDecisionRasp(0)"><i class="fa fa-edit"></i>Тақсимлаш</a></li>
+                            <%}%>
+                            <%if (userRole == 1 || userRole == 8){%> <%--todo (ҲББ Тўловлар ходими)--%>
                             <li><a href="javascript:InitialDecision(0)"><i class="fa fa-edit"></i>Мурожаатлар</a>
-<%--                            <li><a href="javascript:InitialDecisionView(0)"><i class="fa fa-edit"></i>Хулоса</a>--%>
+                            <%}%>
                             <li><a href="javascript:void(0)"><i class="fa fa-desktop"></i>Қиймат мониторинги</a></li>
                             <li><a href="javascript:void(0)"><i class="fa fa-sitemap"></i>Мантиқий назорат</a></li>
                             <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i>Халқаро сўровнома</a></li>
@@ -104,15 +121,17 @@
                     <li class="nav-item dropdown open" style="padding-left: 15px;">
                         <a href="" class="user-profile dropdown-toggle" aria-haspopup="true"
                            id="navbarDropdown" data-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF!important;">
-                            <img src="<%=request.getContextPath()%>/resources/images/img.jpg" alt="">Абдиев Ботир
+                            <img src="<%=request.getContextPath()%>/resources/images/img.jpg" alt="">
+                            <%=userName%>
                         </a>
                         <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href=""> Фойдаланувчи</a>
+                            <a class="dropdown-item" href=""><%=userRoleName%>
+                            </a>
                             <a class="dropdown-item" href="">
                                 <span>Созлаш</span>
                             </a>
                             <a class="dropdown-item" href="">Ёрдам</a>
-                            <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i>Чиқиш</a>
+                            <a class="dropdown-item" href="<%=request.getContextPath()%>/logout"><i class="fa fa-sign-out pull-right"></i>Чиқиш</a>
                         </div>
                     </li>
                     <li role="presentation" class="nav-item dropdown open">
@@ -199,7 +218,6 @@
     </div>
     <%--todo Асосий----------------------------------------------------қисми------------------------гача--%>
 </div>
-
 <script src="<%=request.getContextPath()%>/resources/vendors/jquery/dist/jquery.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -212,7 +230,6 @@
             "x": '0',
         };
         var tipform = "<%=request.getContextPath()%>/resources/pages/ClassProduct/ListClassProduct.jsp";
-        document.body.style.cursor = 'wait';
         $.post({
             async: false,
             url: tipform,
@@ -230,6 +247,26 @@
             }
         });
     });
+
+    /*Tovarlarni toifalash */
+    function ListClassProduct(x) {
+        var dataS = {
+            "id": x
+        }
+        $.ajax({
+            type: "POST",
+            data: dataS,
+            url: "<%=request.getContextPath()%>/main/resources/pages/ClassProduct/ListClassProduct",
+            dataType: "html",
+            header: 'Content-type: text/html; charset=utf-8',
+            success: function (res) {
+                $('div#MainContent').html(res);
+            },
+            error: function (res) {
+            }
+        });
+    }
+
 
     /* Маълумотларни твқсимлаш */
     function InitialDecisionRasp(x) {
@@ -301,8 +338,78 @@
             header: 'Content-type: text/html; charset=utf-8',
             success: function (res) {
                 $('div#MainContent').html(res);
+
             },
             error: function (res) {
+            }
+        });
+    }
+
+    /* Справочник рад этиш modal */
+    function QiymatRejects(tov_id) {
+        var dataS = {
+            "tov_id": tov_id
+        }
+        $.ajax({
+            type: "POST",
+            data: dataS,
+            url: "<%=request.getContextPath()%>/digests/resources/pages/Digests/QiymatRejectModal",
+            dataType: "html",
+            header: 'Content-type: text/html; charset=utf-8',
+            success: function (res) {
+                console.log('clicked');
+                $('#ModalSentMess').html(res);
+                $modal = $('#ModalSentMess');
+                $modal.modal('show');
+            },
+            error: function () {
+                console.log("error");
+            }
+        });
+    }
+
+    /* Справочник консалт modal */
+    function QiymatConsult(tov_id) {
+        var dataS = {
+            "tov_id": tov_id
+        }
+        $.ajax({
+            type: "POST",
+            data: dataS,
+            url: "<%=request.getContextPath()%>/digests/resources/pages/Digests/QiymatConsultModal",
+            dataType: "html",
+            header: 'Content-type: text/html; charset=utf-8',
+            success: function (res) {
+                console.log('clicked');
+                $('#ModalSentMess').html(res);
+                $modal = $('#ModalSentMess');
+                $modal.modal('show');
+            },
+            error: function () {
+                console.log("error");
+            }
+        });
+    }
+
+    /* Справочник shartli modal */
+    function QiymatShartli(tov_id) {
+        var dataS = {
+            "tov_id": tov_id
+        }
+        $.ajax({
+            type: "POST",
+            data: dataS,
+            url: "<%=request.getContextPath()%>/digests/resources/pages/Digests/QiymatShartliModal",
+            dataType: "html",
+            header: 'Content-type: text/html; charset=utf-8',
+            success: function (res) {
+                console.log('clicked');
+                $('#ModalSentMess').html(res);
+                $modal = $('#ModalSentMess');
+                $modal.modal('show');
+            },
+            error: function () {
+                console.log("error");
             }
         });
     }
@@ -310,6 +417,5 @@
 </script>
 <script src="<%=request.getContextPath()%>/resources/build/js/custom.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
-
 </body>
 </html>

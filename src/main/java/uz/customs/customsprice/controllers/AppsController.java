@@ -5,10 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import uz.customs.customsprice.entity.InitialDecision.*;
+import uz.customs.customsprice.entity.users.User;
+import uz.customs.customsprice.repository.AppsRepo;
+import uz.customs.customsprice.repository.users.LoginRepo;
+import uz.customs.customsprice.repository.users.UsersRepo;
 import uz.customs.customsprice.service.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,24 +25,35 @@ public class AppsController {
     private final StatusService statusService;
     private final TermsService termsService;
     private final AppsService appsservice;
+    private final AppsRaspService appsRaspService;
+    private final AppsRepo appsRepo;
+    private final UsersRepo usersRepo;
+    private final LoginRepo loginRepo;
     private final TransportTypeService transportTypeService;
+    private final UsersService usersService;
     private final String INITIALDECISION = "/resources/pages/InitialDecision/InitialDecision1";
     private final String INITIALDECISIONRASP = "/resources/pages/InitialDecision/InitialDecisionRasp";
     private final String INITIALDECISIONVIEW = "/resources/pages/InitialDecision/InitialDecisionView";
+    private final String INITIALDECISIONSAVERASP = "/resources/pages/InitialDecision/InitialDecisionRasp1";
 
-    public AppsController(AppsService appsService, ConturyService conturyService, LocationService locationService, StatusService statusService, TermsService termsService, AppsService appsservice, TransportTypeService transportTypeService) {
+
+    public AppsController(AppsService appsService, ConturyService conturyService, LocationService locationService, StatusService statusService, TermsService termsService, AppsService appsservice, AppsRaspService appsRaspService, AppsRepo appsRepo, UsersRepo usersRepo, LoginRepo loginRepo, TransportTypeService transportTypeService, UsersService usersService) {
         this.appsService = appsService;
         this.conturyService = conturyService;
         this.locationService = locationService;
         this.statusService = statusService;
         this.termsService = termsService;
         this.appsservice = appsservice;
+        this.appsRaspService = appsRaspService;
+        this.appsRepo = appsRepo;
+        this.usersRepo = usersRepo;
+        this.loginRepo = loginRepo;
         this.transportTypeService = transportTypeService;
+        this.usersService = usersService;
     }
 
     /*---------------------------------------------------------------------------------------------------------start*/
-    /* Apps маълумотларини чиқариш учун*/
-
+    /* Apps маълумотларини API орқали сақлаш учун учун*/
     @PostMapping
     public ResponseEntity valuesave(@RequestBody Apps apps) {
         try {
@@ -64,15 +79,68 @@ public class AppsController {
         }
 
     }
+
+
+    /*todo Тақсимланган аризалар рўйхатини сақлаш (инспекторлар кесимида)*/
+    @PostMapping(value = INITIALDECISIONSAVERASP)
+    @ResponseBody
+    public ModelAndView InitialDecisionViewSave(HttpServletRequest request, @RequestParam String appId, @RequestParam String inspectorId)  {
+
+        String userId = (String) request.getSession().getAttribute("userId");
+        String userName = (String) request.getSession().getAttribute("userName");
+        Integer userRole = (Integer) request.getSession().getAttribute("userRole");
+        String userRoleName = (String) request.getSession().getAttribute("userRoleName");
+        String userLocation = (String) request.getSession().getAttribute("userLocation");
+        String userLocationName = (String) request.getSession().getAttribute("userLocationName");
+        String userPost = (String) request.getSession().getAttribute("userPost");
+
+        AppsRasp appsRasp = new AppsRasp();
+        appsRasp.setAppId(appId);
+        appsRasp.setInspectorId(inspectorId);
+        appsRaspService.saveRasp(appsRasp);
+
+        Apps app = appsservice.findById(appId);
+        Status status = statusService.getById(110);
+        app.setStatus(110);
+        app.setStatusNm(status.getName());
+        appsservice.saveAppsStatus(app);
+
+        ModelAndView mav = new ModelAndView("/resources/pages/InitialDecision/InitialDecisionRasp");
+        List<Apps> notSortedList = new ArrayList<>();
+        notSortedList = appsservice.getListNotSorted();
+        mav.addObject("notSortedList", notSortedList);
+
+        List sortedList = new ArrayList<>();
+        sortedList = appsservice.getListSorted();
+        mav.addObject("sortedList", sortedList);
+
+        List<Apps> termsList = new ArrayList<>();
+        termsList = appsservice.getListTerms();
+        mav.addObject("termsList", termsList);
+
+        List<Users> usersList = new ArrayList<>();
+        usersList = usersService.getByLocationAndPostAndRole(userLocation, userPost, 8);
+        mav.addObject("userSelectList", usersList);
+
+        return mav;
+    }
+
     /*-----------------------------------------------------------------------------------------------------------end*/
 
 
     /*---------------------------------------------------------------------------------------------------------start*/
-    /* Apps маълумотларини сақлаш учун учун*/
+    /* Apps маълумотларини чиқариш учун*/
     @PostMapping(value = INITIALDECISIONRASP)
     @ResponseBody
-    public ModelAndView InitialDecisionRasp(HttpSession session, @RequestParam(name = "id") String status) {
+    public ModelAndView InitialDecisionRasp(HttpServletRequest request, @RequestParam(name = "id") String status) {
         ModelAndView mav = new ModelAndView("/resources/pages/InitialDecision/InitialDecisionRasp");
+        String userId = (String) request.getSession().getAttribute("userId");
+        String userName = (String) request.getSession().getAttribute("userName");
+        Integer userRole = (Integer) request.getSession().getAttribute("userRole");
+        String userRoleName = (String) request.getSession().getAttribute("userRoleName");
+        String userLocation = (String) request.getSession().getAttribute("userLocation");
+        String userLocationName = (String) request.getSession().getAttribute("userLocationName");
+        String userPost = (String) request.getSession().getAttribute("userPost");
 
         List<Apps> notSortedList = new ArrayList<>();
         notSortedList = appsservice.getListNotSorted();
@@ -85,6 +153,10 @@ public class AppsController {
         List<Apps> termsList = new ArrayList<>();
         termsList = appsservice.getListTerms();
         mav.addObject("termsList", termsList);
+
+        List<Users> usersList = new ArrayList<>();
+        usersList = usersService.getByLocationAndPostAndRole(userLocation, userPost, 8);
+        mav.addObject("userSelectList", usersList);
 
         return mav;
     }
