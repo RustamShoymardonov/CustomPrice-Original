@@ -146,6 +146,7 @@
                         <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab"
                            aria-controls="home" aria-selected="true"><i
                                 class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
+                        <h3>${nnn}</h3>
                     </li>
                     <li class="nav-item ml-4" style="width: 30%">
                         <a class="nav-link h4" id="contact-tab" data-toggle="tab" href="#contact" role="tab"

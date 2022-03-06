@@ -31,7 +31,7 @@
         <div class="col-md-3 left_col position-fixed" style="height: 110vh">
             <div class="left_col scroll-view ">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="index.jsp" class="site_title"><img src="<%=request.getContextPath()%>/resources/images/gtk.jpg" width="50" height="50"> <span style="font-size: 18px!important;">Божхона қиймати </span></a>
+                    <a href="index.html" class="site_title"><img src="<%=request.getContextPath()%>/resources/images/gtk.jpg" width="50" height="50"> <span style="font-size: 18px!important;">Божхона қиймати </span></a>
                 </div>
                     <style>
                         .animate-charcter
@@ -102,7 +102,8 @@
                     <li class="nav-item dropdown open" style="padding-left: 15px;">
                         <a href="" class="user-profile dropdown-toggle" aria-haspopup="true"
                            id="navbarDropdown" data-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF!important;">
-                            <img src="<%=request.getContextPath()%>/resources/images/img.jpg" alt="">${userId}
+                            <img src="<%=request.getContextPath()%>/resources/images/img.jpg" alt="">
+<%--                            ${username}--%>
                         </a>
                         <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href=""> Фойдаланувчи</a>
@@ -110,7 +111,7 @@
                                 <span>Созлаш</span>
                             </a>
                             <a class="dropdown-item" href="">Ёрдам</a>
-                            <a class="dropdown-item" href="<%=request.getContextPath()%>/resources/pages/LoginPages/SignInCopy.jsp"><i class="fa fa-sign-out pull-right"></i>Чиқиш</a>
+                            <a class="dropdown-item" href="<%=request.getContextPath()%>/logout"><i class="fa fa-sign-out pull-right"></i>Чиқиш</a>
                         </div>
                     </li>
                     <li role="presentation" class="nav-item dropdown open">
@@ -317,8 +318,78 @@
             header: 'Content-type: text/html; charset=utf-8',
             success: function (res) {
                 $('div#MainContent').html(res);
+
             },
             error: function (res) {
+            }
+        });
+    }
+
+    /* Справочник рад этиш modal */
+    function QiymatRejects(tov_id) {
+        var dataS = {
+            "tov_id": tov_id
+        }
+        $.ajax({
+            type: "POST",
+            data: dataS,
+            url: "<%=request.getContextPath()%>/digests/resources/pages/Digests/QiymatRejectModal",
+            dataType: "html",
+            header: 'Content-type: text/html; charset=utf-8',
+            success: function (res) {
+                console.log('clicked');
+                $('#ModalSentMess').html(res);
+                $modal = $('#ModalSentMess');
+                $modal.modal('show');
+            },
+            error: function () {
+                console.log("error");
+            }
+        });
+    }
+
+    /* Справочник консалт modal */
+    function QiymatConsult(tov_id) {
+        var dataS = {
+            "tov_id": tov_id
+        }
+        $.ajax({
+            type: "POST",
+            data: dataS,
+            url: "<%=request.getContextPath()%>/digests/resources/pages/Digests/QiymatConsultModal",
+            dataType: "html",
+            header: 'Content-type: text/html; charset=utf-8',
+            success: function (res) {
+                console.log('clicked');
+                $('#ModalSentMess').html(res);
+                $modal = $('#ModalSentMess');
+                $modal.modal('show');
+            },
+            error: function () {
+                console.log("error");
+            }
+        });
+    }
+
+    /* Справочник shartli modal */
+    function QiymatShartli(tov_id) {
+        var dataS = {
+            "tov_id": tov_id
+        }
+        $.ajax({
+            type: "POST",
+            data: dataS,
+            url: "<%=request.getContextPath()%>/digests/resources/pages/Digests/QiymatShartliModal",
+            dataType: "html",
+            header: 'Content-type: text/html; charset=utf-8',
+            success: function (res) {
+                console.log('clicked');
+                $('#ModalSentMess').html(res);
+                $modal = $('#ModalSentMess');
+                $modal.modal('show');
+            },
+            error: function () {
+                console.log("error");
             }
         });
     }
@@ -326,6 +397,5 @@
 </script>
 <script src="<%=request.getContextPath()%>/resources/build/js/custom.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
-
 </body>
 </html>
