@@ -13,7 +13,7 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-
+<div id="ModalSentMess" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true"></div>
 <div class="row">
     <div class="col-md-12 col-sm-12 ">
         <div class="x_panel shadow-lg">
@@ -58,13 +58,19 @@
                                     </thead>
                                     <tbody>
                                     <c:forEach var="val" items="${qiymatReject}" varStatus="i">
+                                        <c:set var = "timefm1" value = "${val[3]}"/>
+                                        <c:set var = "brutto1" value = "${val[12]}"/>
                                         <tr>
                                             <td>${i.index + 1}</td>
                                             <td><a href="#" class="text-primary font-weight-bold"><u>${val[0]}</u></a></td>
                                             <td>${val[1]}</td>
-                                            <td>${val[3]}</td>
-                                            <td>${val[14]}</td>
-                                            <td>${val[12]}</td>
+                                            <td><fmt:formatDate pattern = "yyyy-MM-dd"  value = "${timefm1}" /></td>
+                                            <td>
+                                                <button onclick="javascript:QiymatRejects('${val[15]}')" class="btn btn-light border-warning rounded text-dark text-bold">
+                                                        ${val[14]}   <i class="fa fa-list fa-beat"></i>
+                                                </button>
+                                            </td>
+                                            <td><fmt:formatNumber value = "${brutto1}"  pattern="#.##"/></td>
                                             <td>${val[5]} ${val[6]} ${val[7]} ${val[8]}</td>
                                             <td>ИМОМУДДИНОВ БАҲОДИР СУЛТОНБОЙ ЎҒЛИ${val[4]}</td>
                                         </tr>
@@ -94,17 +100,24 @@
                                     </thead>
                                     <tbody>
                                     <c:forEach var="val" items="${qiymatconsult}" varStatus="i">
-                                        <c:set var="total" value="${val[5]-val[6]}"/>
+                                        <c:set var="total2" value="${val[5]-val[6]}"/>
+                                        <c:set var = "timefm2" value = "${val[3]}"/>
+                                        <c:set var = "sum3" value = "${val[6]}"/>
+                                        <c:set var = "sum4" value = "${val[5]}"/>
                                     <tr>
                                         <td>${i.index + 1}</td>
                                         <td><a href="#" class="text-primary font-weight-bold"><u>${val[0]}</u></a></td>
                                         <td>${val[1]}</td>
-                                        <td>${val[3]}</td>
-                                        <td>${val[9]}</td>
-                                        <td>${val[6]}</td>
-                                        <td>${val[5]}</td>
-                                        <td><c:out value="${total}"/></td>
-                                        <td>${val[8]}</td>
+                                        <td><fmt:formatDate pattern = "yyyy-MM-dd"  value = "${timefm2}" /></td>
+                                        <td>
+                                        <button onclick="javascript:QiymatConsult('${val[10]}')" class="btn btn-light border-warning rounded text-dark text-bold">
+                                                ${val[9]}   <i class="fa fa-list fa-beat"></i>
+                                        </button>
+                                        </td>
+                                        <td><fmt:formatNumber value = "${sum3}" maxFractionDigits="3" /></td>
+                                        <td><fmt:formatNumber value = "${sum4}" maxFractionDigits="3" /></td>
+                                        <td><fmt:formatNumber value = "${total2}" maxFractionDigits="3" /></td>
+                                        <td><fmt:formatNumber value = "${val[8]}"  pattern="#.##"/></td>
                                         <td>Машарипов Жамшид(${val[4]})</td>
                                     </tr>
                                     </c:forEach>
@@ -137,17 +150,26 @@
                                     <tbody>
                                     <c:forEach var="val" items="${qiymatshartli}" varStatus="i">
                                         <c:set var="total" value="${val[5]-val[6]}"/>
+                                        <c:set var = "timefm3" value = "${val[3]}"/>
+                                        <c:set var = "timefm4" value = "${val[10]}"/>
+                                        <c:set var = "num" value = "${val[8]}"/>
+                                        <c:set var = "sum" value = "${val[6]}"/>
+                                        <c:set var = "sum2" value = "${val[5]}"/>
                                         <tr>
                                             <td>${i.index + 1}</td>
                                             <td><a href="#" class="text-primary font-weight-bold"><u>${val[0]}</u></a></td>
                                             <td>${val[1]}</td>
-                                            <td>${val[3]}</td>
-                                            <td>${val[9]}</td>
-                                            <td>${val[6]}</td>
-                                            <td>${val[5]}</td>
-                                            <td><c:out value="${total}"/></td>
-                                            <td>${val[8]}</td>
-                                            <td>${val[10]}</td>
+                                            <td><fmt:formatDate pattern = "yyyy-MM-dd"  value = "${timefm3}" /></td>
+                                            <td>
+                                            <button onclick="javascript:QiymatShartli('${val[12]}')" class="btn btn-light border-warning rounded text-dark text-bold">
+                                                    ${val[9]}   <i class="fa fa-list fa-beat"></i>
+                                            </button>
+                                            </td>
+                                            <td><fmt:formatNumber value = "${sum}" maxFractionDigits="3" /></td>
+                                            <td><fmt:formatNumber value = "${sum2}" maxFractionDigits="3" /></td>
+                                            <td><fmt:formatNumber value = "${total}" maxFractionDigits="3" /></td>
+                                            <td><fmt:formatNumber value = "${num}"  pattern="#.##"/></td>
+                                            <td><fmt:formatDate pattern = "yyyy-mm-dd"  value = "${timefm4}" /></td>
                                             <td>${val[11]} кун</td>
                                             <td>Машарипов Жамшид(${val[4]})</td>
                                         </tr>
@@ -162,7 +184,6 @@
         </div>
     </div>
 </div>
-
 <script>
     $(document).ready(function () {
         $('#example1').DataTable({

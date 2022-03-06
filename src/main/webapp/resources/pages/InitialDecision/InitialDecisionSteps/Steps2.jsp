@@ -30,74 +30,94 @@
             <div class="col-md-12">
                 <div class="col-md-3 col-sm-3  form-group has-feedback">
                     <h6 style="border-bottom: 1px solid green">
-                        <i class="fa fa-file-text-o fa-lg mr-2"></i><b>Тижорат номи:</b> ${var.tradeName}
+                        </i><b>Тижорат номи:</b><br>${var.tradeName}
                     </h6>
                 </div>
 
                 <div class="col-md-3 col-sm-3  form-group has-feedback">
                     <h6 style="border-bottom: 1px solid green">
-                        <i class="fa fa-file-text-o fa-lg mr-2"></i><b>Савдо белгиси:</b> ${var.tradeMark}
+                        <b>Савдо белгиси:</b><br>${var.tradeMark}
                     </h6>
                 </div>
 
                 <div class="col-md-3 col-sm-3  form-group has-feedback">
                     <h6 style="border-bottom: 1px solid green">
-                        <i class="fa fa-file-text-o fa-lg mr-2"></i><b>Маркаси:</b> ${var.mark}
+                        <b>Маркаси:</b><br>${var.mark}
                     </h6>
                 </div>
 
                 <div class="col-md-3 col-sm-3  form-group has-feedback">
                     <h6 style="border-bottom: 1px solid green">
-                        <i class="fa fa-file-text-o fa-lg mr-2"></i><b>Модели:</b> ${var.model}
+                        <b>Модели:</b><br>${var.model}
                     </h6>
                 </div>
             </div>
 
             <div class="col-md-12">
                 <div class="col-md-3 col-sm-3  form-group has-feedback mt-3">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-text-o fa-lg mr-2"></i><b>Артикули:</b> ${var.article}</h6>
+                    <h6 style="border-bottom: 1px solid green">
+                        <b>Артикули:</b><br>${var.article}
+                    </h6>
                 </div>
 
                 <div class="col-md-3 col-sm-3  form-group has-feedback mt-3">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-text-o fa-lg mr-2"></i><b>Нави:</b> ${var.sort}</h6>
+                    <h6 style="border-bottom: 1px solid green">
+                        <b>Нави:</b><br>${var.sort}
+                    </h6>
                 </div>
 
                 <div class="col-md-3 col-sm-3  form-group has-feedback mt-3">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-text-o fa-lg mr-2"></i><b>Стандарти:</b> ${var.standarts}</h6>
+                    <h6 style="border-bottom: 1px solid green">
+                        <b>Стандарти:</b><br>${var.standarts}
+                    </h6>
                 </div>
 
                 <div class="col-md-3 col-sm-3  form-group has-feedback mt-3">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-text-o fa-lg mr-2"></i><b>Фойдаланиш мақсади:</b> ${var.functions}</h6>
+                    <h6 style="border-bottom: 1px solid green">
+                        <b>Фойдаланиш мақсади:</b><br>${var.functions}
+                    </h6>
                 </div>
             </div>
 
             <div class="col-md-12">
                 <div class="col-md-3 col-sm-3  form-group has-feedback mt-3">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-o fa-lg mr-2"></i><b>Тижорат хусусияти:</b> ${var.comProp}</h6>
+                    <h6 style="border-bottom: 1px solid green">
+                       <b>Тижорат хусусияти:</b><br>${var.comProp}
+                    </h6>
                 </div>
 
                 <div class="col-md-3 col-sm-3  form-group has-feedback mt-3">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-o fa-lg mr-2"></i><b>Техник хусусияти:</b> ${var.techChar}</h6>
+                    <h6 style="border-bottom: 1px solid green">
+                        <b>Техник хусусияти:</b><br>${var.techChar}
+                    </h6>
                 </div>
 
                 <div class="col-md-3 col-sm-3  form-group has-feedback mt-3">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-o fa-lg mr-2"></i><b>Ўрам тури:</b> ${var.packTypeNm}</h6>
+                    <h6 style="border-bottom: 1px solid green">
+                        <b>Ўрам тури:</b><br>${var.packTypeNm}
+                    </h6>
                 </div>
 
                 <div class="col-md-3 col-sm-3  form-group has-feedback mt-3">
-                    <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-o fa-lg mr-2"></i><b>Ўрамлар сони:</b> ${var.packQty}</h6>
+                    <h6 style="border-bottom: 1px solid green">
+                        <b>Ўрамлар сони:</b><br>${var.packQty}
+                    </h6>
                 </div>
+
+                <div class="col-md-6 col-sm-6  form-group has-feedback mt-3">
+                    <h6 style="border-bottom: 1px solid green">
+                        <b>Юк жойлари сони:</b><br>${var.cargoSpace}
+                    </h6>
+                </div>
+
+                <div class="col-md-6 col-sm-6  form-group has-feedback mt-3">
+                    <h6 style="border-bottom: 1px solid green">
+                        <b>Усул:</b><br>${var.methodNm}<i class="fa fa-info-circle ml-4 fa-lg" data-toggle="modal" data-target=".bd-example-modal-sm"></i>
+                    </h6>
+                </div>
+
             </div>
 
-            <div class="col-md-3 col-sm-3  form-group has-feedback mt-3">
-                <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-o fa-lg mr-2"></i><b>Юк жойлари сони:</b> ${var.cargoSpace}</h6>
-            </div>
-
-            <div class="col-md-6 col-sm-6  form-group has-feedback mt-3">
-                <h6 style="border-bottom: 1px solid green"><i class="fa fa-file-o fa-lg mr-2"></i><b>Усул:</b> ${var.methodNm}<i class="fa fa-info-circle ml-4 fa-lg" data-toggle="modal"
-                                                                                                                                 data-target=".bd-example-modal-sm"></i>
-                </h6>
-            </div>
 
             <div class="col-md-12 col-sm-3  form-group has-feedback mt-3">
                 <textarea readonly id="message" required="required" placeholder="Қўшимча маълумотлар " class="form-control" name="message">${var.extraInfo}</textarea>
