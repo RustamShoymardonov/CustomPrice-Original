@@ -30,15 +30,27 @@ public class AppsRasp extends AbstractAuditingEntity {
     @Column(name = "INSPECTOR_ID", columnDefinition = "VARCHAR(50)")
     private String inspectorId;
 
+    @Column(name = "INSPECTOR_NAME", columnDefinition = "VARCHAR(120) CCSID 1208")
+    private String inspectorName;
+
+    @Column(name = "LOCATION")
+    private String location;
+
+    @Column(name = "POST")
+    private String post;
+
     public AppsRasp() {
     }
 
-    public AppsRasp(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, String appId, String inspectorId) {
+    public AppsRasp(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, String appId, String inspectorId, String inspectorName, String location, String post) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
         this.apps = apps;
         this.appId = appId;
         this.inspectorId = inspectorId;
+        this.inspectorName = inspectorName;
+        this.location = location;
+        this.post = post;
     }
 
     public String getId() {
@@ -71,5 +83,29 @@ public class AppsRasp extends AbstractAuditingEntity {
 
     public void setInspectorId(String inspectorId) {
         this.inspectorId = inspectorId;
+    }
+
+    public String getInspectorName() {
+        return inspectorName;
+    }
+
+    public void setInspectorName(String inspectorName) {
+        this.inspectorName = inspectorName;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getPost() {
+        return post;
+    }
+
+    public void setPost(String post) {
+        this.post = post;
     }
 }

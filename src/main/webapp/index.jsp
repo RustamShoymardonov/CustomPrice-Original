@@ -80,10 +80,10 @@
                             <li><a href="javascript:ListClassProduct(0)"><i class="fa fa-bar-chart-o"></i>Товарларни тоифалаш</a></li>
 
                             <%if (userRole == 1 || userRole == 7){%> <%--todo (ҲББ Тўловлар бошлиғи)--%>
-                            <li><a href="javascript:InitialDecisionRasp(0)"><i class="fa fa-edit"></i>Тақсимлаш</a></li>
+                            <li><a href="javascript:InitialDecisionRasp(0)"><i class="fa fa-edit"></i>Дастлабки қарор</a></li>
                             <%}%>
                             <%if (userRole == 1 || userRole == 8){%> <%--todo (ҲББ Тўловлар ходими)--%>
-                            <li><a href="javascript:InitialDecision(0)"><i class="fa fa-edit"></i>Мурожаатлар</a>
+                            <li><a href="javascript:InitialDecision(0)"><i class="fa fa-edit"></i>Дастлабки қарор</a>
                             <%}%>
                             <li><a href="javascript:void(0)"><i class="fa fa-desktop"></i>Қиймат мониторинги</a></li>
                             <li><a href="javascript:void(0)"><i class="fa fa-sitemap"></i>Мантиқий назорат</a></li>

@@ -99,59 +99,72 @@ public class AppsService {
                 "    a.terms,\n" +
                 "    a.terms_nm,\n" +
                 "    a.terms_addr,\n" +
-                "    a.trans_exp\n" +
+                "    a.trans_exp,\n" +
+                "    ar.inspector_id   inspector_id,\n" +
+                "    ar.inspector_name inspector_name\n" +
                 "from\n" +
-                "    apps a\n" +
+                "    cpid.apps a\n" +
+                "left join\n" +
+                "    cpid.apps_rasp ar\n" +
+                "on\n" +
+                "    a.id=ar.app_id\n" +
                 "where\n" +
                 "    a.status not in (100,\n" +
                 "                     170,\n" +
                 "                     175)\n" +
                 "and a.isdeleted=0\n" +
+                "and ar.id is not null\n" +
                 "order by\n" +
                 "    a.instime desc";
-        return  entityManager.createNativeQuery(queryForList).getResultList();
+        return entityManager.createNativeQuery(queryForList).getResultList();
     }
 
     /* 3) Статуси фақат "Имзоланган"+"Бекор қилинган" бўлган аризалар*/
     public List<Apps> getListTerms() {
         String queryForList = "select\n" +
-                "    a.id,\n" +
-                "    a.instime,\n" +
-                "    a.insuser,\n" +
-                "    a.isdeleted,\n" +
-                "    a.updtime,\n" +
-                "    a.upduser,\n" +
-                "    a.app_num,\n" +
-                "    a.app_date,\n" +
-                "    a.customer_country_nm,\n" +
-                "    a.customer_country,\n" +
-                "    a.location_id,\n" +
-                "    a.location_nm,\n" +
-                "    a.org_name, \n" +
-                "    a.person_addr,\n" +
-                "    a.person_fio,\n" +
-                "    a.person_mail,\n" +
-                "    a.person_phone,\n" +
-                "    a.person_pin,\n" +
-                "    a.person_position,\n" +
-                "    a.person_tin,\n" +
-                "    a.seller_org,\n" +
-                "    a.sender_country,\n" +
-                "    a.sender_country_nm,\n" +
-                "    a.sender_org,\n" +
-                "    a.status,\n" +
-                "    a.terms_nm,\n" +
-                "    a.terms_addr,\n" +
-                "    a.trans_exp,\n" +
-                "    a.status_nm\n" +
+                "    a.id,\n" + /*0-id*/
+                "    a.instime,\n" + /*1-instime*/
+                "    a.insuser,\n" + /*2-insuser*/
+                "    a.isdeleted,\n" + /*3-isdeleted*/
+                "    a.updtime,\n" + /*4-updtime*/
+                "    a.upduser,\n" + /*5-upduser*/
+                "    a.app_num,\n" + /*6-app_num*/
+                "    a.app_date,\n" + /*7-app_date*/
+                "    a.customer_country_nm,\n" + /*8-customer_country_nm*/
+                "    a.customer_country,\n" + /*9-customer_country*/
+                "    a.location_id,\n" + /*10-location_id*/
+                "    a.location_nm,\n" + /*11-location_nm*/
+                "    a.org_name, \n" + /*12-org_name*/
+                "    a.person_addr,\n" + /*13-person_addr*/
+                "    a.person_fio,\n" + /*14-person_fio*/
+                "    a.person_mail,\n" + /*15-person_mail*/
+                "    a.person_phone,\n" + /*16-person_phone*/
+                "    a.person_pin,\n" + /*17-person_pin*/
+                "    a.person_position,\n" + /*18-person_position*/
+                "    a.person_tin,\n" + /*19-person_tin*/
+                "    a.seller_org,\n" + /*20-seller_org*/
+                "    a.sender_country,\n" + /*21-sender_country*/
+                "    a.sender_country_nm,\n" + /*22-sender_country_nm*/
+                "    a.sender_org,\n" + /*23-sender_org*/
+                "    a.status,\n" + /*24-status*/
+                "    a.terms_nm,\n" + /*25-terms_nm*/
+                "    a.terms_addr,\n" + /*26-terms_addr*/
+                "    a.trans_exp,\n" + /*27-trans_exp*/
+                "    a.status_nm,\n" + /*28-status_nm*/
+                "    ar.inspector_id inspector_id,\n" + /*29-inspector_id*/
+                "    ar.inspector_name inspector_name\n" + /*30-inspector_name*/
                 "from\n" +
-                "    apps a\n" +
+                "    cpid.apps a\n" +
+                "left join\n" +
+                "    cpid.apps_rasp ar\n" +
+                "on\n" +
+                "    a.id=ar.app_id\n" +
                 "where\n" +
                 "    a.isdeleted=0\n" +
                 "and a.status in (170,175)\n" +
                 "order by\n" +
                 "    a.instime desc";
-        return (List<Apps>) entityManager.createNativeQuery(queryForList, Apps.class).getResultList();
+        return (List<Apps>) entityManager.createNativeQuery(queryForList).getResultList();
     }
 
     /* 4) <<app_num>> га ариза рафамини киритади */
@@ -421,68 +434,54 @@ public class AppsService {
                 "and c.isdeleted = 0";
         return (List<Commodity>) entityManager.createNativeQuery(queryForList, Commodity.class).getResultList();
     }
-//
-//    /* 9) Божхона қиймати индекси бўйича хавф даражаси */
-//    public List<Apps> getAppsCommodityXBBTList(String cmdt_id) {
-//        String queryForList = "select\n" +
-//                /*0 - */"    c.id, \n" +
-//                /*1 - */"    c.instime, \n" +
-//                /*2 - */"    c.insuser, \n" +
-//                /*3 - */"    c.isdeleted, \n" +
-//                /*4 - */"    c.updtime, \n" +
-//                /*5 - */"    c.upduser, \n" +
-//                /*6 - */"    c.app_id, \n" +
-//                /*7 - */"    c.article, \n" +
-//                /*8 - */"    c.basic_qty, \n" +
-//                /*9 - */"    c.brutto, \n" +
-//                /*10 - */"    c.cargo_space, \n" +
-//                /*11 - */"    c.cmdt_num, \n" +
-//                /*12 - */"    c.com_prop, \n" +
-//                /*13 - */"    c.currency_type, \n" +
-//                /*14 - */"    c.extra_info, \n" +
-//                /*15 - */"    c.extra_qty, \n" +
-//                /*16 - */"    c.extra_units, \n" +
-//                /*17 - */"    c.functions, \n" +
-//                /*18 - */"    c.hs_code, \n" +
-//                /*19 - */"    c.hs_dec_date, \n" +
-//                /*20 - */"    c.hs_dec_num, \n" +
-//                /*21 - */"    c.in_dec_date,\n" +
-//                /*22 - */"    c.in_dec_num,\n" +
-//                /*23 - */"    c.HS_NAME, \n" +
-//                /*24 - */"    c.mark, \n" +
-//                /*25 - */"    c.method, \n" +
-//                /*26 - */"    c.method_nm, \n" +
-//                /*27 - */"    c.model, \n" +
-//                /*28 - */"    c.netto, \n" +
-//                /*29 - */"    c.origin_country, \n" +
-//                /*30 - */"    c.origin_org, \n" +
-//                /*31 - */"    c.origin_country_nm, \n" +
-//                /*32 - */"    c.pack_qty, \n" +
-//                /*33 - */"    c.pack_type, \n" +
-//                /*34 - */"    c.pack_type_nm, \n" +
-//                /*35 - */"    c.price, \n" +
-//                /*36 - */"    c.product_goal, \n" +
-//                /*37 - */"    c.sort, \n" +
-//                /*38 - */"    c.standarts, \n" +
-//                /*39 - */"    c.tech_char, \n" +
-//                /*40 - */"    c.trade_mark, \n" +
-//                /*41 - */"    c.trade_name\n" +
-//
-//                "from\n" +
-//                "    cpid.commodity c\n" +
-//                "left join\n" +
-//                "    cpid.apps a\n" +
-//                "on\n" +
-//                "    c.app_id = a.id\n" +
-//                "and a.isdeleted = 0\n" +
-//                "where\n" +
-//                "    c.id = '" + cmdt_id + "'\n" +
-//                "and c.isdeleted = 0";
-//        return (List<Commodity>) entityManager.createNativeQuery(queryForList, Commodity.class).getResultList();
-//    }
 
-    public List<Apps> listAll() {
-        return appsRepo.findAll();
+    /* 3) Статуси фақат "Имзоланган"+"Бекор қилинган" бўлган аризалар*/
+    public List<Apps> getlistAllIsp(String inspectorId) {
+        String queryForList = "select\n" +
+                "    a.id,\n" + /*0-id*/
+                "    a.instime,\n" + /*1-instime*/
+                "    a.insuser,\n" + /*2-insuser*/
+                "    a.isdeleted,\n" + /*3-isdeleted*/
+                "    a.updtime,\n" + /*4-updtime*/
+                "    a.upduser,\n" + /*5-upduser*/
+                "    a.app_num,\n" + /*6-app_num*/
+                "    a.app_date,\n" + /*7-app_date*/
+                "    a.customer_country_nm,\n" + /*8-customer_country_nm*/
+                "    a.customer_country,\n" + /*9-customer_country*/
+                "    a.location_id,\n" + /*10-location_id*/
+                "    a.location_nm,\n" + /*11-location_nm*/
+                "    a.org_name, \n" + /*12-org_name*/
+                "    a.person_addr,\n" + /*13-person_addr*/
+                "    a.person_fio,\n" + /*14-person_fio*/
+                "    a.person_mail,\n" + /*15-person_mail*/
+                "    a.person_phone,\n" + /*16-person_phone*/
+                "    a.person_pin,\n" + /*17-person_pin*/
+                "    a.person_position,\n" + /*18-person_position*/
+                "    a.person_tin,\n" + /*19-person_tin*/
+                "    a.seller_org,\n" + /*20-seller_org*/
+                "    a.sender_country,\n" + /*21-sender_country*/
+                "    a.sender_country_nm,\n" + /*22-sender_country_nm*/
+                "    a.sender_org,\n" + /*23-sender_org*/
+                "    a.status,\n" + /*24-status*/
+                "    a.terms_nm,\n" + /*25-terms_nm*/
+                "    a.terms_addr,\n" + /*26-terms_addr*/
+                "    a.trans_exp,\n" + /*27-trans_exp*/
+                "    a.status_nm,\n" + /*28-status_nm*/
+                "    ar.inspector_id inspector_id,\n" + /*29-inspector_id*/
+                "    ar.inspector_name inspector_name\n" + /*30-inspector_name*/
+                "from\n" +
+                "    cpid.apps a\n" +
+                "left join\n" +
+                "    cpid.apps_rasp ar\n" +
+                "on\n" +
+                "    a.id=ar.app_id\n" +
+                "where\n" +
+                "    a.isdeleted=0\n" +
+                "    and ar.inspector_id='" + inspectorId + "'\n" +
+                "and a.status = 110\n" +
+                "order by\n" +
+                "    a.instime desc";
+        return (List<Apps>) entityManager.createNativeQuery(queryForList).getResultList();
     }
 
     public Apps findById(String id) {
@@ -490,8 +489,9 @@ public class AppsService {
             return appsRepo.findById(id).get();
         else return null;
     }
-    public Apps saveAppsStatus(Apps apps){
-        return  appsRepo.save(apps);
+
+    public Apps saveAppsStatus(Apps apps) {
+        return appsRepo.save(apps);
     }
 
 }

@@ -1,7 +1,5 @@
 package uz.customs.customsprice.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,48 +14,15 @@ import java.util.List;
 @RequestMapping("/commodity")
 public class CommodityController {
     private final CommodityService commodityService;
+    private final AppsService appsservice;
+
     private final String INITIALDECISIONVIEWCMDT = "/resources/pages/InitialDecision/InitialDecisionSteps/Steps";
 
-    @Autowired
-    private AppsService appsservice;
-
-    @Autowired
-    private ConturyService conturyService;
-
-    @Autowired
-    private MethodService methodService;
-
-    @Autowired
-    private PackagingService packagingService;
-
-    @Autowired
-    private Tnved2Service tnved2Service;
-
-    public CommodityController(CommodityService commodityService) {
+    public CommodityController(CommodityService commodityService, AppsService appsservice) {
         this.commodityService = commodityService;
+        this.appsservice = appsservice;
     }
 
-    @PostMapping
-    public ResponseEntity valuesave(@RequestBody Commodity commodity) {
-        try {
-            Country country = conturyService.getByCodeAndLngaTpcd(commodity.getOriginCountry(), "UZ");
-            commodity.setOrignCountrNm(country.getCdNm());
-
-            Method method = methodService.getById(commodity.getMethod());
-            commodity.setMethodNm(method.getName());
-
-            Packaging packaging = packagingService.getByIdAndLngaTpcd(commodity.getPackType(), "UZ");
-            commodity.setPackTypeNm(packaging.getCdNm());
-
-            Tnved2 tnved2 = tnved2Service.getByIdAndFinishdate(commodity.getHsCode());
-            commodity.setHsName(tnved2.getName());
-
-            commodityService.saveCommodity(commodity);
-            return ResponseEntity.ok(" <<--- Commodity (success) --->> - маълумотларини сақлаш муваффақиятли бажарилди ! ");
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(" <<--- Commodity (error) --->> маълумотларини сақлашда хатолик юз берди ! ");
-        }
-    }
 
     @PostMapping(value = INITIALDECISIONVIEWCMDT)
     @ResponseBody

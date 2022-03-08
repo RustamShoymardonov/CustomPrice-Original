@@ -27,7 +27,8 @@
                             <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
                         </li>
                         <li class="nav-item" style="width: 47%">
-                            <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки қарор реестри</a>
+                            <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки
+                                қарор реестри</a>
                         </li>
                     </ul>
                     <div class="x_title">
@@ -50,157 +51,30 @@
                                                     <th style="border-style: dotted">Ариза рақами</th>
                                                     <th style="border-style: dotted">Мақоми</th>
                                                     <th style="border-style: dotted">Ариза санаси</th>
-                                                    <th style="border-style: dotted">Манқаатдор шахс</th>
-                                                    <th style="border-style: dotted">Қарор рақами</th>
-                                                    <th style="border-style: dotted">Қарор санаси</th>
-                                                    <th style="border-style: dotted">Амал қилиш муддати</th>
+                                                    <th style="border-style: dotted">Мафаатдор шахс</th>
+                                                    <th style="border-style: dotted">Савдо қилувчи</th>
+                                                    <th style="border-style: dotted">Сотувчи мамлакат</th>
+                                                    <th style="border-style: dotted">Кимга тақсимланган</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td><a href="#" class="text-primary font-weight-bold"><u>0001278555</u></a></td>
-                                                    <td class="text-success font-weight-bold">Янги</td>
-                                                    <td>15.12.2021</td>
-                                                    <td>"BEST TRADE" МЧЖ</td>
-                                                    <td>-</td>
-                                                    <td>-</td>
-                                                    <td>-</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td><a href="#" class="text-primary font-weight-bold"><u>0001245485</u></a></td>
-                                                    <td class="text-success font-weight-bold">Қайтарилган</td>
-                                                    <td>29.01.2022</td>
-                                                    <td>Алиев Азиз Асилович</td>
-                                                    <td>-</td>
-                                                    <td>-</td>
-                                                    <td>-</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td><a href="#" class="text-primary font-weight-bold"><u>0001245555</u></a></td>
-                                                    <td class="text-success font-weight-bold">Қабул қилинган</td>
-                                                    <td>09.02.2022</td>
-                                                    <td>"BEST TRADE" МЧЖ</td>
-                                                    <td>ДБҚ-26/0001</td>
-                                                    <td>15.02.2022</td>
-                                                    <td>25.05.2022</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Garrett Winters</td>
-                                                    <td>Accountant</td>
-                                                    <td>Tokyo</td>
-                                                    <td>63</td>
-                                                    <td>2011/07/25</td>
-                                                    <td>$170,750</td>
-                                                    <td>2011/07/25</td>
-                                                    <td>$170,750</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ashton Cox</td>
-                                                    <td>Junior Technical Author</td>
-                                                    <td>San Francisco</td>
-                                                    <td>66</td>
-                                                    <td>2009/01/12</td>
-                                                    <td>$86,000</td>
-                                                    <td>2009/01/12</td>
-                                                    <td>$86,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2011/04/25</td>
-                                                    <td>$320,800</td>
-                                                    <td>$320,800</td>
-                                                    <td>$320,800</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Garrett Winters</td>
-                                                    <td>Accountant</td>
-                                                    <td>Tokyo</td>
-                                                    <td>63</td>
-                                                    <td>2011/07/25</td>
-                                                    <td>$170,750</td>
-                                                    <td>2011/07/25</td>
-                                                    <td>$170,750</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ashton Cox</td>
-                                                    <td>Junior Technical Author</td>
-                                                    <td>San Francisco</td>
-                                                    <td>66</td>
-                                                    <td>2009/01/12</td>
-                                                    <td>$86,000</td>
-                                                    <td>2009/01/12</td>
-                                                    <td>$86,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2011/04/25</td>
-                                                    <td>$320,800</td>
-                                                    <td>$320,800</td>
-                                                    <td>$320,800</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Garrett Winters</td>
-                                                    <td>Accountant</td>
-                                                    <td>Tokyo</td>
-                                                    <td>63</td>
-                                                    <td>2011/07/25</td>
-                                                    <td>$170,750</td>
-                                                    <td>2011/07/25</td>
-                                                    <td>$170,750</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ashton Cox</td>
-                                                    <td>Junior Technical Author</td>
-                                                    <td>San Francisco</td>
-                                                    <td>66</td>
-                                                    <td>2009/01/12</td>
-                                                    <td>$86,000</td>
-                                                    <td>2009/01/12</td>
-                                                    <td>$86,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2011/04/25</td>
-                                                    <td>$320,800</td>
-                                                    <td>$320,800</td>
-                                                    <td>$320,800</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Garrett Winters</td>
-                                                    <td>Accountant</td>
-                                                    <td>Tokyo</td>
-                                                    <td>63</td>
-                                                    <td>2011/07/25</td>
-                                                    <td>$170,750</td>
-                                                    <td>2011/07/25</td>
-                                                    <td>$170,750</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ashton Cox</td>
-                                                    <td>Junior Technical Author</td>
-                                                    <td>San Francisco</td>
-                                                    <td>66</td>
-                                                    <td>2009/01/12</td>
-                                                    <td>$86,000</td>
-                                                    <td>2009/01/12</td>
-                                                    <td>$86,000</td>
-                                                </tr>
+                                                <c:forEach var="appInsp" items="${appsForInspector}" varStatus="i">
+                                                    <tr>
+                                                        <td>${i.index+1}</td>
+                                                        <td><a href="javascript:InitialDecisionView('${appInsp[0]}')"
+                                                               class="text-primary font-weight-bold"><u>${appInsp[6]}</u></a></td>
+                                                        <td>${appInsp[25]}</td>
+                                                        <td>${appInsp[1]}</td>
+                                                        <td>${appInsp[14]}</td>
+                                                        <td>${appInsp[9]}-${appInsp[8]}</td>
+                                                        <td>${appInsp[21]}-${appInsp[22]}</td>
+                                                        <td>${appInsp[30]}</td>
+                                                    </tr>
+                                                </c:forEach>
                                                 </tbody>
                                             </table>
                                             <script>
-                                                $(document).ready(function() {
+                                                $(document).ready(function () {
                                                     $('#example1').DataTable({
                                                         "language": {
                                                             "zeroRecords": "Сиз излаган маълумот мавжуд эмас!",
@@ -216,8 +90,8 @@
                                                             }
                                                         }
                                                     });
-                                                } );
-                                                $(document).ready(function() {
+                                                });
+                                                $(document).ready(function () {
                                                     $('#example2').DataTable({
                                                         "language": {
                                                             "zeroRecords": "Сиз излаган маълумот мавжуд эмас!",
@@ -233,7 +107,7 @@
                                                             }
                                                         }
                                                     });
-                                                } );
+                                                });
                                             </script>
                                         </div>
                                     </div>

@@ -28,7 +28,7 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <div class="col-md-2 col-sm-4  tile_stats_count">
-                                    <span class="count_top"><i class="fa fa-user"></i> Жами аризалар сони</span>
+                                    <span class="count_top"><i class="fa fa-user"></i>${success} Жами аризалар сони</span>
                                     <div class="count">25</div>
                                     <span class="count_bottom"><i class="green"><i
                                             class="fa fa-bar-chart"></i></i></span>
@@ -162,24 +162,42 @@
                 <div class="clearfix"></div>
 
                 <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+
+                    <%--todo ----------------------------------------------------------%>
+                    <%--todo --------------- Мурожаатлар ------------------------------%>
+                    <%--todo ----------------------------------------------------------%>
                     <li class="nav-item ml-5" style="width: 30%">
                         <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab"
                            aria-controls="home" aria-selected="true"><i
                                 class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
                         <h3>${nnn}</h3>
                     </li>
+
+                    <%--todo ----------------------------------------------------------%>
+                    <%--todo --------------- Тақсимланган мурожаатлар -----------------%>
+                    <%--todo ----------------------------------------------------------%>
                     <li class="nav-item ml-4" style="width: 30%">
                         <a class="nav-link h4" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
                            aria-controls="contact" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Тақсимланган
                             мурожаатлар</a>
                     </li>
+
+                    <%--todo ----------------------------------------------------------%>
+                    <%--todo --------------- Дастлабки қарор реестри ------------------%>
+                    <%--todo ----------------------------------------------------------%>
                     <li class="nav-item ml-4" style="width: 30%">
                         <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                            aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки
                             қарор реестри</a>
                     </li>
                 </ul>
+
+
                 <div class="tab-content" id="myTabContent">
+
+                    <%--todo ----------------------------------------------------------------------------%>
+                    <%--todo --------------- Мурожаатлар маълумотларини чиқариш жадвали -----------------%>
+                    <%--todo ----------------------------------------------------------------------------%>
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="x_content">
                             <div class="table-responsive mt-4">
@@ -218,16 +236,16 @@
                                             <td>
                                                 <select class="form-control" id="userIdF_${i.index + 1}"
                                                         name="userId_${i.index + 1}">
-                                                    <option value=""></option>
+                                                    <option value="notSelected"></option>
                                                     <c:forEach var="userSelect" items="${userSelectList}"
-                                                               varStatus="i">
+                                                               varStatus="iUser">
                                                         <option value="${userSelect.id}">${userSelect.userName}</option>
                                                     </c:forEach>
                                                 </select>
                                             </td>
                                             <th style="border-style: dotted">
                                                 <button type="button" class="btn btn-success btn-block"
-                                                        onclick="saveInDecRaspIns('${notSorted.id}', $('#userIdF_${i.index + 1}').val())">
+                                                        onclick="saveInDecRaspIns('${notSorted.id}', $('#userIdF_${i.index + 1}').val(), ${i.index + 1})">
                                                     Тақсимлаш
                                                 </button>
                                             </th>
@@ -256,6 +274,11 @@
                         </div>
                     </div>
                     <div id="response"></div>
+
+
+                    <%--todo -----------------------------------------------------------------------------------------%>
+                    <%--todo --------------- Тақсимланган мурожаатлар маълумотларини чиқариш жадвали -----------------%>
+                    <%--todo -----------------------------------------------------------------------------------------%>
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                         <div class="x_content h-100">
                             <div class="table-responsive mt-4">
@@ -284,7 +307,7 @@
                                             <td>${sorted[14]}</td>
                                             <td>${sorted[9]}-${sorted[8]}</td>
                                             <td>${sorted[21]}-${sorted[22]}</td>
-                                            <td>ст.инспектор Ж.Халилов</td>
+                                            <td>${sorted[31]}</td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -292,6 +315,10 @@
                             </div>
                         </div>
                     </div>
+
+                    <%--todo ----------------------------------------------------------------------------------------%>
+                    <%--todo --------------- Дастлабки қарор реестри маълумотларини чиқариш жадвали -----------------%>
+                    <%--todo ----------------------------------------------------------------------------------------%>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="x_content">
                             <div class="table-responsive mt-4">
@@ -314,22 +341,22 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach var="terms" items="${termsList}" varStatus="i">
-                                        <tr>
-                                            <td>${i.index+1}</td>
-                                            <td><a href="javascript:InitialDecisionView('${terms.id}')"
-                                                   class="text-primary font-weight-bold"><u>${terms.appNum}</u></a></td>
-                                            <td>${terms.statusNm}</td>
-                                            <td>${terms.insTime.toLocaleString()}</td>
-                                            <td>${terms.personFio}</td>
-                                            <td>${terms.customer_country}-${terms.customerCountryNm}</td>
-                                            <td>${terms.originCountry}-${terms.orignCountrNm}</td>
-                                            <td>${terms.customer_country}-${terms.customerCountryNm}</td>
-                                            <td>${terms.terms}-${terms.termsAddr}</td>
-                                            <td>${terms.originCountry}-${terms.orignCountrNm}</td>
-                                            <td>ст.инспектор Ж.Халилов</td>
-                                        </tr>
-                                    </c:forEach>
+<%--                                    <c:forEach var="terms" items="${termsList}" varStatus="i">--%>
+<%--                                        <tr>--%>
+<%--                                            <td>${i.index+1}</td>--%>
+<%--                                            <td><a href="javascript:InitialDecisionView('${terms[0]}')"--%>
+<%--                                                   class="text-primary font-weight-bold"><u>${terms[6]}</u></a></td>--%>
+<%--                                            <td>${terms[28]}</td>--%>
+<%--                                            <td>${terms[1]}</td>--%>
+<%--                                            <td>${terms[14]}</td>--%>
+<%--                                            <td>${terms[9]}-${terms[8]}</td>--%>
+<%--                                            <td>${terms.originCountry}-${terms.orignCountrNm}</td>--%>
+<%--                                            <td>${terms.customer_country}-${terms.customerCountryNm}</td>--%>
+<%--                                            <td>${terms.terms}-${terms.termsAddr}</td>--%>
+<%--                                            <td>${terms.originCountry}-${terms.orignCountrNm}</td>--%>
+<%--                                            <td>ст.инспектор Ж.Халилов</td>--%>
+<%--                                        </tr>--%>
+<%--                                    </c:forEach>--%>
                                     </tbody>
                                 </table>
                             </div>
@@ -343,11 +370,13 @@
 
 <script>
 
-    function saveInDecRaspIns(appId, inspectorId) {
-        alert(appId + ', ' + inspectorId);
+    function saveInDecRaspIns(appId, inspectorId, rowNum) {
+        var inspectorName = $('#userIdF_' + rowNum + ' option:selected').text();
+        alert(appId + ', ' + inspectorId + ', ' + inspectorName);
         var dataS = {
             "appId": appId,
-            "inspectorId": inspectorId
+            "inspectorId": inspectorId,
+            "inspectorName": inspectorName
         }
         $.ajax({
             type: "POST",

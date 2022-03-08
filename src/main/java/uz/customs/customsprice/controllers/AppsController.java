@@ -1,20 +1,24 @@
 package uz.customs.customsprice.controllers;
 
+import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import uz.customs.customsprice.entity.InitialDecision.*;
-import uz.customs.customsprice.entity.users.User;
 import uz.customs.customsprice.repository.AppsRepo;
 import uz.customs.customsprice.repository.users.LoginRepo;
 import uz.customs.customsprice.repository.users.UsersRepo;
 import uz.customs.customsprice.service.*;
 
+import javax.annotation.processing.Messager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/apps")
@@ -31,13 +35,14 @@ public class AppsController {
     private final LoginRepo loginRepo;
     private final TransportTypeService transportTypeService;
     private final UsersService usersService;
+    private final StatusMService statusMService;
+    private final StatusHService statusHService;
     private final String INITIALDECISION = "/resources/pages/InitialDecision/InitialDecision1";
     private final String INITIALDECISIONRASP = "/resources/pages/InitialDecision/InitialDecisionRasp";
     private final String INITIALDECISIONVIEW = "/resources/pages/InitialDecision/InitialDecisionView";
     private final String INITIALDECISIONSAVERASP = "/resources/pages/InitialDecision/InitialDecisionRasp1";
 
-
-    public AppsController(AppsService appsService, ConturyService conturyService, LocationService locationService, StatusService statusService, TermsService termsService, AppsService appsservice, AppsRaspService appsRaspService, AppsRepo appsRepo, UsersRepo usersRepo, LoginRepo loginRepo, TransportTypeService transportTypeService, UsersService usersService) {
+    public AppsController(AppsService appsService, ConturyService conturyService, LocationService locationService, StatusService statusService, TermsService termsService, AppsService appsservice, AppsRaspService appsRaspService, AppsRepo appsRepo, UsersRepo usersRepo, LoginRepo loginRepo, TransportTypeService transportTypeService, UsersService usersService, StatusMService statusMService, StatusHService statusHService) {
         this.appsService = appsService;
         this.conturyService = conturyService;
         this.locationService = locationService;
@@ -50,41 +55,14 @@ public class AppsController {
         this.loginRepo = loginRepo;
         this.transportTypeService = transportTypeService;
         this.usersService = usersService;
+        this.statusMService = statusMService;
+        this.statusHService = statusHService;
     }
-
-    /*---------------------------------------------------------------------------------------------------------start*/
-    /* Apps маълумотларини API орқали сақлаш учун учун*/
-    @PostMapping
-    public ResponseEntity valuesave(@RequestBody Apps apps) {
-        try {
-            Country country = conturyService.getByCodeAndLngaTpcd(apps.getCustomerCountry(), "UZ");
-            apps.setCustomerCountryNm(country.getCdNm());
-
-            country = conturyService.getByCodeAndLngaTpcd(apps.getSenderCountry(), "UZ");
-            apps.setSenderCountryNm(country.getCdNm());
-
-            Location location = locationService.getById(apps.getLocationId());
-            apps.setLocationNm(location.getName1());
-
-            Status status = statusService.getById(apps.getStatus());
-            apps.setStatusNm(status.getName());
-
-            Terms terms = termsService.findByIdAndLngaTpcd(apps.getTerms(), "UZ");
-            apps.setTermsNm(terms.getSign());
-
-            appsService.saveApps(apps);
-            return ResponseEntity.ok(" <<--- Apps (success) --->> - маълумотларини сақлаш муваффақиятли бажарилди ! \n" + apps);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(" <<--- Apps (error) --->> маълумотларини сақлашда хатолик юз берди ! ");
-        }
-
-    }
-
 
     /*todo Тақсимланган аризалар рўйхатини сақлаш (инспекторлар кесимида)*/
     @PostMapping(value = INITIALDECISIONSAVERASP)
     @ResponseBody
-    public ModelAndView InitialDecisionViewSave(HttpServletRequest request, @RequestParam String appId, @RequestParam String inspectorId)  {
+    public ModelAndView InitialDecisionViewSave(HttpServletRequest request, @RequestParam String appId, @RequestParam String inspectorId, @RequestParam String inspectorName, RedirectAttributes redirAttrs)  {
 
         String userId = (String) request.getSession().getAttribute("userId");
         String userName = (String) request.getSession().getAttribute("userName");
@@ -94,16 +72,27 @@ public class AppsController {
         String userLocationName = (String) request.getSession().getAttribute("userLocationName");
         String userPost = (String) request.getSession().getAttribute("userPost");
 
-        AppsRasp appsRasp = new AppsRasp();
-        appsRasp.setAppId(appId);
-        appsRasp.setInspectorId(inspectorId);
-        appsRaspService.saveRasp(appsRasp);
 
-        Apps app = appsservice.findById(appId);
-        Status status = statusService.getById(110);
-        app.setStatus(110);
-        app.setStatusNm(status.getName());
-        appsservice.saveAppsStatus(app);
+
+        if (!Objects.equals(inspectorId, "notSelected")) {
+            AppsRasp appsRasp = new AppsRasp();
+            appsRasp.setAppId(appId);
+            appsRasp.setInsUser(userId);
+            appsRasp.setInspectorId(inspectorId);
+            appsRasp.setInspectorName(inspectorName);
+            appsRasp.setLocation(userLocation);
+            appsRasp.setPost(userPost);
+            appsRaspService.saveRasp(appsRasp);
+
+            Apps app = appsservice.findById(appId);
+            Status status = statusService.getById(110);
+            app.setStatus(110);
+            app.setStatusNm(status.getName());
+            appsservice.saveAppsStatus(app);
+        }
+
+
+
 
         ModelAndView mav = new ModelAndView("/resources/pages/InitialDecision/InitialDecisionRasp");
         List<Apps> notSortedList = new ArrayList<>();
@@ -114,9 +103,9 @@ public class AppsController {
         sortedList = appsservice.getListSorted();
         mav.addObject("sortedList", sortedList);
 
-        List<Apps> termsList = new ArrayList<>();
-        termsList = appsservice.getListTerms();
-        mav.addObject("termsList", termsList);
+//        List<Apps> termsList = new ArrayList<>();
+//        termsList = appsservice.getListTerms();
+//        mav.addObject("termsList", termsList);
 
         List<Users> usersList = new ArrayList<>();
         usersList = usersService.getByLocationAndPostAndRole(userLocation, userPost, 8);
@@ -125,11 +114,7 @@ public class AppsController {
         return mav;
     }
 
-    /*-----------------------------------------------------------------------------------------------------------end*/
-
-
-    /*---------------------------------------------------------------------------------------------------------start*/
-    /* Apps маълумотларини чиқариш учун*/
+    /*todo Аризалар рўйхати(дастлабки)*/
     @PostMapping(value = INITIALDECISIONRASP)
     @ResponseBody
     public ModelAndView InitialDecisionRasp(HttpServletRequest request, @RequestParam(name = "id") String status) {
@@ -150,9 +135,9 @@ public class AppsController {
         sortedList = appsservice.getListSorted();
         mav.addObject("sortedList", sortedList);
 
-        List<Apps> termsList = new ArrayList<>();
-        termsList = appsservice.getListTerms();
-        mav.addObject("termsList", termsList);
+//        List<Apps> termsList = new ArrayList<>();
+//        termsList = appsservice.getListTerms();
+//        mav.addObject("termsList", termsList);
 
         List<Users> usersList = new ArrayList<>();
         usersList = usersService.getByLocationAndPostAndRole(userLocation, userPost, 8);
@@ -163,10 +148,15 @@ public class AppsController {
 
     @PostMapping(value = INITIALDECISION)
     @ResponseBody
-    public ModelAndView InitialDecision(HttpSession session, @RequestParam(name = "id") String status) {
+    public ModelAndView InitialDecision(HttpServletRequest request) {
+
+        String userId = (String) request.getSession().getAttribute("userId");
+        String userLocation = (String) request.getSession().getAttribute("userLocation");
+        String userPost = (String) request.getSession().getAttribute("userPost");
+
         ModelAndView mav = new ModelAndView("/resources/pages/InitialDecision/InitialDecision");
-        Iterable<Apps> arizalar = appsservice.listAll();
-        mav.addObject("apps", arizalar);
+        List<Apps> arizalar = appsservice.getlistAllIsp(userId);
+        mav.addObject("appsForInspector", arizalar);
         return mav;
     }
 
@@ -183,9 +173,6 @@ public class AppsController {
 
         List<TransportType> getInDecViewTrType = transportTypeService.getByAppId(app_id);
         mav.addObject("transports", getInDecViewTrType);
-
-//        List<TransportType> getInDecViewTrTypePrice = transportTypeService.getByAppIdAllPrice(app_id);
-//        mav.addObject("sumTransportsPrice", getInDecViewTrTypePrice);
 
         return mav;
     }
