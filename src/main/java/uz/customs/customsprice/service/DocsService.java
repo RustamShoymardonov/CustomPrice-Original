@@ -1,7 +1,7 @@
 package uz.customs.customsprice.service;
 
 import org.springframework.stereotype.Service;
-import uz.customs.customsprice.entity.InitialDecision.Docs;
+import uz.customs.customsprice.entity.files.Docs;
 import uz.customs.customsprice.repository.DocsRepo;
 
 @Service
@@ -16,4 +16,10 @@ public class DocsService {
     public Docs savedocs(Docs docs){
         return docsRepo.save(docs);
     }
+
+    public Docs getByHash256(String hash256) {
+        return docsRepo.findByHash256(hash256);
+    }
+
+    public Docs getByAppId(String appId){ return  docsRepo.findTop1ByAppIdOrderByInsTimeDesc(appId);}
 }

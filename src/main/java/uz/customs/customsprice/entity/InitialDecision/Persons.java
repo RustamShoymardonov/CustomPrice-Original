@@ -37,8 +37,8 @@ public class Persons extends AbstractAuditingEntity {
     @Column(name = "lastName", columnDefinition = "VARCHAR(180) CCSID 1208")
     private String lastName;
 
-    @Column(name = "email", length = 30, unique = true)
-    private String eMail;
+    @Column(name = "email", length = 30)
+    private String email;
 
     @Column(name = "pin", length = 14, unique = true)
     private String pin;
@@ -61,7 +61,7 @@ public class Persons extends AbstractAuditingEntity {
         this.firstName = firstName;
         this.surName = surName;
         this.lastName = lastName;
-        this.eMail = eMail;
+        this.email = eMail;
         this.pin = pin;
         this.tin = tin;
         this.perAdr = perAdr;
@@ -100,12 +100,12 @@ public class Persons extends AbstractAuditingEntity {
         this.lastName = lastName;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getEmail() {
+        return email;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPin() {

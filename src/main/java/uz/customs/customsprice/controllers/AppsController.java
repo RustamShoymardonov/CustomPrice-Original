@@ -96,7 +96,7 @@ public class AppsController {
 
         ModelAndView mav = new ModelAndView("/resources/pages/InitialDecision/InitialDecisionRasp");
         List<Apps> notSortedList = new ArrayList<>();
-        notSortedList = appsservice.getListNotSorted();
+        notSortedList = appsservice.getListNotSorted(userLocation, userPost, userId, userRole);
         mav.addObject("notSortedList", notSortedList);
 
         List sortedList = new ArrayList<>();
@@ -128,7 +128,7 @@ public class AppsController {
         String userPost = (String) request.getSession().getAttribute("userPost");
 
         List<Apps> notSortedList = new ArrayList<>();
-        notSortedList = appsservice.getListNotSorted();
+        notSortedList = appsservice.getListNotSorted(userLocation, userPost, userId, userRole);
         mav.addObject("notSortedList", notSortedList);
 
         List<Apps> sortedList = new ArrayList<>();
@@ -178,3 +178,4 @@ public class AppsController {
     }
     /*-----------------------------------------------------------------------------------------------------------end*/
 }
+

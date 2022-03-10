@@ -247,4 +247,84 @@ public class Utils {
                 return "error: слишком много сум " + skop + " " + leword[0][iw];
         }
     }
+
+    public static String toCase_userName(String user_name) {
+        if (user_name == null) return "";
+        String strYangi = "";
+        String[] ab = user_name.split(" ");
+        for (int i = 0; i < ab.length; i++) {
+            if (!strYangi.equals("")) {
+                strYangi = strYangi + " " + ab[i].substring(0, 1).toUpperCase() + ab[i].substring(1).toLowerCase();
+            } else {
+                strYangi = ab[i].substring(0, 1).toUpperCase() + ab[i].substring(1).toLowerCase();
+            }
+
+        }
+
+        return strYangi;
+    }
+
+
+    public static String toFIO(String fullName) {
+        assert (fullName != null);
+        fullName = fullName.replaceAll("  ", " ");
+        String[] nameParts = fullName.trim().split("\\s+");
+        StringBuilder nameBuilder = new StringBuilder();
+
+        for (int i = 0; i < nameParts.length; i++) {
+            if (i == 1) {
+                nameBuilder.append(' ');
+            }
+            String part = nameParts[i];
+            if (i == 0) {
+                nameBuilder.append(part.substring(0, 1).toUpperCase() + part.substring(1, part.length()).toLowerCase());
+            } else {
+                char middleInitial = part.charAt(0);
+                nameBuilder.append(String.format("%c.", middleInitial));
+            }
+        }
+        return nameBuilder.toString();
+    }
+
+    public static String toFIO1(String fullName) {
+        assert (fullName != null);
+        fullName = fullName.replaceAll("  ", " ");
+        String[] nameParts = fullName.trim().split("\\s+");
+        StringBuilder nameBuilder = new StringBuilder();
+
+        for (int i = 0; i < nameParts.length; i++) {
+            String part = nameParts[i];
+            nameBuilder.append(part.substring(0, 1).toUpperCase() + part.substring(1, part.length()).toLowerCase());
+            nameBuilder.append(' ');
+        }
+        return nameBuilder.toString();
+    }
+
+    public static String toFIO2(String fullName) {
+        assert (fullName != null);
+        if (!fullName.equals("")) {
+            fullName = fullName.replaceAll("  ", " ");
+            String[] nameParts = fullName.trim().split("\\s+");
+            StringBuilder nameBuilder = new StringBuilder();
+            Integer n = nameParts.length;
+            if (nameParts.length == 2) n = nameParts.length;
+            if (nameParts.length == 3) n = nameParts.length - 1;
+            if (nameParts.length == 4) n = nameParts.length - 2;
+            if (nameParts.length == 5) n = nameParts.length - 3;
+            for (int i = n - 1; i > -1; i--) {
+                if (i == 0) {
+                    nameBuilder.append(' ');
+                }
+                String part = nameParts[i];
+                if (i == 0) {
+                    nameBuilder.append(part.substring(0, 1).toUpperCase() + part.substring(1, part.length()).toLowerCase());
+                } else {
+                    char middleInitial = part.charAt(0);
+                    nameBuilder.append(String.format("%c.", middleInitial));
+                }
+            }
+            return nameBuilder.toString();
+        } else return "";
+
+    }
 }

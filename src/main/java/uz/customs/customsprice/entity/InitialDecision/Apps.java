@@ -344,3 +344,4 @@ public class Apps extends AbstractAuditingEntity {
         this.statusNm = statusNm;
     }
 }
+

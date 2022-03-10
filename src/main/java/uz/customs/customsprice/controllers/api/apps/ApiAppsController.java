@@ -1,10 +1,12 @@
 package uz.customs.customsprice.controllers.api.apps;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import uz.customs.customsprice.controllers.api.helper.ResponseHandler;
 import uz.customs.customsprice.entity.InitialDecision.*;
 import uz.customs.customsprice.service.*;
 
@@ -47,9 +49,9 @@ public class ApiAppsController {
             apps.setTermsNm(terms.getSign());
 
             appsService.saveApps(apps);
-            return ResponseEntity.ok(" <<--- Apps (success) --->> - маълумотларини сақлаш муваффақиятли бажарилди ! \n" + apps);
+            return ResponseHandler.generateResponse("Apps ma`lumotlari saqlandi!", HttpStatus.OK, apps);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(" <<--- Apps (error) --->> маълумотларини сақлашда хатолик юз берди ! ");
+            return ResponseHandler.generateResponse("Apps ma`lumotlari saqlashda xatolik yuz berdi!", HttpStatus.BAD_REQUEST, apps.getId());
         }
 
     }

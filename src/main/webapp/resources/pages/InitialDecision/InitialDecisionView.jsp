@@ -1,4 +1,3 @@
-<%@ page import="uz.customs.customsprice.entity.InitialDecision.Docs" %>
 <!DOCTYPE html>
 <%--
   Created by IntelliJ IDEA.

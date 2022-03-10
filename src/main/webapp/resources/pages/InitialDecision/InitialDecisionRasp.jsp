@@ -13,6 +13,15 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
+<%
+    String userId = (String) request.getSession().getAttribute("userId");
+    String userName = (String) request.getSession().getAttribute("userName");
+    Integer userRole = (Integer) request.getSession().getAttribute("userRole");
+    String userRoleName = (String) request.getSession().getAttribute("userRoleName");
+    String userLocation = (String) request.getSession().getAttribute("userLocation");
+    String userLocationName = (String) request.getSession().getAttribute("userLocationName");
+    String userPost = (String) request.getSession().getAttribute("userPost");
+%>
 
 <!-- /top tiles -->
 
@@ -163,14 +172,31 @@
 
                 <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
 
+                    <%if (userRole == 8) {%>
+
+                    <%--todo ------------------------------------------------------------------------------------------------------%>
+                    <%--todo --------------- Мурожаатлар (Тақсимланган мурожаатлар - инспектор учун) ------------------------------%>
+                    <%--todo ------------------------------------------------------------------------------------------------------%>
+                    <li class="nav-item ml-4" style="width: 47%">
+                        <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
+                    </li>
+
+                    <%--todo ----------------------------------------------------------------------------%>
+                    <%--todo --------------- Дастлабки қарор реестри  - инспектор учун ------------------%>
+                    <%--todo ----------------------------------------------------------------------------%>
+                    <li class="nav-item" style="width: 47%">
+                        <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки
+                            қарор реестри</a>
+                    </li>
+
+                    <%} else {%>
+
                     <%--todo ----------------------------------------------------------%>
                     <%--todo --------------- Мурожаатлар ------------------------------%>
                     <%--todo ----------------------------------------------------------%>
                     <li class="nav-item ml-5" style="width: 30%">
                         <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                           aria-controls="home" aria-selected="true"><i
-                                class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
-                        <h3>${nnn}</h3>
+                           aria-controls="home" aria-selected="true"><i class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
                     </li>
 
                     <%--todo ----------------------------------------------------------%>
@@ -178,18 +204,18 @@
                     <%--todo ----------------------------------------------------------%>
                     <li class="nav-item ml-4" style="width: 30%">
                         <a class="nav-link h4" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                           aria-controls="contact" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Тақсимланган
-                            мурожаатлар</a>
+                           aria-controls="contact" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Тақсимланган мурожаатлар
+                        </a>
                     </li>
-
                     <%--todo ----------------------------------------------------------%>
                     <%--todo --------------- Дастлабки қарор реестри ------------------%>
                     <%--todo ----------------------------------------------------------%>
                     <li class="nav-item ml-4" style="width: 30%">
                         <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                           aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки
-                            қарор реестри</a>
+                           aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки қарор реестри</a>
                     </li>
+                    <%}%>
+
                 </ul>
 
 
@@ -203,7 +229,7 @@
                             <div class="table-responsive mt-4">
                                 <table id="example1" class="table table-striped table-bordered border-primary table-sm"
                                        style="width:100%; border-style: dashed solid">
-                                    <thead class="bg-gradient text-black" style="background-color: #0d81fe;">
+                                    <thead class="bg-gradient text-white" style="background-color: #0d81fe;">
                                     <tr>
                                         <th style="border-style: dotted">т/р</th>
                                         <th style="border-style: dotted">Ариза рақами</th>
@@ -234,6 +260,7 @@
                                             <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>
                                             <td>${notSorted.senderCountry}-${notSorted.senderCountryNm}</td>
                                             <td>
+                                                <%if (userRole == 7) {%>
                                                 <select class="form-control" id="userIdF_${i.index + 1}"
                                                         name="userId_${i.index + 1}">
                                                     <option value="notSelected"></option>
@@ -242,32 +269,19 @@
                                                         <option value="${userSelect.id}">${userSelect.userName}</option>
                                                     </c:forEach>
                                                 </select>
+                                                <%}%>
                                             </td>
                                             <th style="border-style: dotted">
+                                                <%if (userRole == 7) {%>
                                                 <button type="button" class="btn btn-success btn-block"
                                                         onclick="saveInDecRaspIns('${notSorted.id}', $('#userIdF_${i.index + 1}').val(), ${i.index + 1})">
-                                                    Тақсимлаш
+                                                    <i class="fa fa-send" style="color: #f3da35"></i><i class="fa fa-arrow-right" aria-hidden="true"></i><i class="fa fa-user" aria-hidden="true"></i>
                                                 </button>
+                                                <%}%>
                                             </th>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
-                                    <%--                                    <tfoot>--%>
-                                    <%--                                    <tr>--%>
-                                    <%--                                        <th style="border-style: dotted">т/р</th>--%>
-                                    <%--                                        <th style="border-style: dotted">Ариза рақами</th>--%>
-                                    <%--                                        <th style="border-style: dotted">Мақоми</th>--%>
-                                    <%--                                        <th style="border-style: dotted">Ариза санаси</th>--%>
-                                    <%--                                        <th style="border-style: dotted">Мафаатдор шахс</th>--%>
-                                    <%--                                        <th style="border-style: dotted">Савдо қилувчи</th>--%>
-                                    <%--                                        <th style="border-style: dotted">Ишлаб чиқарувчи</th>--%>
-                                    <%--                                        <th style="border-style: dotted">Сотувчи мамлакат</th>--%>
-                                    <%--                                        <th style="border-style: dotted">Ходимлар</th>--%>
-                                    <%--                                        <th style="border-style: dotted">--%>
-                                    <%--                                            <button type="button" class="btn btn-success btn-block" onclick="saveInDecRasp('userId','${notSorted.id}')">Тақсимлаш</button>--%>
-                                    <%--                                        </th>--%>
-                                    <%--                                    </tr>--%>
-                                    <%--                                    </tfoot>--%>
 
                                 </table>
                             </div>
@@ -284,7 +298,7 @@
                             <div class="table-responsive mt-4">
                                 <table id="example2" class="table table-striped table-bordered border-primary table-sm"
                                        style="width:100%; border-style: dashed solid">
-                                    <thead class="bg-gradient text-black" style="background-color: #0d81fe;">
+                                    <thead class="bg-gradient text-white" style="background-color: #0d81fe;">
                                     <tr>
                                         <th style="border-style: dotted">т/р</th>
                                         <th style="border-style: dotted">Ариза рақами</th>
@@ -324,7 +338,7 @@
                             <div class="table-responsive mt-4">
                                 <table id="example3" class="table table-striped table-bordered border-primary table-sm"
                                        style="width:100%; border-style: dashed solid">
-                                    <thead class="bg-gradient text-black text-lg-left"
+                                    <thead class="bg-gradient text-white text-lg-left"
                                            style="background-color: #0d81fe;">
                                     <tr>
                                         <th style=" border-style: dotted">т/р</th>
@@ -341,22 +355,22 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-<%--                                    <c:forEach var="terms" items="${termsList}" varStatus="i">--%>
-<%--                                        <tr>--%>
-<%--                                            <td>${i.index+1}</td>--%>
-<%--                                            <td><a href="javascript:InitialDecisionView('${terms[0]}')"--%>
-<%--                                                   class="text-primary font-weight-bold"><u>${terms[6]}</u></a></td>--%>
-<%--                                            <td>${terms[28]}</td>--%>
-<%--                                            <td>${terms[1]}</td>--%>
-<%--                                            <td>${terms[14]}</td>--%>
-<%--                                            <td>${terms[9]}-${terms[8]}</td>--%>
-<%--                                            <td>${terms.originCountry}-${terms.orignCountrNm}</td>--%>
-<%--                                            <td>${terms.customer_country}-${terms.customerCountryNm}</td>--%>
-<%--                                            <td>${terms.terms}-${terms.termsAddr}</td>--%>
-<%--                                            <td>${terms.originCountry}-${terms.orignCountrNm}</td>--%>
-<%--                                            <td>ст.инспектор Ж.Халилов</td>--%>
-<%--                                        </tr>--%>
-<%--                                    </c:forEach>--%>
+                                    <%--                                    <c:forEach var="terms" items="${termsList}" varStatus="i">--%>
+                                    <%--                                        <tr>--%>
+                                    <%--                                            <td>${i.index+1}</td>--%>
+                                    <%--                                            <td><a href="javascript:InitialDecisionView('${terms[0]}')"--%>
+                                    <%--                                                   class="text-primary font-weight-bold"><u>${terms[6]}</u></a></td>--%>
+                                    <%--                                            <td>${terms[28]}</td>--%>
+                                    <%--                                            <td>${terms[1]}</td>--%>
+                                    <%--                                            <td>${terms[14]}</td>--%>
+                                    <%--                                            <td>${terms[9]}-${terms[8]}</td>--%>
+                                    <%--                                            <td>${terms.originCountry}-${terms.orignCountrNm}</td>--%>
+                                    <%--                                            <td>${terms.customer_country}-${terms.customerCountryNm}</td>--%>
+                                    <%--                                            <td>${terms.terms}-${terms.termsAddr}</td>--%>
+                                    <%--                                            <td>${terms.originCountry}-${terms.orignCountrNm}</td>--%>
+                                    <%--                                            <td>ст.инспектор Ж.Халилов</td>--%>
+                                    <%--                                        </tr>--%>
+                                    <%--                                    </c:forEach>--%>
                                     </tbody>
                                 </table>
                             </div>
@@ -367,6 +381,14 @@
         </div>
     </div>
 </div>
+
+<button class="btn btn-secondary source" onclick="new PNotify({
+                                  title: 'Regular Success',
+                                  text: 'That thing that you were trying to do worked!',
+                                  type: 'success',
+                                  styling: 'bootstrap3'
+                              });">Success
+</button>
 
 <script>
 

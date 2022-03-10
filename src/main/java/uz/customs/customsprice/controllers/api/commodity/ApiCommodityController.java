@@ -1,10 +1,12 @@
 package uz.customs.customsprice.controllers.api.commodity;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import uz.customs.customsprice.controllers.api.helper.ResponseHandler;
 import uz.customs.customsprice.entity.InitialDecision.*;
 import uz.customs.customsprice.service.*;
 
@@ -43,9 +45,9 @@ public class ApiCommodityController {
             commodity.setHsName(tnved2.getName());
 
             commodityService.saveCommodity(commodity);
-            return ResponseEntity.ok(" <<--- Commodity (success) --->> - маълумотларини сақлаш муваффақиятли бажарилди ! ");
+            return ResponseHandler.generateResponse("Commodity ma`lumotlari saqlandi!", HttpStatus.OK, commodity);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(" <<--- Commodity (error) --->> маълумотларини сақлашда хатолик юз берди ! ");
+            return ResponseHandler.generateResponse("Commodity ma`lumotlari saqlashda xatolik yuz berdi!", HttpStatus.BAD_REQUEST, commodity.getId());
         }
     }
 }

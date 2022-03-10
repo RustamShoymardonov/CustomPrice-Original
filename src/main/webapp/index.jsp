@@ -21,10 +21,6 @@
     String userLocation = (String) request.getSession().getAttribute("userLocation");
     String userLocationName = (String) request.getSession().getAttribute("userLocationName");
     String userPost = (String) request.getSession().getAttribute("userPost");
-
-//    int cntRole = 0;
-//    if (userRole == 7) cntRole = cntRole + 1;
-
 %>
 
 <html>
@@ -79,16 +75,16 @@
                         <ul class="nav side-menu menu_fixed">
                             <li><a href="javascript:ListClassProduct(0)"><i class="fa fa-bar-chart-o"></i>Товарларни тоифалаш</a></li>
 
-                            <%if (userRole == 1 || userRole == 7){%> <%--todo (ҲББ Тўловлар бошлиғи)--%>
+                            <%if (userRole == 1 || userRole == 7 || userRole == 8){%> <%--todo (ҲББ Тўловлар бошлиғи ҳамда ҲББ Тўловлар ходими менюси)--%>
                             <li><a href="javascript:InitialDecisionRasp(0)"><i class="fa fa-edit"></i>Дастлабки қарор</a></li>
                             <%}%>
-                            <%if (userRole == 1 || userRole == 8){%> <%--todo (ҲББ Тўловлар ходими)--%>
-                            <li><a href="javascript:InitialDecision(0)"><i class="fa fa-edit"></i>Дастлабки қарор</a>
-                            <%}%>
-                            <li><a href="javascript:void(0)"><i class="fa fa-desktop"></i>Қиймат мониторинги</a></li>
-                            <li><a href="javascript:void(0)"><i class="fa fa-sitemap"></i>Мантиқий назорат</a></li>
-                            <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i>Халқаро сўровнома</a></li>
-                            <li><a href="javascript:void(0)"><i class="fa fa-clone"></i>Кўрсатма хатлар</a></li>
+<%--                            <%if (userRole == 1 || userRole == 8){%> &lt;%&ndash;todo (ҲББ Тўловлар ходими)&ndash;%&gt;--%>
+<%--                            <li><a href="javascript:InitialDecision(0)"><i class="fa fa-edit"></i>Дастлабки қарор</a>--%>
+<%--                            <%}%>--%>
+                            <li><a href="javascript:ErrorMessage(0)"><i class="fa fa-desktop"></i>Қиймат мониторинги</a></li>
+                            <li><a href="javascript:ErrorMessage(0)"><i class="fa fa-sitemap"></i>Мантиқий назорат</a></li>
+                            <li><a href="javascript:ErrorMessage(0)"><i class="fa fa-laptop"></i>Халқаро сўровнома</a></li>
+                            <li><a href="javascript:ErrorMessage(0)"><i class="fa fa-clone"></i>Кўрсатма хатлар</a></li>
                             <li><a href="javascript:Digests(0)"><i class="fa fa-windows"></i>Справочник</a></li>
                         </ul>
                     </div>
@@ -131,14 +127,14 @@
                                 <span>Созлаш</span>
                             </a>
                             <a class="dropdown-item" href="">Ёрдам</a>
-                            <a class="dropdown-item" href="<%=request.getContextPath()%>/logout"><i class="fa fa-sign-out pull-right"></i>Чиқиш</a>
+                            <a class="dropdown-item" href="<%=request.getContextPath()%>/login"><i class="fa fa-sign-out pull-right"></i>Чиқиш</a>
                         </div>
                     </li>
                     <li role="presentation" class="nav-item dropdown open">
                         <a href="" class="dropdown-toggle info-number text-white" id="navbarDropdown1"
                            data-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-envelope-o"></i>
-                            <span class="badge bg-green">6</span>
+<%--                            <span class="badge bg-green">6</span>--%>
                         </a>
                         <ul class="dropdown-menu list-unstyled msg_list" role="menu"
                             aria-labelledby="navbarDropdown1">
@@ -410,6 +406,26 @@
             },
             error: function () {
                 console.log("error");
+            }
+        });
+    }
+
+    /* Error message */
+    function ErrorMessage(x) {
+        var dataS = {
+            "x": x
+        }
+        $.ajax({
+            type: "POST",
+            data: dataS,
+            url: "<%=request.getContextPath()%>/resources/pages/ErrorPage/ErrorMessage.jsp",
+            dataType: "html",
+            header: 'Content-type: text/html; charset=utf-8',
+            success: function (res) {
+                $('div#MainContent').html(res);
+
+            },
+            error: function (res) {
             }
         });
     }

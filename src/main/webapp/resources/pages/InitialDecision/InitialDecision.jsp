@@ -63,7 +63,7 @@
                                                         <td>${i.index+1}</td>
                                                         <td><a href="javascript:InitialDecisionView('${appInsp[0]}')"
                                                                class="text-primary font-weight-bold"><u>${appInsp[6]}</u></a></td>
-                                                        <td>${appInsp[25]}</td>
+                                                        <td>${appInsp[28]}</td>
                                                         <td>${appInsp[1]}</td>
                                                         <td>${appInsp[14]}</td>
                                                         <td>${appInsp[9]}-${appInsp[8]}</td>

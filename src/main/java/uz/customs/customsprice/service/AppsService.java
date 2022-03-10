@@ -23,8 +23,27 @@ public class AppsService {
 
 
     /* 1) Барча статуси "Янги" бўлган аризалар */
-    public List<Apps> getListNotSorted() {
+    public List<Apps> getListNotSorted(String userLocation, String userPost, String userId, Integer userRole) {
 //        appsRepo.findByStatus(100);
+        String sqlWhere = "", sqlJoin = "", sqlJoinVal = "";
+        if (userRole == 7) {
+            sqlWhere = sqlWhere + " and a.status=100 \n " +
+                    " and a.location_id='" + userLocation + "' ";
+        }
+        if (userRole == 8) {
+            sqlJoinVal = ",\n" +
+                    "    ar.inspector_id   inspector_id,\n" +
+                    "    ar.inspector_name inspector_name\n";
+            sqlJoin = "left join\n" +
+                    "    cpid.apps_rasp ar\n" +
+                    "on\n" +
+                    "    a.id=ar.app_id";
+            sqlWhere = " and a.status not in (100,\n" +
+                    "                         170,\n" +
+                    "                         175) \n " +
+                    " and ar.inspector_id='" + userId + "' ";
+        }
+
         String queryForList = "select\n" +
                 "    a.id,\n" +
                 "    a.instime,\n" +
@@ -57,11 +76,13 @@ public class AppsService {
                 "    a.terms_addr,\n" +
                 "    a.trans_exp,\n" +
                 "    a.person_id\n" +
+                "    " + sqlJoinVal + "\n" +
                 "from\n" +
                 "    apps a\n" +
+                "    " + sqlJoin + "\n" +
                 "where\n" +
-                "    a.status=100\n" +
-                "and a.isdeleted=0\n" +
+                "    a.isdeleted=0\n" +
+                "" + sqlWhere + "\n " +
                 "order by\n" +
                 "    a.instime desc";
         return (List<Apps>) entityManager.createNativeQuery(queryForList, Apps.class).getResultList();
