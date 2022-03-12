@@ -13,5 +13,9 @@ public interface PersonsRepo extends JpaRepository<Persons, String> {
     Persons findByTin(String tin);
 
     Persons findByEmail(String email);
+
+    Optional<Persons> findById(String id);
+
+    Persons findByEmailAndPinAndTin(String email, String pin, String tin);
 }
 

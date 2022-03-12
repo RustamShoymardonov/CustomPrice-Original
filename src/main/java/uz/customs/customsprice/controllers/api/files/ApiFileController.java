@@ -1,33 +1,24 @@
 package uz.customs.customsprice.controllers.api.files;
 
-import jcifs.smb.NtlmPasswordAuthentication;
-import jcifs.smb.SmbFile;
 import org.apache.commons.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import uz.customs.customsprice.controllers.api.helper.FileUploadHelper;
 import uz.customs.customsprice.controllers.api.helper.ResponseHandler;
 import uz.customs.customsprice.entity.InitialDecision.Apps;
 import uz.customs.customsprice.entity.files.Docs;
-import uz.customs.customsprice.repository.AppsRepo;
 import uz.customs.customsprice.service.AppsService;
 import uz.customs.customsprice.service.DocsService;
-
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.Objects;
 
 @Controller
@@ -46,14 +37,9 @@ public class ApiFileController {
 
     @PostMapping("/upload-file")
     public ResponseEntity<Object> uploadFile(@RequestParam("appId") String appId, @RequestParam("docType") String docType, @RequestParam("file") MultipartFile file, @RequestParam("docNumber") String docNumber, @RequestParam("docDate") String docDate) throws IOException, NoSuchAlgorithmException, FileUploadException {
-        String AppNum = ""; //
-//        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-//        byte[] hash = digest.digest(file.getBytes());
-//        String sha256hex = new String(Hex.encode(hash));
+        String AppNum = "";
         String hash256 = "";
         hash256 = GetHash2(file.getInputStream());
-
-
 //        String appId = "";
 //        String docNumber = "";
 //        String docDate = "";
@@ -76,7 +62,6 @@ public class ApiFileController {
         if (d != null) {
             docSrNo = Integer.toString(Integer.parseInt(d.getDocSrNo()) + 1);
         } else docSrNo = "1";
-
 
         try {
             if (file.isEmpty()) {
@@ -103,25 +88,18 @@ public class ApiFileController {
                     docs.setDocNameEx(timeStampS);
                     docs.setDocFormat(file.getContentType());
                     docs.setDocSize(String.valueOf(file.getSize()));
-                    docs.setDocNumber(docNumber);        //Api keladi
+                    docs.setDocNumber(docNumber);
                     /*2022-02-13*/
-                    if (docDate != null && !docDate.equals("")) docs.setDocDate(docDateS);          //Api
-                    // keladi
-                    docs.setDocType(docType);           //Api keladi
-                    docs.setDocPath(filePath);          //Generatsiya boladi
+                    if (docDate != null && !docDate.equals("")) docs.setDocDate(docDateS);
+                    docs.setDocType(docType);
+                    docs.setDocPath(filePath);
                     docsService.savedocs(docs);
                     return ResponseHandler.generateResponse("Fayl ma'lumot saqlandi", HttpStatus.OK, docs);
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Nimadir xato boshqattan urinib ko'ring");
+        } catch (Exception e) {e.printStackTrace();}
         return ResponseHandler.generateResponse("Docs ma`lumotlari saqlashda xatolik yuz berdi!", HttpStatus.BAD_REQUEST, docs.getId());
     }
-
     private static String GetHash2(InputStream fis) throws IOException, NoSuchAlgorithmException {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");

@@ -4,11 +4,14 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 import uz.customs.customsprice.entity.entityConfig.AbstractAuditingEntity;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -22,34 +25,46 @@ public class Persons extends AbstractAuditingEntity {
     @Column(name = "id", columnDefinition = "VARCHAR(50)")
     private String id;
 
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "APP_ID", insertable = false, updatable = false)
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-//    @JsonIgnore
-//    private Apps apps;
-
     @Column(name = "firstName", columnDefinition = "VARCHAR(180) CCSID 1208")
+    @NotBlank(message =  "firstName - бўш бўлиши мумкин эмас")
+    @Size(max = 60, message = "Устун маълумоти катталиги чекланган")
     private String firstName;
 
     @Column(name = "surName", columnDefinition = "VARCHAR(180) CCSID 1208")
+    @NotBlank(message =  "surName - майдони бўш бўлиши мумкин эмас")
+    @Size(max = 60, message = "Устун маълумоти катталиги чекланган")
     private String surName;
 
     @Column(name = "lastName", columnDefinition = "VARCHAR(180) CCSID 1208")
+    @NotBlank(message =  "lastName - исми майдони бўш бўлиши мумкин эмас")
+    @Size(max = 60, message = "Устун маълумоти катталиги чекланган")
     private String lastName;
 
     @Column(name = "email", length = 30)
+    @NotBlank(message =  "Электрон почта майдони тўлдирилиши лозим")
+    @Email(message = "email - хато киритилди")
     private String email;
 
     @Column(name = "pin", length = 14, unique = true)
+    @NotBlank(message =  "pin - майдони тўлдирилиши лозим")
+    @Size(min = 14, max = 14, message = "pin - майдони 14 белгидан иборат бўлиши керак")
+//    @Digits(message = "Устун фақат 14 хонали сонлардан иборат бўлиши лозим", integer = 14, fraction = 0)
     private String pin;
 
     @Column(name = "tin", length = 9, unique = true)
+    @NotBlank(message =  "tin - майдони тўлдирилиши лозим")
+    @Size(min = 9, max = 9, message = "tin - майдони 9 белгидан иборат бўлиши керак")
+//    @Digits(message = "Устун фақат 9 хонали сонлардан иборат бўлиши лозим", integer = 9, fraction = 0)
     private String tin;
 
     @Column(name = "per_adr", columnDefinition = "VARCHAR(765) CCSID 1208")
+    @NotBlank(message =  "lastName - исми майдони бўш бўлиши мумкин эмас")
+    @Size(max = 255, message = "Устун маълумоти катталиги чекланган")
     private String perAdr;
 
     @Column(name = "phone", length = 20)
+    @NotBlank(message =  "Устун тўлдирилмаган")
+    @Size(max = 20, message = "Устун маълумоти катталиги чекланган")
     private String phone;
 
     public Persons() {

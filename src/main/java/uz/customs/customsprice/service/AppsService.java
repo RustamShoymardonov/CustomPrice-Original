@@ -24,7 +24,6 @@ public class AppsService {
 
     /* 1) Барча статуси "Янги" бўлган аризалар */
     public List<Apps> getListNotSorted(String userLocation, String userPost, String userId, Integer userRole) {
-//        appsRepo.findByStatus(100);
         String sqlWhere = "", sqlJoin = "", sqlJoinVal = "";
         if (userRole == 7) {
             sqlWhere = sqlWhere + " and a.status=100 \n " +

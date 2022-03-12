@@ -6,6 +6,7 @@ import uz.customs.customsprice.entity.InitialDecision.Persons;
 import uz.customs.customsprice.repository.PersonsRepo;
 
 import javax.persistence.EntityManager;
+import java.util.Optional;
 
 @Service
 public class PersonsService {
@@ -32,4 +33,8 @@ public class PersonsService {
     }
 
     public Persons getByeMail(String email) { return personrepo.findByEmail(email);}
+
+    public Optional<Persons> getById(String id){return personrepo.findById(id);}
+
+    public Persons getByEmailAndPinAndTin(String email, String pin, String tin){ return personrepo.findByEmailAndPinAndTin(email, pin, tin);}
 }

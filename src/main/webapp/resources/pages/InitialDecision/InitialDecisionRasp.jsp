@@ -385,10 +385,18 @@
 <button class="btn btn-secondary source" onclick="new PNotify({
                                   title: 'Regular Success',
                                   text: 'That thing that you were trying to do worked!',
-                                  type: 'success',
+                                  type: 'error',
                                   styling: 'bootstrap3'
                               });">Success
 </button>
+
+<link href="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
+
+<script src="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.js"></script>
+<script src="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.buttons.js"></script>
+<script src="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.nonblock.js"></script>
 
 <script>
 
