@@ -110,9 +110,9 @@
             <!-- Text editor -->
             <h4 style="text-align: center">Аризани қайтариш сабаблари</h4>
             <form method="" class="border-primary" style="border-style: dashed double none">
-                <textarea class="resizable_textarea form-control" placeholder="Киритинг... " style="height: 150px; max-height: 300px;"></textarea>
+                <textarea class="resizable_textarea form-control" placeholder="Киритинг... " style="height: 150px; max-height: 300px;" id="commentRollback" name="commentRollback"></textarea>
             </form>
-            <button type="button" class="btn btn-success mt-3">Жўнатиш</button>
+            <button type="button" class="btn btn-success mt-3" onclick="appRollback();">Жўнатиш</button>
             <!-- Text editor end-->
         </div>
         <div id="contact1" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade py-4">
@@ -121,7 +121,7 @@
             <form method="" class="border-primary" style="border-style: dashed double none">
                 <textarea class="resizable_textarea form-control" placeholder="Киритинг... " style="height: 150px; max-height: 300px;"></textarea>
             </form>
-            <button type="button" class="btn btn-success mt-3">Жўнатиш</button>
+            <button type="button" class="btn btn-success mt-3" onclick="appRollbackToFix();">Жўнатиш</button>
             <!-- Text editor end-->
         </div>
     </div>
@@ -130,3 +130,29 @@
 
 </body>
 </html>
+
+<script>
+    function appRollback() {
+        // alert($('#appId').val() + ', \n ' + $.trim($('#commentRollback').val()));
+        var dataS = {
+            "appId": $('#appId').val(),
+            "commentRollback": $.trim($('#commentRollback').val())
+        }
+        $.ajax({
+            type: "POST",
+            data: dataS,
+            url: "<%=request.getContextPath()%>/apps/resources/pages/InitialDecision/InitialDecisionRollBack",
+            dataType: "html",
+            header: 'Content-type: text/html; charset=utf-8',
+            success: function (res) {
+                var typeMessage = '';
+                $('div#MainContent').html(res);
+            },
+            error: function (res) {
+            }
+        });
+    }
+
+    function appRollbackToFix() {
+    }
+</script>

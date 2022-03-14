@@ -132,10 +132,13 @@ public class Apps extends AbstractAuditingEntity {
     @Column(name = "STATUS_NM", columnDefinition = "VARCHAR(450) CCSID 1208")
     private String statusNm;
 
+    @Column(name = "COMMENT", columnDefinition = "VARCHAR(600) CCSID 1208")
+    private String comment;
+
     public Apps() {
     }
 
-    public Apps(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, String personId, String appNum, Date appDate, String customerCountry, String customerCountryNm, String senderCountry, String senderCountryNm, String senderOrg, String sellerOrg, String terms, String termsNm, String termsAddr, String personFio, String orgName, String personPosition, String personAddr, String personTin, String personPin, String personMail, String personPhone, String locationId, String locationNm, BigDecimal transExp, int status, String statusNm) {
+    public Apps(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, String personId, String appNum, Date appDate, String customerCountry, String customerCountryNm, String senderCountry, String senderCountryNm, String senderOrg, String sellerOrg, String terms, String termsNm, String termsAddr, String personFio, String orgName, String personPosition, String personAddr, String personTin, String personPin, String personMail, String personPhone, String locationId, String locationNm, BigDecimal transExp, int status, String statusNm, String comment) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
         this.personId = personId;
@@ -163,6 +166,7 @@ public class Apps extends AbstractAuditingEntity {
         this.transExp = transExp;
         this.status = status;
         this.statusNm = statusNm;
+        this.comment = comment;
     }
 
     public String getId() {
@@ -371,6 +375,14 @@ public class Apps extends AbstractAuditingEntity {
 
     public void setStatusNm(String statusNm) {
         this.statusNm = statusNm;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }
 

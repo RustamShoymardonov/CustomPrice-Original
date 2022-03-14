@@ -1,7 +1,5 @@
 package uz.customs.customsprice.controllers;
 
-import org.springframework.http.HttpRequest;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,10 +10,8 @@ import uz.customs.customsprice.repository.users.LoginRepo;
 import uz.customs.customsprice.repository.users.UsersRepo;
 import uz.customs.customsprice.service.*;
 
-import javax.annotation.processing.Messager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -37,12 +33,18 @@ public class AppsController {
     private final UsersService usersService;
     private final StatusMService statusMService;
     private final StatusHService statusHService;
+    private final RollBackAppService rollBackAppService;
+    private final RollbackSpService rollbackSpService;
+
+
+
     private final String INITIALDECISION = "/resources/pages/InitialDecision/InitialDecision1";
     private final String INITIALDECISIONRASP = "/resources/pages/InitialDecision/InitialDecisionRasp";
     private final String INITIALDECISIONVIEW = "/resources/pages/InitialDecision/InitialDecisionView";
     private final String INITIALDECISIONSAVERASP = "/resources/pages/InitialDecision/InitialDecisionRasp1";
+    private final String INITIALDECISIONROLLBACK = "/resources/pages/InitialDecision/InitialDecisionRollBack";
 
-    public AppsController(AppsService appsService, ConturyService conturyService, LocationService locationService, StatusService statusService, TermsService termsService, AppsService appsservice, AppsRaspService appsRaspService, AppsRepo appsRepo, UsersRepo usersRepo, LoginRepo loginRepo, TransportTypeService transportTypeService, UsersService usersService, StatusMService statusMService, StatusHService statusHService) {
+    public AppsController(AppsService appsService, ConturyService conturyService, LocationService locationService, StatusService statusService, TermsService termsService, AppsService appsservice, AppsRaspService appsRaspService, AppsRepo appsRepo, UsersRepo usersRepo, LoginRepo loginRepo, TransportTypeService transportTypeService, UsersService usersService, StatusMService statusMService, StatusHService statusHService, RollBackAppService rollBackAppService, RollbackSpService rollbackSpService) {
         this.appsService = appsService;
         this.conturyService = conturyService;
         this.locationService = locationService;
@@ -57,6 +59,8 @@ public class AppsController {
         this.usersService = usersService;
         this.statusMService = statusMService;
         this.statusHService = statusHService;
+        this.rollBackAppService = rollBackAppService;
+        this.rollbackSpService = rollbackSpService;
     }
 
     /*todo Тақсимланган аризалар рўйхатини сақлаш (инспекторлар кесимида)*/
@@ -173,6 +177,29 @@ public class AppsController {
 
         List<TransportType> getInDecViewTrType = transportTypeService.getByAppId(app_id);
         mav.addObject("transports", getInDecViewTrType);
+
+        return mav;
+    }
+
+    @PostMapping(value = INITIALDECISIONROLLBACK)
+    @ResponseBody
+    public ModelAndView InitialDecisionRollBack(HttpServletRequest request ,@RequestParam String appId, @RequestParam String commentRollback){
+
+        String userId = (String) request.getSession().getAttribute("userId");
+        String userName = (String) request.getSession().getAttribute("userName");
+        Integer userRole = (Integer) request.getSession().getAttribute("userRole");
+        String userRoleName = (String) request.getSession().getAttribute("userRoleName");
+        String userLocation = (String) request.getSession().getAttribute("userLocation");
+        String userLocationName = (String) request.getSession().getAttribute("userLocationName");
+        String userPost = (String) request.getSession().getAttribute("userPost");
+
+        RollBackApp rollBackApp = new RollBackApp();
+        rollBackApp.setAppId(appId);
+        rollBackApp.setRollbackName(commentRollback);
+        rollBackAppService.saveRollBack(rollBackApp);
+
+        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionView/");
+
 
         return mav;
     }

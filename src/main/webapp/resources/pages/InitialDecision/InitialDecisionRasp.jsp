@@ -382,13 +382,13 @@
     </div>
 </div>
 
-<button id="messageSucces" style="display: none;" class="btn btn-secondary source" onclick="new PNotify({
-                                  title: 'Ариза муваффақиятли тақсимланди',
-                                  text: 'That thing that you were trying to do worked!',
-                                  type: 'success',
-                                  styling: 'bootstrap3'
-                              });">Success
-</button>
+<%--<button id="messageSucces" style="display: none;" class="btn btn-secondary source" onclick="new PNotify({--%>
+<%--                                  title: 'Ариза муваффақиятли тақсимланди',--%>
+<%--                                  text: 'That thing that you were trying to do worked!',--%>
+<%--                                  type: 'success',--%>
+<%--                                  styling: 'bootstrap3'--%>
+<%--                              });">Success--%>
+<%--</button>--%>
 
 <link href="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
 <link href="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">

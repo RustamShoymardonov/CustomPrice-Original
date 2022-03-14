@@ -13,6 +13,12 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
+<style>
+    ::-webkit-scrollbar {
+        width: 0;
+    }
+</style>
+
 <div class="row-fluid">
     <div class="row">
 
@@ -20,10 +26,14 @@
             <div class="x_panel border rounded mt-4" style="background: rgba(23, 101, 185, 0.08);">
                 <div>
                     <h4>
+                        <c:set var="total" value="${0}"/>
                         <c:forEach var="val" items="${appInfo}">
                             <i class="fa fa-edit"></i>АРИЗА
                             <small>№: ${val[1]}</small>
+                            <c:set var="total" value="${val[0]}"/>
+                            <input type="hidden" id="appId" name="appId" value="<c:out value="${total}"/>"/>
                         </c:forEach>
+
                     </h4>
                     <div class="clearfix"></div>
                 </div>
@@ -100,7 +110,8 @@
                                             </address>
                                         </div>
                                         <div class="col-sm-1 invoice-col border-blue border-right">
-                                            <img src="<%=request.getContextPath()%>/resources/images/info.gif" data-toggle="modal" data-target="#exampleModal12" style="cursor: pointer; background-color: #0b2e13" width="50" height="50">
+                                            <img src="<%=request.getContextPath()%>/resources/images/info.gif" data-toggle="modal" data-target="#exampleModal12"
+                                                 style="cursor: pointer; background-color: #0b2e13" width="50" height="50">
                                         </div>
                                     </div>
 
@@ -303,24 +314,24 @@
                             <%--todo Товарлар рўйхати кўриш DIV ойнаси  --- end  --%>
 
                             <%--todo Товарлар учун қадамлар кетма - кетлигини кўриш DIV ойнаси  --- begin  --%>
-                            <div class="col-12 col-md-11" id="div_CmdtStep">
+                            <div class="col-11 col-md-11" id="div_CmdtStep">
                                 <div id="step-1">
-                                    <div class="col-md-12" id="div_CmdtStep_1">
+                                    <div class="col-md-11" id="div_CmdtStep_1">
                                         <!-- -->
                                     </div>
                                 </div>
                                 <div id="step-2">
-                                    <div class="col-md-12" id="div_CmdtStep_2">
+                                    <div class="col-md-11" id="div_CmdtStep_2">
                                         <!-- -->
                                     </div>
                                 </div>
                                 <div id="step-3">
-                                    <div class="col-md-12" id="div_CmdtStep_3">
+                                    <div class="col-md-11" id="div_CmdtStep_3">
                                         <!-- -->
                                     </div>
                                 </div>
                                 <div id="step-4">
-                                    <div class="col-md-12" id="div_CmdtStep_4">
+                                    <div class="col-md-11" id="div_CmdtStep_4">
                                         <!-- -->
                                     </div>
                                 </div>
