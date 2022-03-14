@@ -33,7 +33,7 @@ public class Apps extends AbstractAuditingEntity {
     @Column(name = "CUSTOMER_COUNTRY", length = 3)
 //    @EnsureNumber(decimal = true, message = "Устун фақат сонлардан иборат бўлиши лозим")
 //    @Pattern(regexp = "^[0-1]+$", message = "Устун фақат сонлардан иборат бўлиши лозим!!!")
-//    @Size(min = 3, max = 3, message = "Устун 3 та сондан иборат бўлиши лозим")
+    @Size(min = 3, max = 3, message = "Устун 3 та сондан иборат бўлиши лозим")
     @Digits(message = "Устун фақат сонлардан иборат бўлиши лозим", integer = 3, fraction = 0)
     private String customerCountry;
 
@@ -42,7 +42,7 @@ public class Apps extends AbstractAuditingEntity {
 
     @Column(name = "SENDER_COUNTRY", length = 3)
 //    @NotBlank(message =  "Устун тўлдирилмаган")
-//    @Size(min = 3, max = 3, message = "Устун хато тўлдирилган")
+    @Size(min = 3, max = 3, message = "Устун хато тўлдирилган")
     @Digits(message = "Устун фақат сонлардан иборат бўлиши лозим", integer = 3, fraction = 0)
     private String senderCountry;
 

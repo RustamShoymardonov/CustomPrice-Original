@@ -44,9 +44,11 @@ public class ApiAppsController {
         Map<String, String> errors = new HashMap<>();
         if (br.hasErrors()) {
             errors = br.getFieldErrors().stream().collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
-            errors.put("message", "Error");
-            errors.put("status", "400");
-            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+            JSONObject obj = new JSONObject();
+            obj.put("message", "Error");
+            obj.put("errors", errors);
+            obj.put("status", "400");
+            return new ResponseEntity<>(obj.toMap(), HttpStatus.BAD_REQUEST);
         } else {
             Optional<Persons> personsIdGet = personsService.getById(apps.getPersonId());
             if (personsIdGet.isPresent()) {
@@ -68,17 +70,16 @@ public class ApiAppsController {
                 appsService.saveApps(apps);
                 JSONObject obj = new JSONObject();
                 obj.put("message", "Success");
-                obj.put("appId", apps.getId());
+                obj.put("data", apps);
                 obj.put("status", "200");
                 ResponseEntity.status(0);
-//                return new ResponseEntity<>(obj.toMap(), HttpStatus.OK);
-                return ResponseHandler.generateResponse("Success", HttpStatus.BAD_REQUEST,apps);
+                return new ResponseEntity<>(obj.toMap(), HttpStatus.OK);
             }else {
                 JSONObject obj = new JSONObject();
                 obj.put("message", "Error");
-                obj.put("personId", "Топилмади!");
+                obj.put("errors", "personId топилмади!");
                 obj.put("status", "400");
-                return new ResponseEntity<>(obj.toMap(), HttpStatus.OK);
+                return new ResponseEntity<>(obj.toMap(), HttpStatus.BAD_REQUEST);
             }
         }
     }
