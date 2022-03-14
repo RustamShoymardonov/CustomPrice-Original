@@ -82,7 +82,7 @@
             <div class="col-md-12">
                 <div class="col-md-3 col-sm-3  form-group has-feedback mt-3">
                     <h6 style="border-bottom: 1px solid green">
-                       <b>Тижорат хусусияти:</b><br>${var.comProp}
+                        <b>Тижорат хусусияти:</b><br>${var.comProp}
                     </h6>
                 </div>
 
@@ -110,9 +110,10 @@
                     </h6>
                 </div>
 
-                <div class="col-md-6 col-sm-6  form-group has-feedback mt-3">
+                <div class="col-md-6 col-sm-6  form-group has-feedback mt-2">
                     <h6 style="border-bottom: 1px solid green">
-                        <b>Усул:</b><br>${var.methodNm}<i class="fa fa-info-circle ml-4 fa-lg" data-toggle="modal" data-target=".bd-example-modal-sm"></i>
+                        <b>Усул:</b><br>${var.methodNm}<img src="<%=request.getContextPath()%>/resources/images/info.gif"data-toggle="modal" data-target=".bd-example-modal-sm" style="cursor: pointer; background-color: #0b2e13" width="40" height="40">
+                            <%--                        <i class="fa fa-info-circle ml-4 fa-lg" data-toggle="modal" data-target=".bd-example-modal-sm"></i>--%>
                     </h6>
                 </div>
 

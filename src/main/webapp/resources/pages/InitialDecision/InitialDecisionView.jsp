@@ -54,7 +54,7 @@
                                             </address>
                                         </div>
                                         <!-- /.col -->
-                                        <div class="col-sm-3 invoice-col border-blue border-right">
+                                        <div class="col-sm-2">
                                             <address>
                                                 <i>
                                                     <c:set var="total" value="${0.0}"/>
@@ -62,16 +62,20 @@
                                                         <c:set var="total" value="${total + val.transportPrice}"/>
                                                     </c:forEach>
                                                     <c:forEach var="val" items="${appInfo}" varStatus="i">
-                                                        ${val[9]} <%--todo Аризачи:  --%>
+                                                        ${val[9]}<%--todo Аризачи:  --%>
                                                         <br>${val[11]} <%--todo Телефон рақами:  --%>
                                                         <br>${val[16]} - "${val[18]}" <%--todo Юк жўнатувчи: (sender_country_nm + senderOrg)  --%>
                                                         <br>${val[3]} - "${val[15]}" <%--todo >Сотувчи (customer_country_nm) --%>
-                                                        <br><c:out value="${total}"/> сўм<i class="fa fa-info-circle ml-4 fa-lg" data-toggle="modal"
-                                                        data-target="#exampleModalCenter" style="cursor: pointer;"></i><%--todo >ранспорт харажати (TRAN_EXP) --%>
+                                                        <br><c:out value="${total}"/> сўм<%--todo >Транспорт харажати (TRAN_EXP) --%>
                                                     </c:forEach>
                                                 </i>
                                             </address>
                                         </div>
+                                        <div class="col-sm-1">
+                                            <img src="<%=request.getContextPath()%>/resources/images/info.gif" data-toggle="modal"
+                                                 data-target="#exampleModalCenter" style="cursor: pointer; background-color: #0b2e13" width="50" height="50">
+                                        </div>
+
                                         <!-- /.col -->
                                         <div class="col-sm-3 invoice-col border-blue border-left">
                                             <address>
@@ -82,7 +86,7 @@
                                             </address>
                                         </div>
                                         <!-- /.col -->
-                                        <div class="col-sm-2 invoice-col border-blue border-right">
+                                        <div class="col-sm-1">
                                             <address>
                                                 <i>
                                                     <c:forEach var="val" items="${appInfo}" varStatus="i">
@@ -95,10 +99,9 @@
                                                 </i>
                                             </address>
                                         </div>
-                                        <div class="col-sm-1 invoice-col">
-                                            <a href="#"><i class="fa fa-calculator fa-2x" data-toggle="modal" data-target="#exampleModal12" style="margin-left: 0%"></i></a>
+                                        <div class="col-sm-1 invoice-col border-blue border-right">
+                                            <img src="<%=request.getContextPath()%>/resources/images/info.gif" data-toggle="modal" data-target="#exampleModal12" style="cursor: pointer; background-color: #0b2e13" width="50" height="50">
                                         </div>
-                                        <!-- /.col -->
                                     </div>
 
                                     <!-- Транспорт тури Modal -->
@@ -279,19 +282,12 @@
                                     <c:forEach var="val" items="${allCommodityFor}" varStatus="i">
                                         <tr>
                                             <td>
-                                                <button class="btn btn-primary btn-outline-dark btn-sm btn-block" id="btnCmdt_${i.index+1}"
+                                                <button class="btn btn-outline-dark btn-sm btn-block border-green" id="btnCmdt_${i.index+1}"
                                                         onclick="checkCmdt('${val.id}',1)">${i.index+1}: ${val.hsCode}</button>
                                             </td>
-                                                <%--                                            <style>--%>
-                                                <%--                                                .btn-success:hover, .btn-success:active, .btn-success:focus {--%>
-                                                <%--                                                    color: #ffffff !important;--%>
-                                                <%--                                                    background-color: #1F2838 !important;--%>
-                                                <%--                                                    border-color: #494F57 !important;--%>
-                                                <%--                                                }--%>
-                                                <%--                                            </style>--%>
                                             <script>
                                                 $('.btn').click(function () {
-                                                    $(this).toggleClass('btn-primary').toggleClass('btn-success');
+                                                    $(this).toggleClass('btn-primary').toggleClass('btn-success text-white');
                                                 });
                                             </script>
                                         </tr>
