@@ -295,6 +295,11 @@
                                     </tbody>
                                 </table>
                             </div>
+                                <style>
+                                    ::-webkit-scrollbar {
+                                        width: 0;
+                                    }
+                                </style>
                             <%--todo Товарлар рўйхати кўриш DIV ойнаси  --- end  --%>
 
                             <%--todo Товарлар учун қадамлар кетма - кетлигини кўриш DIV ойнаси  --- begin  --%>
