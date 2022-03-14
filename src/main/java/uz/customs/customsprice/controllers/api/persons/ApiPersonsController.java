@@ -62,7 +62,7 @@ public class ApiPersonsController {
                 return new ResponseEntity<>(obj.toMap(), HttpStatus.BAD_REQUEST);
             }
             JSONObject obj = new JSONObject();
-            obj.put("message", "Success");
+            obj.put("message", "Error");
             obj.put("data", "Маълумотлар мос келмади");
             obj.put("status", "207");
             return new ResponseEntity<>(obj.toMap(), HttpStatus.BAD_REQUEST);
