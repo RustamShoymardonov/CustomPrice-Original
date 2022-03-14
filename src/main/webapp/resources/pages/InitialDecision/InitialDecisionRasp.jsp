@@ -382,10 +382,10 @@
     </div>
 </div>
 
-<button class="btn btn-secondary source" onclick="new PNotify({
-                                  title: 'Regular Success',
+<button id="messageSucces" style="display: none;" class="btn btn-secondary source" onclick="new PNotify({
+                                  title: 'Ариза муваффақиятли тақсимланди',
                                   text: 'That thing that you were trying to do worked!',
-                                  type: 'error',
+                                  type: 'success',
                                   styling: 'bootstrap3'
                               });">Success
 </button>
@@ -402,7 +402,7 @@
 
     function saveInDecRaspIns(appId, inspectorId, rowNum) {
         var inspectorName = $('#userIdF_' + rowNum + ' option:selected').text();
-        alert(appId + ', ' + inspectorId + ', ' + inspectorName);
+        // alert(appId + ', ' + inspectorId + ', ' + inspectorName);
         var dataS = {
             "appId": appId,
             "inspectorId": inspectorId,
@@ -415,7 +415,21 @@
             dataType: "html",
             header: 'Content-type: text/html; charset=utf-8',
             success: function (res) {
+                var typeMessage = '';
+                if (inspectorId == 'notSelected') {
+                    typeMessage = 'error';
+                } else {
+                    typeMessage = 'success';
+                }
                 $('div#MainContent').html(res);
+                // $('button#messageSucces').css({'display': ''});
+                // $('button#messageSucces').click();
+                new PNotify({
+                    title: 'Ариза муваффақиятли тақсимланди',
+                    text: 'That thing that you were trying to do worked!',
+                    type: typeMessage,
+                    styling: 'bootstrap3'
+                });
             },
             error: function (res) {
             }

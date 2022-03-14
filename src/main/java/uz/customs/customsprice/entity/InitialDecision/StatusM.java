@@ -24,6 +24,9 @@ public class StatusM extends AbstractAuditingEntity {
     @JsonIgnore
     private Apps apps;
 
+    @Column(name = "APP_ID", columnDefinition = "VARCHAR(50)")
+    private String appId;
+
     @Column(name = "STATUS", length = 3)
     private String status;
 
@@ -33,10 +36,11 @@ public class StatusM extends AbstractAuditingEntity {
     public StatusM() {
     }
 
-    public StatusM(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, String status, String statusComment) {
+    public StatusM(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, String appId, String status, String statusComment) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
         this.apps = apps;
+        this.appId = appId;
         this.status = status;
         this.statusComment = statusComment;
     }
@@ -55,6 +59,14 @@ public class StatusM extends AbstractAuditingEntity {
 
     public void setApps(Apps apps) {
         this.apps = apps;
+    }
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 
     public String getStatus() {

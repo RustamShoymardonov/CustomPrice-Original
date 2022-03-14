@@ -28,14 +28,18 @@ public class ApiAppsController {
     private final StatusService statusService;
     private final TermsService termsService;
     private final PersonsService personsService;
+    private final StatusHService statusHService;
+    private final StatusMService statusMService;
 
-    public ApiAppsController(AppsService appsService, ConturyService conturyService, LocationService locationService, StatusService statusService, TermsService termsService, PersonsService personsService) {
+    public ApiAppsController(AppsService appsService, ConturyService conturyService, LocationService locationService, StatusService statusService, TermsService termsService, PersonsService personsService, StatusHService statusHService, StatusMService statusMService) {
         this.appsService = appsService;
         this.conturyService = conturyService;
         this.locationService = locationService;
         this.statusService = statusService;
         this.termsService = termsService;
         this.personsService = personsService;
+        this.statusHService = statusHService;
+        this.statusMService = statusMService;
     }
     /*---------------------------------------------------------------------------------------------------------start*/
     /* Apps маълумотларини API орқали сақлаш учун учун*/
@@ -44,9 +48,11 @@ public class ApiAppsController {
         Map<String, String> errors = new HashMap<>();
         if (br.hasErrors()) {
             errors = br.getFieldErrors().stream().collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
-            errors.put("message", "Error");
-            errors.put("status", "400");
-            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+            JSONObject obj = new JSONObject();
+            obj.put("message", "Error");
+            obj.put("errors", errors);
+            obj.put("status", "400");
+            return new ResponseEntity<>(obj.toMap(), HttpStatus.BAD_REQUEST);
         } else {
             Optional<Persons> personsIdGet = personsService.getById(apps.getPersonId());
             if (personsIdGet.isPresent()) {
@@ -65,20 +71,36 @@ public class ApiAppsController {
                 Terms terms = termsService.findByIdAndLngaTpcd(apps.getTerms(), "UZ");
                 apps.setTermsNm(terms.getSign());
 
+                apps.setInsUser(personsIdGet.get().getTin());
                 appsService.saveApps(apps);
+
+                StatusM statusM = new StatusM();
+                statusM.setAppId(apps.getId());
+                statusM.setStatus(String.valueOf(apps.getStatus()));
+                statusM.setStatusComment(apps.getStatusNm());
+                statusM.setInsUser(personsIdGet.get().getTin());
+                statusMService.saveStatusM(statusM);
+
+                StatusH statusH = new StatusH();
+                statusH.setStmainID(statusM.getId());
+                statusH.setAppId(statusM.getAppId());
+                statusH.setStatus(String.valueOf(apps.getStatus()));
+                statusH.setStatusComment(apps.getStatusNm());
+                statusH.setInsUser(personsIdGet.get().getTin());
+                statusHService.saveStatusH(statusH);
+
                 JSONObject obj = new JSONObject();
                 obj.put("message", "Success");
-                obj.put("appId", apps.getId());
+                obj.put("data", apps);
                 obj.put("status", "200");
                 ResponseEntity.status(0);
-//                return new ResponseEntity<>(obj.toMap(), HttpStatus.OK);
-                return ResponseHandler.generateResponse("Success", HttpStatus.BAD_REQUEST,apps);
+                return new ResponseEntity<>(obj.toMap(), HttpStatus.OK);
             }else {
                 JSONObject obj = new JSONObject();
                 obj.put("message", "Error");
-                obj.put("personId", "Топилмади!");
+                obj.put("errors", "personId топилмади!");
                 obj.put("status", "400");
-                return new ResponseEntity<>(obj.toMap(), HttpStatus.OK);
+                return new ResponseEntity<>(obj.toMap(), HttpStatus.BAD_REQUEST);
             }
         }
     }

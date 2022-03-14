@@ -1,7 +1,6 @@
 package uz.customs.customsprice.service;
 
 import org.springframework.stereotype.Service;
-
 import uz.customs.customsprice.entity.InitialDecision.StatusH;
 import uz.customs.customsprice.repository.StatusHRepo;
 
@@ -13,7 +12,7 @@ public class StatusHService {
         this.statusHRepo = statusHRepo;
     }
 
-    public StatusH saveStatusM(StatusH statusM) {
-        return statusHRepo.save(statusM);
+    public StatusH saveStatusH(StatusH statusH) {
+        return statusHRepo.save(statusH);
     }
 }

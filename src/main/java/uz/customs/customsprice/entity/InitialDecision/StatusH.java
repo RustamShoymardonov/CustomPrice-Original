@@ -24,11 +24,17 @@ public class StatusH extends AbstractAuditingEntity {
     @JsonIgnore
     private Apps apps;
 
+    @Column(name = "APP_ID", columnDefinition = "VARCHAR(50)")
+    private String appId;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "STMAIN_ID", insertable = false, updatable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private StatusM statusM;
+
+    @Column(name = "STMAIN_ID", columnDefinition = "VARCHAR(50)")
+    private String stmainID;
 
     @Column(name = "HISTORY_NUM")
     private Integer historyNum;
@@ -42,11 +48,13 @@ public class StatusH extends AbstractAuditingEntity {
     public StatusH() {
     }
 
-    public StatusH(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, StatusM statusM, Integer historyNum, String status, String statusComment) {
+    public StatusH(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Apps apps, String appId, StatusM statusM, String stmainID, Integer historyNum, String status, String statusComment) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
         this.apps = apps;
+        this.appId = appId;
         this.statusM = statusM;
+        this.stmainID = stmainID;
         this.historyNum = historyNum;
         this.status = status;
         this.statusComment = statusComment;
@@ -68,12 +76,28 @@ public class StatusH extends AbstractAuditingEntity {
         this.apps = apps;
     }
 
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
+    }
+
     public StatusM getStatusM() {
         return statusM;
     }
 
     public void setStatusM(StatusM statusM) {
         this.statusM = statusM;
+    }
+
+    public String getStmainID() {
+        return stmainID;
+    }
+
+    public void setStmainID(String stmainID) {
+        this.stmainID = stmainID;
     }
 
     public Integer getHistoryNum() {
