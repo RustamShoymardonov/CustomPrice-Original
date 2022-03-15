@@ -37,7 +37,6 @@ public class AppsController {
     private final RollbackSpService rollbackSpService;
 
 
-
     private final String INITIALDECISION = "/resources/pages/InitialDecision/InitialDecision1";
     private final String INITIALDECISIONRASP = "/resources/pages/InitialDecision/InitialDecisionRasp";
     private final String INITIALDECISIONVIEW = "/resources/pages/InitialDecision/InitialDecisionView";
@@ -66,7 +65,7 @@ public class AppsController {
     /*todo Тақсимланган аризалар рўйхатини сақлаш (инспекторлар кесимида)*/
     @PostMapping(value = INITIALDECISIONSAVERASP)
     @ResponseBody
-    public ModelAndView InitialDecisionViewSave(HttpServletRequest request, @RequestParam String appId, @RequestParam String inspectorId, @RequestParam String inspectorName, RedirectAttributes redirAttrs)  {
+    public ModelAndView InitialDecisionViewSave(HttpServletRequest request, @RequestParam String appId, @RequestParam String inspectorId, @RequestParam String inspectorName, RedirectAttributes redirAttrs) {
 
         String userId = (String) request.getSession().getAttribute("userId");
         String userName = (String) request.getSession().getAttribute("userName");
@@ -75,7 +74,6 @@ public class AppsController {
         String userLocation = (String) request.getSession().getAttribute("userLocation");
         String userLocationName = (String) request.getSession().getAttribute("userLocationName");
         String userPost = (String) request.getSession().getAttribute("userPost");
-
 
 
         if (!Objects.equals(inspectorId, "notSelected")) {
@@ -94,8 +92,6 @@ public class AppsController {
             app.setStatusNm(status.getName());
             appsservice.saveAppsStatus(app);
         }
-
-
 
 
         ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionRasp");
@@ -183,7 +179,7 @@ public class AppsController {
 
     @PostMapping(value = INITIALDECISIONROLLBACK)
     @ResponseBody
-    public ModelAndView InitialDecisionRollBack(HttpServletRequest request ,@RequestParam String appId, @RequestParam String commentRollback){
+    public ModelAndView InitialDecisionRollBack(HttpServletRequest request, @RequestParam String appId, @RequestParam String commentRollback, @RequestParam String rollback_ids, @RequestParam String rollback_names) {
 
         String userId = (String) request.getSession().getAttribute("userId");
         String userName = (String) request.getSession().getAttribute("userName");
@@ -193,13 +189,26 @@ public class AppsController {
         String userLocationName = (String) request.getSession().getAttribute("userLocationName");
         String userPost = (String) request.getSession().getAttribute("userPost");
 
-        RollBackApp rollBackApp = new RollBackApp();
-        rollBackApp.setAppId(appId);
-        rollBackApp.setRollbackName(commentRollback);
-        rollBackApp.setInsUser(userId);
-        rollBackAppService.saveRollBack(rollBackApp);
+        String[] rollback_idArr = rollback_ids.split("~");
+        String[] rollback_nameArr = rollback_names.split("~");
 
-        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionView");
+        Apps app = appsservice.findById(appId);
+        Status status = statusService.getById(120);
+        app.setStatus(120);
+        app.setStatusNm(status.getName());
+        app.setComment(commentRollback);
+        appsservice.saveAppsStatus(app);
+
+        for (int i = 0; i < rollback_idArr.length; i++) {
+            RollBackApp rollBackApp = new RollBackApp();
+            rollBackApp.setAppId(appId);
+            rollBackApp.setInsUser(userId);
+            rollBackApp.setRollbackId(rollback_idArr[i]);
+            rollBackApp.setRollbackName(rollback_nameArr[i]);
+            rollBackAppService.saveRollBack(rollBackApp);
+        }
+
+        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionRasp");
 
 
         return mav;

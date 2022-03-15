@@ -15,12 +15,14 @@ import java.util.List;
 public class CommodityController {
     private final CommodityService commodityService;
     private final AppsService appsservice;
+    private final RollbackSpService rollbackSpService;
 
     private final String INITIALDECISIONVIEWCMDT = "/resources/pages/InitialDecision/InitialDecisionSteps/Steps";
 
-    public CommodityController(CommodityService commodityService, AppsService appsservice) {
+    public CommodityController(CommodityService commodityService, AppsService appsservice, RollbackSpService rollbackSpService) {
         this.commodityService = commodityService;
         this.appsservice = appsservice;
+        this.rollbackSpService = rollbackSpService;
     }
 
 
@@ -51,12 +53,17 @@ public class CommodityController {
                 break;
             case 3:
                 List<Commodity> commodityList3 = appsservice.getCommodityList(COMMODITY_ID);
-                mav2.addObject("commodity", commodityList3);
+                mav3.addObject("commodity", commodityList3);
                 mav = mav3;
                 break;
             case 4:
-                mav2.addObject("commodity", COMMODITY_ID);
+//                mav4.addObject("commodity", COMMODITY_ID);
+//                mav = mav4;
+
+                List<RollbackSp> listRollbackSp = rollbackSpService.getlistRollbackSp();
+                mav4.addObject("rollbackInfo", listRollbackSp);
                 mav = mav4;
+
                 break;
             default:
         }

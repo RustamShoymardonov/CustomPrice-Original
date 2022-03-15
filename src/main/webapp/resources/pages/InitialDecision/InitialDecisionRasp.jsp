@@ -427,17 +427,23 @@
             header: 'Content-type: text/html; charset=utf-8',
             success: function (res) {
                 var typeMessage = '';
+                var titletexts = '';
+                var textText = '';
                 if (inspectorId == 'notSelected') {
                     typeMessage = 'error';
+                    titletexts = 'Ариза тақсиманишида хатолик!';
+                    textText = 'Тақсимлаш учун ходим танланмаган';
                 } else {
                     typeMessage = 'success';
+                    titletexts = 'Ариза мувофақиятли сақланди!';
+                    textText = 'Ариза  га тақсимланди';
                 }
                 $('div#MainContent').html(res);
                 // $('button#messageSucces').css({'display': ''});
                 // $('button#messageSucces').click();
                 new PNotify({
-                    title: 'Ариза муваффақиятли тақсимланди',
-                    text: 'That thing that you were trying to do worked!',
+                    title: titletexts,
+                    text: textText,
                     type: typeMessage,
                     styling: 'bootstrap3'
                 });
