@@ -196,9 +196,10 @@ public class AppsController {
         RollBackApp rollBackApp = new RollBackApp();
         rollBackApp.setAppId(appId);
         rollBackApp.setRollbackName(commentRollback);
+        rollBackApp.setInsUser(userId);
         rollBackAppService.saveRollBack(rollBackApp);
 
-        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionView/");
+        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionView");
 
 
         return mav;

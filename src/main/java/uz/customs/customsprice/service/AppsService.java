@@ -74,7 +74,8 @@ public class AppsService {
                 "    a.terms_nm,\n" +
                 "    a.terms_addr,\n" +
                 "    a.trans_exp,\n" +
-                "    a.person_id\n" +
+                "    a.person_id,\n" +
+                "    a.comment \n" +
                 "    " + sqlJoinVal + "\n" +
                 "from\n" +
                 "    apps a\n" +
@@ -121,7 +122,8 @@ public class AppsService {
                 "    a.terms_addr,\n" +
                 "    a.trans_exp,\n" +
                 "    ar.inspector_id   inspector_id,\n" +
-                "    ar.inspector_name inspector_name\n" +
+                "    ar.inspector_name inspector_name,\n" +
+                "    a.comment \n" +
                 "from\n" +
                 "    cpid.apps a\n" +
                 "left join\n" +
@@ -172,7 +174,8 @@ public class AppsService {
                 "    a.trans_exp,\n" + /*27-trans_exp*/
                 "    a.status_nm,\n" + /*28-status_nm*/
                 "    ar.inspector_id inspector_id,\n" + /*29-inspector_id*/
-                "    ar.inspector_name inspector_name\n" + /*30-inspector_name*/
+                "    ar.inspector_name inspector_name,\n" + /*30-inspector_name*/
+                "    a.comment \n" +
                 "from\n" +
                 "    cpid.apps a\n" +
                 "left join\n" +
@@ -293,7 +296,8 @@ public class AppsService {
                 /*27 - */"    sum(cm.netto)  allnetto,\n" +
                 /*28 - */"    sum(cm.brutto) allbrutto,\n" +
                 /*29 - */"    sum(cm.price)  allprice,\n" +
-                /*30 - */"    count(cm.id)   cntcmdt\n" +
+                /*30 - */"    count(cm.id)   cntcmdt,\n" +
+                         "    a.comment \n" +
                 "from\n" +
                 "    apps a\n" +
                 "left join\n" +
@@ -331,7 +335,8 @@ public class AppsService {
                 "    a.terms_addr,\n" +
                 "    a.trans_exp,\n" +
                 "    a.person_id, \n" +
-                "    a.instime\n" +
+                "    a.instime,\n" +
+                "    a.comment \n" +
                 "order by\n" +
                 "    a.instime desc";
         return (List<Apps>) entityManager.createNativeQuery(queryForList).getResultList();
@@ -488,7 +493,8 @@ public class AppsService {
                 "    a.trans_exp,\n" + /*27-trans_exp*/
                 "    a.status_nm,\n" + /*28-status_nm*/
                 "    ar.inspector_id inspector_id,\n" + /*29-inspector_id*/
-                "    ar.inspector_name inspector_name\n" + /*30-inspector_name*/
+                "    ar.inspector_name inspector_name,\n" + /*30-inspector_name*/
+                "    a.comment \n" +
                 "from\n" +
                 "    cpid.apps a\n" +
                 "left join\n" +

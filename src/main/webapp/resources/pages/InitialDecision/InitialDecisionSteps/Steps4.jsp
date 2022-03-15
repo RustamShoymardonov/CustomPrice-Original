@@ -112,7 +112,7 @@
             <form method="" class="border-primary" style="border-style: dashed double none">
                 <textarea class="resizable_textarea form-control" placeholder="Киритинг... " style="height: 150px; max-height: 300px;" id="commentRollback" name="commentRollback"></textarea>
             </form>
-            <button type="button" class="btn btn-success mt-3" onclick="appRollback();">Жўнатиш</button>
+            <button type="button" class="btn btn-success mt-3" onclick="javascript:appRollback();">Жўнатиш</button>
             <!-- Text editor end-->
         </div>
         <div id="contact1" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade py-4">
@@ -133,7 +133,7 @@
 
 <script>
     function appRollback() {
-        // alert($('#appId').val() + ', \n ' + $.trim($('#commentRollback').val()));
+        alert($('#appId').val() + ', \n ' + $.trim($('#commentRollback').val()));
         var dataS = {
             "appId": $('#appId').val(),
             "commentRollback": $.trim($('#commentRollback').val())
