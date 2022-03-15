@@ -1,4 +1,4 @@
-package uz.customs.customsprice.controllers;
+package uz.customs.customsprice.controllers.main;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

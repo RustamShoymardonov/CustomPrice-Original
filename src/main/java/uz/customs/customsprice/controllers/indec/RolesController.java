@@ -1,4 +1,4 @@
-package uz.customs.customsprice.controllers;
+package uz.customs.customsprice.controllers.indec;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

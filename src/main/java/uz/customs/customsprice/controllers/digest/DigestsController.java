@@ -1,4 +1,4 @@
-package uz.customs.customsprice.controllers;
+package uz.customs.customsprice.controllers.digest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,7 +37,7 @@ public class DigestsController {
     @PostMapping(value = DIGESTSPAGE)
     @ResponseBody
     public ModelAndView DigestsPage(HttpSession session) {
-        ModelAndView mav = new ModelAndView("/resources/pages/Digests/DigestsPage");
+        ModelAndView mav = new ModelAndView("resources/pages/Digests/DigestsPage");
 //        Iterable<Apps> arizalar = appsservice.listAll();
 //        mav.addObject("apps", arizalar);
         return mav;
@@ -46,7 +46,7 @@ public class DigestsController {
     @PostMapping(value = DIGESTSFIRST)
     @ResponseBody
     public ModelAndView DigestsFirst(HttpSession session) {
-        ModelAndView mav = new ModelAndView("/resources/pages/Digests/DigestsFirst");
+        ModelAndView mav = new ModelAndView("resources/pages/Digests/DigestsFirst");
 
         List<QiymatconsultEntity> qiymatconsultEntityList = qiymatconsultService.getListQiymatconsulting();
         mav.addObject("qiymatconsult", qiymatconsultEntityList);
@@ -64,7 +64,7 @@ public class DigestsController {
     @PostMapping(value = QIYMATREJECTMODAL)
     @ResponseBody
     public ModelAndView QiymatRejectModal(HttpSession session, @RequestParam String tov_id) {
-        ModelAndView mav = new ModelAndView("/resources/pages/Digests/QiymatRejectModal");
+        ModelAndView mav = new ModelAndView("resources/pages/Digests/QiymatRejectModal");
 
         List<QiymatconsultEntity> qiymattovarEntityList = qiymatconsultService.getListQiymattovarModal(tov_id);
         mav.addObject("qiymatTovar", qiymattovarEntityList);
@@ -75,7 +75,7 @@ public class DigestsController {
     @PostMapping(value = QIYMATCONSULTMODAL)
     @ResponseBody
     public ModelAndView QiymatConsultModal(HttpSession session, @RequestParam String tov_id) {
-        ModelAndView mav = new ModelAndView("/resources/pages/Digests/QiymatConsultModal");
+        ModelAndView mav = new ModelAndView("resources/pages/Digests/QiymatConsultModal");
 
         List<QiymatconsultEntity> qiymatconsultEntityList = qiymatconsultService.getListQiymatConsultModal(tov_id);
         mav.addObject("qiymatConsult", qiymatconsultEntityList);
@@ -85,7 +85,7 @@ public class DigestsController {
     @PostMapping(value = QIYMATSHARTLITMODAL)
     @ResponseBody
     public ModelAndView QiymatShartliModal(HttpSession session, @RequestParam String tov_id) {
-        ModelAndView mav = new ModelAndView("/resources/pages/Digests/QiymatShartliModal");
+        ModelAndView mav = new ModelAndView("resources/pages/Digests/QiymatShartliModal");
 
         List<QiymatconsultEntity> qiymatShartliEntityList = qiymatconsultService.getListQiymatShartliModal(tov_id);
         mav.addObject("qiymatShartli", qiymatShartliEntityList);

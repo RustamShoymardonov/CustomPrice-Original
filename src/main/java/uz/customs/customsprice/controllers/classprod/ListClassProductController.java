@@ -1,4 +1,4 @@
-package uz.customs.customsprice.controllers;
+package uz.customs.customsprice.controllers.classprod;
 
 
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ public class ListClassProductController {
     @PostMapping(value = LISTCLASSPRODUCT)
     @ResponseBody
     public ModelAndView InitialDecision(HttpSession session, @RequestParam(name = "id") String status) {
-        ModelAndView mav = new ModelAndView("/resources/pages/ClassProduct/ListClassProduct");
+        ModelAndView mav = new ModelAndView("resources/pages/ClassProduct/ListClassProduct");
 //        Iterable<Apps> arizalar = appsservice.listAll();
 //        mav.addObject("apps", arizalar);
         return mav;

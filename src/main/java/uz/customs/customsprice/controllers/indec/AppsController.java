@@ -1,4 +1,4 @@
-package uz.customs.customsprice.controllers;
+package uz.customs.customsprice.controllers.indec;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -98,7 +98,7 @@ public class AppsController {
 
 
 
-        ModelAndView mav = new ModelAndView("/resources/pages/InitialDecision/InitialDecisionRasp");
+        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionRasp");
         List<Apps> notSortedList = new ArrayList<>();
         notSortedList = appsservice.getListNotSorted(userLocation, userPost, userId, userRole);
         mav.addObject("notSortedList", notSortedList);
@@ -122,7 +122,7 @@ public class AppsController {
     @PostMapping(value = INITIALDECISIONRASP)
     @ResponseBody
     public ModelAndView InitialDecisionRasp(HttpServletRequest request, @RequestParam(name = "id") String status) {
-        ModelAndView mav = new ModelAndView("/resources/pages/InitialDecision/InitialDecisionRasp");
+        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionRasp");
         String userId = (String) request.getSession().getAttribute("userId");
         String userName = (String) request.getSession().getAttribute("userName");
         Integer userRole = (Integer) request.getSession().getAttribute("userRole");
@@ -158,7 +158,7 @@ public class AppsController {
         String userLocation = (String) request.getSession().getAttribute("userLocation");
         String userPost = (String) request.getSession().getAttribute("userPost");
 
-        ModelAndView mav = new ModelAndView("/resources/pages/InitialDecision/InitialDecision");
+        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecision");
         List<Apps> arizalar = appsservice.getlistAllIsp(userId);
         mav.addObject("appsForInspector", arizalar);
         return mav;
