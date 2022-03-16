@@ -32,8 +32,8 @@
                 <div class="tile_count w-100">
                     <div>
                         <div class="col-md-3">
-                            <div class="stati bg-peter_river">
-                                <i class="fa fa-medkit"></i>
+                            <div class="stati bg-midnight_blue">
+                                <i class="fa fa-folder-o"></i>
                                 <div>
                                     <b>25</b>
                                     <span>Жами аризалар</span>
@@ -390,7 +390,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div><i class="fa-regular fa-folder-open"></i>
 </div>
 
 <%--<button id="messageSucces" style="display: none;" class="btn btn-secondary source" onclick="new PNotify({--%>
