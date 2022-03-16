@@ -7,6 +7,7 @@ import uz.customs.customsprice.repository.CommodityRepo;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CommodityService {
@@ -15,10 +16,6 @@ public class CommodityService {
     public CommodityService(CommodityRepo commodityRepo) {
         this.commodityRepo = commodityRepo;
     }
-
-//    public Commodity saveCommodity(Commodity commodity) {
-//        return commodityRepo.save(commodity);
-//    }
 
     @PersistenceContext
     private EntityManager entityManager;

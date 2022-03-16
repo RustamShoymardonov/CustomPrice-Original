@@ -116,7 +116,7 @@
         <div id="profile1" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade py-4">
             <!-- Text editor -->
             <h4 style="text-align: center">Аризани қайтариш сабаблари</h4>
-            <form method="post" class="border-primary">
+            <form method="post" class="border-primary" id="fm1" name="fm1">
                 <br>
                 <div class="col-md-8 col-sm-8  form-group has-feedback">
                     <div class="form-group pmd-textfield pmd-textfield-floating-label border border-primary">
@@ -156,17 +156,53 @@
                               style="max-height: 300px;width:100%" id="commentRollback" name="commentRollback"></textarea>
                 </div>
             </form>
-            <button type="button" class="btn btn-success mt-3" onclick="javascript:appRollback();">Жўнатиш</button>
+            <button type="button" class="btn btn-success mt-3" onclick="javascript:appRollback('120');">Жўнатиш</button>
             <!-- Text editor end-->
         </div>
         <div id="contact1" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade py-4">
             <!-- Text editor -->
             <h4 style="text-align: center">Аризани қайтариш сабаблари ва тузатиш киритиладиган бўлимлар</h4>
-            <form method="" class="border-primary" style="border-style: dashed double none">
-                <textarea class="resizable_textarea form-control" placeholder="Киритинг... "
-                          style="height: 150px; max-height: 300px;"></textarea>
+            <form method="post" class="border-primary"  id="fm2" name="fm2">
+                <br>
+                <div class="col-md-8 col-sm-8  form-group has-feedback">
+                    <div class="form-group pmd-textfield pmd-textfield-floating-label border border-primary">
+                        <select placeholder="Сана: дан" class="form-control" type="text" name="HS_NM" id="HS_NM2">
+                            <option></option>
+                            <c:forEach var="val" items="${rollbackInfo}" varStatus="i">
+                                <option value="${val.id}">${val.id} - ${val.rollbackName}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" style="float: left; clear: none;">
+                    <button class="btn btn-primary" style="padding: 5px 5px;" type="button"
+                            onclick="addT_HS_NM2(/*$('#HS_NM').val() + ' - ' + */$('#HS_NM2 option:selected').text())">
+                        <i class="fa fa-save icons" style="color:#ffffff;font-size:13px;"></i> <span class="lang">Қўшиш</span>
+                    </button>
+                    <button class="btn btn-primary" style="padding: 5px 5px;" type="button"
+                            onclick="ClearT_HS_NM2()">
+                        <i class="fa fa-eraser icons" style="color:#ffffff;font-size:13px;"></i> <span class="lang">Тозалаш</span>
+                    </button>
+                    <button class="btn btn-danger" type="button" id="gtkXTButton2" style=""><i
+                            class="fa fa-trash"></i></button>
+                </div>
+                <div class="form-group W100" style="margin-top:2px; display: none;">
+                    <label class="sr-only" for="HS_NM_FULL">Страна-транзит</label>
+                    <textarea class="form-control input-sm" rows="4" id="HS_NM_FULL2" name="HS_NM_FULL" maxlength="150"
+                              style="width:85%"><%=HS_NM_FULL%></textarea>
+                    <textarea class="form-control input-sm" rows="2" id="HS_CD_FULL2" name="HS_CD_FULL" maxlength="150"
+                              style="width:85%"><%--<%=HS_CD_FULL%>--%></textarea>
+                </div>
+                <div class="col-md-6 border-primary" style="border-style: dashed double none">
+                        <textarea class="form-control input-sm" rows="4" id="HS_NM_FULLS2" name="HS_NM_FULLS" maxlength="150"
+                                  style="width:100%" readonly></textarea>
+                </div>
+                <div class="col-md-6 border-primary" style="border-style: dashed double none">
+                        <textarea class="resizable_textarea form-control" placeholder="Қўшимча маълумот киритиш учун... " rows="4"
+                                  style="max-height: 300px;width:100%" id="commentRollback2" name="commentRollback"></textarea>
+                </div>
             </form>
-            <button type="button" class="btn btn-success mt-3" onclick="appRollbackToFix();">Жўнатиш</button>
+            <button type="button" class="btn btn-success mt-3" onclick="javascript:appRollbackToFix('125');">Жўнатиш</button>
             <!-- Text editor end-->
         </div>
     </div>
@@ -177,69 +213,219 @@
 </html>
 
 <script>
-    function appRollback() {
-        alert($('#appId').val() + ', \n ' + $.trim($('#commentRollback').val()));
-        var dataS = {
-            "appId": $('#appId').val(),
-            "commentRollback": $.trim($('#commentRollback').val()),
-            "rollback_ids": $.trim($('#HS_CD_FULL').val()),
-            "rollback_names": $.trim($('#HS_NM_FULL').val())
+    function appRollback(statusApp) {
+        // alert($('#appId').val() + ', \n ' + $.trim($('#commentRollback').val()));
+
+        var log_f = true;
+        var log_n = '';
+        var arr = [];
+        var vN = '';
+
+        if ($.trim($('#HS_NM_FULLS').val()) == null || $.trim($('#HS_NM_FULLS').val()) == '') {
+            $('#HS_NM_FULLS').css({'border': '1px solid #FF0000'});
+            arr[0] = ' Аризани қайтариш сабабини рўйхатдан танланг ! ';
+            log_f = false;
+        } else {
+            $('#HS_NM_FULLS').css({'border': '1px solid #a6c9e2'});
+            arr[0] = '';
         }
-        /*-------------------------------*/
 
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger'
-            },
-            buttonsStyling: false
-        })
+        if ($.trim($('#commentRollback').val()) == null || $.trim($('#commentRollback').val()) == '') {
+            $('#commentRollback').css({'border': '1px solid #FF0000'});
+            arr[1] = ' Аризани қайтариш бўйича қўшимча маълумот киритилмаган, илтимос майдонни тўлдиринг ! ';
+            log_f = false;
+        } else if ($.trim($('#commentRollback').val()).length > 200) {
+            $('#commentRollback').css({'border': '1px solid #FF0000'});
+            arr[1] = ' Аризани қайтариш сабаби майдонининг узунлиги 250 та белгидан ошмаслиги лозим ! ';
+            log_f = false;
+        } else {
+            $('#commentRollback').css({'border': '1px solid #a6c9e2'});
+            arr[1] = '';
+        }
 
-        swalWithBootstrapButtons.fire({
-            title: 'Аризани қайтаришни хохлайсизми?',
-            text: "Сиз ушбу ариза бўйича қарор қабул қилмоқдасиз!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Ха, ариза қайтарилади!',
-            cancelButtonText: 'Йўқ, қайта кўриб чиқаман!',
-            reverseButtons: true
-        }).then((result) => {
-            if (result.isConfirmed) {
-                swalWithBootstrapButtons.fire(
-                    'Ариза қайтарилди!',
-                    'Ушбу ариза божхона қонуни талабларига мос эмас деб топилди',
-                    'success'
-                )
-                $.ajax({
-                    type: "POST",
-                    data: dataS,
-                    url: "<%=request.getContextPath()%>/apps/resources/pages/InitialDecision/InitialDecisionRollBack",
-                    dataType: "html",
-                    header: 'Content-type: text/html; charset=utf-8',
-                    success: function (res) {
-                        var typeMessage = '';
-                        $('div#MainContent').html(res);
-                    },
-                    error: function (res) {
-                    }
-                });
-            } else if (
-                /* Read more about handling dismissals below */
-                result.dismiss === Swal.DismissReason.cancel
-            ) {
-                swalWithBootstrapButtons.fire(
-                    'Амал рад этилди!',
-                    'Сақлаш амалга оширилмади',
-                    'error'
-                )
+
+        for (var i = 0; i <= 1; i++) {
+            if (arr[i] != '' && !log_f) {
+                log_n = log_n + arr[i] + '\n\n';
             }
-        })
+        }
+
+        if (log_n != '') {
+            alert(log_n + '');
+        }
+
+        if (log_f) {
+
+            var dataS = {
+                "appId": $('#appId').val(),
+                "commentRollback": $.trim($('#commentRollback').val()),
+                "rollback_ids": $.trim($('#HS_CD_FULL').val()),
+                "rollback_names": $.trim($('#HS_NM_FULL').val()),
+                "statusApp": statusApp
+            }
+
+            /*-------------------------------*/
+
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Аризани қайтаришни хоҳлайсизми?',
+                text: "Сиз ушбу ариза бўйича қарор қабул қилмоқдасиз!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ха, ариза қайтарилади!',
+                cancelButtonText: 'Йўқ, қайта кўриб чиқаман!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swalWithBootstrapButtons.fire(
+                        'Ариза қайтарилди!',
+                        'Ушбу ариза божхона қонуни талабларига мос эмас деб топилди',
+                        'success'
+                    )
+                    $.ajax({
+                        type: "POST",
+                        data: dataS,
+                        url: "<%=request.getContextPath()%>/apps/resources/pages/InitialDecision/InitialDecisionRollBack",
+                        dataType: "html",
+                        header: 'Content-type: text/html; charset=utf-8',
+                        success: function (res) {
+                            var typeMessage = '';
+                            $('div#MainContent').html(res);
+                        },
+                        error: function (res) {
+                        }
+                    });
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Амал рад этилди!',
+                        'Сақлаш амалга оширилмади',
+                        'error'
+                    )
+                }
+            })
+
+        } else return false;
 
         /*------------------------------*/
     }
 
-    function appRollbackToFix() {
+    function appRollbackToFix(statusApp) {
+        // alert($('#appId').val() + ', \n ' + $.trim($('#commentRollback').val()));
+
+        var log_f = true;
+        var log_n = '';
+        var arr = [];
+        var vN = '';
+
+        if ($.trim($('#HS_NM_FULLS2').val()) == null || $.trim($('#HS_NM_FULLS2').val()) == '') {
+            $('#HS_NM_FULLS2').css({'border': '1px solid #FF0000'});
+            arr[0] = ' Аризани қайтариш сабабини рўйхатдан танланг ! ';
+            log_f = false;
+        } else {
+            $('#HS_NM_FULLS2').css({'border': '1px solid #a6c9e2'});
+            arr[0] = '';
+        }
+
+        if ($.trim($('#commentRollback2').val()) == null || $.trim($('#commentRollback2').val()) == '') {
+            $('#commentRollback2').css({'border': '1px solid #FF0000'});
+            arr[1] = ' Аризани қайтариш бўйича қўшимча маълумот киритилмаган, илтимос майдонни тўлдиринг ! ';
+            log_f = false;
+        } else if ($.trim($('#commentRollback2').val()).length > 200) {
+            $('#commentRollback2').css({'border': '1px solid #FF0000'});
+            arr[1] = ' Аризани қайтариш сабаби майдонининг узунлиги 250 та белгидан ошмаслиги лозим ! ';
+            log_f = false;
+        } else {
+            $('#commentRollback2').css({'border': '1px solid #a6c9e2'});
+            arr[1] = '';
+        }
+
+
+        for (var i = 0; i <= 1; i++) {
+            if (arr[i] != '' && !log_f) {
+                log_n = log_n + arr[i] + '\n\n';
+            }
+        }
+
+        if (log_n != '') {
+            alert(log_n + '');
+        }
+
+        if (log_f) {
+
+            var dataS = {
+                "appId": $('#appId').val(),
+                "commentRollback": $.trim($('#commentRollback2').val()),
+                "rollback_ids": $.trim($('#HS_CD_FULL2').val()),
+                "rollback_names": $.trim($('#HS_NM_FULL2').val()),
+                "statusApp": statusApp
+            }
+
+            /*-------------------------------*/
+
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Аризани қайтаришни хоҳлайсизми?',
+                text: "Сиз ушбу ариза бўйича қарор қабул қилмоқдасиз!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ха, ариза қайтарилади!',
+                cancelButtonText: 'Йўқ, қайта кўриб чиқаман!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swalWithBootstrapButtons.fire(
+                        'Ариза қайтарилди!',
+                        'Ушбу ариза божхона қонуни талабларига мос эмас деб топилди',
+                        'success'
+                    )
+                    $.ajax({
+                        type: "POST",
+                        data: dataS,
+                        url: "<%=request.getContextPath()%>/apps/resources/pages/InitialDecision/InitialDecisionRollBack",
+                        dataType: "html",
+                        header: 'Content-type: text/html; charset=utf-8',
+                        success: function (res) {
+                            var typeMessage = '';
+                            $('div#MainContent').html(res);
+                        },
+                        error: function (res) {
+                        }
+                    });
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Амал рад этилди!',
+                        'Сақлаш амалга оширилмади',
+                        'error'
+                    )
+                }
+            })
+
+        } else return false;
+
+        /*------------------------------*/
     }
+
+
 
     var HS_NM_FULL_C = "";
 
@@ -274,8 +460,43 @@
         document.getElementById('HS_NM').value = '';
     }
 
+    function addT_HS_NM2(x) {
+        // alert(x);
+        var y = x.replaceAll(' ', '');
+        var ta = document.getElementById('HS_NM_FULL2').value;
+        var ta2 = document.getElementById('HS_NM_FULLS2').value;
+        var tacd = document.getElementById('HS_CD_FULL2').value;
+        if (ta.length > 2) {
+            if (ta.indexOf(x.substring(0, 2)) < 0) {
+                document.getElementById('HS_NM_FULL2').value = ta + '~' + x;
+                document.getElementById('HS_NM_FULLS2').value = ta2 + '\n' + x;
+                HS_NM_FULL_C = y.substring('~', y.indexOf('-'));
+                if (document.getElementById('HS_CD_FULL2').value == null || document.getElementById('HS_CD_FULL2').value == '') {
+                    document.getElementById('HS_CD_FULL2').value = HS_NM_FULL_C;
+                } else {
+                    document.getElementById('HS_CD_FULL2').value = tacd + '~' + HS_NM_FULL_C;
+                    // document.getElementById('HS_CD_FULL').value = tacd + '\n' + HS_NM_FULL_C;
+                }
+            }
+        } else {
+            document.getElementById('HS_NM_FULL2').value = x;
+            document.getElementById('HS_NM_FULLS2').value = x;
+            HS_NM_FULL_C = y.substring(0, y.indexOf('-'));
+            if (document.getElementById('HS_CD_FULL2').value == null || document.getElementById('HS_CD_FULL2').value == '') {
+                document.getElementById('HS_CD_FULL2').value = HS_NM_FULL_C;
+            } else {
+                document.getElementById('HS_CD_FULL2').value = tacd + '~' + HS_NM_FULL_C;
+            }
+        }
+        document.getElementById('HS_NM2').value = '';
+    }
+
     function ClearT_HS_NM() {
         document.getElementById("HS_NM").value = "";
+    }
+
+    function ClearT_HS_NM2() {
+        document.getElementById("HS_NM2").value = "";
     }
 
     var gtkXTButton = document.querySelector("#gtkXTButton");

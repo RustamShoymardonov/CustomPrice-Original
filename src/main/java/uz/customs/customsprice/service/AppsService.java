@@ -3,10 +3,13 @@ package uz.customs.customsprice.service;
 import org.springframework.stereotype.Service;
 import uz.customs.customsprice.entity.InitialDecision.Apps;
 import uz.customs.customsprice.entity.InitialDecision.Commodity;
+import uz.customs.customsprice.entity.files.Docs;
 import uz.customs.customsprice.repository.AppsRepo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.print.Doc;
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,8 +26,16 @@ public class AppsService {
 
 
     /* 1) Барча статуси "Янги" бўлган аризалар */
-    public List<Apps> getListNotSorted(String userLocation, String userPost, String userId, Integer userRole) {
+    public List<Apps> getListNotSorted(HttpServletRequest request, String userLocation, String userPost, String userId, Integer userRole) {
+
+        userRole = (Integer) request.getSession().getAttribute("userRole");
+        userLocation = (String) request.getSession().getAttribute("userLocation");
+        userPost = (String) request.getSession().getAttribute("userPost");
+
         String sqlWhere = "", sqlJoin = "", sqlJoinVal = "";
+        if (userRole == 1) {
+            sqlWhere = sqlWhere + " and a.status=100 \n ";
+        }
         if (userRole == 7) {
             sqlWhere = sqlWhere + " and a.status=100 \n " +
                     " and a.location_id='" + userLocation + "' ";
@@ -184,7 +195,7 @@ public class AppsService {
                 "    a.id=ar.app_id\n" +
                 "where\n" +
                 "    a.isdeleted=0\n" +
-                "and a.status in (170,175)\n" +
+                "and a.status in (120,125,170,175)\n" +
                 "order by\n" +
                 "    a.instime desc";
         return (List<Apps>) entityManager.createNativeQuery(queryForList).getResultList();
@@ -297,7 +308,7 @@ public class AppsService {
                 /*28 - */"    sum(cm.brutto) allbrutto,\n" +
                 /*29 - */"    sum(cm.price)  allprice,\n" +
                 /*30 - */"    count(cm.id)   cntcmdt,\n" +
-                         "    a.comment \n" +
+                "    a.comment \n" +
                 "from\n" +
                 "    apps a\n" +
                 "left join\n" +
@@ -518,6 +529,34 @@ public class AppsService {
 
     public Apps saveAppsStatus(Apps apps) {
         return appsRepo.save(apps);
+    }
+
+    /* 8) Битта товар "id" бўйича барча товар маълумотлари */
+    public List<Docs> getDocsListAppId(String appId) {
+        String queryForList = "select\n" +
+                "    d.id, \n" +
+                "    d.instime, \n" +
+                "    d.insuser, \n" +
+                "    d.isdeleted, \n" +
+                "    d.updtime, \n" +
+                "    d.upduser, \n" +
+                "    d.app_id, \n" +
+                "    d.doc_date, \n" +
+                "    d.doc_format, \n" +
+                "    d.doc_name, \n" +
+                "    d.doc_name_ex, \n" +
+                "    d.doc_number, \n" +
+                "    d.doc_path, \n" +
+                "    d.doc_size, \n" +
+                "    d.doc_srno, \n" +
+                "    d.doc_type, \n" +
+                "    d.hash256\n" +
+                "from\n" +
+                "    cpid.docs d\n" +
+                "where\n" +
+                "    d.app_id = '" + appId + "'\n" +
+                "and d.isdeleted = 0";
+        return (List<Docs>) entityManager.createNativeQuery(queryForList, Docs.class).getResultList();
     }
 
 }

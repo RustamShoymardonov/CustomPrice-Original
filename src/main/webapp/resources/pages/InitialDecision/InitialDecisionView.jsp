@@ -287,14 +287,14 @@
                         <div class="row">
 
                             <%--todo Товарлар рўйхати кўриш DIV ойнаси  --- begin  --%>
-                            <div class="col-2 col-md-1" style="max-height: 400px; width: 80px; overflow: auto;" id="div_CmdtList">
+                            <div class="col-1 col-md-1" style="max-height: 400px; width: 80px; overflow: auto;" id="div_CmdtList">
                                 <table>
                                     <tbody>
                                     <c:forEach var="val" items="${allCommodityFor}" varStatus="i">
                                         <tr>
                                             <td>
                                                 <button class="btn btn-outline-dark btn-sm btn-block border-green" id="btnCmdt_${i.index+1}"
-                                                        onclick="checkCmdt('${val.id}',1)">${i.index+1}: ${val.hsCode}</button>
+                                                        onclick="checkCmdt('${val.id}',1, '${val.appId}')">${i.index+1}: ${val.hsCode}</button>
                                             </td>
                                             <script>
                                                 $('.btn').click(function () {
@@ -362,10 +362,11 @@
             })
         });
 
-        function checkCmdt(cmdt_id, x) {
+        function checkCmdt(cmdt_id, x, appId) {
             var dataS = {
                 "cmdt_id": cmdt_id,
-                "x": x
+                "x": x,
+                "appId": appId
             }
             var urlForm = '';
             $.ajax({
@@ -416,7 +417,7 @@
             function leaveAStepCallback(obj, context) {
                 // alert("Leaving step " + context.fromStep + " to go to step " + context.toStep);
                 if (context.toStep !== 1)
-                    checkCmdt('', context.toStep);
+                    checkCmdt('', context.toStep, '');
                 return true;
                 // return validateSteps(context.fromStep);
             }

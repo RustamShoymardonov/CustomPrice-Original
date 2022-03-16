@@ -96,7 +96,7 @@ public class AppsController {
 
         ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionRasp");
         List<Apps> notSortedList = new ArrayList<>();
-        notSortedList = appsservice.getListNotSorted(userLocation, userPost, userId, userRole);
+        notSortedList = appsservice.getListNotSorted(request, userLocation, userPost, userId, userRole);
         mav.addObject("notSortedList", notSortedList);
 
         List sortedList = new ArrayList<>();
@@ -128,16 +128,16 @@ public class AppsController {
         String userPost = (String) request.getSession().getAttribute("userPost");
 
         List<Apps> notSortedList = new ArrayList<>();
-        notSortedList = appsservice.getListNotSorted(userLocation, userPost, userId, userRole);
+        notSortedList = appsservice.getListNotSorted(request, userLocation, userPost, userId, userRole);
         mav.addObject("notSortedList", notSortedList);
 
         List<Apps> sortedList = new ArrayList<>();
         sortedList = appsservice.getListSorted();
         mav.addObject("sortedList", sortedList);
 
-//        List<Apps> termsList = new ArrayList<>();
-//        termsList = appsservice.getListTerms();
-//        mav.addObject("termsList", termsList);
+        List<Apps> termsList = new ArrayList<>();
+        termsList = appsservice.getListTerms();
+        mav.addObject("termsList", termsList);
 
         List<Users> usersList = new ArrayList<>();
         usersList = usersService.getByLocationAndPostAndRole(userLocation, userPost, 8);
@@ -179,7 +179,8 @@ public class AppsController {
 
     @PostMapping(value = INITIALDECISIONROLLBACK)
     @ResponseBody
-    public ModelAndView InitialDecisionRollBack(HttpServletRequest request, @RequestParam String appId, @RequestParam String commentRollback, @RequestParam String rollback_ids, @RequestParam String rollback_names) {
+    public ModelAndView InitialDecisionRollBack(HttpServletRequest request, @RequestParam String appId, @RequestParam String commentRollback, @RequestParam String rollback_ids,
+                                                @RequestParam String rollback_names, @RequestParam Integer statusApp) {
 
         String userId = (String) request.getSession().getAttribute("userId");
         String userName = (String) request.getSession().getAttribute("userName");
@@ -193,8 +194,8 @@ public class AppsController {
         String[] rollback_nameArr = rollback_names.split("~");
 
         Apps app = appsservice.findById(appId);
-        Status status = statusService.getById(120);
-        app.setStatus(120);
+        Status status = statusService.getById(statusApp);
+        app.setStatus(statusApp);
         app.setStatusNm(status.getName());
         app.setComment(commentRollback);
         appsservice.saveAppsStatus(app);
@@ -210,6 +211,21 @@ public class AppsController {
 
         ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionRasp");
 
+        List<Apps> notSortedList = new ArrayList<>();
+        notSortedList = appsservice.getListNotSorted(request, userLocation, userPost, userId, userRole);
+        mav.addObject("notSortedList", notSortedList);
+
+        List sortedList = new ArrayList<>();
+        sortedList = appsservice.getListSorted();
+        mav.addObject("sortedList", sortedList);
+
+        List<Apps> termsList = new ArrayList<>();
+        termsList = appsservice.getListTerms();
+        mav.addObject("termsList", termsList);
+
+        List<Users> usersList = new ArrayList<>();
+        usersList = usersService.getByLocationAndPostAndRole(userLocation, userPost, 8);
+        mav.addObject("userSelectList", usersList);
 
         return mav;
     }

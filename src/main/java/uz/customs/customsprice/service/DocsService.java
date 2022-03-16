@@ -4,6 +4,9 @@ import org.springframework.stereotype.Service;
 import uz.customs.customsprice.entity.files.Docs;
 import uz.customs.customsprice.repository.DocsRepo;
 
+import javax.print.Doc;
+import java.util.List;
+
 @Service
 public class DocsService {
 
@@ -13,7 +16,7 @@ public class DocsService {
         this.docsRepo = docsRepo;
     }
 
-    public Docs savedocs(Docs docs){
+    public Docs savedocs(Docs docs) {
         return docsRepo.save(docs);
     }
 
@@ -21,5 +24,11 @@ public class DocsService {
         return docsRepo.findByHash256(hash256);
     }
 
-    public Docs getByAppId(String appId){ return  docsRepo.findTop1ByAppIdOrderByInsTimeDesc(appId);}
+    public Docs getByAppId(String appId) {
+        return docsRepo.findTop1ByAppIdOrderByInsTimeDesc(appId);
+    }
+
+//    public List<Docs> getAllByAppId(String appId) {
+//        return (List<Docs>) docsRepo.findAllByAppId(appId);
+//    }
 }
