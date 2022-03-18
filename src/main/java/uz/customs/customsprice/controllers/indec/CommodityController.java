@@ -74,6 +74,7 @@ public class CommodityController {
 
                 List<RollbackSp> listRollbackSp = rollbackSpService.getlistRollbackSp();
                 mav4.addObject("rollbackInfo", listRollbackSp);
+                mav4.addObject("cmdtId", COMMODITY_ID);
                 mav = mav4;
 
                 break;

@@ -58,7 +58,7 @@
 <div class="WordSection1">
     <p style="margin-top:0in;margin-right:42.5pt;margin-bottom:0in;margin-left:-42.55pt;text-align:center;line-height:normal" align="center" class="MsoNormal">
             <span style="position:relative;z-index:-1895817216">
-                <span style="position:absolute;left:540px; top:-5px"><img width="81" height="80" src="dastlabki%20qarori_files/image001.jpg">
+                <span style="position:absolute;left:540px; top:-5px"><img width="81" height="80" src="<%=request.getContextPath()%>/resources/images/dastlabki%20qarori_files/image001.jpg">
                 </span>
             </span>
         <b>
@@ -72,7 +72,7 @@
 
     <p class="MsoNormal" align="center" style="margin-bottom:0in;text-align:center;line-height:normal">
         <span style="position:absolute;left:550px;top:100px;z-index:-1895818240;width:624px;height:622px">
-            <img width="624" height="622" src="dastlabki%20qarori_files/image002.png">
+            <img width="624" height="622" src="<%=request.getContextPath()%>/resources/images/dastlabki%20qarori_files/image002.png">
         </span>
     </p>
 
@@ -122,7 +122,7 @@
             <td width="303" valign="top" style="width:227.05pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt">
                 <p class="MsoNormal" style="margin-bottom:0in;line-height:normal">
                     <span lang="RU" style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;,serif">&nbsp;</span>
-                    dsfsdfsdfsdf
+                    dsfsdfsdfsdf34343
                 </p>
             </td>
         </tr>
@@ -402,7 +402,7 @@
             <td width="690" colspan="2" valign="top" style="width:517.4pt;border:solid windowtext 1.0pt;border-top:none;padding:0in 5.4pt 0in 5.4pt">
                 <p class="MsoNormal" style="margin-bottom:0in;line-height:normal">
                     <span lang="RU" style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;,serif">9.Божхона тўловлари ва йиғимлари тўғрисида маълумот</span>
-                    <span lang="UZ-CYR" style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;,serif;color:red">**</span>
+<%--                    <span lang="UZ-CYR" style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;,serif;color:red">**</span>--%>
                 </p>
                 <p class="MsoNormal" align="center" style="margin-bottom:0in;text-align:center;line-height:normal">
                     <b>
@@ -858,7 +858,8 @@
             <td width="690" colspan="2" valign="top" style="width:517.4pt;border:solid windowtext 1.0pt;
   border-top:none;padding:0in 5.4pt 0in 5.4pt">
                 <p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><span style="position:absolute;z-index:-1895815168;margin-left:272px;margin-top:
-  0px;width:45px;height:45px"><img width="45" height="45" src="dastlabki%20qarori_files/image003.jpg"></span><span lang="RU" style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;,serif">13. Божхона
+  0px;width:45px;height:45px"><img width="45" height="45" src="<%=request.getContextPath()%>/resources/images/dastlabki%20qarori_files/image003.jpg"></span><span lang="RU"
+                                                                                                                    style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;,serif">13. Божхона
   органининг мансабдор шахси</span></p>
                 <p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><span lang="RU" style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;,serif">&nbsp;</span></p>
                 <p class="MsoNormal" style="margin-bottom:0in;line-height:normal"><b><span lang="UZ-CYR" style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;,serif">Бошқарма

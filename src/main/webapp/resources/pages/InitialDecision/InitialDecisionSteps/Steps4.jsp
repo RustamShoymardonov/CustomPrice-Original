@@ -52,6 +52,8 @@
                     href="#">Қўшиш</a></h4>
             <!-- -->
             <!--  Bootstrap table-->
+            <input type="hidden" id="cmdtId" name="cmdtId" value="<c:out value="${cmdtId}"/>"/>
+
             <div class="table-responsive">
                 <table class="table tolovlar border-primary" style="border-style: dashed double none">
                     <thead>
@@ -70,7 +72,7 @@
                     </tbody>
                 </table>
             </div>
-            <button type="button" class="btn btn-success ml-2">Жўнатиш</button>
+            <button type="button" class="btn btn-success ml-2" onclick="javascript:InDecConfirm('145')">Жўнатиш</button>
             <!-- Add rows button-->
 
             <script>
@@ -162,7 +164,7 @@
         <div id="contact1" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade py-4">
             <!-- Text editor -->
             <h4 style="text-align: center">Аризани қайтариш сабаблари ва тузатиш киритиладиган бўлимлар</h4>
-            <form method="post" class="border-primary"  id="fm2" name="fm2">
+            <form method="post" class="border-primary" id="fm2" name="fm2">
                 <br>
                 <div class="col-md-8 col-sm-8  form-group has-feedback">
                     <div class="form-group pmd-textfield pmd-textfield-floating-label border border-primary">
@@ -426,7 +428,6 @@
     }
 
 
-
     var HS_NM_FULL_C = "";
 
     function addT_HS_NM(x) {
@@ -508,6 +509,28 @@
         HS_NM_FULLS.value = "";
         HS_CD_FULL.value = "";
     };
+
+    /* Ариза тафсилоти */
+    function InDecConfirm(status) {
+        var dataS = {
+            "cmdtId": $('#cmdtId').val(),
+            "appId": $('#appId').val(),
+            "status": status
+        }
+        // alert(status + ',\n appId == ' + $('#appId').val() + ',\n cmdtId == ' + $('#cmdtId').val());
+        $.ajax({
+            type: "POST",
+            data: dataS,
+            url: "<%=request.getContextPath()%>/saveInDec/resources/pages/InitialDecision/InitialDecisionConfirm",
+            dataType: "html",
+            header: 'Content-type: text/html; charset=utf-8',
+            success: function (res) {
+                $('div#MainContent').html(res);
+            },
+            error: function (res) {
+            }
+        });
+    }
 
 </script>
 <script src="<%=request.getContextPath()%>/resources/build/js/alertMessages.js"></script>

@@ -13,9 +13,6 @@ public class InDecService {
     }
 
     public InDec saveInDec(InDec inDec) {
-
-
-
         return inDecRepo.save(inDec);
     }
 
