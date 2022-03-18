@@ -13,7 +13,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "IN_DEC")
-public class InitialDecision extends AbstractAuditingEntity {
+public class InDec extends AbstractAuditingEntity {
     @Id
     @GeneratedValue(generator = "uuid4")
     @GenericGenerator(name = "uuid4", strategy = "org.hibernate.id.UUIDGenerator")
@@ -25,6 +25,9 @@ public class InitialDecision extends AbstractAuditingEntity {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Commodity commodity;
+
+    @Column(name = "CMDT_ID", columnDefinition = "VARCHAR(50)")
+    private String cmdtId;
 
     @Column(name = "IN_DEC_NUM", length = 30)
     private String inDecNum;
@@ -79,13 +82,14 @@ public class InitialDecision extends AbstractAuditingEntity {
     @Column(name = "STATUS_NM", columnDefinition = "VARCHAR(450) CCSID 1208")
     private String statusNm;
 
-    public InitialDecision() {
+    public InDec() {
     }
 
-    public InitialDecision(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Commodity commodity, String inDecNum, Date inDecDate, String inDecLocation, String inDecLocationNm, String personId, String hsCode, String hsName, String method, String methodNm, String originCountry, String orignCountrNm, String inDecBasis, String commentMarks, BigDecimal customsPreference, BigDecimal customsPayments, int status, String statusNm) {
+    public InDec(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Commodity commodity, String cmdtId, String inDecNum, Date inDecDate, String inDecLocation, String inDecLocationNm, String personId, String hsCode, String hsName, String method, String methodNm, String originCountry, String orignCountrNm, String inDecBasis, String commentMarks, BigDecimal customsPreference, BigDecimal customsPayments, int status, String statusNm) {
         super(insUser, updUser, insTime, updTime, isDeleted);
         this.id = id;
         this.commodity = commodity;
+        this.cmdtId = cmdtId;
         this.inDecNum = inDecNum;
         this.inDecDate = inDecDate;
         this.inDecLocation = inDecLocation;
@@ -119,6 +123,14 @@ public class InitialDecision extends AbstractAuditingEntity {
 
     public void setCommodity(Commodity commodity) {
         this.commodity = commodity;
+    }
+
+    public String getCmdtId() {
+        return cmdtId;
+    }
+
+    public void setCmdtId(String cmdtId) {
+        this.cmdtId = cmdtId;
     }
 
     public String getInDecNum() {

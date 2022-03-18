@@ -6,6 +6,7 @@ import uz.customs.customsprice.repository.DocsRepo;
 
 import javax.print.Doc;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DocsService {
@@ -31,4 +32,8 @@ public class DocsService {
 //    public List<Docs> getAllByAppId(String appId) {
 //        return (List<Docs>) docsRepo.findAllByAppId(appId);
 //    }
+
+    public Optional<Docs> getById(String id){
+        return  docsRepo.findById(id);
+    }
 }

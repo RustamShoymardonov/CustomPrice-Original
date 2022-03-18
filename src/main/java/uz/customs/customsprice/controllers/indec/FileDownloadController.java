@@ -1,69 +1,77 @@
 package uz.customs.customsprice.controllers.indec;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import uz.customs.customsprice.entity.files.Docs;
+import uz.customs.customsprice.repository.DocsRepo;
+
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.net.URLConnection;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.Optional;
 
-//@Controller
-//@RequestMapping("/download")
-//public class FileDownloadController {
-//
-//    private final String DOWNLOADFILE = "/resources/pages/InitialDecision/InitialDecisionSteps/Steps3/{fileName}";
-//
-////    private static final String EXTERNAL_FILE_PATH = "C:/fileDownloadExample/";
-//    private static final String EXTERNAL_FILE_PATH = "D:\\IN_DEC_FILES\\2022\\03\\16\\220316000001\\";
-//
-//    @RequestMapping(DOWNLOADFILE)
-//    public void downloadPDFResource(HttpServletRequest request, HttpServletResponse response, @PathVariable("fileName") String fileName) throws IOException {
-//        fileName = "16032022142816734.pdf";
-//        File file = new File(EXTERNAL_FILE_PATH + fileName);
-//        if (file.exists()) {
-//
-//            //get the mimetype
-//            String mimeType = URLConnection.guessContentTypeFromName(file.getName());
-//            if (mimeType == null) {
-//                //unknown mimetype so set the mimetype to application/octet-stream
-//                mimeType = "application/octet-stream";
-//            }
-//
-//            response.setContentType(mimeType);
-//
-//            /**
-//             * In a regular HTTP response, the Content-Disposition response header is a
-//             * header indicating if the content is expected to be displayed inline in the
-//             * browser, that is, as a Web page or as part of a Web page, or as an
-//             * attachment, that is downloaded and saved locally.
-//             *
-//             */
-//
-//            /**
-//             * Here we have mentioned it to show inline
-//             */
-//            response.setHeader("Content-Disposition", String.format("inline; filename=\"" + file.getName() + "\""));
-//
-//            //Here we have mentioned it to show as attachment
-//            //response.setHeader("Content-Disposition", String.format("attachment; filename=\"" + file.getName() + "\""));
-//
-//            response.setContentLength((int) file.length());
-//
-//            InputStream inputStream = new BufferedInputStream(new FileInputStream(file));
-//
-//            FileCopyUtils.copy(inputStream, response.getOutputStream());
-//
-//        }
-//    }
-//}
+@Controller
+@RequestMapping("/download")
+public class FileDownloadController {
+    private final DocsRepo docsRepo;
 
+    public FileDownloadController(DocsRepo docsRepo) {
+        this.docsRepo = docsRepo;
+    }
 
+    @GetMapping
+    public void downloadFile(@Param("id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=UTF-8");
+
+        Optional<Docs> docs = docsRepo.findById(id);
+        String docId = "";
+        String docName = "";
+        String docNameEx = "";
+        String docPath = "";
+        String docFormat = "";
+        if (docs.isPresent()) {
+            docName = docs.get().getDocName();
+            docNameEx = docs.get().getDocNameEx();
+            docPath = docs.get().getDocPath();
+            docFormat = docs.get().getDocFormat();
+
+            BufferedInputStream buf = null;
+            ServletOutputStream out = null;
+            String fileName = "";
+
+            try {
+                out = response.getOutputStream();
+                File zipFile = new File(docPath);
+                fileName = URLEncoder.encode(docNameEx.trim(), StandardCharsets.UTF_8);
+                response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+                FileInputStream input = new FileInputStream(zipFile);
+                buf = new BufferedInputStream(input);
+                byte[] bytes = new byte[buf.available()];
+                int readBytes = -1;
+                while ((readBytes = buf.read(bytes)) != -1) {
+                    out.write(bytes, 0, readBytes);
+                }
+                out.close();
+                buf.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            response.getWriter().println("<body onLoad=\"alert('Документ не найден!');window.opener=window.location.href;window.open('','_parent','');window.close()\">" +
+                    "<h1>Документ не найден!</h1>" +
+                    "</body>");
+        }
+    }
+}
 

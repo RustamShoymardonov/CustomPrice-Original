@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import uz.customs.customsprice.entity.files.Docs;
 
 import javax.print.Doc;
+import java.util.Optional;
 
 
 public interface DocsRepo extends JpaRepository<Docs, String> {
@@ -12,4 +13,6 @@ public interface DocsRepo extends JpaRepository<Docs, String> {
     Docs findTop1ByAppIdOrderByInsTimeDesc(String appId);
 
     Docs findAllByAppId(String appId);
+
+    Optional<Docs> findById(String id);
 }

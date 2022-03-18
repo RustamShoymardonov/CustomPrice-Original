@@ -12,7 +12,11 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
-
+<%
+    String docPath = "";
+    String docId = "";
+    String docNameEx = "";
+%>
 <body>
 
 <div class="position-relative" id="pdf_area_2">
