@@ -1,7 +1,6 @@
 package uz.customs.customsprice.service;
 
 import org.springframework.stereotype.Service;
-import uz.customs.customsprice.entity.InitialDecision.Apps;
 import uz.customs.customsprice.entity.InitialDecision.InDec;
 import uz.customs.customsprice.repository.InDecRepo;
 
@@ -26,7 +25,7 @@ public class InDecService {
     private EntityManager entityManager;
 
 
-    /* 1) <<InDec>> га қарор рақамини киритади */
+    /* 4) <<app_num>> га ариза рафамини киритади */
     public InDec saveInDec(InDec inDec) {
         LocalDateTime now = LocalDateTime.now();
         String inDecNum = getMaxNumber();
@@ -45,14 +44,14 @@ public class InDecService {
         return inDecRepo.save(inDec);
     }
 
-    /* 2) <<InDec>> учун қарор рақам генерация қилади */
+    /* 1) <<InDec>> учун рақам генерация қилади */
     public String getMaxNumber() {
         String queryForList = "select\n" +
-                "    i.IN_DEC_NUM as maxno\n" +
+                "    a.IN_DEC_NUM as maxno\n" +
                 "from\n" +
-                "    CPID.IN_DEC as i\n" +
+                "    CPID.IN_DEC as a\n" +
                 "order by\n" +
-                "    i.instime desc\n" +
+                "    a.instime desc\n" +
                 "fetch\n" +
                 "    first 1 rows only";
         List resultList = entityManager.createNativeQuery(queryForList).getResultList();
@@ -67,7 +66,7 @@ public class InDecService {
         LocalDateTime now = LocalDateTime.now();
         String currentDateFormat = "";
         String result = "";
-        currentDateFormat = currentDateFormat+ '-' + now.getYear() % 100;
+        currentDateFormat = currentDateFormat + now.getYear() % 100;
         if (now.getMonthValue() < 10)
             currentDateFormat += "0" + now.getMonthValue();
         else
