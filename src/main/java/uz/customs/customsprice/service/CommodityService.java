@@ -20,7 +20,7 @@ public class CommodityService {
     @PersistenceContext
     private EntityManager entityManager;
 
-    /* 4) <<app_num>> га ариза рафамини киритади */
+    /* 4) <<Commodity>> га тартиб рафамини киритади */
     public Commodity saveCommodity(Commodity commodity) {
         if (commodity != null) {
             String cmdtNumber = getMaxCmdtNumber(commodity.getAppId());
@@ -29,7 +29,7 @@ public class CommodityService {
         return commodityRepo.save(commodity);
     }
 
-    /* 5) <<app_num>> учун рақам генерация қилади */
+    /* 5) <<Commodity>> учун тартиб рақамини генерация қилади */
     public String getMaxCmdtNumber(String appId) {
         String queryForList = "select\n" +
                 "    cm.CMDT_NUM MAXNO\n" +
@@ -54,5 +54,9 @@ public class CommodityService {
         String result = "";
         result = Integer.toString(resultLastNumber);
         return result;
+    }
+
+    public Optional<Commodity> getById(String id){
+        return commodityRepo.findById(id);
     }
 }

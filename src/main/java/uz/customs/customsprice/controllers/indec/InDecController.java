@@ -1,21 +1,15 @@
 package uz.customs.customsprice.controllers.indec;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import uz.customs.customsprice.controllers.api.helper.ResponseHandler;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import uz.customs.customsprice.entity.InitialDecision.*;
 import uz.customs.customsprice.service.*;
 
-import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/saveInDec")
@@ -45,58 +39,51 @@ public class InDecController {
     }
 
     @PostMapping(value = INITIALDECISIONCONFIRMCMDT)
-    public ResponseEntity<Object> saveValue(InDec inDec, @RequestBody String cmdtId, @RequestBody String appId, @RequestBody Integer status) {
+    public ModelAndView saveValue(InDec inDec, @RequestParam String cmdtId, @RequestParam String appId, @RequestParam Integer status) {
+        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionRasp");
 
         Apps apps = appsService.findById(appId);
+        Optional<Commodity> commodity = commodityService.getById(cmdtId);
+        Status status1 = statusService.getById(status);
 
-
-//        inDec.setId();
-//        inDec.setCommodity();
-//        inDec.setCmdtId();
-//        inDec.setInDecNum();
-//        inDec.setInDecDate();
-//        inDec.setInDecLocation();
-//        inDec.setInDecLocationNm();
-//        inDec.setPersonId();
-//        inDec.setHsCode();
-//        inDec.setHsName();
-//        inDec.setMethod();
-//        inDec.setMethodNm();
-//        inDec.setOriginCountry();
-//        inDec.setOrignCountrNm();
-//        inDec.setInDecBasis();
-//        inDec.setCommentMarks();
-//        inDec.setCustomsPreference();
-//        inDec.setCustomsPayments();
-//        inDec.setStatus();
-//        inDec.setStatusNm();
-//
-//        inDec.getOriginCountry();
-//        inDec.getOrignCountrNm();
-//
-//
-//        inDec.setInDecLocation();
-//        inDec.setInDecLocationNm();
-//        inDec.setStatus();
-
-
-
-        Country country = conturyService.getByCodeAndLngaTpcd(inDec.getOriginCountry(), "UZ");
-        inDec.setOrignCountrNm(country.getCdNm());
-
-        Method method = methodService.getById(inDec.getMethod());
-        inDec.setMethodNm(method.getName());
-
-        Tnved2 tnved2 = tnved2Service.getByIdAndFinishdate(inDec.getHsCode());
-        inDec.setHsName(tnved2.getName());
-
-        Location location = locationService.getById(inDec.getInDecLocation());
-        inDec.setInDecLocationNm(location.getName1());
-
-        Status stus = statusService.getById(status);
-        inDec.setStatusNm(stus.getName());
-
+        inDec.setCmdtId(cmdtId);
+//        inDec.setInDecNum();//?
+//        inDec.setInDecDate();//?
+//        inDec.setInsUser();//?
+        inDec.setInDecLocation(apps.getLocationId());
+        inDec.setInDecLocationNm(apps.getLocationNm());
+        inDec.setPersonId(apps.getPersonId());
+        inDec.setHsCode(commodity.get().getHsCode());
+        inDec.setHsName(commodity.get().getHsName());
+        inDec.setMethod(commodity.get().getMethod());
+        inDec.setMethodNm(commodity.get().getMethodNm());
+        inDec.setOriginCountry(commodity.get().getOriginCountry());
+        inDec.setOrignCountrNm(commodity.get().getOrignCountrNm());
+//        inDec.setInDecBasis(); //?
+//        inDec.setCommentMarks(); //?
+//        inDec.setCustomsPreference(); //?
+//        inDec.setCustomsPayments(); //?
+        inDec.setStatus(status1.getId());
+        inDec.setStatusNm(status1.getName());
         inDecService.saveInDec(inDec);
-        return ResponseHandler.generateResponse("Commodity ma`lumotlari saqlandi!", HttpStatus.OK, inDec);
+
+
+
+//        Country country = conturyService.getByCodeAndLngaTpcd(inDec.getOriginCountry(), "UZ");
+//        inDec.setOrignCountrNm(country.getCdNm());
+//
+//        Method method = methodService.getById(inDec.getMethod());
+//        inDec.setMethodNm(method.getName());
+//
+//        Tnved2 tnved2 = tnved2Service.getByIdAndFinishdate(inDec.getHsCode());
+//        inDec.setHsName(tnved2.getName());
+//
+//        Location location = locationService.getById(inDec.getInDecLocation());
+//        inDec.setInDecLocationNm(location.getName1());
+//
+//        Status stus = statusService.getById(status);
+//        inDec.setStatusNm(stus.getName());
+
+        return mav;
     }
 }
