@@ -129,7 +129,7 @@
 
                                                     <div class="col-md-12">
 
-                                                        <div class="table-responsive">
+                                                        <div class="">
                                                             <table class="table">
                                                                 <thead>
                                                                 <tr>
@@ -287,7 +287,7 @@
                         <div class="row">
 
                             <%--todo Товарлар рўйхати кўриш DIV ойнаси  --- begin  --%>
-                            <div class="col-1 col-md-1" style="max-height: 400px; width: 80px; overflow: auto;" id="div_CmdtList">
+                            <div class="col-md-1" style="max-height: 400px; width: 80px; overflow: auto;" id="div_CmdtList">
                                 <table>
                                     <tbody>
                                     <c:forEach var="val" items="${allCommodityFor}" varStatus="i">
@@ -314,24 +314,24 @@
                             <%--todo Товарлар рўйхати кўриш DIV ойнаси  --- end  --%>
 
                             <%--todo Товарлар учун қадамлар кетма - кетлигини кўриш DIV ойнаси  --- begin  --%>
-                            <div class="col-11 col-md-11" id="div_CmdtStep">
+                            <div class="col-md-11" id="div_CmdtStep">
                                 <div id="step-1">
-                                    <div class="col-md-11" id="div_CmdtStep_1">
+                                    <div class="col-md-12" id="div_CmdtStep_1">
                                         <!-- -->
                                     </div>
                                 </div>
                                 <div id="step-2">
-                                    <div class="col-md-11" id="div_CmdtStep_2">
+                                    <div class="col-md-12" id="div_CmdtStep_2">
                                         <!-- -->
                                     </div>
                                 </div>
                                 <div id="step-3">
-                                    <div class="col-md-11" id="div_CmdtStep_3">
+                                    <div class="col-md-12" id="div_CmdtStep_3">
                                         <!-- -->
                                     </div>
                                 </div>
                                 <div id="step-4">
-                                    <div class="col-md-11" id="div_CmdtStep_4">
+                                    <div class="col-md-12" id="div_CmdtStep_4">
                                         <!-- -->
                                     </div>
                                 </div>

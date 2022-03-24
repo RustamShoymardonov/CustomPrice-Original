@@ -7,8 +7,4 @@
         <welcome-file>index.jsp</welcome-file>
 <!--        <welcome-file>SignIn.jsp</welcome-file>-->
     </welcome-file-list>
-<!--    <authentication-manager>-->
-<!--        <authentication-provider-->
-<!--                ref="DaoAuthenticationProvider" />-->
-<!--    </authentication-manager>-->
 </web-app>

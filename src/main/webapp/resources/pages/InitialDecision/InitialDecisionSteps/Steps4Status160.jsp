@@ -48,8 +48,8 @@
             <!-- -->
             <!--  Bootstrap table-->
             <input type="hidden" id="cmdtId" name="cmdtId" value="<c:out value="${cmdtId}"/>"/>
-            <button type="button" class="btn btn-outline-primary" onclick="javascript:InDecConfirmToXBB()"><i class="fa fa-send-o"> Имзолашга жўнатиш</i></button>
-            <button type="button" class="btn btn-outline-primary" onclick="javascript:inDecToHtml()"><i class="fa fa-print"> Pdf шакли</i></button>
+            <button type="button" class="btn btn-outline-primary" onclick="javascript:InDecConfirmXBBFinish()"><i class="fa fa-send-o"> Қарорни имзолаш</i></button>
+            <button type="button" class="btn btn-outline-primary" onclick="generatePDF()"><i class="fa fa-print"> Pdf шакли</i></button>
             <div>
                 <form>
                     <div class="tab-content card shadow-none p-t-5 p-l-5 p-r-5 p-b-5 rounded">
@@ -425,19 +425,18 @@
 <script>
 
     /* Маълумотларни тақсимлаш */
-    function inDecToHtml(){
+    function inDecToHtml(x){
         var dataS = {
-            "appId": $('#appId').val(),
+            "id": x
         }
         $.ajax({
             type: "POST",
             data: dataS,
-            url: "<%=request.getContextPath()%>/generate/resources/pages/InitialDecision/GeneratePdf",
+            url: "<%=request.getContextPath()%>/saveInDec/resources/pages/InitialDecision/Qaror",
             dataType: "html",
             header: 'Content-type: text/html; charset=utf-8',
             success: function (res) {
-                // $('div#div_CmdtStep_4').html(res);
-                alert("Success")
+                $('div#div_CmdtStep_4').html(res);
             },
             error: function (res) {
             }
@@ -750,7 +749,7 @@
     };
 
     /* Ариза тафсилоти */
-    function InDecConfirmToXBB() {
+    function InDecConfirmXBBFinish() {
         var dataS = {
             "cmdtId": $('#cmdtId').val(),
             "appId": $('#appId').val(),
@@ -767,24 +766,24 @@
         })
 
         swalWithBootstrapButtons.fire({
-            title: 'Аризани имзолаш учун жўнатишни хоҳлайсизми?',
-            text: "Сиз ушбу ариза бўйича қарор қабул қилмоқдасиз!",
+            title: 'Аризани бўйича дастлабки қарорни имзолашни хоҳлайсизми?',
+            text: "Сиз ушбу ариза бўйича дастлабки қарор қабул қилмоқдасиз!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Ха, жўнатишни тасдиқлайман!',
+            confirmButtonText: 'Ха, имзолашни тасдиқлайман!',
             cancelButtonText: 'Йўқ, қайта кўриб чиқаман!',
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
                 swalWithBootstrapButtons.fire(
-                    'Ариза имзолаш учун жўнатилди!',
-                    'Ушбу ариза худудий бошқарма бошлиғига имзолаш учун юборилди',
+                    'Дастлабки қарор шакиллантирилди!',
+                    'Ушбу ариза бўйича дастлабки қарор қабул қилинди',
                     'success'
                 )
                 $.ajax({
                     type: "POST",
                     data: dataS,
-                    url: "<%=request.getContextPath()%>/saveInDec/resources/pages/InitialDecision/InitialDecisionConfirToXBB",
+                    url: "<%=request.getContextPath()%>/saveInDec/resources/pages/InitialDecision/InitialDecisionConfirXBBFinish",
                     dataType: "html",
                     header: 'Content-type: text/html; charset=utf-8',
                     success: function (res) {

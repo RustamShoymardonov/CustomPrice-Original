@@ -8,6 +8,7 @@ import uz.customs.customsprice.entity.files.Docs;
 import uz.customs.customsprice.service.*;
 import uz.customs.customsprice.utils.Utils;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
@@ -32,12 +33,15 @@ public class CommodityController {
 
     @PostMapping(value = INITIALDECISIONVIEWCMDT)
     @ResponseBody
-    public ModelAndView InitialDecisionViewCmdt(HttpSession session, @RequestParam String cmdt_id, @RequestParam Integer x, @RequestParam String appId) {
+    public ModelAndView InitialDecisionViewCmdt(HttpSession session, HttpServletRequest request, @RequestParam String cmdt_id, @RequestParam Integer x, @RequestParam String appId) {
         ModelAndView mav = new ModelAndView();
         ModelAndView mav1 = new ModelAndView("resources/pages/InitialDecision/InitialDecisionSteps/Steps1");
         ModelAndView mav2 = new ModelAndView("resources/pages/InitialDecision/InitialDecisionSteps/Steps2");
         ModelAndView mav3 = new ModelAndView("resources/pages/InitialDecision/InitialDecisionSteps/Steps3");
         ModelAndView mav4 = new ModelAndView("resources/pages/InitialDecision/InitialDecisionSteps/Steps4");
+        ModelAndView mav5 = new ModelAndView("resources/pages/InitialDecision/InitialDecisionSteps/Steps4Status145");
+        ModelAndView mav6 = new ModelAndView("resources/pages/InitialDecision/InitialDecisionSteps/Steps4Status160");
+        ModelAndView mav7 = new ModelAndView("resources/pages/InitialDecision/InitialDecisionSteps/Steps4StatusDefault");
         String COMMODITY_ID = Utils.nullClear(String.valueOf(session.getAttribute("COMMODITY_ID")));
         String APPLICATION_ID = Utils.nullClear(String.valueOf(session.getAttribute("APPLICATION_ID")));
         switch (x) {
@@ -58,24 +62,49 @@ public class CommodityController {
                 mav = mav2;
                 break;
             case 3:
-
-//                List<Commodity> commodityList3 = appsservice.getCommodityList(COMMODITY_ID);
-//                mav3.addObject("commodity", commodityList3);
-//                mav = mav3;
-
                 List<Docs> docsList = appsservice.getDocsListAppId(APPLICATION_ID);
                 mav3.addObject("docsList", docsList);
                 mav = mav3;
                 break;
-
             case 4:
-//                mav4.addObject("commodity", COMMODITY_ID);
-//                mav = mav4;
+                Integer userRole = (Integer) request.getSession().getAttribute("userRole");
+                Apps apps = appsservice.findById(APPLICATION_ID);
 
-                List<RollbackSp> listRollbackSp = rollbackSpService.getlistRollbackSp();
-                mav4.addObject("rollbackInfo", listRollbackSp);
-                mav4.addObject("cmdtId", COMMODITY_ID);
-                mav = mav4;
+                /** Агар ариза янги бўлса ва фойдаланувчи ёки хбб тўл.ходим ёки хбб тўл.бош бўдса **/
+                if (apps.getStatus() == 110 && (userRole == 8 || userRole == 7)){
+                    List<RollbackSp> listRollbackSp = rollbackSpService.getlistRollbackSp();
+                    mav4.addObject("rollbackInfo", listRollbackSp);
+                    mav4.addObject("cmdtId", COMMODITY_ID);
+                    mav = mav4;
+                }
+                else if (apps.getStatus() == 110 && (userRole != 8 || userRole != 7)){
+                    mav7.addObject("appInfo", apps);
+                    mav = mav7;
+                }
+                /** Агар ариза  хбб тўл.ходими томонидан хбб тўл.бош га тасдиқлашга жўнатилган бўлса **/
+                if (apps.getStatus() == 145 && userRole == 7) {
+                    mav = mav5;
+                }
+                else if (apps.getStatus() == 145 && userRole != 7){
+                    mav7.addObject("appInfo", apps);
+                    mav = mav7;
+                }
+
+                /** Агар ариза хбб тўл.бош томонидан хбб бош га имзолашга жўнатилган бўлса **/
+                if (apps.getStatus() == 160 && userRole == 6){
+                    mav = mav6;
+                }
+                else if (apps.getStatus() == 160 && userRole != 6){
+                    mav7.addObject("appInfo", apps);
+                    mav = mav7;
+                }
+                /** Ариза холати фақат **/
+                if (apps.getStatus() != 160 && apps.getStatus() != 110 && apps.getStatus() != 145){
+                    mav7.addObject("appInfo", apps);
+                    mav = mav7;
+                }
+
+
 
                 break;
             default:

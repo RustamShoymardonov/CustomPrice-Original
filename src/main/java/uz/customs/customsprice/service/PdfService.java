@@ -10,6 +10,11 @@ import java.io.IOException;
 
 @Service
 public class PdfService {
+    private final StatusService statusService;
+
+    public PdfService(StatusService statusService) {
+        this.statusService = statusService;
+    }
 
     public void export(HttpServletResponse response, String arizaRaqam) throws IOException, DocumentException {
 
@@ -18,10 +23,11 @@ public class PdfService {
 
         document.open();
 
-        Font fontTitle  = FontFactory.getFont("uz/customs/customsprice/fonts/DejaVuSans.ttf", "cp1251", 24);
+        Font fontTitle  = FontFactory.getFont("arialuni.ttf", "cp1251", 14);
 
-        Paragraph paragraph = new Paragraph("DASTLABKI QAROR", fontTitle);
-        paragraph.setAlignment(Paragraph.ALIGN_CENTER);
+        Paragraph paragraph = new Paragraph("Ўзбекистон Республикасига олиб кириладиган товарлар бўйича тўланиши лозим бўлган божхона тўловлари миқдорини аниқлаш бўйича дастлабки қарор", fontTitle);
+        paragraph.setAlignment(Paragraph.ALIGN_JUSTIFIED_ALL);
+
 //        Chunk id = new Chunk("Text", fontTitle);
 //        id.setBackground(BaseColor.RED, 1f, 0.5f, 1f, 1.5f);
 
@@ -29,28 +35,35 @@ public class PdfService {
         image.scaleAbsolute(50, 50);
         image.setAbsolutePosition(70, 760);
 
-        BarcodeQRCode qrCode = new BarcodeQRCode("http://youtube.com", 150, 150, null);
-        Image img = qrCode.getImage();
-        img.setAbsolutePosition(100, 20);
+        BarcodeQRCode qrCode = new BarcodeQRCode("http://youtube.com", 70, 70, null);
+        Image img = qrCode.getImage();;
+        img.setAbsolutePosition(500, 800);
 
 
-        PdfPTable table = new PdfPTable(3);
+        PdfPTable table1 = new PdfPTable(2);
+        PdfPTable table2 = new PdfPTable(2);
 
-        PdfPCell cell1 = new PdfPCell(new Paragraph("Cell 1"));
-        PdfPCell cell2 = new PdfPCell(new Paragraph("Cell 2"));
-        PdfPCell cell3 = new PdfPCell(new Paragraph("Cell 3"));
+        PdfPCell cell11 = new PdfPCell(new Paragraph("1. Дастлабки қарорни рўйхатга олиш рақами ва санаси"));
+        PdfPCell cell12 = new PdfPCell(new Paragraph(arizaRaqam));
+        PdfPCell cell21 = new PdfPCell(new Paragraph("2. Дастлабки қарорни қабул қилган божхона органининг номи"));
+        PdfPCell cell22 = new PdfPCell(new Paragraph(arizaRaqam));
 
-        table.addCell(cell1);
-        table.addCell(cell2);
-        table.addCell(cell3);
-        table.setSpacingBefore(30f);
-        table.setSpacingAfter(10f);
+        /******/
+        /******/
+
+
+        table1.addCell(cell11);
+        table1.addCell(cell12);
+        table2.addCell(cell21);
+        table2.addCell(cell22);
+        table1.setSpacingBefore(30f);
 
 
 
         document.add(image);
         document.add(paragraph);
-        document.add(table);
+        document.add(table1);
+        document.add(table2);
         document.add(img);
         document.close();
 

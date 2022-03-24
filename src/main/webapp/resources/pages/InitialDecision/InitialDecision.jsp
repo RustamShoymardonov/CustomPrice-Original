@@ -15,11 +15,11 @@
 
 
 <body>
-<div class="">
+<div >
     <div class="clearfix"></div>
     <div class="row">
         <div class="col-md-12">
-            <div class="x_panel">
+            <div class="x_panel" style="min-height: 850px">
 
                 <div class="x_content">
                     <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">

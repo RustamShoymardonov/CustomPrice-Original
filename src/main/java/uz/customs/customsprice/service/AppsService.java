@@ -34,10 +34,10 @@ public class AppsService {
 
         String sqlWhere = "", sqlJoin = "", sqlJoinVal = "";
         if (userRole == 1) {
-            sqlWhere = sqlWhere + " and a.status=100 \n ";
+            sqlWhere = " and a.status=100 \n ";
         }
         if (userRole == 7) {
-            sqlWhere = sqlWhere + " and a.status=100 \n " +
+            sqlWhere = " and a.status=100 \n " +
                     " and a.location_id='" + userLocation + "' ";
         }
         if (userRole == 8) {
@@ -52,6 +52,9 @@ public class AppsService {
                     "                         170,\n" +
                     "                         175) \n " +
                     " and ar.inspector_id='" + userId + "' ";
+        }
+        if (userRole == 6) {
+            sqlWhere =" and a.status=160 \n ";
         }
 
         String queryForList = "select\n" +
@@ -195,7 +198,7 @@ public class AppsService {
                 "    a.id=ar.app_id\n" +
                 "where\n" +
                 "    a.isdeleted=0\n" +
-                "and a.status in (120,125,170,175)\n" +
+                "and a.status in (170,175)\n" +
                 "order by\n" +
                 "    a.instime desc";
         return (List<Apps>) entityManager.createNativeQuery(queryForList).getResultList();

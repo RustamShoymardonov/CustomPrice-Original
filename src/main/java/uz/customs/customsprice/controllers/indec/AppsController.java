@@ -103,9 +103,9 @@ public class AppsController {
         sortedList = appsservice.getListSorted();
         mav.addObject("sortedList", sortedList);
 
-//        List<Apps> termsList = new ArrayList<>();
-//        termsList = appsservice.getListTerms();
-//        mav.addObject("termsList", termsList);
+        List<Apps> termsList = new ArrayList<>();
+        termsList = appsservice.getListTerms();
+        mav.addObject("termsList", termsList);
 
         List<Users> usersList = new ArrayList<>();
         usersList = usersService.getByLocationAndPostAndRole(userLocation, userPost, 8);
@@ -162,8 +162,12 @@ public class AppsController {
 
     @PostMapping(value = INITIALDECISIONVIEW)
     @ResponseBody
-    public ModelAndView InitialDecisionView(HttpSession session, @RequestParam String app_id) {
+    public ModelAndView InitialDecisionView(HttpSession session,HttpServletRequest request, @RequestParam String app_id) {
         ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionView");
+        ModelAndView mav2 = new ModelAndView("resources/pages/InitialDecision/InitialDecisionView");
+        Integer userRole = (Integer) request.getSession().getAttribute("userRole");
+        Apps apps = new Apps();
+        apps = appsservice.findById(app_id);
 
         List<Apps> InitialDecisionViewApp = appsservice.getInitialDecisionView(app_id);
         mav.addObject("appInfo", InitialDecisionViewApp);
@@ -174,6 +178,10 @@ public class AppsController {
         List<TransportType> getInDecViewTrType = transportTypeService.getByAppId(app_id);
         mav.addObject("transports", getInDecViewTrType);
 
+        /**Агар роли хбб бошлиги бўлса ва ариза статуси 145 бўлса тасдиқланмаган қарор html кўринади**/
+//        if (userRole == 6 && apps.getStatus() == 145){
+//            return mav2;
+//        }
         return mav;
     }
 
@@ -181,6 +189,7 @@ public class AppsController {
     @ResponseBody
     public ModelAndView InitialDecisionRollBack(HttpServletRequest request, @RequestParam String appId, @RequestParam String commentRollback, @RequestParam String rollback_ids,
                                                 @RequestParam String rollback_names, @RequestParam Integer statusApp) {
+        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionRasp");
 
         String userId = (String) request.getSession().getAttribute("userId");
         String userName = (String) request.getSession().getAttribute("userName");
@@ -208,8 +217,6 @@ public class AppsController {
             rollBackApp.setRollbackName(rollback_nameArr[i]);
             rollBackAppService.saveRollBack(rollBackApp);
         }
-
-        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionRasp");
 
         List<Apps> notSortedList = new ArrayList<>();
         notSortedList = appsservice.getListNotSorted(request, userLocation, userPost, userId, userRole);

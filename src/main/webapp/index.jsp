@@ -74,13 +74,9 @@
                     <div class="menu_section">
                         <ul class="nav side-menu menu_fixed">
                             <li><a href="javascript:ListClassProduct(0)"><i class="fa fa-bar-chart-o"></i>Товарларни тоифалаш</a></li>
-
-                            <%if (userRole == 1 || userRole == 7 || userRole == 8){%> <%--todo (ҲББ Тўловлар бошлиғи ҳамда ҲББ Тўловлар ходими менюси)--%>
+                            <%if (userRole == 1 || userRole == 7 || userRole == 8 || userRole == 6){%> <%--todo (ҲББ Тўловлар бошлиғи ҳамда ҲББ Тўловлар ходими менюси)--%>
                             <li><a href="javascript:InitialDecisionRasp(0)"><i class="fa fa-edit"></i>Дастлабки қарор</a></li>
                             <%}%>
-<%--                            <%if (userRole == 1 || userRole == 8){%> &lt;%&ndash;todo (ҲББ Тўловлар ходими)&ndash;%&gt;--%>
-<%--                            <li><a href="javascript:InitialDecision(0)"><i class="fa fa-edit"></i>Дастлабки қарор</a>--%>
-<%--                            <%}%>--%>
                             <li><a href="javascript:ErrorMessage(0)"><i class="fa fa-desktop"></i>Қиймат мониторинги</a></li>
                             <li><a href="javascript:ErrorMessage(0)"><i class="fa fa-sitemap"></i>Мантиқий назорат</a></li>
                             <li><a href="javascript:ErrorMessage(0)"><i class="fa fa-laptop"></i>Халқаро сўровнома</a></li>
@@ -209,7 +205,7 @@
         </div>
     </div>
     <%--todo Асосий----------------------------------------------------қисми------------------------дан--%>
-    <div class="right_col" id="MainContent" role="main">
+    <div class="right_col" id="MainContent" role="main" style="min-height: 850px!important;">
         <%--todo страницаларни чақириш жойи--%>
     </div>
     <%--todo Асосий----------------------------------------------------қисми------------------------гача--%>
@@ -220,6 +216,68 @@
 <script src="<%=request.getContextPath()%>/resources/src/js/chartjs.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/vendors/iCheck/icheck.min.js"></script>
+
+<style>
+    body {
+        margin: 0;
+    }
+
+    .preloader {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        background-color: #21D4FD;
+        background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+        z-index: 1001;
+        color: #eee;
+    }
+
+    .preloader__image {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        width: 70px;
+        height: 70px;
+        margin-top: -35px;
+        margin-left: -35px;
+        text-align: center;
+        animation: preloader-rotate 2s infinite linear;
+    }
+
+    @keyframes preloader-rotate {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .loaded_hiding .preloader {
+        transition: 0.3s opacity;
+        opacity: 0;
+    }
+
+    .loaded .preloader {
+        display: none;
+    }
+</style>
+<div class="preloader">
+    <svg class="preloader__image" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path fill="currentColor"
+              d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z">
+        </path>
+    </svg>
+</div>
+<script>
+    window.onload = function () {
+        document.body.classList.add('loaded_hiding');
+        window.setTimeout(function () {
+            document.body.classList.add('loaded');
+            document.body.classList.remove('loaded_hiding');
+        }, 500);
+    }
+</script>
 <script>
     $(document).ready(function () {
         var dataS = {
@@ -275,6 +333,12 @@
             url: "<%=request.getContextPath()%>/apps/resources/pages/InitialDecision/InitialDecisionRasp",
             dataType: "html",
             header: 'Content-type: text/html; charset=utf-8',
+            beforeSend: function(){
+                $("#loading").show();
+            },
+            complete: function(){
+                $("#loading").hide();
+            },
             success: function (res) {
                 $('div#MainContent').html(res);
             },

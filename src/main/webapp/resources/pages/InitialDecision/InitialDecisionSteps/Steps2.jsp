@@ -121,7 +121,7 @@
 
 
             <div class="col-md-12 col-sm-3  form-group has-feedback mt-3">
-                <textarea readonly id="message" required="required" placeholder="Қўшимча маълумотлар " class="form-control" name="message">${var.extraInfo}</textarea>
+                <textarea class="resizable_textarea form-control mt-1" placeholder="Қўшимча маълумот " rows="3" style="max-height: 300px; min-height: 100px; width:100%" readonly id="message" name="commentRollback">${var.extraInfo}</textarea>
             </div>
 
             <!-- Усул тури Modal -->

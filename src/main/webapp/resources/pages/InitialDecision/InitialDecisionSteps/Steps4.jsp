@@ -14,12 +14,6 @@
 <%
     String HS_NM_FULL = "";
 %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-
 <div id="step4" class="shadow p-3 mb-5 bg-white rounded x_panel" style="height: auto">
     <div class="x_title">
         <h2>Ариза бўйича қарор<small>4-қадам</small></h2>
@@ -74,7 +68,6 @@
             </div>
             <button type="button" class="btn btn-success ml-2" onclick="javascript:InDecConfirm('145')">Жўнатиш</button>
             <!-- Add rows button-->
-
             <script>
                 $(function () {
 
@@ -113,14 +106,13 @@
                 });
             </script>
             <!-- -->
-
         </div>
         <div id="profile1" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade py-4">
             <!-- Text editor -->
             <h4 style="text-align: center">Аризани қайтариш сабаблари</h4>
             <form method="post" class="border-primary" id="fm1" name="fm1">
                 <br>
-                <div class="col-md-8 col-sm-8  form-group has-feedback">
+                <div class="col-md-9 col-sm-9  form-group has-feedback">
                     <div class="form-group pmd-textfield pmd-textfield-floating-label border border-primary">
                         <select placeholder="Сана: дан" class="form-control" type="text" name="HS_NM" id="HS_NM">
                             <option></option>
@@ -133,7 +125,7 @@
                 <div class="form-group" style="float: left; clear: none;">
                     <button class="btn btn-primary" style="padding: 5px 5px;" type="button"
                             onclick="addT_HS_NM(/*$('#HS_NM').val() + ' - ' + */$('#HS_NM option:selected').text())">
-                        <i class="fa fa-save icons" style="color:#ffffff;font-size:13px;"></i> <span class="lang">Қўшиш</span>
+                        <i class="fa fa-save icons" style="color:#ffffff;font-size:13px;"></i> <span class="lang">Сабабни Қўшиш</span>
                     </button>
                     <button class="btn btn-primary" style="padding: 5px 5px;" type="button"
                             onclick="ClearT_HS_NM()">
@@ -149,12 +141,12 @@
                     <textarea class="form-control input-sm" rows="2" id="HS_CD_FULL" name="HS_CD_FULL" maxlength="150"
                               style="width:85%"><%--<%=HS_CD_FULL%>--%></textarea>
                 </div>
-                <div class="col-md-6">
-                    <textarea class="form-control input-sm" rows="4" id="HS_NM_FULLS" name="HS_NM_FULLS" maxlength="150"
+                <div class="col-md-6 border-primary" style="border-style: dashed double none">
+                    <textarea class="form-control input-sm mt-1" rows="4" id="HS_NM_FULLS" name="HS_NM_FULLS" maxlength="150"
                               style="width:100%" readonly></textarea>
                 </div>
-                <div class="col-md-6">
-                    <textarea class="resizable_textarea form-control" placeholder="Қўшимча маълумот киритиш учун... " rows="4"
+                <div class="col-md-6 border-primary" style="border-style: dashed double none">
+                    <textarea class="resizable_textarea form-control mt-1" placeholder="Қўшимча маълумот киритиш учун... " rows="4"
                               style="max-height: 300px;width:100%" id="commentRollback" name="commentRollback"></textarea>
                 </div>
             </form>
@@ -166,7 +158,7 @@
             <h4 style="text-align: center">Аризани қайтариш сабаблари ва тузатиш киритиладиган бўлимлар</h4>
             <form method="post" class="border-primary" id="fm2" name="fm2">
                 <br>
-                <div class="col-md-8 col-sm-8  form-group has-feedback">
+                <div class="col-md-9 col-sm-9  form-group has-feedback">
                     <div class="form-group pmd-textfield pmd-textfield-floating-label border border-primary">
                         <select placeholder="Сана: дан" class="form-control" type="text" name="HS_NM" id="HS_NM2">
                             <option></option>
@@ -179,7 +171,7 @@
                 <div class="form-group" style="float: left; clear: none;">
                     <button class="btn btn-primary" style="padding: 5px 5px;" type="button"
                             onclick="addT_HS_NM2(/*$('#HS_NM').val() + ' - ' + */$('#HS_NM2 option:selected').text())">
-                        <i class="fa fa-save icons" style="color:#ffffff;font-size:13px;"></i> <span class="lang">Қўшиш</span>
+                        <i class="fa fa-save icons" style="color:#ffffff;font-size:13px;"></i> <span class="lang">Сабабни Қўшиш</span>
                     </button>
                     <button class="btn btn-primary" style="padding: 5px 5px;" type="button"
                             onclick="ClearT_HS_NM2()">
@@ -196,11 +188,11 @@
                               style="width:85%"><%--<%=HS_CD_FULL%>--%></textarea>
                 </div>
                 <div class="col-md-6 border-primary" style="border-style: dashed double none">
-                        <textarea class="form-control input-sm" rows="4" id="HS_NM_FULLS2" name="HS_NM_FULLS" maxlength="150"
+                        <textarea class="form-control input-sm mt-1" rows="4" id="HS_NM_FULLS2" name="HS_NM_FULLS" maxlength="150"
                                   style="width:100%" readonly></textarea>
                 </div>
                 <div class="col-md-6 border-primary" style="border-style: dashed double none">
-                        <textarea class="resizable_textarea form-control" placeholder="Қўшимча маълумот киритиш учун... " rows="4"
+                        <textarea class="resizable_textarea form-control mt-1" placeholder="Қўшимча маълумот киритиш учун... " rows="4"
                                   style="max-height: 300px;width:100%" id="commentRollback2" name="commentRollback"></textarea>
                 </div>
             </form>
@@ -211,8 +203,13 @@
     <!-- End bordered tabs -->
 </div>
 
-</body>
-</html>
+<link href="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
+
+<script src="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.js"></script>
+<script src="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.buttons.js"></script>
+<script src="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.nonblock.js"></script>
 
 <script>
     function appRollback(statusApp) {
@@ -404,7 +401,6 @@
                         dataType: "html",
                         header: 'Content-type: text/html; charset=utf-8',
                         success: function (res) {
-                            var typeMessage = '';
                             $('div#MainContent').html(res);
                         },
                         error: function (res) {
@@ -510,6 +506,17 @@
         HS_CD_FULL.value = "";
     };
 
+    var gtkXTButton2 = document.querySelector("#gtkXTButton2");
+    var HS_NM_FULL2 = document.querySelector("#HS_NM_FULL2");
+    var HS_NM_FULLS2 = document.querySelector("#HS_NM_FULLS2");
+    var HS_CD_FULL2 = document.querySelector("#HS_CD_FULL2");
+    gtkXTButton2.onclick = function () {
+        HS_NM_FULL2.value = "";
+        HS_NM_FULLS2.value = "";
+        HS_CD_FULL2.value = "";
+    };
+
+    /*------------------------------*/
     /* Ариза тафсилоти */
     function InDecConfirm(status) {
         var dataS = {
@@ -517,21 +524,58 @@
             "appId": $('#appId').val(),
             "status": status
         }
-        // alert(status + ',\n appId == ' + $('#appId').val() + ',\n cmdtId == ' + $('#cmdtId').val());
-        $.ajax({
-            type: "POST",
-            data: dataS,
-            url: "<%=request.getContextPath()%>/saveInDec/resources/pages/InitialDecision/InitialDecisionConfirm",
-            dataType: "html",
-            header: 'Content-type: text/html; charset=utf-8',
-            success: function (res) {
-                $('div#MainContent').html(res);
+
+        /*-------------------------------*/
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
             },
-            error: function (res) {
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Аризани тасдиқлаш учун жўнатишни хоҳлайсизми?',
+            text: "Сиз ушбу ариза бўйича қарор қабул қилмоқдасиз!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Ха, жўнатишни тасдиқлайман!',
+            cancelButtonText: 'Йўқ, қайта кўриб чиқаман!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire(
+                    'Ариза тасдиқлаш учун жўнатилди!',
+                    'Ушбу ариза худудий бошқарма тўловлар бўлими бошлиғига тасдиқлаш учун юборилди',
+                    'success'
+                )
+                $.ajax({
+                    type: "POST",
+                    data: dataS,
+                    url: "<%=request.getContextPath()%>/saveInDec/resources/pages/InitialDecision/InitialDecisionConfirm",
+                    dataType: "html",
+                    header: 'Content-type: text/html; charset=utf-8',
+                    success: function (res) {
+                        $('div#MainContent').html(res);
+                    },
+                    error: function (res) {
+                    }
+                });
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Амал рад этилди!',
+                    'Сақлаш амалга оширилмади',
+                    'error'
+                )
             }
-        });
+        })
+
     }
+
 
 </script>
 <script src="<%=request.getContextPath()%>/resources/build/js/alertMessages.js"></script>
-

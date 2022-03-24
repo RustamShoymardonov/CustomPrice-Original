@@ -27,7 +27,7 @@
 
 <div class="row">
     <div class="col-md-12 col-sm-12 ">
-        <div class="x_panel shadow-lg">
+        <div class="x_panel shadow-lg" style="min-height: 850px">
             <div class="row w-100" style="display: inline-block;">
                 <div class="tile_count w-100">
                     <div>
@@ -329,48 +329,64 @@
 
                 <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
 
+                    <%if (userRole == 6) {%>
+                        <%--todo ------------------------------------------------------------------------------------------------------%>
+                        <%--todo --------------- Мурожаатлар (Тақсимланган мурожаатлар - инспектор учун) ------------------------------%>
+                        <%--todo ------------------------------------------------------------------------------------------------------%>
+                        <li class="nav-item ml-4" style="width: 47%">
+                            <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
+                        </li>
+
+                        <%--todo ----------------------------------------------------------------------------%>
+                        <%--todo --------------- Дастлабки қарор реестри  - инспектор учун ------------------%>
+                        <%--todo ----------------------------------------------------------------------------%>
+                        <li class="nav-item" style="width: 47%">
+                            <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки
+                                қарор реестри</a>
+                        </li>
+                    <%}%>
+
+
                     <%if (userRole == 8) {%>
+                        <%--todo ------------------------------------------------------------------------------------------------------%>
+                        <%--todo --------------- Мурожаатлар (Тақсимланган мурожаатлар - инспектор учун) ------------------------------%>
+                        <%--todo ------------------------------------------------------------------------------------------------------%>
+                        <li class="nav-item ml-4" style="width: 47%">
+                            <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
+                        </li>
 
-                    <%--todo ------------------------------------------------------------------------------------------------------%>
-                    <%--todo --------------- Мурожаатлар (Тақсимланган мурожаатлар - инспектор учун) ------------------------------%>
-                    <%--todo ------------------------------------------------------------------------------------------------------%>
-                    <li class="nav-item ml-4" style="width: 47%">
-                        <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
-                    </li>
+                        <%--todo ----------------------------------------------------------------------------%>
+                        <%--todo --------------- Дастлабки қарор реестри  - инспектор учун ------------------%>
+                        <%--todo ----------------------------------------------------------------------------%>
+                        <li class="nav-item" style="width: 47%">
+                            <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки
+                                қарор реестри</a>
+                        </li>
+                    <%}%>
+                    <%if (userRole != 8 && userRole != 6) {%>
+                        <%--todo ----------------------------------------------------------%>
+                        <%--todo --------------- Мурожаатлар ------------------------------%>
+                        <%--todo ----------------------------------------------------------%>
+                        <li class="nav-item ml-5" style="width: 30%">
+                            <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                               aria-controls="home" aria-selected="true"><i class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
+                        </li>
 
-                    <%--todo ----------------------------------------------------------------------------%>
-                    <%--todo --------------- Дастлабки қарор реестри  - инспектор учун ------------------%>
-                    <%--todo ----------------------------------------------------------------------------%>
-                    <li class="nav-item" style="width: 47%">
-                        <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки
-                            қарор реестри</a>
-                    </li>
-
-                    <%} else {%>
-
-                    <%--todo ----------------------------------------------------------%>
-                    <%--todo --------------- Мурожаатлар ------------------------------%>
-                    <%--todo ----------------------------------------------------------%>
-                    <li class="nav-item ml-5" style="width: 30%">
-                        <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                           aria-controls="home" aria-selected="true"><i class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
-                    </li>
-
-                    <%--todo ----------------------------------------------------------%>
-                    <%--todo --------------- Тақсимланган мурожаатлар -----------------%>
-                    <%--todo ----------------------------------------------------------%>
-                    <li class="nav-item ml-4" style="width: 30%">
-                        <a class="nav-link h4" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                           aria-controls="contact" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Тақсимланган мурожаатлар
-                        </a>
-                    </li>
-                    <%--todo ----------------------------------------------------------%>
-                    <%--todo --------------- Дастлабки қарор реестри ------------------%>
-                    <%--todo ----------------------------------------------------------%>
-                    <li class="nav-item ml-4" style="width: 30%">
-                        <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                           aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки қарор реестри</a>
-                    </li>
+                        <%--todo ----------------------------------------------------------%>
+                        <%--todo --------------- Тақсимланган мурожаатлар -----------------%>
+                        <%--todo ----------------------------------------------------------%>
+                        <li class="nav-item ml-4" style="width: 30%">
+                            <a class="nav-link h4" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                               aria-controls="contact" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Тақсимланган мурожаатлар
+                            </a>
+                        </li>
+                        <%--todo ----------------------------------------------------------%>
+                        <%--todo --------------- Дастлабки қарор реестри ------------------%>
+                        <%--todo ----------------------------------------------------------%>
+                        <li class="nav-item ml-4" style="width: 30%">
+                            <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                               aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки қарор реестри</a>
+                        </li>
                     <%}%>
 
                 </ul>
@@ -396,8 +412,10 @@
                                         <th style="border-style: dotted">Савдо қилувчи</th>
                                         <th style="border-style: dotted">Ишлаб чиқарувчи</th>
                                         <th style="border-style: dotted">Сотувчи мамлакат</th>
+                                        <%if (userRole == 7) {%>
                                         <th style="border-style: dotted">Ходим</th>
                                         <th style="border-style: dotted">Тақсимлаш</th>
+                                        <%}%>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -416,8 +434,8 @@
                                             <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>
                                             <td>${notSorted.customerCountry}-${notSorted.customerCountryNm}</td>
                                             <td>${notSorted.senderCountry}-${notSorted.senderCountryNm}</td>
+                                            <%if (userRole == 7) {%>
                                             <td>
-                                                <%if (userRole == 7) {%>
                                                 <select class="form-control" id="userIdF_${i.index + 1}"
                                                         name="userId_${i.index + 1}">
                                                     <option value="notSelected"></option>
@@ -426,16 +444,16 @@
                                                         <option value="${userSelect.id}">${userSelect.userName}</option>
                                                     </c:forEach>
                                                 </select>
-                                                <%}%>
                                             </td>
                                             <th style="border-style: dotted">
-                                                <%if (userRole == 7) {%>
+
                                                 <button type="button" class="btn btn-success btn-block"
                                                         onclick="saveInDecRaspIns('${notSorted.id}', $('#userIdF_${i.index + 1}').val(), ${i.index + 1})">
                                                     <i class="fa fa-send" style="color: #f3da35"></i><i class="fa fa-arrow-right" aria-hidden="true"></i><i class="fa fa-user" aria-hidden="true"></i>
                                                 </button>
-                                                <%}%>
+
                                             </th>
+                                            <%}%>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -509,6 +527,7 @@
                                         <th style=" border-style: dotted">Етказиб бериш шарти</th>
                                         <th style=" border-style: dotted">Бекор қилиш санаси</th>
                                         <th style=" border-style: dotted">Инспектор</th>
+                                        <th style=" border-style: dotted">Pdf</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -526,6 +545,8 @@
                                             <td>${terms[9]}-${terms[8]}</td>
                                             <td>${terms[9]}-${terms[8]}</td>
                                             <td>${terms[30]}</td>
+                                            <td><a href="<%=request.getContextPath()%>generate?id=${terms[0]}"
+                                                   class="text-primary font-weight-bold"><u>${terms[6]}</u></a></td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -537,16 +558,8 @@
             </div>
         </div>
     </div>
-    <i class="fa-regular fa-folder-open"></i>
-</div>
 
-<%--<button id="messageSucces" style="display: none;" class="btn btn-secondary source" onclick="new PNotify({--%>
-<%--                                  title: 'Ариза муваффақиятли тақсимланди',--%>
-<%--                                  text: 'That thing that you were trying to do worked!',--%>
-<%--                                  type: 'success',--%>
-<%--                                  styling: 'bootstrap3'--%>
-<%--                              });">Success--%>
-<%--</button>--%>
+</div>
 
 <link href="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
 <link href="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
@@ -583,7 +596,7 @@
                 } else {
                     typeMessage = 'success';
                     titletexts = 'Ариза мувофақиятли сақланди!';
-                    textText = 'Ариза  га тақсимланди';
+                    textText = 'Ариза ' +inspectorName+' га тақсимланди';
                 }
                 $('div#MainContent').html(res);
                 // $('button#messageSucces').css({'display': ''});
@@ -651,6 +664,4 @@
             }
         });
     });
-
-
 </script>
