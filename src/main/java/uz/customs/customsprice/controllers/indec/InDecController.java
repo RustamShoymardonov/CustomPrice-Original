@@ -1,5 +1,6 @@
 package uz.customs.customsprice.controllers.indec;
 
+import com.itextpdf.text.BadElementException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +10,8 @@ import uz.customs.customsprice.entity.InitialDecision.*;
 import uz.customs.customsprice.service.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +30,7 @@ public class InDecController {
     private final LocationService locationService;
     private final StatusService statusService;
     private final UsersService usersService;
+    private final PdfService pdfService;
 
     private final String INITIALDECISIONCONFIRMCMDT = "/resources/pages/InitialDecision/InitialDecisionConfirm";
     private final String INITIALDECISIONTOHTMl = "/resources/pages/InitialDecision/Qaror";
@@ -34,7 +38,7 @@ public class InDecController {
     private final String INITIALDECISIONCONFIRMXBBFINISH = "/resources/pages/InitialDecision/InitialDecisionConfirXBBFinish";
 
 
-    public InDecController(InDecService inDecService, AppsService appsService, AppsService appsservice, CommodityService commodityService, ConturyService conturyService, MethodService methodService, PackagingService packagingService, Tnved2Service tnved2Service, LocationService locationService, StatusService statusService, UsersService usersService) {
+    public InDecController(InDecService inDecService, AppsService appsService, AppsService appsservice, CommodityService commodityService, ConturyService conturyService, MethodService methodService, PackagingService packagingService, Tnved2Service tnved2Service, LocationService locationService, StatusService statusService, UsersService usersService, PdfService pdfService) {
         this.inDecService = inDecService;
         this.appsService = appsService;
         this.appsservice = appsservice;
@@ -46,6 +50,7 @@ public class InDecController {
         this.locationService = locationService;
         this.statusService = statusService;
         this.usersService = usersService;
+        this.pdfService = pdfService;
     }
 
     @PostMapping(value = INITIALDECISIONCONFIRMCMDT)
@@ -160,7 +165,7 @@ public class InDecController {
     }
 
     @PostMapping(value = INITIALDECISIONCONFIRMXBBFINISH)
-    public ModelAndView saveFromXBB(InDec inDec, HttpServletRequest request, @RequestParam String cmdtId, @RequestParam String appId) {
+    public ModelAndView saveFromXBB(InDec inDec, HttpServletRequest request, @RequestParam String cmdtId, @RequestParam String appId) throws IOException, BadElementException {
         ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionRasp");
 
         String userId = (String) request.getSession().getAttribute("userId");
@@ -195,7 +200,7 @@ public class InDecController {
         usersList = usersService.getByLocationAndPostAndRole(userLocation, userPost, 8);
         mav.addObject("userSelectList", usersList);
         /** mav object end **/
-
+        pdfService.createPdf(appId, cmdtId);
         return mav;
     }
 }

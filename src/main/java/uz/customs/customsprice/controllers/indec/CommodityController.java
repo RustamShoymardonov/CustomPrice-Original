@@ -92,6 +92,7 @@ public class CommodityController {
 
                 /** Агар ариза хбб тўл.бош томонидан хбб бош га имзолашга жўнатилган бўлса **/
                 if (apps.getStatus() == 160 && userRole == 6){
+                    mav6.addObject("cmdtId", COMMODITY_ID);
                     mav = mav6;
                 }
                 else if (apps.getStatus() == 160 && userRole != 6){

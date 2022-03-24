@@ -2,8 +2,6 @@ package uz.customs.customsprice.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import uz.customs.customsprice.entity.files.Docs;
-
-import javax.print.Doc;
 import java.util.Optional;
 
 

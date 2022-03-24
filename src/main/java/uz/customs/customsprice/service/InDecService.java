@@ -1,6 +1,7 @@
 package uz.customs.customsprice.service;
 
 import org.springframework.stereotype.Service;
+import uz.customs.customsprice.entity.InitialDecision.Commodity;
 import uz.customs.customsprice.entity.InitialDecision.InDec;
 import uz.customs.customsprice.repository.InDecRepo;
 
@@ -16,6 +17,11 @@ public class InDecService {
     public InDecService(InDecRepo inDecRepo) {
         this.inDecRepo = inDecRepo;
     }
+
+    public InDec getByCmtdId(String cmtdId){
+        return inDecRepo.findByCmdtId(cmtdId);
+    }
+
 
 //    public InDec saveInDec(InDec inDec) {
 //        return inDecRepo.save(inDec);

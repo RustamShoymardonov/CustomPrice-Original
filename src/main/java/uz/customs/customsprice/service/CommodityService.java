@@ -17,6 +17,10 @@ public class CommodityService {
         this.commodityRepo = commodityRepo;
     }
 
+    public Commodity getByAppId(String appId){
+        return commodityRepo.findByAppId(appId);
+    }
+
     @PersistenceContext
     private EntityManager entityManager;
 

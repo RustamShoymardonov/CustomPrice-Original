@@ -1,71 +1,230 @@
 package uz.customs.customsprice.service;
 
 
-import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.*;
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.pdf.BarcodeQRCode;
+import com.itextpdf.text.pdf.BaseFont;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
+import org.thymeleaf.templatemode.TemplateMode;
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+import org.xhtmlrenderer.pdf.ITextRenderer;
+import uz.customs.customsprice.entity.InitialDecision.Apps;
+import uz.customs.customsprice.entity.InitialDecision.Commodity;
+import uz.customs.customsprice.entity.InitialDecision.InDec;
+import uz.customs.customsprice.entity.files.DecisionPdf;
+
+import java.io.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Optional;
 
 
 @Service
 public class PdfService {
-    private final StatusService statusService;
+    public final String DATA_DIRECTORY = "D:\\IN_DEC_FILES\\DECISION_PDF\\";
 
-    public PdfService(StatusService statusService) {
-        this.statusService = statusService;
+    private final AppsService appsService;
+    private final CommodityService commodityService;
+    private final InDecService inDecService;
+    private final DecisionPdfService decisionPdfService;
+
+    public PdfService(AppsService appsService, CommodityService commodityService, InDecService inDecService, DecisionPdfService decisionPdfService) {
+        this.appsService = appsService;
+        this.commodityService = commodityService;
+        this.inDecService = inDecService;
+        this.decisionPdfService = decisionPdfService;
     }
 
-    public void export(HttpServletResponse response, String arizaRaqam) throws IOException, DocumentException {
+    public void createPdf(String appId, String cmdtId) throws IOException, BadElementException {
+        Resource resource = null;
+        Apps apps = new Apps();
+        apps = appsService.findById(appId);
+        ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+        templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode(TemplateMode.HTML);
+        TemplateEngine templateEngine = new TemplateEngine();
+        templateEngine.setTemplateResolver(templateResolver);
 
-        Document document =  new Document(PageSize.A4);
-        PdfWriter.getInstance(document, response.getOutputStream());
+        BarcodeQRCode qrCode = new BarcodeQRCode("http://youtube.com", 150, 150, null);
+        Image img = qrCode.getImage();
+        img.setAbsolutePosition(100, 20);
 
-        document.open();
-
-        Font fontTitle  = FontFactory.getFont("arialuni.ttf", "cp1251", 14);
-
-        Paragraph paragraph = new Paragraph("Ўзбекистон Республикасига олиб кириладиган товарлар бўйича тўланиши лозим бўлган божхона тўловлари миқдорини аниқлаш бўйича дастлабки қарор", fontTitle);
-        paragraph.setAlignment(Paragraph.ALIGN_JUSTIFIED_ALL);
-
-//        Chunk id = new Chunk("Text", fontTitle);
-//        id.setBackground(BaseColor.RED, 1f, 0.5f, 1f, 1.5f);
-
-        Image image = Image.getInstance("src/main/webapp/resources/images/gtk.jpg");
-        image.scaleAbsolute(50, 50);
-        image.setAbsolutePosition(70, 760);
-
-        BarcodeQRCode qrCode = new BarcodeQRCode("http://youtube.com", 70, 70, null);
-        Image img = qrCode.getImage();;
-        img.setAbsolutePosition(500, 800);
+        Context context = new Context();
+        context.setVariable("appsDate", appsService.findById(appId));
+        context.setVariable("img", img);
+        String processHtml = templateEngine.process("templates/PdfGenerate.html", context);
 
 
-        PdfPTable table1 = new PdfPTable(2);
-        PdfPTable table2 = new PdfPTable(2);
+//        String url = "D:/Declaration";
+        String urlTTF = "TimesNewRoman.ttf";
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate = dateFormat.format(date);
+        LocalDate currentDate = LocalDate.parse(strDate);
+        String day = Integer.toString(currentDate.getDayOfMonth());
+        String month = Integer.toString(currentDate.getMonthValue());
+        String year = Integer.toString(currentDate.getYear());
+        String appFolder = apps.getAppNum();
 
-        PdfPCell cell11 = new PdfPCell(new Paragraph("1. Дастлабки қарорни рўйхатга олиш рақами ва санаси"));
-        PdfPCell cell12 = new PdfPCell(new Paragraph(arizaRaqam));
-        PdfPCell cell21 = new PdfPCell(new Paragraph("2. Дастлабки қарорни қабул қилган божхона органининг номи"));
-        PdfPCell cell22 = new PdfPCell(new Paragraph(arizaRaqam));
+        String hash256 = "";
 
-        /******/
-        /******/
+        File folder = new File(DATA_DIRECTORY);
+
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+        File sv_dir = new File(DATA_DIRECTORY + year);
+        if (!sv_dir.exists()) sv_dir.mkdir();
+        sv_dir = new File(DATA_DIRECTORY + year + "\\" + month);
+        if (!sv_dir.exists()) sv_dir.mkdir();
+        sv_dir = new File(DATA_DIRECTORY + year + "\\" + month + "\\" + day);
+        if (!sv_dir.exists()) sv_dir.mkdir();
+        sv_dir = new File(DATA_DIRECTORY + year + "\\" + month + "\\" + day + "\\" + apps.getAppNum());
+        if (!sv_dir.exists()) sv_dir.mkdir();
+
+        OutputStream outputStream = new FileOutputStream(sv_dir.getPath() + "/" + apps.getAppNum() + ".pdf");
+        ITextRenderer renderer = new ITextRenderer();
+        renderer.getFontResolver().addFont(urlTTF, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+        renderer.setDocumentFromString(processHtml);
+        renderer.layout();
+
+        DecisionPdf decisionPdf = new DecisionPdf();
+        InDec inDec = inDecService.getByCmtdId(cmdtId);
+        Optional<Commodity> commodity = commodityService.getById(cmdtId);
+
+        decisionPdf.setCmdtId(cmdtId);
+        decisionPdf.setInDecId(inDec.getId());
+        decisionPdf.setPdfPath(sv_dir.getPath() + "/" + inDec.getInDecNum() + ".pdf");
+        String pdfFormat = "application/pdf";
+        decisionPdf.setPdfFormat(pdfFormat);
+        decisionPdf.setPdfName("InDec" + "-" + commodity.get().getCmdtNum() + "-" + inDec.getInDecNum() + ".pdf");
+        decisionPdfService.saveDecisionPdf(decisionPdf);
 
 
-        table1.addCell(cell11);
-        table1.addCell(cell12);
-        table2.addCell(cell21);
-        table2.addCell(cell22);
-        table1.setSpacingBefore(30f);
+//        renderer.setDocument(String.valueOf(img));
+        renderer.createPDF(outputStream, false);
+        renderer.finishPDF();
+        try {
+            outputStream.close();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
 
-
-
-        document.add(image);
-        document.add(paragraph);
-        document.add(table1);
-        document.add(table2);
-        document.add(img);
-        document.close();
 
     }
+
+    private static String GetHash2(InputStream fis) throws IOException, NoSuchAlgorithmException {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+//            FileInputStream fis = new FileInputStream(fileName);
+
+            byte[] dataBytes = new byte[1024];
+
+            int nread = 0;
+            while ((nread = fis.read(dataBytes)) != -1) {
+                md.update(dataBytes, 0, nread);
+            }
+            byte[] mdbytes = md.digest();
+
+            //convert the byte to hex format
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < mdbytes.length; i++) {
+                sb.append(Integer.toString((mdbytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+
+            fis.close();
+            return sb.toString();
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public static String format(double bytes, int digits) {
+        String[] dictionary = {"bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"};
+        int index = 0;
+        for (index = 0; index < dictionary.length; index++) {
+            if (bytes < 1024) {
+                break;
+            }
+            bytes = bytes / 1024;
+        }
+        return String.format("%." + digits + "f", bytes) + " " + dictionary[index];
+    }
+
+    private String str_prb(String par1) {
+        int n = 1;
+        String chck_fn = "qwertyuiopasdfghjklzxcvbnm1234567890-йцукенгшщзхъфывапролджэячсмитьбюёў. ~!@#$%^&*()_+=/|\\';:,№?<>[]{}";
+        String par2 = "";
+        for (n = 0; n < par1.length(); n++) {
+            if (chck_fn.indexOf(par1.substring(n, n + 1).toLowerCase()) > -1) {
+                par2 = par2 + par1.substring(n, n + 1);
+            } else {
+                par2 = par2 + "%";
+            }
+        }
+        return par2;
+    }
+
+
+//        private final AppsService appsService;
+//
+//        public PdfService(AppsService appsService) {
+//                this.appsService = appsService;
+//        }
+//
+//        public void export(HttpServletResponse response, String arizaRaqam, String arizaId) throws IOException, DocumentException {
+//
+//                Apps apps = new Apps();
+//                apps = appsService.findById(arizaId);
+//
+//                Document document =  new Document(PageSize.A4);
+//                PdfWriter.getInstance(document, response.getOutputStream());
+//
+//                document.open();
+//
+//                Font fontTitle  = FontFactory.getFont("uz/customs/customsprice/fonts/DejaVuSans.ttf", "cp1251", 24);
+//
+//                Paragraph paragraph = new Paragraph("DASTLABKI QAROR", fontTitle);
+//                paragraph.setAlignment(Paragraph.ALIGN_CENTER);
+//
+//
+//                Image image = Image.getInstance("src/main/webapp/resources/images/gtk.jpg");
+//                image.scaleAbsolute(50, 50);
+//                image.setAbsolutePosition(70, 760);
+//
+//                BarcodeQRCode qrCode = new BarcodeQRCode("http://youtube.com", 150, 150, null);
+//                Image img = qrCode.getImage();
+//                img.setAbsolutePosition(100, 20);
+//
+//
+//                PdfPTable table = new PdfPTable(3);
+//
+//                PdfPCell cell1 = new PdfPCell(new Paragraph(apps.getStatusNm()));
+//                PdfPCell cell2 = new PdfPCell(new Paragraph("Cell 2"));
+//                PdfPCell cell3 = new PdfPCell(new Paragraph("Cell 3"));
+//
+//                table.addCell(cell1);
+//                table.addCell(cell2);
+//                table.addCell(cell3);
+//                table.setSpacingBefore(30f);
+//                table.setSpacingAfter(10f);
+//
+//
+//
+//                document.add(image);
+//                document.add(paragraph);
+//                document.add(table);
+//                document.add(img);
+//                document.close();
+//
+//        }
 }

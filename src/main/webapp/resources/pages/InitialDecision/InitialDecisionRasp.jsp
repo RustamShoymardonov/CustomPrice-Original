@@ -545,8 +545,7 @@
                                             <td>${terms[9]}-${terms[8]}</td>
                                             <td>${terms[9]}-${terms[8]}</td>
                                             <td>${terms[30]}</td>
-                                            <td><a href="<%=request.getContextPath()%>generate?id=${terms[0]}"
-                                                   class="text-primary font-weight-bold"><u>${terms[6]}</u></a></td>
+                                            <td class=" "><a href="<%=request.getContextPath()%>/decisionPdfDownload?appId=${terms[0]}&cmdtId=${terms[32]}" class="btn btn-primary btn-xs"><i class="fa fa-file-pdf-o"></i></a></td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>

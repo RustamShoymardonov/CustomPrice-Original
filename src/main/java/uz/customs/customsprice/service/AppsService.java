@@ -189,13 +189,19 @@ public class AppsService {
                 "    a.status_nm,\n" + /*28-status_nm*/
                 "    ar.inspector_id inspector_id,\n" + /*29-inspector_id*/
                 "    ar.inspector_name inspector_name,\n" + /*30-inspector_name*/
-                "    a.comment \n" +
+                "    a.comment,\n"  + /*31-comment*/
+                "    cmdt.id cmdt_id \n"  + /*32-cmdt_id*/
                 "from\n" +
                 "    cpid.apps a\n" +
                 "left join\n" +
                 "    cpid.apps_rasp ar\n" +
                 "on\n" +
                 "    a.id=ar.app_id\n" +
+                "left join\n" +
+                "    cpid.commodity cmdt\n" +
+                "on\n" +
+                "    a.id=cmdt.app_id\n" +
+                "    and cmdt.isdeleted=0\n" +
                 "where\n" +
                 "    a.isdeleted=0\n" +
                 "and a.status in (170,175)\n" +
