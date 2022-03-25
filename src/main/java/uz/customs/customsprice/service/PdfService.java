@@ -8,9 +8,8 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.BarcodeQRCode;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
-import org.springframework.core.io.Resource;
+import com.itextpdf.tool.xml.css.CssFile;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -31,10 +30,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Optional;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
-import com.itextpdf.html2pdf.HtmlConverter;
-
-import javax.imageio.stream.FileImageOutputStream;
-import javax.imageio.stream.ImageOutputStream;
 
 
 @Service
@@ -63,10 +58,11 @@ public class PdfService {
 
         BarcodeQRCode qrCode = new BarcodeQRCode("http://youtube.com", 150, 150, null);
         Image img = qrCode.getImage();
+        String url_qrCode = "http://youtube.com";
 
         Context context = new Context();
         context.setVariable("appsDate", appsService.findById(appId));
-        context.setVariable("qrCodeImg", qrCode.getImage());
+        context.setVariable("url_qrCode", url_qrCode);
         String processHtml = templateEngine.process("templates/PdfGenerate.html", context);
 
         String urlTTF = "TimesNewRoman.ttf";
@@ -136,8 +132,10 @@ public class PdfService {
             document.add(img);
 
             XMLWorkerHelper worker = XMLWorkerHelper.getInstance();
+//            CssFile css = XMLWorkerHelper.getCSS();
 
-
+//            worker.getDefaultCSS();
+//            XMLWorkerHelper.
             worker.parseXHtml(pdfWriter, document, new StringReader(processHtml));
             document.close();
             System.out.println("Done.");

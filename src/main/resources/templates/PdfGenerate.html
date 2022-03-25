@@ -45,9 +45,12 @@
                                                     ДАСТЛАБКИ ҚАРОР</h3>
                                             </div>
                                             <div class="col-md-2">
-                                            </div>
-                                            <div class="demo">
-
+                                                <img alt=""
+                                                     class="m-20 w-100 text-center text-c-red"
+                                                     style="width: 200px; height: 200px"
+                                                     id='barcode'
+                                                     th:src="@{${'https://api.qrserver.com/v1/create-qr-code/?data=' + url_qrCode +'&amp;size=200x200'}}"
+                                                     title="${uncodId}"/>
                                             </div>
                                             <div class="col-md-12" style="min-width:300px; overflow-x: auto">
                                                 <table class="tableclass" style=" width: 100%; border: black; border-collapse: collapse; margin-left: auto; margin-right: auto;">
@@ -62,11 +65,11 @@
                                                     </tr>
                                                     <tr>
                                                         <td class="tg-oi4f"><b>2. Дастлабки қарорни қабул қилган божхона органининг номи</b></td>
-                                                        <td class="tg-aboz" th:src="${qrCodeImg}"></td>
+                                                        <td class="tg-aboz">авқпқвапқавп</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="tg-oi4f"><b>3. Манфаатдор шахс</b></td>
-                                                        <td class="tg-aboz" th:text="${qrCodeImg}"></td>
+                                                        <td class="tg-aboz">вақпавқпқавп</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="tg-oi4f"><b>4. Дастлабки қарорнинг амал қилиш муддати</b></td>
