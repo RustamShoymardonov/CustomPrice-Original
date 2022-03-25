@@ -66,6 +66,15 @@
                     </tbody>
                 </table>
             </div>
+            asdsadfdgdfsg
+            <c:forEach var="val" items="${paymenttype}" varStatus="i">
+                ${val.name}
+
+            </c:forEach>
+            <c:forEach var="val" items="${paymttype}" varStatus="i">
+                ${val.spname}
+
+            </c:forEach>
             <button type="button" class="btn btn-success ml-2" onclick="javascript:InDecConfirm('145')">Жўнатиш</button>
             <!-- Add rows button-->
             <script>

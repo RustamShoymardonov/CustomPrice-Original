@@ -11,7 +11,6 @@ import uz.customs.customsprice.utils.Utils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/commodity")
@@ -20,14 +19,19 @@ public class CommodityController {
     private final AppsService appsservice;
     private final RollbackSpService rollbackSpService;
     private final DocsService docsService;
+    private final PaymentTypeService paymentTypeService;
+    private final PaymTypeService paymTypeService;
+
 
     private final String INITIALDECISIONVIEWCMDT = "/resources/pages/InitialDecision/InitialDecisionSteps/Steps";
 
-    public CommodityController(CommodityService commodityService, AppsService appsservice, RollbackSpService rollbackSpService, DocsService docsService) {
+    public CommodityController(CommodityService commodityService, AppsService appsservice, RollbackSpService rollbackSpService, DocsService docsService, PaymentTypeService paymentTypeService, PaymTypeService paymTypeService) {
         this.commodityService = commodityService;
         this.appsservice = appsservice;
         this.rollbackSpService = rollbackSpService;
         this.docsService = docsService;
+        this.paymentTypeService = paymentTypeService;
+        this.paymTypeService = paymTypeService;
     }
 
 
@@ -44,6 +48,7 @@ public class CommodityController {
         ModelAndView mav7 = new ModelAndView("resources/pages/InitialDecision/InitialDecisionSteps/Steps4StatusDefault");
         String COMMODITY_ID = Utils.nullClear(String.valueOf(session.getAttribute("COMMODITY_ID")));
         String APPLICATION_ID = Utils.nullClear(String.valueOf(session.getAttribute("APPLICATION_ID")));
+
         switch (x) {
             case 1:
                 mav1.addObject("commodityF", new Commodity());
@@ -71,10 +76,14 @@ public class CommodityController {
                 Apps apps = appsservice.findById(APPLICATION_ID);
 
                 /** Агар ариза янги бўлса ва фойдаланувчи ёки хбб тўл.ходим ёки хбб тўл.бош бўдса **/
-                if (apps.getStatus() == 110 && (userRole == 8 || userRole == 7)){
+                if (apps.getStatus() == 110 && (userRole == 8)){
                     List<RollbackSp> listRollbackSp = rollbackSpService.getlistRollbackSp();
+                    List<PaymenttypeEntity> paymenttypeEntityList = paymentTypeService.getListPaymentType();
+                    List<PaymtypeEntity> paymtypeEntityList = paymTypeService.getListPaymType();
                     mav4.addObject("rollbackInfo", listRollbackSp);
                     mav4.addObject("cmdtId", COMMODITY_ID);
+                    mav4.addObject("paymenttype", paymenttypeEntityList);
+                    mav4.addObject("paymttype", paymtypeEntityList);
                     mav = mav4;
                 }
                 else if (apps.getStatus() == 110 && (userRole != 8 || userRole != 7)){
