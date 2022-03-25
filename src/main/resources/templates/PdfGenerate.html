@@ -40,8 +40,14 @@
                                             <div class="col-md-2">
                                             </div>
                                             <div class="col-md-8">
-                                                <h3 th:text="${appsDate.getAppDate()}"></h3>
-                                                <h2 th:data="${img}"></h2>
+                                                <h3>Ўзбекистон Республикасига олиб кириладиган товарлар бўйича
+                                                    тўланиши лозим бўлган божхона тўловлари миқдорини аниқлаш бўйича
+                                                    ДАСТЛАБКИ ҚАРОР</h3>
+                                            </div>
+                                            <div class="col-md-2">
+                                            </div>
+                                            <div class="demo">
+
                                             </div>
                                             <div class="col-md-12" style="min-width:300px; overflow-x: auto">
                                                 <table class="tableclass" style=" width: 100%; border: black; border-collapse: collapse; margin-left: auto; margin-right: auto;">
@@ -52,15 +58,15 @@
                                                     <tbody>
                                                     <tr>
                                                         <td class="tg-oi4f"><b>1. Дастлабки қарорни рўйхатга олиш рақами ва санаси</b></td>
-                                                        <td class="tg-aboz">авқвпавпақв</td>
+                                                        <td class="tg-aboz" th:text="${appsDate}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="tg-oi4f"><b>2. Дастлабки қарорни қабул қилган божхона органининг номи</b></td>
-                                                        <td class="tg-aboz">авқпқвапқавп</td>
+                                                        <td class="tg-aboz" th:src="${qrCodeImg}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="tg-oi4f"><b>3. Манфаатдор шахс</b></td>
-                                                        <td class="tg-aboz">вақпавқпқавп</td>
+                                                        <td class="tg-aboz" th:text="${qrCodeImg}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="tg-oi4f"><b>4. Дастлабки қарорнинг амал қилиш муддати</b></td>
@@ -73,24 +79,57 @@
                                                     <tr>
                                                         <td class="tg-oi4f" colspan="2">
                                                             <b>6. Товарлар номи ва тавсифи</b>
-                                                            <span style="font-style:italic">
-                                                                1. Тижорат номи</span><span style="font-style:italic">
-                                                                2. Савдо белгиси</span><span style="font-style:italic">
-                                                                3. Маркаси</span><span style="font-style:italic">
-                                                                4. Модели</span><span style="font-style:italic">
-                                                                5. Артикули</span><span style="font-style:italic">
-                                                                6. Нави</span><span style="font-style:italic">
-                                                                7. Стандарти</span><span style="font-style:italic">
-                                                                8. Ранги</span><span style="font-style:italic">
-                                                                9. Фойдаланиш мақсади</span><span style="font-style:italic">
-                                                                10. Тижорат хцусусияти</span><span style="font-style:italic">
-                                                                11. Техник хусусияти</span><span style="font-style:italic">
-                                                                12. Юк жойларининг умумий сони</span><span style="font-style:italic">
-                                                                13. Ўрам тури</span><span style="font-style:italic">
-                                                                14. Урамлар сони</span><span style="font-style:italic">
-                                                                15. Қўшимча маълумотлар</span><span style="font-style:italic">
-                                                                16. Илгари қабул қилинган дастлабки қарор</span><span style="font-style:italic">
-                                                                17. Товарнинг етказиб бериш шарти</span><span style="font-style:italic">
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
+                                                                1. Тижорат номи
+                                                            </span>
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
+                                                                2. Савдо белгиси
+                                                            </span>
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
+                                                                3. Маркаси
+                                                            </span>
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
+                                                                4. Модели</span>
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
+                                                                5. Артикули
+                                                            </span>
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
+                                                                6. Нави
+                                                            </span>
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
+                                                                7. Стандарти
+                                                            </span>
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
+                                                                8. Ранги
+                                                            </span>
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
+                                                                9. Фойдаланиш мақсади
+                                                            </span>
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
+                                                                10. Тижорат хцусусияти
+                                                            </span>
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
+                                                                11. Техник хусусияти
+                                                            </span>
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
+                                                                12. Юк жойларининг умумий сони
+                                                            </span>
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
+                                                                13. Ўрам тури
+                                                            </span>
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
+                                                                14. Урамлар сони
+                                                            </span>
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
+                                                                15. Қўшимча маълумотлар
+                                                            </span>
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
+                                                                16. Илгари қабул қилинган дастлабки қарор
+                                                            </span>
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
+                                                                17. Товарнинг етказиб бериш шарти
+                                                            </span>
+                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
                                                                 18. Транспорт тури
                                                             </span>
                                                         </td>
@@ -109,28 +148,28 @@
                                                             <br><span style="margin-left: 40%; font-style:italic">Божхона тўловлари ставкаси</span></br>
                                                             <table class="tableclass" style="border-collapse: collapse; width: 70%; margin-left: auto; margin-right: auto;">
                                                                 <thead>
-                                                                      <tr>
-                                                                        <th class="tg-oi4f">Божхона тўловлари тури</th>
-                                                                        <th class="tg-oi4f">Ставкаси</th>
-                                                                        <th class="tg-oi4f">Хуқуқий асоси</th>
-                                                                      </tr>
+                                                                <tr>
+                                                                    <th class="tg-oi4f">Божхона тўловлари тури</th>
+                                                                    <th class="tg-oi4f">Ставкаси</th>
+                                                                    <th class="tg-oi4f">Хуқуқий асоси</th>
+                                                                </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                      <tr>
-                                                                        <td class="tg-oi4f">10- Йиғими</td>
-                                                                        <td class="tg-oi4f">БҲМ - 1.5</td>
-                                                                        <td class="tg-oi4f">ПКМ №700 от 09.11.2020 г</td>
-                                                                      </tr>
-                                                                      <tr>
-                                                                        <td class="tg-oi4f">20-Божхона божи</td>
-                                                                        <td class="tg-oi4f">5%</td>
-                                                                        <td class="tg-oi4f">29.06.2018 г. № ПП-3818</td>
-                                                                      </tr>
-                                                                      <tr>
-                                                                        <td class="tg-oi4f">27-Аксиз</td>
-                                                                        <td class="tg-oi4f">12%</td>
-                                                                        <td class="tg-oi4f">29.06.2018 г. № ПП-3818 </td>
-                                                                      </tr>
+                                                                <tr>
+                                                                    <td class="tg-oi4f">10- Йиғими</td>
+                                                                    <td class="tg-oi4f">БҲМ - 1.5</td>
+                                                                    <td class="tg-oi4f">ПКМ №700 от 09.11.2020 г</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="tg-oi4f">20-Божхона божи</td>
+                                                                    <td class="tg-oi4f">5%</td>
+                                                                    <td class="tg-oi4f">29.06.2018 г. № ПП-3818</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="tg-oi4f">27-Аксиз</td>
+                                                                    <td class="tg-oi4f">12%</td>
+                                                                    <td class="tg-oi4f">29.06.2018 г. № ПП-3818 </td>
+                                                                </tr>
                                                                 </tbody>
                                                             </table>
 
@@ -271,5 +310,75 @@
     </div>
 </div>
 </body>
+<script src="dist/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script src="dist/jquery-qrcode.js"></script>
+<script>
+    $( document ).ready(function() {
+        $(".demo").qrcode({
+            text: 'https://www.jqueryscript.net'
+        });
+        $(".demo").qrcode({
+
+            // 0: normal
+            // 1: label strip
+            // 2: label box
+            mode: 1,
+            label: 'jQueryScript.Net',
+            fontname: 'sans',
+            fontcolor: '#000'
+
+        });
+
+        $(".demo").qrcode({
+
+            // 0: normal
+            // 3: image strip
+            // 4: image box
+            mode: 3,
+            image: "/path/to/logo.png"
+
+        });
+
+        $(".demo").qrcode({
+
+            // 'canvas', 'image' or 'div'
+            render: 'canvas',
+
+            // min/max versions
+            minVersion: 1,
+            maxVersion: 40,
+
+            // error correction level
+            // 'L', 'M', 'Q' or 'H'
+            ecLevel: 'L',
+
+            // offset in pixels
+            left: 0,
+            top: 0,
+
+            // size in pixels
+            size: 200,
+
+            // code color or image element
+            fill: '#000',
+
+            // background color or image element
+            background: null,
+
+            // border radius
+            radius: 0,
+
+            // quiet zone in modules
+            quiet: 0,
+
+            // position options
+            mSize: 0.1,
+            mPosX: 0.5,
+            mPosY: 0.5
+
+        });
+    })
+
+</script>
 </html>
 

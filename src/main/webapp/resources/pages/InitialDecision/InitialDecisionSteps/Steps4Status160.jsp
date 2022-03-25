@@ -47,7 +47,7 @@
         <div id="home1" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade py-4 show active">
             <!-- -->
             <!--  Bootstrap table-->
-            <input type="hidden1" id="cmdtId" name="cmdtId" value="<c:out value="${cmdtId}"/>"/>
+            <input type="hidden" id="cmdtId" name="cmdtId" value="<c:out value="${cmdtId}"/>"/>
             <button type="button" class="btn btn-outline-primary" onclick="javascript:InDecConfirmXBBFinish()"><i class="fa fa-send-o"> Қарорни имзолаш</i></button>
             <button type="button" class="btn btn-outline-primary" onclick="generatePDF()"><i class="fa fa-print"> Pdf шакли</i></button>
             <div>
