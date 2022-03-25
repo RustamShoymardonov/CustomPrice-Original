@@ -53,6 +53,7 @@ public class PdfService {
     }
 
     public void createPdf(String appId, String cmdtId) throws IOException, BadElementException {
+        String aa="";
         Apps apps = appsService.findById(appId);
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
         templateResolver.setSuffix(".html");
