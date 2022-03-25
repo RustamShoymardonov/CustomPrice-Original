@@ -26,34 +26,34 @@ public class Persons extends AbstractAuditingEntity {
     private String id;
 
     @Column(name = "firstName", columnDefinition = "VARCHAR(180) CCSID 1208")
-    @NotBlank(message =  "firstName - бўш бўлиши мумкин эмас")
+    @NotBlank(message =  "Исм майдони бўш бўлиши мумкин эмас")
     @Size(max = 60, message = "Устун маълумоти катталиги чекланган")
     private String firstName;
 
     @Column(name = "surName", columnDefinition = "VARCHAR(180) CCSID 1208")
-    @NotBlank(message =  "surName - майдони бўш бўлиши мумкин эмас")
+    @NotBlank(message =  "Отасининг исми майдони бўш бўлиши мумкин эмас")
     @Size(max = 60, message = "Устун маълумоти катталиги чекланган")
     private String surName;
 
     @Column(name = "lastName", columnDefinition = "VARCHAR(180) CCSID 1208")
-    @NotBlank(message =  "lastName - исми майдони бўш бўлиши мумкин эмас")
-    @Size(max = 60, message = "Устун маълумоти катталиги чекланган")
+    @NotBlank(message =  "Фамилия бўш бўлиши мумкин эмас")
+    @Size(max = 60, message = "Фамилия маълумоти катталиги чекланган")
     private String lastName;
 
     @Column(name = "email", length = 30)
     @NotBlank(message =  "Электрон почта майдони тўлдирилиши лозим")
-    @Email(message = "email - хато киритилди")
+    @Email(message = "Электрон почта хато киритилди")
     private String email;
 
     @Column(name = "pin", length = 14, unique = true)
-    @NotBlank(message =  "pin - майдони тўлдирилиши лозим")
-    @Size(min = 14, max = 14, message = "pin - майдони 14 белгидан иборат бўлиши керак")
+    @NotBlank(message =  "Фойдаланувчи ЖШШИР рақами тўлдирилиши лозим")
+    @Size(min = 14, max = 14, message = "Фойдаланувчи ЖШШИР рақами 14 белгидан иборат бўлиши керак")
 //    @Digits(message = "Устун фақат 14 хонали сонлардан иборат бўлиши лозим", integer = 14, fraction = 0)
     private String pin;
 
     @Column(name = "tin", length = 9, unique = true)
-    @NotBlank(message =  "tin - майдони тўлдирилиши лозим")
-    @Size(min = 9, max = 9, message = "tin - майдони 9 белгидан иборат бўлиши керак")
+    @NotBlank(message =  "Фойдаланувчи СТИР рақами тўлдирилиши лозим")
+    @Size(min = 9, max = 9, message = "Фойдаланувчи СТИР рақами 9 белгидан иборат бўлиши керак")
 //    @Digits(message = "Устун фақат 9 хонали сонлардан иборат бўлиши лозим", integer = 9, fraction = 0)
     private String tin;
 

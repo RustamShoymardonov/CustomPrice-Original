@@ -48,7 +48,6 @@ public class PdfService {
     }
 
     public void createPdf(String appId, String cmdtId) throws IOException, BadElementException {
-        String aa="";
         Apps apps = appsService.findById(appId);
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
         templateResolver.setSuffix(".html");
@@ -59,10 +58,12 @@ public class PdfService {
         BarcodeQRCode qrCode = new BarcodeQRCode("http://youtube.com", 150, 150, null);
         Image img = qrCode.getImage();
         String url_qrCode = "http://youtube.com";
+        String url_InsUsr = "http://google.com";
 
         Context context = new Context();
         context.setVariable("appsDate", appsService.findById(appId));
         context.setVariable("url_qrCode", url_qrCode);
+        context.setVariable("url_InsUsr", url_InsUsr);
         String processHtml = templateEngine.process("templates/PdfGenerate.html", context);
 
         String urlTTF = "TimesNewRoman.ttf";
@@ -114,36 +115,6 @@ public class PdfService {
             e.printStackTrace();
         }
 
-        /*****/
-
-        try {
-            Document document = new Document(PageSize.LETTER);
-            PdfWriter pdfWriter = PdfWriter.getInstance
-                    (document, new FileOutputStream("D://temp//testpdf.pdf"));
-            document.open();
-            document.addAuthor("Real Gagnon");
-            document.addCreator("Real's HowTo");
-            document.addSubject("Thanks for your support");
-            document.addCreationDate();
-            document.addTitle("Please read this");
-//            BarcodeQRCode qrCode = new BarcodeQRCode("http://youtube.com", 150, 150, null);
-//            Image img = qrCode.getImage();
-            img.setAbsolutePosition(100, 20);
-            document.add(img);
-
-            XMLWorkerHelper worker = XMLWorkerHelper.getInstance();
-//            CssFile css = XMLWorkerHelper.getCSS();
-
-//            worker.getDefaultCSS();
-//            XMLWorkerHelper.
-            worker.parseXHtml(pdfWriter, document, new StringReader(processHtml));
-            document.close();
-            System.out.println("Done.");
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        /****/
     }
     private static String GetHash2(InputStream fis) throws IOException, NoSuchAlgorithmException {
         try {

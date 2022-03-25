@@ -24,364 +24,294 @@
         }
     </style>
 </head>
-<body>
+    <body>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 15%">
 
-<div id="step4" class="shadow p-3 mb-5 bg-white rounded x_panel" style="height: auto">
-    <div id="myTab1Content" class="tab-content border-primary">
-        <div id="home1" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade py-4 show active">
-            <div>
-                <form>
-                    <div class="tab-content card shadow-none p-t-5 p-l-5 p-r-5 p-b-5 rounded">
-                        <div class="tab-pane pt-1 show active" id="tabDecl">
-                            <div class="row">
-                                <div class="col-md-12" id="invoice">
-                                    <fieldset class="form-group p-3 shadow">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <h3>Ўзбекистон Республикасига олиб кириладиган товарлар бўйича
-                                                    тўланиши лозим бўлган божхона тўловлари миқдорини аниқлаш бўйича
-                                                    ДАСТЛАБКИ ҚАРОР</h3>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <img alt=""
-                                                     class="m-20 w-100 text-center text-c-red"
-                                                     style="width: 200px; height: 200px"
-                                                     id='barcode'
-                                                     th:src="@{${'https://api.qrserver.com/v1/create-qr-code/?data=' + url_qrCode +'&amp;size=200x200'}}"
-                                                     title="${uncodId}"/>
-                                            </div>
-                                            <div class="col-md-12" style="min-width:300px; overflow-x: auto">
-                                                <table class="tableclass" style=" width: 100%; border: black; border-collapse: collapse; margin-left: auto; margin-right: auto;">
-                                                    <colgroup>
-                                                        <col style="width: 60%"></col>
-                                                        <col style="width: 60%"></col>
-                                                    </colgroup>
-                                                    <tbody>
+                                    </th>
+                                    <th style="width: 70%; font-size: 16px!important; vertical-align: center!important; horiz-align: center!important;">
+                                        Ўзбекистон Республикасига олиб кириладиган товарлар бўйича
+                                        тўланиши лозим бўлган божхона тўловлари миқдорини аниқлаш бўйича
+                                        <br style="font-size: 18px!important; vertical-align: center; horiz-align: center">ДАСТЛАБКИ ҚАРОР</br>
+                                    </th>
+                                    <th style="width: 15%">
+                                        <img alt=""
+                                             class="m-20 w-100 text-center text-c-red"
+                                             style="width: 80px; height: 80px"
+                                             id='barcode'
+                                             th:src="@{${'https://api.qrserver.com/v1/create-qr-code/?data=' + url_qrCode +'&amp;size=200x200'}}"
+                                             title="${uncodId}"/>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="col-md-12" style="min-width:300px; overflow-x: auto">
+                            <table class="tableclass" style=" width: 100%; border: black; border-collapse: collapse; margin-left: auto; margin-right: auto;">
+                                <colgroup>
+                                    <col style="width: 60%"></col>
+                                    <col style="width: 60%"></col>
+                                </colgroup>
+                                <tbody>
+                                <tr>
+                                    <td class="tg-oi4f"><b>1. Дастлабки қарорни рўйхатга олиш рақами ва санаси</b></td>
+                                    <td class="tg-aboz" th:text="${appsDate}"></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-oi4f"><b>2. Дастлабки қарорни қабул қилган божхона органининг номи</b></td>
+                                    <td class="tg-aboz">авқпқвапқавп</td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-oi4f"><b>3. Манфаатдор шахс</b></td>
+                                    <td class="tg-aboz">вақпавқпқавп</td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-oi4f"><b>4. Дастлабки қарорнинг амал қилиш муддати</b></td>
+                                    <td class="tg-aboz">авқпвақпқав</td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-oi4f"><b>5. Товарнинг ТИФ ТН коди</b></td>
+                                    <td class="tg-aboz">авқпвқапавп</td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-oi4f" colspan="2">
+                                        <b>6. Товарлар номи ва тавсифи</b>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            1. Тижорат номи
+                                        </span>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            2. Савдо белгиси
+                                        </span>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            3. Маркаси
+                                        </span>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            4. Модели</span>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            5. Артикули
+                                        </span>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            6. Нави
+                                        </span>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            7. Стандарти
+                                        </span>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            8. Ранги
+                                        </span>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            9. Фойдаланиш мақсади
+                                        </span>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            10. Тижорат хцусусияти
+                                        </span>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            11. Техник хусусияти
+                                        </span>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            12. Юк жойларининг умумий сони
+                                        </span>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            13. Ўрам тури
+                                        </span>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            14. Урамлар сони
+                                        </span>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            15. Қўшимча маълумотлар
+                                        </span>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            16. Илгари қабул қилинган дастлабки қарор
+                                        </span>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            17. Товарнинг етказиб бериш шарти
+                                        </span>
+                                        <span style="font-style:italic; display: block; margin-left: 3px;">
+                                            18. Транспорт тури
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-oi4f"><b>7. Товарларнинг божхона қийматини аниқлаш усули ва уни асослаш</b></td>
+                                    <td class="tg-aboz">қвақвақвавфа</td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-oi4f"><b>8. Товарларнинг келиб чиқиш мамлакати ва уни асослаш</b></td>
+                                    <td class="tg-aboz">фқвақвфафқвақвфақва</td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-oi4f" colspan="2">
+                                        <b>9. Божхона тўловлари ва йиғимлари тўғрисида маълумот</b>
+                                        <br><span style="margin-left: 40%; font-style:italic">Божхона тўловлари ставкаси</span></br>
+                                        <table class="tableclass" style="border-collapse: collapse; width: 70%; margin-left: auto; margin-right: auto;">
+                                            <thead>
+                                            <tr>
+                                                <th class="tg-oi4f">Божхона тўловлари тури</th>
+                                                <th class="tg-oi4f">Ставкаси</th>
+                                                <th class="tg-oi4f">Хуқуқий асоси</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td class="tg-oi4f">10- Йиғими</td>
+                                                <td class="tg-oi4f">БҲМ - 1.5</td>
+                                                <td class="tg-oi4f">ПКМ №700 от 09.11.2020 г</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tg-oi4f">20-Божхона божи</td>
+                                                <td class="tg-oi4f">5%</td>
+                                                <td class="tg-oi4f">29.06.2018 г. № ПП-3818</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tg-oi4f">27-Аксиз</td>
+                                                <td class="tg-oi4f">12%</td>
+                                                <td class="tg-oi4f">29.06.2018 г. № ПП-3818 </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <span style="font-style:italic">
+                                            <table class="tableclass" style=" width: 100%; margin-left: auto; margin-right: auto;">
+                                                <thead>
                                                     <tr>
-                                                        <td class="tg-oi4f"><b>1. Дастлабки қарорни рўйхатга олиш рақами ва санаси</b></td>
-                                                        <td class="tg-aboz" th:text="${appsDate}"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="tg-oi4f"><b>2. Дастлабки қарорни қабул қилган божхона органининг номи</b></td>
-                                                        <td class="tg-aboz">авқпқвапқавп</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="tg-oi4f"><b>3. Манфаатдор шахс</b></td>
-                                                        <td class="tg-aboz">вақпавқпқавп</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="tg-oi4f"><b>4. Дастлабки қарорнинг амал қилиш муддати</b></td>
-                                                        <td class="tg-aboz">авқпвақпқав</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="tg-oi4f"><b>5. Товарнинг ТИФ ТН коди</b></td>
-                                                        <td class="tg-aboz">авқпвқапавп</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="tg-oi4f" colspan="2">
-                                                            <b>6. Товарлар номи ва тавсифи</b>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                1. Тижорат номи
-                                                            </span>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                2. Савдо белгиси
-                                                            </span>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                3. Маркаси
-                                                            </span>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                4. Модели</span>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                5. Артикули
-                                                            </span>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                6. Нави
-                                                            </span>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                7. Стандарти
-                                                            </span>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                8. Ранги
-                                                            </span>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                9. Фойдаланиш мақсади
-                                                            </span>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                10. Тижорат хцусусияти
-                                                            </span>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                11. Техник хусусияти
-                                                            </span>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                12. Юк жойларининг умумий сони
-                                                            </span>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                13. Ўрам тури
-                                                            </span>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                14. Урамлар сони
-                                                            </span>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                15. Қўшимча маълумотлар
-                                                            </span>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                16. Илгари қабул қилинган дастлабки қарор
-                                                            </span>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                17. Товарнинг етказиб бериш шарти
-                                                            </span>
-                                                            <span style="font-style:italic; display: block; margin-left: 3px;">
-                                                                18. Транспорт тури
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="tg-oi4f"><b>7. Товарларнинг божхона қийматини аниқлаш усули ва уни асослаш</b></td>
-                                                        <td class="tg-aboz">қвақвақвавфа</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="tg-oi4f"><b>8. Товарларнинг келиб чиқиш мамлакати ва уни асослаш</b></td>
-                                                        <td class="tg-aboz">фқвақвфафқвақвфақва</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="tg-oi4f" colspan="2">
-                                                            <b>9. Божхона тўловлари ва йиғимлари тўғрисида маълумот</b>
-                                                            <br><span style="margin-left: 40%; font-style:italic">Божхона тўловлари ставкаси</span></br>
-                                                            <table class="tableclass" style="border-collapse: collapse; width: 70%; margin-left: auto; margin-right: auto;">
+                                                        <td style="vertical-align: top">
+                                                            Божхона тўловлари миқдори
+                                                            <table class="tableclass" style=" width: 100%; border-collapse: collapse; margin-left: auto; margin-right: auto;" >
                                                                 <thead>
-                                                                <tr>
-                                                                    <th class="tg-oi4f">Божхона тўловлари тури</th>
-                                                                    <th class="tg-oi4f">Ставкаси</th>
-                                                                    <th class="tg-oi4f">Хуқуқий асоси</th>
-                                                                </tr>
+                                                                      <tr>
+                                                                        <th class="tg-oi4f">Божхона тўловлари тури</th>
+                                                                        <th class="tg-oi4f">Хисоблаш учун асос</th>
+                                                                        <th class="tg-oi4f">Хисобланди</th>
+                                                                      </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <tr>
-                                                                    <td class="tg-oi4f">10- Йиғими</td>
-                                                                    <td class="tg-oi4f">БҲМ - 1.5</td>
-                                                                    <td class="tg-oi4f">ПКМ №700 от 09.11.2020 г</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="tg-oi4f">20-Божхона божи</td>
-                                                                    <td class="tg-oi4f">5%</td>
-                                                                    <td class="tg-oi4f">29.06.2018 г. № ПП-3818</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="tg-oi4f">27-Аксиз</td>
-                                                                    <td class="tg-oi4f">12%</td>
-                                                                    <td class="tg-oi4f">29.06.2018 г. № ПП-3818 </td>
-                                                                </tr>
+                                                                      <tr>
+                                                                        <td class="tg-oi4f">10- Йиғими</td>
+                                                                        <td class="tg-oi4f">123 123 120,10</td>
+                                                                        <td class="tg-oi4f"></td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                        <td class="tg-oi4f">20-Божхона божи</td>
+                                                                        <td class="tg-oi4f"></td>
+                                                                        <td class="tg-oi4f"></td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                        <td class="tg-oi4f">27-Аксиз</td>
+                                                                        <td class="tg-oi4f"></td>
+                                                                        <td class="tg-oi4f"></td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                        <td class="tg-oi4f">Жами</td>
+                                                                        <td class="tg-oi4f" colspan="2">236 325 652 сўм</td>
+                                                                      </tr>
                                                                 </tbody>
                                                             </table>
-
-                                                            <span style="font-style:italic">
-                                                                <table class="tableclass" style=" width: 100%; margin-left: auto; margin-right: auto;">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <td style="vertical-align: top">
-                                                                                Божхона тўловлари миқдори
-                                                                                <table class="tableclass" style=" width: 100%; border-collapse: collapse; margin-left: auto; margin-right: auto;" >
-                                                                                    <thead>
-                                                                                          <tr>
-                                                                                            <th class="tg-oi4f">Божхона тўловлари тури</th>
-                                                                                            <th class="tg-oi4f">Хисоблаш учун асос</th>
-                                                                                            <th class="tg-oi4f">Хисобланди</th>
-                                                                                          </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                          <tr>
-                                                                                            <td class="tg-oi4f">10- Йиғими</td>
-                                                                                            <td class="tg-oi4f">123 123 120,10</td>
-                                                                                            <td class="tg-oi4f"></td>
-                                                                                          </tr>
-                                                                                          <tr>
-                                                                                            <td class="tg-oi4f">20-Божхона божи</td>
-                                                                                            <td class="tg-oi4f"></td>
-                                                                                            <td class="tg-oi4f"></td>
-                                                                                          </tr>
-                                                                                          <tr>
-                                                                                            <td class="tg-oi4f">27-Аксиз</td>
-                                                                                            <td class="tg-oi4f"></td>
-                                                                                            <td class="tg-oi4f"></td>
-                                                                                          </tr>
-                                                                                          <tr>
-                                                                                            <td class="tg-oi4f">Жами</td>
-                                                                                            <td class="tg-oi4f" colspan="2">236 325 652 сўм</td>
-                                                                                          </tr>
-                                                                                    </tbody>
-                                                                                </table>
-                                                                            </td>
-                                                                            <td style="vertical-align: top">Божхона тўловлари имтиёзли (преференсия) миқдори
-                                                                                <table class="tableclass" style=" width: 100%; border-collapse: collapse; margin-left: auto; margin-right: auto;">
-                                                                                    <thead>
-                                                                                          <tr>
-                                                                                            <th class="tg-oi4f">Божхона тўлов. тури</th>
-                                                                                            <th class="tg-oi4f">Хисоблаш асоси</th>
-                                                                                            <th class="tg-oi4f">Хисобланди</th>
-                                                                                            <th class="tg-oi4f">Хуқуқий асос</th>
-                                                                                          </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                          <tr>
-                                                                                            <td class="tg-oi4f">10- Йиғими</td>
-                                                                                            <td class="tg-oi4f">123 123 120,10</td>
-                                                                                            <td class="tg-oi4f"></td>
-                                                                                            <td class="tg-oi4f"></td>
-                                                                                          </tr>
-                                                                                          <tr>
-                                                                                            <td class="tg-oi4f">20-Божхона божи</td>
-                                                                                            <td class="tg-oi4f"></td>
-                                                                                            <td class="tg-oi4f"></td>
-                                                                                            <td class="tg-oi4f"></td>
-                                                                                          </tr>
-                                                                                          <tr>
-                                                                                            <td class="tg-oi4f">27-Аксиз</td>
-                                                                                            <td class="tg-oi4f"></td>
-                                                                                            <td class="tg-oi4f"></td>
-                                                                                            <td class="tg-oi4f"></td>
-                                                                                          </tr>
-                                                                                          <tr>
-                                                                                            <td class="tg-oi4f">Жами</td>
-                                                                                            <td class="tg-oi4f" colspan="3">236 325 652 сўм</td>
-                                                                                          </tr>
-                                                                                    </tbody>
-                                                                                </table>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </thead>
-                                                                </table>
-                                                            </span>
                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="tg-oi4f">
-                                                            <b>10. Дастлабки қарорни қабул қилиш асослари</b>
-                                                        </td>
-                                                        <td class="tg-aboz">қвавқавқфақвфақвфақв</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="tg-oi4f" colspan="2">
-                                                            <b>11. Манфаатдор шахс томонидан тақдим қилинган маълумотлар ва хужжатлар рўйхати</b>
-                                                            <table class="" style=" width: 70%; border-collapse: collapse; margin-left: auto; margin-right: auto; margin-bottom: 2px">
+                                                        <td style="vertical-align: top">Божхона тўловлари имтиёзли (преференсия) миқдори
+                                                            <table class="tableclass" style=" width: 100%; border-collapse: collapse; margin-left: auto; margin-right: auto;">
                                                                 <thead>
-                                                                <tr>
-                                                                    <th class="tg-oi4f">Тартиб рақами</th>
-                                                                    <th class="tg-oi4f">Хужжат тури</th>
-                                                                    <th class="tg-oi4f">ХисобландиХужжат рақами</th>
-                                                                    <th class="tg-oi4f">Хужжат санаси</th>
-                                                                </tr>
+                                                                      <tr>
+                                                                        <th class="tg-oi4f">Божхона тўлов. тури</th>
+                                                                        <th class="tg-oi4f">Хисоблаш асоси</th>
+                                                                        <th class="tg-oi4f">Хисобланди</th>
+                                                                        <th class="tg-oi4f">Хуқуқий асос</th>
+                                                                      </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <tr>
-                                                                    <td class="tg-oi4f">1</td>
-                                                                    <td class="tg-oi4f">220-ИНВ</td>
-                                                                    <td class="tg-oi4f">ИН-6534</td>
-                                                                    <td class="tg-oi4f">02.02.2022й</td>
-                                                                </tr>
+                                                                      <tr>
+                                                                        <td class="tg-oi4f">10- Йиғими</td>
+                                                                        <td class="tg-oi4f">123 123 120,10</td>
+                                                                        <td class="tg-oi4f"></td>
+                                                                        <td class="tg-oi4f"></td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                        <td class="tg-oi4f">20-Божхона божи</td>
+                                                                        <td class="tg-oi4f"></td>
+                                                                        <td class="tg-oi4f"></td>
+                                                                        <td class="tg-oi4f"></td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                        <td class="tg-oi4f">27-Аксиз</td>
+                                                                        <td class="tg-oi4f"></td>
+                                                                        <td class="tg-oi4f"></td>
+                                                                        <td class="tg-oi4f"></td>
+                                                                      </tr>
+                                                                      <tr>
+                                                                        <td class="tg-oi4f">Жами</td>
+                                                                        <td class="tg-oi4f" colspan="3">236 325 652 сўм</td>
+                                                                      </tr>
                                                                 </tbody>
                                                             </table>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td class="tg-oi4f">
-                                                            <b>12. Қўшимча маълумотлар</b>
-                                                        </td>
-                                                        <td class="tg-aboz">фқвақфвавқфақвфавқфа</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="tg-oi4f">
-                                                            <b>13. Божхона органининг мансабдор шахси</b>
-                                                            <br><span style="font-weight:bold">  Бошқарма бошлиғи:</span> <span style="margin-right: auto">A.A.Kattaev</span></br>
-                                                        </td>
-                                                        <td class="tg-aboz">
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </div>
-                            </div>
+                                                </thead>
+                                            </table>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-oi4f">
+                                        <b>10. Дастлабки қарорни қабул қилиш асослари</b>
+                                    </td>
+                                    <td class="tg-aboz">қвавқавқфақвфақвфақв</td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-oi4f" colspan="2">
+                                        <b>11. Манфаатдор шахс томонидан тақдим қилинган маълумотлар ва хужжатлар рўйхати</b>
+                                        <table class="" style=" width: 70%; border-collapse: collapse; margin-left: auto; margin-right: auto; margin-bottom: 2px">
+                                            <thead>
+                                            <tr>
+                                                <th class="tg-oi4f">Тартиб рақами</th>
+                                                <th class="tg-oi4f">Хужжат тури</th>
+                                                <th class="tg-oi4f">ХисобландиХужжат рақами</th>
+                                                <th class="tg-oi4f">Хужжат санаси</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td class="tg-oi4f">1</td>
+                                                <td class="tg-oi4f">220-ИНВ</td>
+                                                <td class="tg-oi4f">ИН-6534</td>
+                                                <td class="tg-oi4f">02.02.2022й</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-oi4f">
+                                        <b>12. Қўшимча маълумотлар</b>
+                                    </td>
+                                    <td class="tg-aboz">фқвақфвавқфақвфавқфа</td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-oi4f">
+                                        <b>13. Божхона органининг мансабдор шахси</b>
+                                        <br><span style="font-weight:bold; margin-left: 17px">Бошқарма бошлиғи:</span> <span style="margin-right: auto">A.A.Kattaev</span></br>
+                                    </td>
+                                    <td class="tg-aboz">
+                                        <img alt=""
+                                             class="m-20 w-100 text-center text-c-red"
+                                             style="width: 50px; height: 50px"
+                                             id='barcode2'
+                                             th:src="@{${'https://api.qrserver.com/v1/create-qr-code/?data=' + url_InsUsr +'&amp;size=200x200'}}"
+                                             title="${uncodId}"/>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
+                        <p style="text-indent: 20px!important;">
+                            Ушбу маълумотлар --.--.---- йилдаги Марказий банкининг валюталар курси бўйича ҳисоблаб чиқарилди. Валюта курси ўзгариши ҳисобига божхона тўловлари миқдори ўзгариши мумкин
+                            <br>  Қўлланилган имтиёзлар ва божхона тўловлари ставкалари --.--.---- йилдаги Ўзбекистон қонун хужжатларини инобатга олиб ҳисобланади.</br>
+                        </p>
                     </div>
-                </form>
             </div>
         </div>
-    </div>
-</div>
-</body>
-<script src="dist/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-<script src="dist/jquery-qrcode.js"></script>
-<script>
-    $( document ).ready(function() {
-        $(".demo").qrcode({
-            text: 'https://www.jqueryscript.net'
-        });
-        $(".demo").qrcode({
-
-            // 0: normal
-            // 1: label strip
-            // 2: label box
-            mode: 1,
-            label: 'jQueryScript.Net',
-            fontname: 'sans',
-            fontcolor: '#000'
-
-        });
-
-        $(".demo").qrcode({
-
-            // 0: normal
-            // 3: image strip
-            // 4: image box
-            mode: 3,
-            image: "/path/to/logo.png"
-
-        });
-
-        $(".demo").qrcode({
-
-            // 'canvas', 'image' or 'div'
-            render: 'canvas',
-
-            // min/max versions
-            minVersion: 1,
-            maxVersion: 40,
-
-            // error correction level
-            // 'L', 'M', 'Q' or 'H'
-            ecLevel: 'L',
-
-            // offset in pixels
-            left: 0,
-            top: 0,
-
-            // size in pixels
-            size: 200,
-
-            // code color or image element
-            fill: '#000',
-
-            // background color or image element
-            background: null,
-
-            // border radius
-            radius: 0,
-
-            // quiet zone in modules
-            quiet: 0,
-
-            // position options
-            mSize: 0.1,
-            mPosX: 0.5,
-            mPosY: 0.5
-
-        });
-    })
-
-</script>
+    </body>
 </html>
 
