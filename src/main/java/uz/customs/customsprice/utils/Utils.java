@@ -327,4 +327,12 @@ public class Utils {
         } else return "";
 
     }
+
+    public static String tecDate() {
+        Locale l = new Locale("ru", "");
+        Date aDate = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy", l);
+        String formattedDate = formatter.format(aDate);
+        return formattedDate;
+    }
 }

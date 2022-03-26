@@ -85,6 +85,29 @@ public class DBCustomPrice {
         return hikariDataSource;
     }
 
+//    @Qualifier("etranzit2")
+//    public HikariDataSource etranzit2() throws UnknownHostException, SocketException {
+//        HikariConfig hikariConfig = new HikariConfig();
+//        hikariConfig.setAutoCommit(true);
+//        hikariConfig.addDataSourceProperty("characterEncoding", "utf8");
+//        hikariConfig.addDataSourceProperty("encoding", "UTF-8");
+//        hikariConfig.addDataSourceProperty("useUnicode", "true");
+//        hikariConfig.setPoolName("etranzit2");
+//        hikariConfig.setDriverClassName("com.ibm.as400.access.AS400JDBCDriver");
+//        hikariConfig.setConnectionTestQuery("select current_timestamp cts from sysibm.sysdummy1");
+//        hikariConfig.setJdbcUrl("jdbc:as400://192.168.212.231/ETRANZIT");
+//        hikariConfig.setUsername("etranzitt");
+//        hikariConfig.setPassword("nB4EaEtU");
+//        hikariConfig.setConnectionTimeout(30000);
+//        hikariConfig.setValidationTimeout(5000);
+//        hikariConfig.setMinimumIdle(10);
+//        hikariConfig.setMaximumPoolSize(500);
+//        hikariConfig.setIdleTimeout(600000);
+//        hikariConfig.setMaxLifetime(3600000);
+//        hikariDataSource = new HikariDataSource(hikariConfig);
+//        return hikariDataSource;
+//    }
+
     @Primary
     @Bean(name = "entityManagerFactoryEtranzit")
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryEtranzit(

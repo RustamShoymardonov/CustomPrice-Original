@@ -54,9 +54,11 @@
                     <tr>
                         <th scope="col">Тўлов тури</th>
                         <th scope="col">Хисоблаш асоси</th>
-                        <th scope="col">Ставка Тури</th>
-                        <th scope="col">Ставка</th>
-                        <th scope="col">Миқдори</th>
+                        <th scope="col">Адвалор ставка</th>
+                        <th scope="col">Хос ставка</th>
+                        <th scope="col">Хос ставка миқдори</th>
+                        <th scope="col">Қўш.ўл.бир</th>
+                        <th scope="col">Ҳисобланган</th>
                         <th scope="col">Тўлов тури</th>
                         <th scope="col">Ўчириш</th>
                     </tr>
@@ -68,16 +70,17 @@
                 </table>
             </div>
             <select class="d-none myselect">
-            <c:forEach var="val" items="${paymenttype}" varStatus="i">
-                <option value="${val.id}">${val.id}-${val.name}</option>
-                ${val.name}
-
-            </c:forEach>
+                <option value=""></option>
+                <c:forEach var="val" items="${paymenttype}" varStatus="i">
+                    <option value="${val.id}">${val.id}</option>
+                    ${val.name}
+                </c:forEach>
             </select>
 
             <select class="d-none myselect2">
+                <option value=""></option>
                 <c:forEach var="val" items="${paymttype}" varStatus="i">
-                    <option value="${val.id}">${val.id}-${val.spname}</option>
+                    <option value="${val.id}">${val.id}</option>
                     ${val.spname}
 
                 </c:forEach>
@@ -89,7 +92,7 @@
                 $(function () {
 
                     // Start counting from the third row
-                    var counter = 3;
+                    var counter = 1;
 
                     $("#insertRow").on("click", function (event) {
                         event.preventDefault();
@@ -97,18 +100,17 @@
                         var newRow = $("table.tolovlar tbody");
                         var cols = '<tr>';
                         // Table columns
-                        cols += '<td style="width: 25%"><select class="form-control rounded-0" type="text" name="toltur" placeholder="Тўлов турини танланг">'+ $(".myselect").html() +'</select></td>';
-                        cols += '<td><input type="number" class="form-control rounded-0" name="xisasos" placeholder="Қиритинг"></td>';
-                        cols += '<td>' +
-                            '<select type="text" class="form-control rounded-0" name="stavtur" placeholder="Ставкани турини танланг">' +
-                            '<option value="advalor">Адвалор</option>' +
-                            '<option value="Хос">Хос</option>' +
-                            '<option value="advalor">Аралаш</option>' +
-                            '</select>' +
-                            '</td>';
-                        cols += '<td><input type="number" class="form-control rounded-0" name="stav" placeholder="Ставкани киритинг"></td>';
-                        cols += '<td><input disabled="disabled" class="form-control rounded-0" type="text" name="miqdor" placeholder="Миқдор"></td>';
-                        cols += '<td style="width: 25%"><select class="form-control rounded-0" type="text" name="toltur2" placeholder="Тўлов турини танланг">'+ $(".myselect2").html() +'</select></td>';
+                        cols +=
+                            '<td><select id="paymentType' + counter + '" onchange="changePaymentType(' + counter + ');" class="form-control rounded-0" type="text" placeholder="Тўлов турини танланг">' +
+                            $(".myselect").html()
+                            + '</select></td>';
+                        cols += '<td><input id="g47Base' + counter + '" type="number" class="form-control rounded-0" placeholder="Қиритинг"></td>';
+                        cols += '<td><input id="g47AltBase' + counter + '" type="number" class="form-control rounded-0" placeholder="Адвалор ставка"></td>';
+                        cols += '<td><input id="g47Rate' + counter + '" type="number" class="form-control rounded-0" placeholder="Хос ставка"></td>';
+                        cols += '<td><input id="g47AltRate' + counter + '" type="number" class="form-control rounded-0" placeholder="Хос ставка миқдори"></td>';
+                        cols += '<td><input id="g47AltBaseEdIzm' + counter + '" disabled="disabled" size="3" maxlength="3" class="form-control rounded-0" type="text" placeholder="Қўш.ўл.бир"></td>';
+                        cols += '<td><input id="g47Sum' + counter + '" disabled="disabled" class="form-control rounded-0" type="text" placeholder="Ҳисобланган бож.тўл"></td>';
+                        cols += '<td><select id="g47Sp' + counter + '" class="form-control rounded-0" type="text" placeholder="Тўлов турини танланг">' + $(".myselect2").html() + '</select></td>';
                         cols += '<td><button class="btn btn-danger rounded-0" id ="deleteRow"><i class="fa fa-trash"></i></button</td>';
                         cols += '<tr>';
                         // Insert the columns inside a row
@@ -597,6 +599,36 @@
             }
         })
 
+    }
+
+    function changePaymentType(rowNum) {
+        // alert($('#paymentType' + rowNum).val());
+        // alert('cmdtId==' + $('#cmdtId').val());
+        // $('#g47Base' + rowNum).val(Math.random());
+        var dataS = {
+            "x": '4',
+            "cmdt_id": $('#cmdtId').val(),
+            "appId": $('#appId').val(),
+            "paymentType": $('#paymentType' + rowNum).val()
+        }
+        $.ajax({
+            type: "POST",
+            data: dataS,
+            url: "<%=request.getContextPath()%>/commodity/resources/pages/InitialDecision/InitialDecisionSteps/Steps",
+            dataType: "html",
+            header: 'Content-type: text/html; charset=utf-8',
+            success: function (res) {
+                <%--alert('dfdfdf=' + ${cmdtPrice});--%>
+                $('#g47Base' + rowNum).val(${cmdtPriceCr});
+                $('#g47AltBase' + rowNum).val(${cmdtPriceCradvRate});
+                $('#g47Rate' + rowNum).val(${cmdtPriceCraltRate});
+                $('#g47AltRate' + rowNum).val(${extraQty});
+                $('#g47AltBaseEdIzm' + rowNum).val(${extraUnits});
+                $('#g47Sum' + rowNum).val(${sumCalc});
+            },
+            error: function (res) {
+            }
+        });
     }
 
 

@@ -24,7 +24,8 @@ import static uz.customs.customsprice.CustomspriceApplication.MODEL_PACKAGE;
 
 @Configuration
 @ConfigurationProperties("spring.datasource.digests")
-@EnableJpaRepositories(repositoryFactoryBeanClass = DataTablesRepositoryFactoryBean.class, entityManagerFactoryRef = "entityManagerFactorydigests", transactionManagerRef = "transactionManagerdigests", basePackages = {"uz.customs.customsprice.repository.digests"})
+@EnableJpaRepositories(repositoryFactoryBeanClass = DataTablesRepositoryFactoryBean.class, entityManagerFactoryRef = "entityManagerFactorydigests", transactionManagerRef =
+        "transactionManagerdigests", basePackages = {"uz.customs.customsprice.repository.digests"})
 public class DBDigests {
     protected final String PERSISTENCE_UNIT_NAME = "digests";
     protected final Properties JPA_DIGESTS = new Properties() {{
@@ -71,6 +72,7 @@ public class DBDigests {
         }
         return new HikariDataSource(hikariConfig);
     }
+
 
     @PersistenceContext(unitName = "digests")
     @Bean(name = "entityManagerFactoryDigests")

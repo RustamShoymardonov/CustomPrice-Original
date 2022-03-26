@@ -24,7 +24,8 @@
 //
 //@Configuration
 //@ConfigurationProperties("spring.datasource.usermain")
-//@EnableJpaRepositories(repositoryFactoryBeanClass = DataTablesRepositoryFactoryBean.class, entityManagerFactoryRef = "entityManagerFactoryUserMain", transactionManagerRef = "transactionManagerUserMain", basePackages = {"uz.customs.customsprice.repository.UserMain"})
+//@EnableJpaRepositories(repositoryFactoryBeanClass = DataTablesRepositoryFactoryBean.class, entityManagerFactoryRef = "entityManagerFactoryUserMain", transactionManagerRef =
+//        "transactionManagerUserMain", basePackages = {"uz.customs.customsprice.repository.Rate"})
 //public class DBUserMain {
 //    protected final String PERSISTENCE_UNIT_NAME = "UserMain";
 //    protected final Properties JPA_UserMain = new Properties() {{
@@ -45,10 +46,10 @@
 //        hikariConfig.addDataSourceProperty("useUnicode", "true");
 //        hikariConfig.setPoolName("UserMain");
 //        hikariConfig.setDriverClassName("com.ibm.as400.access.AS400JDBCDriver");
-//        hikariConfig.setJdbcUrl("jdbc:as400://192.168.212.225/ESAD");
+//        hikariConfig.setJdbcUrl("jdbc:as400://192.168.212.228/NEW_EINFO");
 //        hikariConfig.setConnectionTestQuery("select current_timestamp cts from sysibm.sysdummy1");
 //        hikariConfig.setUsername("rustam");
-//        hikariConfig.setPassword("9061648");
+//        hikariConfig.setPassword("rustam");
 //        String ip = "";
 //        try (final DatagramSocket socket = new DatagramSocket()) {
 //            socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
