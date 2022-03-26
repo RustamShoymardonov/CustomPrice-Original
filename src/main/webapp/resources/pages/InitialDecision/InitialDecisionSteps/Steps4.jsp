@@ -67,10 +67,13 @@
                 </table>
             </div>
             asdsadfdgdfsg
+            <select class="d-none myselect">
             <c:forEach var="val" items="${paymenttype}" varStatus="i">
+                <option value="${val.id}">${val.id}-${val.name}</option>
                 ${val.name}
 
             </c:forEach>
+            </select>
             <c:forEach var="val" items="${paymttype}" varStatus="i">
                 ${val.spname}
 
@@ -88,9 +91,8 @@
 
                         var newRow = $("table.tolovlar tbody");
                         var cols = '<tr>';
-
                         // Table columns
-                        cols += '<td><select class="form-control rounded-0" type="text" name="firstname" placeholder="Тўлов турини танланг"><option selected>10</option><option value="1">41</option><option value="2">29</option><option value="3">71</option></select></td>';
+                        cols += '<td><select class="form-control rounded-0 w-50" type="text" name="firstname" placeholder="Тўлов турини танланг">'+ $(".myselect").html() +'</select></td>';
                         cols += '<td><input type="number" class="form-control rounded-0" type="text" name="lastname" placeholder="Қиритинг"></td>';
                         cols += '<td><input type="number" class="form-control rounded-0" type="text" name="handle" placeholder="Ставкани киритинг"></td>';
                         cols += '<td><input disabled="disabled" class="form-control rounded-0" type="text" name="handle" placeholder="Миқдор"></td>';
