@@ -54,10 +54,11 @@
                     <tr>
                         <th scope="col">Тўлов тури</th>
                         <th scope="col">Хисоблаш асоси</th>
+                        <th scope="col">Ставка Тури</th>
                         <th scope="col">Ставка</th>
                         <th scope="col">Миқдори</th>
                         <th scope="col">Тўлов тури</th>
-                        <th scope="col">Амал</th>
+                        <th scope="col">Ўчириш</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -66,7 +67,6 @@
                     </tbody>
                 </table>
             </div>
-            asdsadfdgdfsg
             <select class="d-none myselect">
             <c:forEach var="val" items="${paymenttype}" varStatus="i">
                 <option value="${val.id}">${val.id}-${val.name}</option>
@@ -74,10 +74,15 @@
 
             </c:forEach>
             </select>
-            <c:forEach var="val" items="${paymttype}" varStatus="i">
-                ${val.spname}
 
-            </c:forEach>
+            <select class="d-none myselect2">
+                <c:forEach var="val" items="${paymttype}" varStatus="i">
+                    <option value="${val.id}">${val.id}-${val.spname}</option>
+                    ${val.spname}
+
+                </c:forEach>
+            </select>
+
             <button type="button" class="btn btn-success ml-2" onclick="javascript:InDecConfirm('145')">Жўнатиш</button>
             <!-- Add rows button-->
             <script>
@@ -92,11 +97,18 @@
                         var newRow = $("table.tolovlar tbody");
                         var cols = '<tr>';
                         // Table columns
-                        cols += '<td><select class="form-control rounded-0 w-50" type="text" name="firstname" placeholder="Тўлов турини танланг">'+ $(".myselect").html() +'</select></td>';
-                        cols += '<td><input type="number" class="form-control rounded-0" type="text" name="lastname" placeholder="Қиритинг"></td>';
-                        cols += '<td><input type="number" class="form-control rounded-0" type="text" name="handle" placeholder="Ставкани киритинг"></td>';
-                        cols += '<td><input disabled="disabled" class="form-control rounded-0" type="text" name="handle" placeholder="Миқдор"></td>';
-                        cols += '<td><select class="form-control rounded-0" type="text" name="handle" placeholder="Тўлов турини танланг"><option selected>БН</option><option value="1">ОО</option></select></td>';
+                        cols += '<td style="width: 25%"><select class="form-control rounded-0" type="text" name="toltur" placeholder="Тўлов турини танланг">'+ $(".myselect").html() +'</select></td>';
+                        cols += '<td><input type="number" class="form-control rounded-0" name="xisasos" placeholder="Қиритинг"></td>';
+                        cols += '<td>' +
+                            '<select type="text" class="form-control rounded-0" name="stavtur" placeholder="Ставкани турини танланг">' +
+                            '<option value="advalor">Адвалор</option>' +
+                            '<option value="Хос">Хос</option>' +
+                            '<option value="advalor">Аралаш</option>' +
+                            '</select>' +
+                            '</td>';
+                        cols += '<td><input type="number" class="form-control rounded-0" name="stav" placeholder="Ставкани киритинг"></td>';
+                        cols += '<td><input disabled="disabled" class="form-control rounded-0" type="text" name="miqdor" placeholder="Миқдор"></td>';
+                        cols += '<td style="width: 25%"><select class="form-control rounded-0" type="text" name="toltur2" placeholder="Тўлов турини танланг">'+ $(".myselect2").html() +'</select></td>';
                         cols += '<td><button class="btn btn-danger rounded-0" id ="deleteRow"><i class="fa fa-trash"></i></button</td>';
                         cols += '<tr>';
                         // Insert the columns inside a row
