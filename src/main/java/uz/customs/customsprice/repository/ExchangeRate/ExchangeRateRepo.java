@@ -1,4 +1,4 @@
-package uz.customs.customsprice.repository;
+package uz.customs.customsprice.repository.ExchangeRate;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import uz.customs.customsprice.entity.InitialDecision.Exchangerate;

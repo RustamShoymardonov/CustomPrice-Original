@@ -31,293 +31,283 @@
             <div class="row w-100" style="display: inline-block;">
                 <div class="tile_count w-100">
                     <div>
-                        <div class="col-md-3">
-                            <div class="stati bg-peter_river">
-                                <i class="fa fa-folder-o"></i>
-                                <div>
-                                    <b>25</b>
-                                    <span>Жами аризалар</span>
+                        <div class="header-body">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-6">
+                                    <div class="card card-stats mb-4 mb-xl-0">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h5 class="card-title text-uppercase text-muted mb-0">Жами аризалар</h5>
+                                                    <span class="h2 font-weight-bold mb-0">350,897</span>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                                        <i class="fa fa-area-chart"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="mt-3 mb-0 text-muted text-sm">
+                                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                                <span class="text-nowrap">Since last month</span>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="stati bg-belize_hole">
-                                <i class="fa fa-list-alt"></i>
-                                <div>
-                                    <b>14</b>
-                                    <span>Янги аризалар</span>
+                                <div class="col-xl-3 col-lg-6">
+                                    <div class="card card-stats mb-4 mb-xl-0">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h5 class="card-title text-uppercase text-muted mb-0">Янги аризалар</h5>
+                                                    <span class="h2 font-weight-bold mb-0">2,356</span>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                                        <i class="fa fa-bar-chart"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="mt-3 mb-0 text-muted text-sm">
+                                                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
+                                                <span class="text-nowrap">Since last week</span>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="stati bg-peter_river">
-                                <i class="fa fa-list-alt"></i>
-                                <div>
-                                    <b>7</b>
-                                    <span>Қарор қабул қилинган</span>
+                                <div class="col-xl-3 col-lg-6">
+                                    <div class="card card-stats mb-4 mb-xl-0">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h5 class="card-title text-uppercase text-muted mb-0">Қарор қабул қилинган</h5>
+                                                    <span class="h2 font-weight-bold mb-0">924</span>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                                        <i class="fa fa-line-chart"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="mt-3 mb-0 text-muted text-sm">
+                                                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                                                <span class="text-nowrap">Since yesterday</span>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="stati bg-belize_hole">
-                                <i class="fa fa-list-alt"></i>
-                                <div>
-                                    <b>6</b>
-                                    <span>Бекор қилинган</span>
+                                <div class="col-xl-3 col-lg-6">
+                                    <div class="card card-stats mb-4 mb-xl-0">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h5 class="card-title text-uppercase text-muted mb-0">Бекор қилинган</h5>
+                                                    <span class="h2 font-weight-bold mb-0">49,65%</span>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                                                        <i class="fa fa-pie-chart"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="mt-3 mb-0 text-muted text-sm">
+                                                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                                                <span class="text-nowrap">Since last month</span>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <style>
-                            body {
-                                background: url("http://rybd.com/wp-content/uploads/2014/12/blue-polygon.png");
+
+                            h2,
+                            h5,
+                            .h2,
+                            .h5 {
+                                font-family: inherit;
+                                font-weight: 600;
+                                line-height: 1.5;
+                                margin-bottom: .5rem;
+                                color: #32325d;
                             }
 
-                            h1 {
-                                color: white;
-                                margin-top: 2em;
+                            h5,
+                            .h5 {
+                                font-size: .8125rem;
                             }
 
-                            p {
-                                color: white;
+                            @media (min-width: 992px) {
+
+                                .col-lg-6 {
+                                    max-width: 50%;
+                                    flex: 0 0 50%;
+                                }
                             }
 
-                            /******************************
+                            @media (min-width: 1200px) {
 
-                            Stati - minimal statistical cards
+                                .col-xl-3 {
+                                    max-width: 25%;
+                                    flex: 0 0 25%;
+                                }
 
-                            *******************************/
-                            .stati {
-                                background: #fff;
-                                height: 6em;
-                                padding: 1em;
-                                margin: 1em 0;
-                                -webkit-transition: margin 0.5s ease, box-shadow 0.5s ease; /* Safari */
-                                transition: margin 0.5s ease, box-shadow 0.5s ease;
-                                -moz-box-shadow: 0px 0.2em 0.4em rgb(0, 0, 0, 0.8);
-                                -webkit-box-shadow: 0px 0.2em 0.4em rgb(0, 0, 0, 0.8);
-                                box-shadow: 0px 0.2em 0.4em rgb(0, 0, 0, 0.8);
+                                .col-xl-6 {
+                                    max-width: 50%;
+                                    flex: 0 0 50%;
+                                }
                             }
 
-                            .stati:hover {
-                                margin-top: 0.5em;
-                                -moz-box-shadow: 0px 0.4em 0.5em rgb(0, 0, 0, 0.8);
-                                -webkit-box-shadow: 0px 0.4em 0.5em rgb(0, 0, 0, 0.8);
-                                box-shadow: 0px 0.4em 0.5em rgb(0, 0, 0, 0.8);
+
+                            .bg-danger {
+                                background-color: #f5365c !important;
                             }
 
-                            .stati i {
-                                font-size: 3.5em;
+
+
+                            @media (min-width: 1200px) {
+
+                                .justify-content-xl-between {
+                                    justify-content: space-between !important;
+                                }
                             }
 
-                            .stati div {
-                                width: calc(100% - 3.5em);
+
+                            .pt-5 {
+                                padding-top: 3rem !important;
+                            }
+
+                            .pb-8 {
+                                padding-bottom: 8rem !important;
+                            }
+
+                            @media (min-width: 768px) {
+
+                                .pt-md-8 {
+                                    padding-top: 8rem !important;
+                                }
+                            }
+
+                            @media (min-width: 1200px) {
+
+                                .mb-xl-0 {
+                                    margin-bottom: 0 !important;
+                                }
+                            }
+
+
+
+
+                            .font-weight-bold {
+                                font-weight: 600 !important;
+                            }
+
+
+                            a.text-success:hover,
+                            a.text-success:focus {
+                                color: #24a46d !important;
+                            }
+
+                            .text-warning {
+                                color: #fb6340 !important;
+                            }
+
+                            a.text-warning:hover,
+                            a.text-warning:focus {
+                                color: #fa3a0e !important;
+                            }
+
+                            .text-danger {
+                                color: #f5365c !important;
+                            }
+
+                            a.text-danger:hover,
+                            a.text-danger:focus {
+                                color: #ec0c38 !important;
+                            }
+
+                            .text-white {
+                                color: #fff !important;
+                            }
+
+                            a.text-white:hover,
+                            a.text-white:focus {
+                                color: #e6e6e6 !important;
+                            }
+
+                            .text-muted {
+                                color: #8898aa !important;
+                            }
+
+                            @media print {
+                                *,
+                                *::before,
+                                *::after {
+                                    box-shadow: none !important;
+                                    text-shadow: none !important;
+                                }
+
+                                a:not(.btn) {
+                                    text-decoration: underline;
+                                }
+
+                                p,
+                                h2 {
+                                    orphans: 3;
+                                    widows: 3;
+                                }
+
+                                h2 {
+                                    page-break-after: avoid;
+                                }
+
+                            @ page {
+                                  size: a3;
+                              }
+
+                                body {
+                                    min-width: 992px !important;
+                                }
+                            }
+
+                            figcaption,
+                            main {
                                 display: block;
-                                float: right;
-                                text-align: right;
                             }
 
-                            .stati div b {
-                                font-size: 2.2em;
-                                width: 100%;
-                                padding-top: 0px;
-                                margin-top: -0.2em;
-                                margin-bottom: -0.2em;
-                                display: block;
+                            main {
+                                overflow: hidden;
                             }
 
-                            .stati div span {
-                                font-size: 1em;
-                                width: 100%;
-                                color: rgb(0, 0, 0, 0.8);
-                            !important;
-                                display: block;
-                            }
-
-                            .stati.left div {
-                                float: left;
-                                text-align: left;
-                            }
-
-                            .stati.bg-turquoise {
-                                background: rgb(26, 188, 156);
-                                color: white;
-                            }
-
-                            .stati.bg-emerald {
-                                background: rgb(46, 204, 113);
-                                color: white;
-                            }
-
-                            .stati.bg-peter_river {
-                                background: rgb(52, 152, 219);
-                                color: white;
-                            }
-
-                            .stati.bg-amethyst {
-                                background: rgb(155, 89, 182);
-                                color: white;
-                            }
-
-                            .stati.bg-wet_asphalt {
-                                background: rgb(52, 73, 94);
-                                color: white;
-                            }
-
-                            .stati.bg-green_sea {
-                                background: rgb(22, 160, 133);
-                                color: white;
-                            }
-
-                            .stati.bg-nephritis {
-                                background: rgb(39, 174, 96);
-                                color: white;
-                            }
-
-                            .stati.bg-belize_hole {
-                                background: rgb(41, 128, 185);
-                                color: white;
-                            }
-
-                            .stati.bg-wisteria {
-                                background: rgb(142, 68, 173);
-                                color: white;
-                            }
-
-                            .stati.bg-midnight_blue {
-                                background: rgb(44, 62, 80);
-                                color: white;
-                            }
-
-                            .stati.bg-sun_flower {
-                                background: rgb(241, 196, 15);
-                                color: white;
-                            }
-
-                            .stati.bg-carrot {
-                                background: rgb(230, 126, 34);
-                                color: white;
-                            }
-
-                            .stati.bg-alizarin {
-                                background: rgb(231, 76, 60);
-                                color: white;
-                            }
-
-                            .stati.bg-clouds {
-                                background: rgb(236, 240, 241);
-                                color: white;
-                            }
-
-                            .stati.bg-concrete {
-                                background: rgb(149, 165, 166);
-                                color: white;
-                            }
-
-                            .stati.bg-orange {
-                                background: rgb(243, 156, 18);
-                                color: white;
-                            }
-
-                            .stati.bg-pumpkin {
-                                background: rgb(211, 84, 0);
-                                color: white;
-                            }
-
-                            .stati.bg-pomegranate {
-                                background: rgb(192, 57, 43);
-                                color: white;
-                            }
-
-                            .stati.bg-silver {
-                                background: rgb(189, 195, 199);
-                                color: white;
-                            }
-
-                            .stati.bg-asbestos {
-                                background: rgb(127, 140, 141);
-                                color: white;
+                            .bg-yellow {
+                                background-color: #ffd600 !important;
                             }
 
 
-                            .stati.turquoise {
-                                color: rgb(26, 188, 156);
+
+
+
+
+                            .icon {
+                                width: 3rem;
+                                height: 3rem;
                             }
 
-                            .stati.emerald {
-                                color: rgb(46, 204, 113);
+                            .icon i {
+                                font-size: 2.25rem;
                             }
 
-                            .stati.peter_river {
-                                color: rgb(52, 152, 219);
+                            .icon-shape {
+                                display: inline-flex;
+                                padding: 12px;
+                                text-align: center;
+                                border-radius: 50%;
+                                align-items: center;
+                                justify-content: center;
                             }
 
-                            .stati.amethyst {
-                                color: rgb(155, 89, 182);
-                            }
 
-                            .stati.wet_asphalt {
-                                color: rgb(52, 73, 94);
-                            }
 
-                            .stati.green_sea {
-                                color: rgb(22, 160, 133);
-                            }
-
-                            .stati.nephritis {
-                                color: rgb(39, 174, 96);
-                            }
-
-                            .stati.belize_hole {
-                                color: rgb(41, 128, 185);
-                            }
-
-                            .stati.wisteria {
-                                color: rgb(142, 68, 173);
-                            }
-
-                            .stati.midnight_blue {
-                                color: rgb(44, 62, 80);
-                            }
-
-                            .stati.sun_flower {
-                                color: rgb(241, 196, 15);
-                            }
-
-                            .stati.carrot {
-                                color: rgb(230, 126, 34);
-                            }
-
-                            .stati.alizarin {
-                                color: rgb(231, 76, 60);
-                            }
-
-                            .stati.clouds {
-                                color: rgb(236, 240, 241);
-                            }
-
-                            .stati.concrete {
-                                color: rgb(149, 165, 166);
-                            }
-
-                            .stati.orange {
-                                color: rgb(243, 156, 18);
-                            }
-
-                            .stati.pumpkin {
-                                color: rgb(211, 84, 0);
-                            }
-
-                            .stati.pomegranate {
-                                color: rgb(192, 57, 43);
-                            }
-
-                            .stati.silver {
-                                color: rgb(189, 195, 199);
-                            }
-
-                            .stati.asbestos {
-                                color: rgb(127, 140, 141);
-                            }
                         </style>
                     </div>
                     <!--Carusel end -->
@@ -330,63 +320,63 @@
                 <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
 
                     <%if (userRole == 6) {%>
-                        <%--todo ------------------------------------------------------------------------------------------------------%>
-                        <%--todo --------------- Мурожаатлар (Тақсимланган мурожаатлар - инспектор учун) ------------------------------%>
-                        <%--todo ------------------------------------------------------------------------------------------------------%>
-                        <li class="nav-item ml-4" style="width: 47%">
-                            <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
-                        </li>
+                    <%--todo ------------------------------------------------------------------------------------------------------%>
+                    <%--todo --------------- Мурожаатлар (Тақсимланган мурожаатлар - инспектор учун) ------------------------------%>
+                    <%--todo ------------------------------------------------------------------------------------------------------%>
+                    <li class="nav-item ml-4" style="width: 47%">
+                        <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
+                    </li>
 
-                        <%--todo ----------------------------------------------------------------------------%>
-                        <%--todo --------------- Дастлабки қарор реестри  - инспектор учун ------------------%>
-                        <%--todo ----------------------------------------------------------------------------%>
-                        <li class="nav-item" style="width: 47%">
-                            <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки
-                                қарор реестри</a>
-                        </li>
+                    <%--todo ----------------------------------------------------------------------------%>
+                    <%--todo --------------- Дастлабки қарор реестри  - инспектор учун ------------------%>
+                    <%--todo ----------------------------------------------------------------------------%>
+                    <li class="nav-item" style="width: 47%">
+                        <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки
+                            қарор реестри</a>
+                    </li>
                     <%}%>
 
 
                     <%if (userRole == 8) {%>
-                        <%--todo ------------------------------------------------------------------------------------------------------%>
-                        <%--todo --------------- Мурожаатлар (Тақсимланган мурожаатлар - инспектор учун) ------------------------------%>
-                        <%--todo ------------------------------------------------------------------------------------------------------%>
-                        <li class="nav-item ml-4" style="width: 47%">
-                            <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
-                        </li>
+                    <%--todo ------------------------------------------------------------------------------------------------------%>
+                    <%--todo --------------- Мурожаатлар (Тақсимланган мурожаатлар - инспектор учун) ------------------------------%>
+                    <%--todo ------------------------------------------------------------------------------------------------------%>
+                    <li class="nav-item ml-4" style="width: 47%">
+                        <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
+                    </li>
 
-                        <%--todo ----------------------------------------------------------------------------%>
-                        <%--todo --------------- Дастлабки қарор реестри  - инспектор учун ------------------%>
-                        <%--todo ----------------------------------------------------------------------------%>
-                        <li class="nav-item" style="width: 47%">
-                            <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки
-                                қарор реестри</a>
-                        </li>
+                    <%--todo ----------------------------------------------------------------------------%>
+                    <%--todo --------------- Дастлабки қарор реестри  - инспектор учун ------------------%>
+                    <%--todo ----------------------------------------------------------------------------%>
+                    <li class="nav-item" style="width: 47%">
+                        <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки
+                            қарор реестри</a>
+                    </li>
                     <%}%>
                     <%if (userRole != 8 && userRole != 6) {%>
-                        <%--todo ----------------------------------------------------------%>
-                        <%--todo --------------- Мурожаатлар ------------------------------%>
-                        <%--todo ----------------------------------------------------------%>
-                        <li class="nav-item ml-5" style="width: 30%">
-                            <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                               aria-controls="home" aria-selected="true"><i class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
-                        </li>
+                    <%--todo ----------------------------------------------------------%>
+                    <%--todo --------------- Мурожаатлар ------------------------------%>
+                    <%--todo ----------------------------------------------------------%>
+                    <li class="nav-item ml-5" style="width: 30%">
+                        <a class="nav-link active h4" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                           aria-controls="home" aria-selected="true"><i class="fa fa-folder-open mr-3"></i>Мурожаатлар</a>
+                    </li>
 
-                        <%--todo ----------------------------------------------------------%>
-                        <%--todo --------------- Тақсимланган мурожаатлар -----------------%>
-                        <%--todo ----------------------------------------------------------%>
-                        <li class="nav-item ml-4" style="width: 30%">
-                            <a class="nav-link h4" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                               aria-controls="contact" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Тақсимланган мурожаатлар
-                            </a>
-                        </li>
-                        <%--todo ----------------------------------------------------------%>
-                        <%--todo --------------- Дастлабки қарор реестри ------------------%>
-                        <%--todo ----------------------------------------------------------%>
-                        <li class="nav-item ml-4" style="width: 30%">
-                            <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                               aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки қарор реестри</a>
-                        </li>
+                    <%--todo ----------------------------------------------------------%>
+                    <%--todo --------------- Тақсимланган мурожаатлар -----------------%>
+                    <%--todo ----------------------------------------------------------%>
+                    <li class="nav-item ml-4" style="width: 30%">
+                        <a class="nav-link h4" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                           aria-controls="contact" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Тақсимланган мурожаатлар
+                        </a>
+                    </li>
+                    <%--todo ----------------------------------------------------------%>
+                    <%--todo --------------- Дастлабки қарор реестри ------------------%>
+                    <%--todo ----------------------------------------------------------%>
+                    <li class="nav-item ml-4" style="width: 30%">
+                        <a class="nav-link h4" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                           aria-controls="profile" aria-selected="false"><i class="fa fa-folder-open mr-3"></i>Дастлабки қарор реестри</a>
+                    </li>
                     <%}%>
 
                 </ul>

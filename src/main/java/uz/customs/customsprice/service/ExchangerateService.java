@@ -2,11 +2,7 @@ package uz.customs.customsprice.service;
 
 import org.springframework.stereotype.Service;
 import uz.customs.customsprice.entity.InitialDecision.Exchangerate;
-import uz.customs.customsprice.repository.ExchangeRateRepo;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.util.Date;
+import uz.customs.customsprice.repository.ExchangeRate.ExchangeRateRepo;
 
 @Service
 public class ExchangerateService {

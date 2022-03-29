@@ -7,7 +7,6 @@ import java.util.Objects;
 @Entity
 @IdClass(ExchangeratePK.class)
 public class Exchangerate {
-    @PersistenceContext(unitName = "digests")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "ID")

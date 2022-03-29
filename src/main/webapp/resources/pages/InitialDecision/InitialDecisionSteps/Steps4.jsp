@@ -19,8 +19,6 @@
         <h2>Ариза бўйича қарор<small>4-қадам</small></h2>
         <div class="clearfix"></div>
     </div>
-
-    <!-- Bordered tabs-->
     <ul id="myTab1" role="tablist" class="nav nav-tabs nav-pills with-arrow flex-column flex-sm-row text-center">
         <li class="nav-item flex-sm-fill">
             <a id="home1-tab" data-toggle="tab" href="#home1" role="tab" aria-controls="home1" aria-selected="true"
@@ -38,17 +36,20 @@
                class="nav-link text-uppercase font-weight-normal rounded-0 border">Аризани тузатиш учун қайтариш</a>
         </li>
     </ul>
-
     <div id="myTab1Content" class="tab-content border-primary">
         <div id="home1" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade py-4 show active">
-            <h4 style="text-align: center">Божхона тўловлари ва йиғимлари тўғрисида маълумот<a
-                    class="btn btn-primary rounded-0 pull-right" id="insertRow"
-                    href="#">Қўшиш</a></h4>
-            <!-- -->
-            <!--  Bootstrap table-->
+            <h4 style="text-align: center">Божхона тўловлари ва йиғимлари тўғрисида маълумот<a class="btn btn-primary rounded-0 pull-right" id="insertRow" href="#">Қўшиш</a></h4>
             <input type="hidden" id="cmdtId" name="cmdtId" value="<c:out value="${cmdtId}"/>"/>
-
             <div class="table-responsive">
+                <table class="table tolovlar border-primary" style="border-style: dashed double none">
+                    <thead>
+                    <tr>
+                        <td>
+                            <textarea rows="10" cols="80" class="form form-group" style="width: 50%" id="outputVal"></textarea>
+                        </td>
+                    </tr>
+                    </thead>
+                </table>
                 <table class="table tolovlar border-primary" style="border-style: dashed double none">
                     <thead>
                     <tr>
@@ -57,6 +58,8 @@
                         <th scope="col">Адвалор ставка</th>
                         <th scope="col">Хос ставка</th>
                         <th scope="col">Хос ставка миқдори</th>
+                        <th scope="col">Доллар курси</th>
+                        <th scope="col">Қўш.ўл.бир.миқ.</th>
                         <th scope="col">Қўш.ўл.бир</th>
                         <th scope="col">Ҳисобланган</th>
                         <th scope="col">Тўлов тури</th>
@@ -76,54 +79,45 @@
                     ${val.name}
                 </c:forEach>
             </select>
-
             <select class="d-none myselect2">
                 <option value=""></option>
                 <c:forEach var="val" items="${paymttype}" varStatus="i">
                     <option value="${val.id}">${val.id}</option>
                     ${val.spname}
-
                 </c:forEach>
             </select>
-
             <button type="button" class="btn btn-success ml-2" onclick="javascript:InDecConfirm('145')">Жўнатиш</button>
             <!-- Add rows button-->
             <script>
                 $(function () {
-
                     // Start counting from the third row
                     var counter = 1;
-
                     $("#insertRow").on("click", function (event) {
                         event.preventDefault();
-
                         var newRow = $("table.tolovlar tbody");
                         var cols = '<tr>';
                         // Table columns
                         cols +=
-                            '<td><select id="paymentType' + counter + '" onchange="changePaymentType(' + counter + ');" class="form-control rounded-0" type="text" placeholder="Тўлов турини танланг">' +
+                            '<td><select style="width: 120%;" id="paymentType' + counter + '" onchange="changePaymentType(' + counter +
+                            ');" class="form-control rounded-0" type="text" placeholder="Тўлов турини танланг">' +
                             $(".myselect").html()
                             + '</select></td>';
-                        cols += '<td><input id="g47Base' + counter + '" type="number" class="form-control rounded-0" placeholder="Қиритинг"></td>';
-                        cols += '<td><input id="g47AltBase' + counter + '" type="number" class="form-control rounded-0" placeholder="Адвалор ставка"></td>';
-                        cols += '<td><input id="g47Rate' + counter + '" type="number" class="form-control rounded-0" placeholder="Хос ставка"></td>';
-                        cols += '<td><input id="g47AltRate' + counter + '" type="number" class="form-control rounded-0" placeholder="Хос ставка миқдори"></td>';
-                        cols += '<td><input id="g47AltBaseEdIzm' + counter + '" disabled="disabled" size="3" maxlength="3" class="form-control rounded-0" type="text" placeholder="Қўш.ўл.бир"></td>';
-                        cols += '<td><input id="g47Sum' + counter + '" disabled="disabled" class="form-control rounded-0" type="text" placeholder="Ҳисобланган бож.тўл"></td>';
+                        cols += '<td><input id="g47Base' + counter + '" type="text" class="form-control rounded-0" placeholder="Қиритинг" readonly></td>';
+                        cols += '<td><input id="g47AltBase' + counter + '" type="text" class="form-control rounded-0" placeholder="Адвалор ставка" readonly></td>';
+                        cols += '<td><input id="altRate' + counter + '" type="text" class="form-control rounded-0" placeholder="Хос ставка" readonly></td>';
+                        cols += '<td><input id="g47AltRate' + counter + '" type="number" class="form-control rounded-0" placeholder="Хос ставка миқдори" readonly></td>';
+                        cols += '<td><input id="rate840' + counter + '" type="number" class="form-control rounded-0" placeholder="Доллар курси" readonly>' +
+                            '<input id="typeRate' + counter + '" type="hidden" class="form-control rounded-0" placeholder="Ҳисоблаш шакли"></td>';
+                        cols += '<td><input id="g47Rate' + counter + '" type="number" class="form-control rounded-0" placeholder="Ҳисоблаш шакли" onkeyup="calculate2(' + counter + ');"></td>';
+                        // cols += '<td><input id="typeRate' + counter + '" type="hidden" class="form-control rounded-0" placeholder="Ҳисоблаш шакли"></td>';
+                        cols += '<td><input id="g47AltBaseEdIzm' + counter + '" size="10" maxlength="10" class="form-control rounded-0 w-75" type="text" placeholder="Қўш.ўл.бир" readonly></td>';
+                        cols += '<td><input id="g47Sum' + counter + '" class="form-control rounded-0 bg-orange text-white" type="text" placeholder="Ҳисобланган бож.тўл" readonly></td>';
                         cols += '<td><select id="g47Sp' + counter + '" class="form-control rounded-0" type="text" placeholder="Тўлов турини танланг">' + $(".myselect2").html() + '</select></td>';
                         cols += '<td><button class="btn btn-danger rounded-0" id ="deleteRow"><i class="fa fa-trash"></i></button</td>';
                         cols += '<tr>';
-                        // Insert the columns inside a row
                         newRow.append(cols);
-
-                        // Insert the row inside a table
-                        ///$("table").append(newRow);
-
-                        // Increase counter after each row insertion
                         counter++;
                     });
-
-                    // Remove row when delete btn is clicked
                     $("table").on("click", "#deleteRow", function (event) {
                         $(this).closest("tr").remove();
                         counter -= 1
@@ -602,33 +596,116 @@
     }
 
     function changePaymentType(rowNum) {
-        // alert($('#paymentType' + rowNum).val());
-        // alert('cmdtId==' + $('#cmdtId').val());
-        // $('#g47Base' + rowNum).val(Math.random());
+        var paymentType = $('#paymentType' + rowNum).val();
         var dataS = {
             "x": '4',
             "cmdt_id": $('#cmdtId').val(),
             "appId": $('#appId').val(),
-            "paymentType": $('#paymentType' + rowNum).val()
+            "paymentType": paymentType
         }
         $.ajax({
             type: "POST",
             data: dataS,
-            url: "<%=request.getContextPath()%>/commodity/resources/pages/InitialDecision/InitialDecisionSteps/Steps",
-            dataType: "html",
-            header: 'Content-type: text/html; charset=utf-8',
+            url: "<%=request.getContextPath()%>/commodity/resources/pages/InitialDecision/InitialDecisionSteps/Steps44",
+            // dataType: "json",
+            header: 'Content-type: application/json; charset=utf-8',
             success: function (res) {
-                <%--alert('dfdfdf=' + ${cmdtPrice});--%>
-                $('#g47Base' + rowNum).val(${cmdtPriceCr});
-                $('#g47AltBase' + rowNum).val(${cmdtPriceCradvRate});
-                $('#g47Rate' + rowNum).val(${cmdtPriceCraltRate});
-                $('#g47AltRate' + rowNum).val(${extraQty});
-                $('#g47AltBaseEdIzm' + rowNum).val(${extraUnits});
-                $('#g47Sum' + rowNum).val(${sumCalc});
+                console.log(res);
+                $('#g47Base' + rowNum).val((res.g47Base).toLocaleString());
+                $('#g47AltBase' + rowNum).val(res.advRate);
+                // alert(res.altRate);
+                $('#altRate' + rowNum).val(res.altRate);
+                $('#g47Rate' + rowNum).val(res.g47Rate);
+                $('#g47AltRate' + rowNum).val(res.g47AltRate);
+                $('#g47AltBaseEdIzm' + rowNum).val(res.unitRate);
+                $('#rate840' + rowNum).val(res.rate840);
+                $('#typeRate' + rowNum).val(res.typeRate);
+
+                var typeRate = parseInt(res.typeRate);
+                var g47Rate = res.g47Rate;
+
+                if (paymentType == 20 || paymentType == 27) {
+                    if (typeRate == 0) {
+                        $('#g47Sum' + rowNum).val(res.g47Sum);
+                        $('#g47Rate' + rowNum + ',#rate840' + rowNum + ',#g47AltRate' + rowNum + ',#altRate' + rowNum + ',#unitRate' + rowNum + ',#g47AltBaseEdIzm' + rowNum).val('');
+                        $('#g47Rate' + rowNum + ',#rate840' + rowNum + ',#g47AltRate' + rowNum + ',#altRate' + rowNum + ',#unitRate' + rowNum + ',#g47AltBaseEdIzm' + rowNum).attr('placeholder', '---');
+                        $('#g47Rate' + rowNum + ',#rate840' + rowNum + ',#g47AltRate' + rowNum + ',#altRate' + rowNum + ',#unitRate' + rowNum + ',#g47AltBaseEdIzm' + rowNum).attr('readonly', true);
+                    }
+
+                    if (typeRate == 1 || typeRate == 2) {
+                        if (g47Rate == 0.0) {
+                            $('#g47Sum' + rowNum).val('Қўш.ўл.бир.миқ.киритинг!');
+                            $('#g47Rate' + rowNum).attr('readonly', false);
+                        } else {
+                            $('#g47Sum' + rowNum).val(res.g47Sum);
+                            $('#g47Rate' + rowNum).attr('readonly', true);
+                            $('#g47Rate' + rowNum).val('');
+                            $('#g47Rate' + rowNum).attr('placeholder', '---');
+                        }
+                    }
+                } else {
+                    $('#g47Sum' + rowNum).val(res.g47Sum);
+                    $('#g47Rate' + rowNum + ',#rate840' + rowNum + ',#g47AltRate' + rowNum + ',#altRate' + rowNum + ',#unitRate' + rowNum + ',#g47AltBaseEdIzm' + rowNum).val('');
+                    $('#g47Rate' + rowNum + ',#rate840' + rowNum + ',#g47AltRate' + rowNum + ',#altRate' + rowNum + ',#unitRate' + rowNum + ',#g47AltBaseEdIzm' + rowNum).attr('placeholder', '---');
+                    $('#g47Rate' + rowNum + ',#rate840' + rowNum + ',#g47AltRate' + rowNum + ',#altRate' + rowNum + ',#unitRate' + rowNum + ',#g47AltBaseEdIzm' + rowNum).attr('readonly', true);
+                }
+
+
+                $('#outputVal').val(
+                    ' g47Base (Хисоблаш асоси) ===> ' + res.g47Base.toLocaleString() +
+                    '\n g47AltBase (Адвалор ставка) ===> ' + res.advRate +
+                    '\n g47Rate (Хос ставка) ===> ' + res.g47Rate +
+                    '\n g47AltRate (Хос ставка миқдори) ===> ' + res.g47AltRate +
+                    '\n g47AltBaseEdIzm (Қўшимча ўлчов бирлиги коди) ===> ' + res.unitRate +
+                    '\n rate840 (Ақш доллар суммаси) ===> ' + res.rate840 +
+                    '\n typeRate (Ҳисоблаш шакли) ===> ' + res.typeRate +
+                    '\n unitRate (Хос ставканинг Қўшимча ўлчов бирлигидаги коди) ===> ' + res.unitRate +
+                    '\n altRate (Хос ставка миқдорининг бирлик (1 - лик) миқдори) ===> ' + res.altRate +
+                    '\n advRate (Адвалор ставка фоиздаги миқдори) ===> ' + res.advRate +
+                    '\n g47Sum (Ҳисобланган тўловлар) ===> ' + res.g47Sum
+                );
+
             },
             error: function (res) {
             }
         });
+    }
+
+    function calculate2(rowNum) {
+        // if (event.keyCode === 13) {// } else return false;
+
+        var sum = 0.0;
+        var sum1 = 0.0;
+        var sum2 = 0.0;
+        var g47Base = $('#g47Base' + rowNum).val();
+        var g47AltBase = $('#g47AltBase' + rowNum).val();
+
+        var g47Rate = $('#g47Rate' + rowNum).val();
+        var g47AltRate = $('#g47AltRate' + rowNum).val();
+        var rate840 = $('#rate840' + rowNum).val();
+        var altRate = $('#altRate' + rowNum).val();
+
+        var typeRate = parseInt($('#typeRate' + rowNum).val());
+
+        if (typeRate === 1) {
+            sum1 = (g47Base * g47AltBase) / 100;
+            sum2 = g47Rate * g47AltRate * rate840 * altRate;
+            if (sum1 > sum2) sum = sum1;
+            else sum = sum2;
+        }
+
+        if (typeRate === 2) {
+            sum1 = (g47Base * g47AltBase) / 100;
+            sum2 = g47Rate * g47AltRate * rate840 * altRate;
+            sum = sum1 + sum2;
+        }
+
+        // if (typeRate === 1 || typeRate === 2) {
+        //     g47AltRate = g47AltRate * g47Rate * rate840
+        // }
+
+        var g47Sum = sum;
+        $('#g47Sum' + rowNum).val(g47Sum);
     }
 
 

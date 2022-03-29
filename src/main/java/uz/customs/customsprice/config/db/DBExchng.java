@@ -23,12 +23,12 @@ import java.util.Properties;
 import static uz.customs.customsprice.CustomspriceApplication.MODEL_PACKAGE;
 
 @Configuration
-@ConfigurationProperties("spring.datasource.usermain")
-@EnableJpaRepositories(repositoryFactoryBeanClass = DataTablesRepositoryFactoryBean.class, entityManagerFactoryRef = "entityManagerFactoryUserMain", transactionManagerRef =
-        "transactionManagerUserMain", basePackages = {"uz.customs.customsprice.repository.Rate"})
-public class DBUserMain {
-    protected final String PERSISTENCE_UNIT_NAME = "UserMain";
-    protected final Properties JPA_UserMain = new Properties() {{
+@ConfigurationProperties("spring.datasource.exchng")
+@EnableJpaRepositories(repositoryFactoryBeanClass = DataTablesRepositoryFactoryBean.class, entityManagerFactoryRef = "entityManagerFactoryExchng", transactionManagerRef =
+        "transactionManagerExchng", basePackages = {"uz.customs.customsprice.repository.ExchangeRate"})
+public class DBExchng {
+    protected final String PERSISTENCE_UNIT_NAME = "Exchng";
+    protected final Properties JPA_Exchng = new Properties() {{
         put("database-platform", "org.hibernate.dialect.DB2400Dialect");
         put("hibernate.ddl-auto", "none");
         put("hibernate.hbm2ddl.auto", "none");
@@ -37,19 +37,19 @@ public class DBUserMain {
     }};
 
     @Bean
-    @Qualifier("UserMain")
-    public HikariDataSource UserMain() throws UnknownHostException, SocketException {
+    @Qualifier("DBExchng")
+    public HikariDataSource Exchng() throws UnknownHostException, SocketException {
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setAutoCommit(true);
         hikariConfig.addDataSourceProperty("characterEncoding", "utf8");
         hikariConfig.addDataSourceProperty("encoding", "UTF-8");
         hikariConfig.addDataSourceProperty("useUnicode", "true");
-        hikariConfig.setPoolName("UserMain");
+        hikariConfig.setPoolName("Exchng");
         hikariConfig.setDriverClassName("com.ibm.as400.access.AS400JDBCDriver");
-        hikariConfig.setJdbcUrl("jdbc:as400://192.168.212.228/NEW_EINFO");
+        hikariConfig.setJdbcUrl("jdbc:as400://192.168.212.231/ETRANZIT");
         hikariConfig.setConnectionTestQuery("select current_timestamp cts from sysibm.sysdummy1");
-        hikariConfig.setUsername("rustam");
-        hikariConfig.setPassword("rustam");
+        hikariConfig.setUsername("etranzits");
+        hikariConfig.setPassword("nB4EaEtU");
         String ip = "";
         try (final DatagramSocket socket = new DatagramSocket()) {
             socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
@@ -73,21 +73,21 @@ public class DBUserMain {
         return new HikariDataSource(hikariConfig);
     }
 
-    @PersistenceContext(unitName = "UserMain")
-    @Bean(name = "entityManagerFactoryUserMain")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryUserMain(final HikariDataSource UserMain) {
+    @PersistenceContext(unitName = "Exchng")
+    @Bean(name = "entityManagerFactoryExchng")
+    public LocalContainerEntityManagerFactoryBean entityManagerFactoryExchng(final HikariDataSource Exchng) {
 
         return new LocalContainerEntityManagerFactoryBean() {{
-            setDataSource(UserMain);
+            setDataSource(Exchng);
             setPersistenceProviderClass(HibernatePersistenceProvider.class);
             setPersistenceUnitName(PERSISTENCE_UNIT_NAME);
             setPackagesToScan(MODEL_PACKAGE);
-            setJpaProperties(JPA_UserMain);
+            setJpaProperties(JPA_Exchng);
         }};
     }
 
     @Bean
-    public PlatformTransactionManager transactionManagerUserMain(final @Qualifier("entityManagerFactoryUserMain") LocalContainerEntityManagerFactoryBean entityManagerFactoryUserMain) {
-        return new JpaTransactionManager(entityManagerFactoryUserMain.getObject());
+    public PlatformTransactionManager transactionManagerExchng(final @Qualifier("entityManagerFactoryExchng") LocalContainerEntityManagerFactoryBean entityManagerFactoryExchng) {
+        return new JpaTransactionManager(entityManagerFactoryExchng.getObject());
     }
 }
