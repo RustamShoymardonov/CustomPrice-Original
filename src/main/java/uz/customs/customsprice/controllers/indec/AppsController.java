@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import uz.customs.customsprice.entity.InitialDecision.*;
+import uz.customs.customsprice.entity.users.User;
 import uz.customs.customsprice.repository.AppsRepo;
+import uz.customs.customsprice.repository.RollBackAppRepo;
+import uz.customs.customsprice.repository.UserRepository;
 import uz.customs.customsprice.repository.users.LoginRepo;
 import uz.customs.customsprice.repository.users.UsersRepo;
 import uz.customs.customsprice.service.*;
@@ -35,6 +38,9 @@ public class AppsController {
     private final StatusHService statusHService;
     private final RollBackAppService rollBackAppService;
     private final RollbackSpService rollbackSpService;
+    private final RollBackAppRepo rollBackAppRepo;
+    private final UserRepository userRepository;
+
 
 
     private final String INITIALDECISION = "/resources/pages/InitialDecision/InitialDecision1";
@@ -42,8 +48,12 @@ public class AppsController {
     private final String INITIALDECISIONVIEW = "/resources/pages/InitialDecision/InitialDecisionView";
     private final String INITIALDECISIONSAVERASP = "/resources/pages/InitialDecision/InitialDecisionRasp1";
     private final String INITIALDECISIONROLLBACK = "/resources/pages/InitialDecision/InitialDecisionRollBack";
+    private final String INITIAL_DECISION_APP = "/resources/pages/InitialDecision/ListInDec";
+    private final String INITIAL_DECISION_NOT_SORTED= "/resources/pages/InitialDecision/ListInDec/ListInDecTable";
+    private final String INITIAL_DECISION_RASP_TABLE = "/resources/pages/InitialDecision/ListInDec/ListInDecRasp";
+    private final String INITIAL_DECISION_TERMS_TABLE = "/resources/pages/InitialDecision/ListInDec/ListInDecTermsTable";
 
-    public AppsController(AppsService appsService, ConturyService conturyService, LocationService locationService, StatusService statusService, TermsService termsService, AppsService appsservice, AppsRaspService appsRaspService, AppsRepo appsRepo, UsersRepo usersRepo, LoginRepo loginRepo, TransportTypeService transportTypeService, UsersService usersService, StatusMService statusMService, StatusHService statusHService, RollBackAppService rollBackAppService, RollbackSpService rollbackSpService) {
+    public AppsController(AppsService appsService, ConturyService conturyService, LocationService locationService, StatusService statusService, TermsService termsService, AppsService appsservice, AppsRaspService appsRaspService, AppsRepo appsRepo, UsersRepo usersRepo, LoginRepo loginRepo, TransportTypeService transportTypeService, UsersService usersService, StatusMService statusMService, StatusHService statusHService, RollBackAppService rollBackAppService, RollbackSpService rollbackSpService, RollBackAppRepo rollBackAppRepo, UserRepository userRepository) {
         this.appsService = appsService;
         this.conturyService = conturyService;
         this.locationService = locationService;
@@ -60,6 +70,8 @@ public class AppsController {
         this.statusHService = statusHService;
         this.rollBackAppService = rollBackAppService;
         this.rollbackSpService = rollbackSpService;
+        this.rollBackAppRepo = rollBackAppRepo;
+        this.userRepository = userRepository;
     }
 
     /*todo Тақсимланган аризалар рўйхатини сақлаш (инспекторлар кесимида)*/
@@ -94,7 +106,7 @@ public class AppsController {
         }
 
 
-        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionRasp");
+        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/ListInDec");
         List<Apps> notSortedList = new ArrayList<>();
         notSortedList = appsservice.getListNotSorted(request, userLocation, userPost, userId, userRole);
         mav.addObject("notSortedList", notSortedList);
@@ -162,26 +174,31 @@ public class AppsController {
 
     @PostMapping(value = INITIALDECISIONVIEW)
     @ResponseBody
-    public ModelAndView InitialDecisionView(HttpSession session,HttpServletRequest request, @RequestParam String app_id) {
+    public ModelAndView InitialDecisionView(HttpSession session,HttpServletRequest request, @RequestParam String appId) {
         ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionView");
-        ModelAndView mav2 = new ModelAndView("resources/pages/InitialDecision/InitialDecisionView");
-        Integer userRole = (Integer) request.getSession().getAttribute("userRole");
-        Apps apps = new Apps();
-        apps = appsservice.findById(app_id);
 
-        List<Apps> InitialDecisionViewApp = appsservice.getInitialDecisionView(app_id);
+        Integer userRole = (Integer) request.getSession().getAttribute("userRole");
+        Apps apps = appsservice.findById(appId);
+
+        List<Apps> InitialDecisionViewApp = appsservice.getInitialDecisionView(appId);
         mav.addObject("appInfo", InitialDecisionViewApp);
 
-        List<Commodity> getInitialDecisionViewCommodity = appsservice.getInitialDecisionViewCommodity(app_id);
+        List<Commodity> getInitialDecisionViewCommodity = appsservice.getInitialDecisionViewCommodity(appId);
         mav.addObject("allCommodityFor", getInitialDecisionViewCommodity);
 
-        List<TransportType> getInDecViewTrType = transportTypeService.getByAppId(app_id);
+        List<TransportType> getInDecViewTrType = transportTypeService.getByAppId(appId);
         mav.addObject("transports", getInDecViewTrType);
+
+//        List<RollBackApp> listRollbackSp = rollBackAppRepo.findAll();
+        List<RollbackSp> listRollbackSp = rollbackSpService.getlistRollbackSp();
+        mav.addObject("rollbackInfo", listRollbackSp);
+
 
         /**Агар роли хбб бошлиги бўлса ва ариза статуси 145 бўлса тасдиқланмаган қарор html кўринади**/
 //        if (userRole == 6 && apps.getStatus() == 145){
 //            return mav2;
 //        }
+        mav.addObject("appId", appId);
         return mav;
     }
 
@@ -218,11 +235,41 @@ public class AppsController {
             rollBackAppService.saveRollBack(rollBackApp);
         }
 
+        List<Apps> notSortedList = appsservice.getListNotSorted(request, userLocation, userPost, userId, userRole);
+        mav.addObject("notSortedList", notSortedList);
+
+        List sortedList = appsservice.getListSorted();
+        mav.addObject("sortedList", sortedList);
+
+        List<Apps> termsList = appsservice.getListTerms();
+        mav.addObject("termsList", termsList);
+
+        List<Users> usersList = usersService.getByLocationAndPostAndRole(userLocation, userPost, 8);
+        mav.addObject("userSelectList", usersList);
+
+        return mav;
+    }
+    /*-----------------------------------------------------------------------------------------------------------end*/
+
+
+    /*todo Аризалар рўйхати(дастлабки)*/
+    @PostMapping(value = INITIAL_DECISION_APP)
+    @ResponseBody
+    public ModelAndView InitialDecisionApp(HttpServletRequest request, @RequestParam(name = "id") String status) {
+        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/ListInDec");
+        String userId = (String) request.getSession().getAttribute("userId");
+        String userName = (String) request.getSession().getAttribute("userName");
+        Integer userRole = (Integer) request.getSession().getAttribute("userRole");
+        String userRoleName = (String) request.getSession().getAttribute("userRoleName");
+        String userLocation = (String) request.getSession().getAttribute("userLocation");
+        String userLocationName = (String) request.getSession().getAttribute("userLocationName");
+        String userPost = (String) request.getSession().getAttribute("userPost");
+
         List<Apps> notSortedList = new ArrayList<>();
         notSortedList = appsservice.getListNotSorted(request, userLocation, userPost, userId, userRole);
         mav.addObject("notSortedList", notSortedList);
 
-        List sortedList = new ArrayList<>();
+        List<Apps> sortedList = new ArrayList<>();
         sortedList = appsservice.getListSorted();
         mav.addObject("sortedList", sortedList);
 
@@ -236,6 +283,72 @@ public class AppsController {
 
         return mav;
     }
-    /*-----------------------------------------------------------------------------------------------------------end*/
+
+    /*todo Аризалар рўйхати(дастлабки)*/
+    @PostMapping(value = INITIAL_DECISION_NOT_SORTED)
+    @ResponseBody
+    public ModelAndView InitialDecisionNotSorted(HttpServletRequest request, @RequestParam(name = "id") String status) {
+        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/ListInDec/ListInDecTable");
+        String userId = (String) request.getSession().getAttribute("userId");
+        String userName = (String) request.getSession().getAttribute("userName");
+        Integer userRole = (Integer) request.getSession().getAttribute("userRole");
+        String userRoleName = (String) request.getSession().getAttribute("userRoleName");
+        String userLocation = (String) request.getSession().getAttribute("userLocation");
+        String userLocationName = (String) request.getSession().getAttribute("userLocationName");
+        String userPost = (String) request.getSession().getAttribute("userPost");
+
+        List<Apps> notSortedList = new ArrayList<>();
+        notSortedList = appsservice.getListNotSorted(request, userLocation, userPost, userId, userRole);
+        mav.addObject("notSortedList", notSortedList);
+
+//        List<Users> usersList = new ArrayList<>();
+        List<User> usersList = new ArrayList<>();
+//        usersList = usersService.getByLocationAndPostAndRole(userLocation, userPost, 8);
+        usersList = userRepository.findByLocationAndPost(userLocation, userPost);
+        mav.addObject("userSelectList", usersList);
+
+        return mav;
+    }
+
+    /*todo Аризалар рўйхати(дастлабки)*/
+    @PostMapping(value = INITIAL_DECISION_RASP_TABLE)
+    @ResponseBody
+    public ModelAndView InitialDecisionRaspTable(HttpServletRequest request, @RequestParam(name = "id") String status) {
+        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/ListInDec/ListInDecRasp");
+        String userId = (String) request.getSession().getAttribute("userId");
+        String userName = (String) request.getSession().getAttribute("userName");
+        Integer userRole = (Integer) request.getSession().getAttribute("userRole");
+        String userRoleName = (String) request.getSession().getAttribute("userRoleName");
+        String userLocation = (String) request.getSession().getAttribute("userLocation");
+        String userLocationName = (String) request.getSession().getAttribute("userLocationName");
+        String userPost = (String) request.getSession().getAttribute("userPost");
+
+        List<Apps> sortedList = new ArrayList<>();
+        sortedList = appsservice.getListSorted();
+        mav.addObject("sortedList", sortedList);
+
+        return mav;
+    }
+
+    /*todo Аризалар рўйхати(дастлабки)*/
+    @PostMapping(value = INITIAL_DECISION_TERMS_TABLE)
+    @ResponseBody
+    public ModelAndView InitialDecisionTermsTable(HttpServletRequest request, @RequestParam(name = "id") String status) {
+        ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/ListInDec/ListInDecTerms");
+        String userId = (String) request.getSession().getAttribute("userId");
+        String userName = (String) request.getSession().getAttribute("userName");
+        Integer userRole = (Integer) request.getSession().getAttribute("userRole");
+        String userRoleName = (String) request.getSession().getAttribute("userRoleName");
+        String userLocation = (String) request.getSession().getAttribute("userLocation");
+        String userLocationName = (String) request.getSession().getAttribute("userLocationName");
+        String userPost = (String) request.getSession().getAttribute("userPost");
+
+        List<Apps> termsList = new ArrayList<>();
+        termsList = appsservice.getListTerms();
+        mav.addObject("termsList", termsList);
+
+        return mav;
+    }
+
 }
 

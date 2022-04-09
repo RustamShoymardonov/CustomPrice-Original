@@ -14,42 +14,24 @@
 <%
     String HS_NM_FULL = "";
 %>
-<div id="step4" class="shadow p-3 mb-5 bg-white rounded x_panel" style="height: auto">
-    <div class="x_title">
-        <h2>Ариза бўйича қарор<small>4-қадам</small></h2>
-        <div class="clearfix"></div>
-    </div>
-    <ul id="myTab1" role="tablist" class="nav nav-tabs nav-pills with-arrow flex-column flex-sm-row text-center">
-        <li class="nav-item flex-sm-fill">
-            <a id="home1-tab" data-toggle="tab" href="#home1" role="tab" aria-controls="home1" aria-selected="true"
-               class="nav-link text-uppercase font-weight-normal mr-sm-3 rounded-0 border active">Дастлабки қарор қабул
-                қилиш</a>
-        </li>
-        <li class="nav-item flex-sm-fill">
-            <a id="profile1-tab" data-toggle="tab" href="#profile1" role="tab" aria-controls="profile1"
-               aria-selected="false"
-               class="nav-link text-uppercase font-weight-normal mr-sm-3 rounded-0 border">Аризани қайтариш</a>
-        </li>
-        <li class="nav-item flex-sm-fill">
-            <a id="contact1-tab" data-toggle="tab" href="#contact1" role="tab" aria-controls="contact1"
-               aria-selected="false"
-               class="nav-link text-uppercase font-weight-normal rounded-0 border">Аризани тузатиш учун қайтариш</a>
-        </li>
-    </ul>
-    <div id="myTab1Content" class="tab-content border-primary">
+<body>
+<div class="page-content">
+    <div class="col-12 col-lg-12 shadow">
+        <div class="card">
+            <div class="card-body">
+                <div id="myTab1Content" class="tab-content border-primary">
         <div id="home1" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade py-4 show active">
-            <h4 style="text-align: center">Божхона тўловлари ва йиғимлари тўғрисида маълумот<a class="btn btn-primary rounded-0 pull-right" id="insertRow" href="#">Қўшиш</a></h4>
+            <h5 style="text-align: center">
+                ТИФ ТН коди:
+                <u class="text-primary">
+                ${commodity}
+                </u>
+                бўлган товар учун божхона тўловлари ва йиғимлари тўғрисида маълумот&nbsp
+            </h5>
             <input type="hidden" id="cmdtId" name="cmdtId" value="<c:out value="${cmdtId}"/>"/>
+            <%--            <input type="hidden" id="appId" name="appId" value="<c:out value="${appId}"/>"/>--%>
+            <input type="hidden" id="rowCount" name="rowCount" value="0"/>
             <div class="table-responsive">
-                <table class="table tolovlar border-primary" style="border-style: dashed double none">
-                    <thead>
-                    <tr>
-                        <td>
-                            <textarea rows="10" cols="80" class="form form-group" style="width: 50%" id="outputVal"></textarea>
-                        </td>
-                    </tr>
-                    </thead>
-                </table>
                 <table class="table tolovlar border-primary" style="border-style: dashed double none">
                     <thead>
                     <tr>
@@ -64,6 +46,11 @@
                         <th scope="col">Ҳисобланган</th>
                         <th scope="col">Тўлов тури</th>
                         <th scope="col">Ўчириш</th>
+                        <th scope="col">
+                            <a class="btn btn-primary" id="insertRow" href="#">
+                                <i class="bx bx-plus"></i>
+                            </a>
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -86,149 +73,68 @@
                     ${val.spname}
                 </c:forEach>
             </select>
-            <button type="button" class="btn btn-success ml-2" onclick="javascript:InDecConfirm('145')">Жўнатиш</button>
+            <div class="text-end">
+                <button type="button" class="btn btn-success position-relative" onclick="javascript:saveCalcInDec()">
+                    Сақлаш
+                </button>
+            </div>
             <!-- Add rows button-->
             <script>
                 $(function () {
                     // Start counting from the third row
                     var counter = 1;
-                    $("#insertRow").on("click", function (event) {
+                    $("#insertRow,#insertRow29BN,#insertRow29OO").on("click", function (event) {
                         event.preventDefault();
                         var newRow = $("table.tolovlar tbody");
                         var cols = '<tr>';
                         // Table columns
                         cols +=
-                            '<td><select style="width: 120%;" id="paymentType' + counter + '" onchange="changePaymentType(' + counter +
-                            ');" class="form-control rounded-0" type="text" placeholder="Тўлов турини танланг">' +
+                            '<td><select style="width:110%;" id="paymentType' + counter + '" class="form-select rounded-0" onchange="changePaymentType(' + counter + ')" type="text" placeholder="Тўлов турини танланг">' +
                             $(".myselect").html()
                             + '</select></td>';
-                        cols += '<td><input id="g47Base' + counter + '" type="text" class="form-control rounded-0" placeholder="Қиритинг" readonly></td>';
-                        cols += '<td><input id="g47AltBase' + counter + '" type="text" class="form-control rounded-0" placeholder="Адвалор ставка" readonly></td>';
-                        cols += '<td><input id="altRate' + counter + '" type="text" class="form-control rounded-0" placeholder="Хос ставка" readonly></td>';
-                        cols += '<td><input id="g47AltRate' + counter + '" type="number" class="form-control rounded-0" placeholder="Хос ставка миқдори" readonly></td>';
+                        cols += '<td><input id="g47Base' + counter + '" type="number" class="form-control rounded-0" placeholder="Хисоблаш асоси" readonly></td>';
+                        cols += '<td><input id="g47AltBase' + counter + '" type="number" class="form-control rounded-0" placeholder="Адвалор ставка"></td>';
+                        cols += '<td><input id="altRate' + counter + '" type="number" class="form-control rounded-0" placeholder="Хос ставка" ></td>';
+                        cols += '<td><input id="g47AltRate' + counter + '" type="number" class="form-control rounded-0" placeholder="Хос ставка миқдори"></td>';
                         cols += '<td><input id="rate840' + counter + '" type="number" class="form-control rounded-0" placeholder="Доллар курси" readonly>' +
                             '<input id="typeRate' + counter + '" type="hidden" class="form-control rounded-0" placeholder="Ҳисоблаш шакли"></td>';
-                        cols += '<td><input id="g47Rate' + counter + '" type="number" class="form-control rounded-0" placeholder="Ҳисоблаш шакли" onkeyup="calculate2(' + counter + ');"></td>';
+                        cols += '<td><input id="g47Rate' + counter + '" type="number" class="form-control rounded-0" placeholder="Қўш.ўл.бир.миқ."></td>';
                         // cols += '<td><input id="typeRate' + counter + '" type="hidden" class="form-control rounded-0" placeholder="Ҳисоблаш шакли"></td>';
-                        cols += '<td><input id="g47AltBaseEdIzm' + counter + '" size="10" maxlength="10" class="form-control rounded-0 w-75" type="text" placeholder="Қўш.ўл.бир" readonly></td>';
-                        cols += '<td><input id="g47Sum' + counter + '" class="form-control rounded-0 bg-orange text-white" type="text" placeholder="Ҳисобланган бож.тўл" readonly></td>';
-                        cols += '<td><select id="g47Sp' + counter + '" class="form-control rounded-0" type="text" placeholder="Тўлов турини танланг">' + $(".myselect2").html() + '</select></td>';
-                        cols += '<td><button class="btn btn-danger rounded-0" id ="deleteRow"><i class="fa fa-trash"></i></button</td>';
+                        cols += '<td><input id="g47AltBaseEdIzm' + counter + '" size="3" maxlength="3" class="form-control rounded-0 w-75" type="number" placeholder="Қўш.ўл.бир." ></td>';
+                        cols += '<td><input id="g47Sum' + counter + '" class="form-control rounded-0 bg-orange text-white" type="number" placeholder="Ҳисобланган бож.тўл" ></td>';
+                        cols += '<td><select style="width:120%;" id="g47Sp' + counter + '" class="form-select rounded-0" type="text" placeholder="Тўлов турини танланг">' + $(".myselect2").html()
+                            + '</select></td>';
+                        cols += '<td>' +
+                                    '<button class="btn btn-danger rounded-0" id ="deleteRow"><i class="bx bx-trash"></i></button ' +
+                                '</td>';
+                        cols += '<td><input id="rowCount_' + counter + '" type="hidden" class="form-control rounded-0 counter" value="' + counter + '"></td>';
                         cols += '<tr>';
                         newRow.append(cols);
+                        $('#rowCount').val(counter);
                         counter++;
                     });
                     $("table").on("click", "#deleteRow", function (event) {
+                        table = $(this).closest("table");
                         $(this).closest("tr").remove();
+                        var cc = 0;
+                        table.find(".counter").each(function (counter) {
+                            cc++;
+                            $(".counter").eq(counter).attr('value', cc);
+                            $('#rowCount').val(cc);
+                        });
                         counter -= 1
+                        // counter --;
                     });
                 });
             </script>
             <!-- -->
         </div>
-        <div id="profile1" role="tabpanel" aria-labelledby="profile-tab" class="tab-pane fade py-4">
-            <!-- Text editor -->
-            <h4 style="text-align: center">Аризани қайтариш сабаблари</h4>
-            <form method="post" class="border-primary" id="fm1" name="fm1">
-                <br>
-                <div class="col-md-9 col-sm-9  form-group has-feedback">
-                    <div class="form-group pmd-textfield pmd-textfield-floating-label border border-primary">
-                        <select placeholder="Сана: дан" class="form-control" type="text" name="HS_NM" id="HS_NM">
-                            <option></option>
-                            <c:forEach var="val" items="${rollbackInfo}" varStatus="i">
-                                <option value="${val.id}">${val.id} - ${val.rollbackName}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group" style="float: left; clear: none;">
-                    <button class="btn btn-primary" style="padding: 5px 5px;" type="button"
-                            onclick="addT_HS_NM(/*$('#HS_NM').val() + ' - ' + */$('#HS_NM option:selected').text())">
-                        <i class="fa fa-save icons" style="color:#ffffff;font-size:13px;"></i> <span class="lang">Сабабни Қўшиш</span>
-                    </button>
-                    <button class="btn btn-primary" style="padding: 5px 5px;" type="button"
-                            onclick="ClearT_HS_NM()">
-                        <i class="fa fa-eraser icons" style="color:#ffffff;font-size:13px;"></i> <span class="lang">Тозалаш</span>
-                    </button>
-                    <button class="btn btn-danger" type="button" id="gtkXTButton" style=""><i
-                            class="fa fa-trash"></i></button>
-                </div>
-                <div class="form-group W100" style="margin-top:2px; display: none;">
-                    <label class="sr-only" for="HS_NM_FULL">Страна-транзит</label>
-                    <textarea class="form-control input-sm" rows="4" id="HS_NM_FULL" name="HS_NM_FULL" maxlength="150"
-                              style="width:85%"><%=HS_NM_FULL%></textarea>
-                    <textarea class="form-control input-sm" rows="2" id="HS_CD_FULL" name="HS_CD_FULL" maxlength="150"
-                              style="width:85%"><%--<%=HS_CD_FULL%>--%></textarea>
-                </div>
-                <div class="col-md-6 border-primary" style="border-style: dashed double none">
-                    <textarea class="form-control input-sm mt-1" rows="4" id="HS_NM_FULLS" name="HS_NM_FULLS" maxlength="150"
-                              style="width:100%" readonly></textarea>
-                </div>
-                <div class="col-md-6 border-primary" style="border-style: dashed double none">
-                    <textarea class="resizable_textarea form-control mt-1" placeholder="Қўшимча маълумот киритиш учун... " rows="4"
-                              style="max-height: 300px;width:100%" id="commentRollback" name="commentRollback"></textarea>
-                </div>
-            </form>
-            <button type="button" class="btn btn-success mt-3" onclick="javascript:appRollback('120');">Жўнатиш</button>
-            <!-- Text editor end-->
-        </div>
-        <div id="contact1" role="tabpanel" aria-labelledby="contact-tab" class="tab-pane fade py-4">
-            <!-- Text editor -->
-            <h4 style="text-align: center">Аризани қайтариш сабаблари ва тузатиш киритиладиган бўлимлар</h4>
-            <form method="post" class="border-primary" id="fm2" name="fm2">
-                <br>
-                <div class="col-md-9 col-sm-9  form-group has-feedback">
-                    <div class="form-group pmd-textfield pmd-textfield-floating-label border border-primary">
-                        <select placeholder="Сана: дан" class="form-control" type="text" name="HS_NM" id="HS_NM2">
-                            <option></option>
-                            <c:forEach var="val" items="${rollbackInfo}" varStatus="i">
-                                <option value="${val.id}">${val.id} - ${val.rollbackName}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group" style="float: left; clear: none;">
-                    <button class="btn btn-primary" style="padding: 5px 5px;" type="button"
-                            onclick="addT_HS_NM2(/*$('#HS_NM').val() + ' - ' + */$('#HS_NM2 option:selected').text())">
-                        <i class="fa fa-save icons" style="color:#ffffff;font-size:13px;"></i> <span class="lang">Сабабни Қўшиш</span>
-                    </button>
-                    <button class="btn btn-primary" style="padding: 5px 5px;" type="button"
-                            onclick="ClearT_HS_NM2()">
-                        <i class="fa fa-eraser icons" style="color:#ffffff;font-size:13px;"></i> <span class="lang">Тозалаш</span>
-                    </button>
-                    <button class="btn btn-danger" type="button" id="gtkXTButton2" style=""><i
-                            class="fa fa-trash"></i></button>
-                </div>
-                <div class="form-group W100" style="margin-top:2px; display: none;">
-                    <label class="sr-only" for="HS_NM_FULL">Страна-транзит</label>
-                    <textarea class="form-control input-sm" rows="4" id="HS_NM_FULL2" name="HS_NM_FULL" maxlength="150"
-                              style="width:85%"><%=HS_NM_FULL%></textarea>
-                    <textarea class="form-control input-sm" rows="2" id="HS_CD_FULL2" name="HS_CD_FULL" maxlength="150"
-                              style="width:85%"><%--<%=HS_CD_FULL%>--%></textarea>
-                </div>
-                <div class="col-md-6 border-primary" style="border-style: dashed double none">
-                        <textarea class="form-control input-sm mt-1" rows="4" id="HS_NM_FULLS2" name="HS_NM_FULLS" maxlength="150"
-                                  style="width:100%" readonly></textarea>
-                </div>
-                <div class="col-md-6 border-primary" style="border-style: dashed double none">
-                        <textarea class="resizable_textarea form-control mt-1" placeholder="Қўшимча маълумот киритиш учун... " rows="4"
-                                  style="max-height: 300px;width:100%" id="commentRollback2" name="commentRollback"></textarea>
-                </div>
-            </form>
-            <button type="button" class="btn btn-success mt-3" onclick="javascript:appRollbackToFix('125');">Жўнатиш</button>
-            <!-- Text editor end-->
+    </div>
+            </div>
         </div>
     </div>
-    <!-- End bordered tabs -->
 </div>
-
-<link href="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
-
-<script src="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.js"></script>
-<script src="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.buttons.js"></script>
-<script src="<%=request.getContextPath()%>/resources/vendors/pnotify/dist/pnotify.nonblock.js"></script>
+</body>
 
 <script>
     function appRollback(statusApp) {
@@ -596,7 +502,79 @@
     }
 
     function changePaymentType(rowNum) {
+
+        var log_f = true;
+        var log_n = '';
+        var arr = [];
+        var arr2 = [];
         var paymentType = $('#paymentType' + rowNum).val();
+        var rowCount = parseInt($('#rowCount').val());
+
+        // alert(rowCount + ',\n ' + paymentType)
+        // if (paymentType == '29') {
+        //     for (let i = 1; i <= rowCount; i++) {
+        //         if ($('#paymentType' + i).val() == null || $('#paymentType' + i).val() == '') {
+        //             alert(' 29 - тўлов турини ҳисоблаш учун тўлов турлари танланмаган ! ');
+        //         } else if ($('#paymentType' + i).val() != '20' && $('#paymentType' + i).val() != '27') {
+        //             alert(' 29 - тўлов турини ҳисоблаш учун 20 ёки 27 тўлов турлари ҳисобланмаган ! ');
+        //         }
+        //     }
+        // }
+
+        // if (log_f) {
+        // } else return false;
+
+        var dataS = {
+            "x": '4',
+            "cmdt_id": $('#cmdtId').val(),
+            "appId": $('#appId').val(),
+            "paymentType": paymentType
+        }
+        $.ajax({
+            type: "POST",
+            data: dataS,
+            url: "<%=request.getContextPath()%>/commodity/resources/pages/InitialDecision/InitialDecisionSteps/Steps44",
+            // dataType: "json",
+            header: 'Content-type: application/json; charset=utf-8',
+            success: function (res) {
+                console.log(res);
+                $('#g47Base' + rowNum).val((res.g47Base).toLocaleString());
+                $('#rate840' + rowNum).val(res.rate840);
+                $('#g47AltBaseEdIzm' + rowNum).val(res.g47AltBaseEdIzm);
+                $('#g47Rate' + rowNum).val(res.g47Rate);
+                // $('#outputVal').val(
+                //     ' g47Base (Хисоблаш асоси) ===> ' + res.g47Base.toLocaleString() +
+                //     '\n g47AltBase (Адвалор ставка) ===> ' + res.advRate +
+                //     '\n g47Rate (Хос ставка) ===> ' + res.g47Rate +
+                //     '\n g47AltRate (Хос ставка миқдори) ===> ' + res.g47AltRate +
+                //     '\n g47AltBaseEdIzm (Қўшимча ўлчов бирлиги коди) ===> ' + res.unitRate +
+                //     '\n rate840 (Ақш доллар суммаси) ===> ' + res.rate840 +
+                //     '\n typeRate (Ҳисоблаш шакли) ===> ' + res.typeRate +
+                //     '\n unitRate (Хос ставканинг Қўшимча ўлчов бирлигидаги коди) ===> ' + res.unitRate +
+                //     '\n altRate (Хос ставка миқдорининг бирлик (1 - лик) миқдори) ===> ' + res.altRate +
+                //     '\n advRate (Адвалор ставка фоиздаги миқдори) ===> ' + res.advRate +
+                //     '\n g47Sum (Ҳисобланган тўловлар) ===> ' + res.g47Sum
+                // );
+
+            },
+            error: function (res) {
+            }
+        });
+    }
+
+    function changePaymentTypeOld(rowNum) {
+        // alert($('#appId').val() + '\n, ' + $('#cmdtId').val());
+        var log_f = true;
+        var log_n = '';
+        var arr = [];
+        var arr2 = [];
+        var paymentType = $('#paymentType' + rowNum).val();
+        var rowCount = parseInt($('#rowCount').val());
+
+
+        // if (log_f) {
+        // } else return false;
+
         var dataS = {
             "x": '4',
             "cmdt_id": $('#cmdtId').val(),
@@ -624,7 +602,9 @@
                 var typeRate = parseInt(res.typeRate);
                 var g47Rate = res.g47Rate;
 
-                if (paymentType == 20 || paymentType == 27) {
+                // alert(paymentType);
+                // alert(typeRate);
+                if (paymentType == 20) {
                     if (typeRate == 0) {
                         $('#g47Sum' + rowNum).val(res.g47Sum);
                         $('#g47Rate' + rowNum + ',#rate840' + rowNum + ',#g47AltRate' + rowNum + ',#altRate' + rowNum + ',#unitRate' + rowNum + ',#g47AltBaseEdIzm' + rowNum).val('');
@@ -633,7 +613,7 @@
                     }
 
                     if (typeRate == 1 || typeRate == 2) {
-                        if (g47Rate == 0.0) {
+                        if (g47Rate == '0.0') {
                             $('#g47Sum' + rowNum).val('Қўш.ўл.бир.миқ.киритинг!');
                             $('#g47Rate' + rowNum).attr('readonly', false);
                         } else {
@@ -643,6 +623,17 @@
                             $('#g47Rate' + rowNum).attr('placeholder', '---');
                         }
                     }
+                } else if (paymentType == 27) {
+                    $('#rate840' + rowNum).attr('readonly', true);
+                    $('#g47Rate' + rowNum + ',#g47AltRate' + rowNum + ',#altRate' + rowNum + ',#unitRate' + rowNum + ',#g47AltBaseEdIzm' + rowNum + ',#g47AltBase' + rowNum).attr('readonly', false);
+                } else if (paymentType == 29) {
+                    $('#g47Sum' + rowNum).val(res.g47Sum);
+                    $('#g47Rate' + rowNum + ',#rate840' + rowNum + ',#g47AltRate' + rowNum + ',#altRate' + rowNum + ',#unitRate' + rowNum + ',#g47AltBaseEdIzm' + rowNum).val('');
+                    $('#g47Rate' + rowNum + ',#rate840' + rowNum + ',#g47AltRate' + rowNum + ',#altRate' + rowNum + ',#unitRate' + rowNum + ',#g47AltBaseEdIzm' + rowNum).attr('placeholder', '---');
+                    $('#g47Rate' + rowNum + ',#rate840' + rowNum + ',#g47AltRate' + rowNum + ',#altRate' + rowNum + ',#unitRate' + rowNum + ',#g47AltBaseEdIzm' + rowNum).attr('readonly', true);
+
+                    var g47Sum = res.g47Sum;
+
                 } else {
                     $('#g47Sum' + rowNum).val(res.g47Sum);
                     $('#g47Rate' + rowNum + ',#rate840' + rowNum + ',#g47AltRate' + rowNum + ',#altRate' + rowNum + ',#unitRate' + rowNum + ',#g47AltBaseEdIzm' + rowNum).val('');
@@ -651,19 +642,19 @@
                 }
 
 
-                $('#outputVal').val(
-                    ' g47Base (Хисоблаш асоси) ===> ' + res.g47Base.toLocaleString() +
-                    '\n g47AltBase (Адвалор ставка) ===> ' + res.advRate +
-                    '\n g47Rate (Хос ставка) ===> ' + res.g47Rate +
-                    '\n g47AltRate (Хос ставка миқдори) ===> ' + res.g47AltRate +
-                    '\n g47AltBaseEdIzm (Қўшимча ўлчов бирлиги коди) ===> ' + res.unitRate +
-                    '\n rate840 (Ақш доллар суммаси) ===> ' + res.rate840 +
-                    '\n typeRate (Ҳисоблаш шакли) ===> ' + res.typeRate +
-                    '\n unitRate (Хос ставканинг Қўшимча ўлчов бирлигидаги коди) ===> ' + res.unitRate +
-                    '\n altRate (Хос ставка миқдорининг бирлик (1 - лик) миқдори) ===> ' + res.altRate +
-                    '\n advRate (Адвалор ставка фоиздаги миқдори) ===> ' + res.advRate +
-                    '\n g47Sum (Ҳисобланган тўловлар) ===> ' + res.g47Sum
-                );
+                // $('#outputVal').val(
+                //     ' g47Base (Хисоблаш асоси) ===> ' + res.g47Base.toLocaleString() +
+                //     '\n g47AltBase (Адвалор ставка) ===> ' + res.advRate +
+                //     '\n g47Rate (Хос ставка) ===> ' + res.g47Rate +
+                //     '\n g47AltRate (Хос ставка миқдори) ===> ' + res.g47AltRate +
+                //     '\n g47AltBaseEdIzm (Қўшимча ўлчов бирлиги коди) ===> ' + res.unitRate +
+                //     '\n rate840 (Ақш доллар суммаси) ===> ' + res.rate840 +
+                //     '\n typeRate (Ҳисоблаш шакли) ===> ' + res.typeRate +
+                //     '\n unitRate (Хос ставканинг Қўшимча ўлчов бирлигидаги коди) ===> ' + res.unitRate +
+                //     '\n altRate (Хос ставка миқдорининг бирлик (1 - лик) миқдори) ===> ' + res.altRate +
+                //     '\n advRate (Адвалор ставка фоиздаги миқдори) ===> ' + res.advRate +
+                //     '\n g47Sum (Ҳисобланган тўловлар) ===> ' + res.g47Sum
+                // );
 
             },
             error: function (res) {
@@ -686,28 +677,170 @@
         var altRate = $('#altRate' + rowNum).val();
 
         var typeRate = parseInt($('#typeRate' + rowNum).val());
+        var paymentType = $('#paymentType' + rowNum).val();
+        var g47AltBaseEdIzm = $('#g47AltBaseEdIzm' + rowNum).val();
 
-        if (typeRate === 1) {
-            sum1 = (g47Base * g47AltBase) / 100;
-            sum2 = g47Rate * g47AltRate * rate840 * altRate;
-            if (sum1 > sum2) sum = sum1;
-            else sum = sum2;
+        if (paymentType != '27') {
+            if (typeRate === 1) {
+                sum1 = (g47Base * g47AltBase) / 100;
+                sum2 = g47Rate * g47AltRate * rate840 * altRate;
+                if (sum1 > sum2) sum = sum1;
+                else sum = sum2;
+            }
+
+            if (typeRate === 2) {
+                sum1 = (g47Base * g47AltBase) / 100;
+                sum2 = g47Rate * g47AltRate * rate840 * altRate;
+                sum = sum1 + sum2;
+            }
+
+        } else {
+            if (typeRate === 0) {
+                sum = (g47Base * g47AltBase) / 100;
+            }
+            if (typeRate === 1) {
+                if (g47AltBaseEdIzm != null && g47AltBaseEdIzm != '' && g47AltBaseEdIzm.length == 3) {
+                    sum1 = (g47Base * g47AltBase) / 100;
+                    sum2 = g47Rate * g47AltRate * rate840 * altRate;
+                } else {
+                    sum1 = (g47Base * g47AltBase) / 100;
+                    sum2 = g47Rate * g47AltRate * rate840;
+                }
+                if (sum1 > sum2) sum = sum1;
+                else sum = sum2;
+            }
+            if (typeRate === 2) {
+                if (g47AltBaseEdIzm != null && g47AltBaseEdIzm != '' && g47AltBaseEdIzm.length == 3) {
+                    sum1 = (g47Base * g47AltBase) / 100;
+                    sum2 = g47Rate * g47AltRate * rate840 * altRate;
+                } else {
+                    sum1 = (g47Base * g47AltBase) / 100;
+                    sum2 = g47Rate * g47AltRate * rate840;
+                }
+                sum = sum1 + sum2;
+            }
         }
-
-        if (typeRate === 2) {
-            sum1 = (g47Base * g47AltBase) / 100;
-            sum2 = g47Rate * g47AltRate * rate840 * altRate;
-            sum = sum1 + sum2;
-        }
-
-        // if (typeRate === 1 || typeRate === 2) {
-        //     g47AltRate = g47AltRate * g47Rate * rate840
-        // }
 
         var g47Sum = sum;
         $('#g47Sum' + rowNum).val(g47Sum);
+
     }
 
+    function calculate29BN(paymentType, g47Sp) {
+        alert(' paymentType ==> ' + paymentType + g47Sp);
+    }
+
+    function calculate29OO(paymentType, g47Sp) {
+        alert(' paymentType ==> ' + paymentType + g47Sp);
+    }
 
 </script>
-<script src="<%=request.getContextPath()%>/resources/build/js/alertMessages.js"></script>
+
+<script>
+    class A {
+        constructor(paymentType, g47Base, g47AltBase, altRate, g47AltRate, rate840, typeRate, g47Rate, g47AltBaseEdIzm, g47Sum, g47Sp, g47Type, g47ClcType) {
+            this.paymentType = paymentType;
+            this.g47Base = g47Base;
+            this.g47AltBase = g47AltBase;
+            this.altRate = altRate;
+            this.g47AltRate = g47AltRate;
+            this.rate840 = rate840;
+            this.typeRate = typeRate;
+            this.g47Rate = g47Rate;
+            this.g47AltBaseEdIzm = g47AltBaseEdIzm;
+            this.g47Sum = g47Sum;
+            this.g47Sp = g47Sp;
+            this.g47Type = g47Type;
+            this.g47ClcType = g47ClcType;
+        }
+    }
+
+    function saveCalcInDec() {
+        var log_f = true;
+        var log_n = '';
+        var arr = [];
+        // alert(' cmdtId --> ' + $('#cmdtId').val() + '\n appId --> '+ $('#appId').val());
+        var rowCount = parseInt($("#rowCount").val());
+        var listObject = [];
+        for (let i = 1; i <= rowCount; i++) {
+            listObject.push(new A(
+                $("#paymentType" + i).val(),
+                $("#g47Base" + i).val(),
+                $("#g47AltBase" + i).val(),
+                $("#altRate" + i).val(),
+                $("#g47AltRate" + i).val(),
+                $("#rate840" + i).val(),
+                $("#typeRate" + i).val(),
+                $("#g47Rate" + i).val(),
+                $("#g47AltBaseEdIzm" + i).val(),
+                $("#g47Sum" + i).val(),
+                $("#g47Sp" + i).val(),
+                '77',
+                '7'
+            ));
+        }
+        console.log(JSON.stringify(listObject));
+        // alert(rowCount + ",\n" + $("#cmdtId").val() + ',\n' + $("#appId").val());
+        var dataS = {
+            "x": "4",
+            "cmdtId": $("#cmdtId").val(),
+            "appId": $("#appId").val(),
+            "status": "145",
+            "listObject": JSON.stringify(listObject)
+        }
+
+        /*-------------------------------*/
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            title: 'Товар бўйича тўловни сақлаш',
+            text: "Сиз ушбу ариза бўйича қарор қабул қилмоқдасиз!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Сақлашни тасдиқлаш!',
+            cancelButtonText: 'Қайта кўриб чиқиш!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire(
+                    'Товар бўйича тўловни сақланди!',
+                    'Ушбу аризанинг товари бўйича маълумотлар сақланди',
+                    'success'
+                )
+                $.ajax({
+                    type: "POST",
+                    data: dataS,
+                    dataType: "json",
+                    url: "<%=request.getContextPath()%>/saveInDec/resources/pages/InitialDecision/InitialDecisionCalc",
+                    dataType: "html",
+                    header: 'Content-type: text/html; charset=utf-8',
+                    success: function (res) {
+                        $('div#divcalculate').html(res);
+                    },
+                    error: function (res) {
+                    }
+                });
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Амал рад этилди!',
+                    'Сақлаш амалга оширилмади',
+                    'error'
+                )
+            }
+        })
+
+    }
+</script>
+
+<%--<script src="<%=request.getContextPath()%>/resources/build/js/alertMessages.js"></script>--%>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <%--
   Created by IntelliJ IDEA.
-  User: ADMIN
-  Date: 06.02.2022
-  Time: 18:46
+  User: User
+  Date: 04.04.2022
+  Time: 12:11
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,441 +12,893 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%
+    String userId = (String) request.getSession().getAttribute("userId");
+    String userName = (String) request.getSession().getAttribute("userName");
+    Integer userRole = (Integer) request.getSession().getAttribute("userRole");
+    String userRoleName = (String) request.getSession().getAttribute("userRoleName");
+    String userLocation = (String) request.getSession().getAttribute("userLocation");
+    String userLocationName = (String) request.getSession().getAttribute("userLocationName");
+    String userPost = (String) request.getSession().getAttribute("userPost");
+%>
 
-<style>
-    ::-webkit-scrollbar {
-        width: 0;
-    }
-</style>
+<%
+    String HS_NM_FULL = "";
+%>
 
-<div class="row-fluid">
+<div class="page-content">
+    <input type="hidden" id="appId" name="appId" value="<c:out value="${appId}"/>"/>
+    <!--breadcrumb-->
+    <!--end breadcrumb-->
     <div class="row">
-
-        <div class="col-md-12 col-sm-12 ">
-            <div class="x_panel border rounded mt-4" style="background: rgba(23, 101, 185, 0.08);">
-                <div>
-                    <h4>
-                        <c:set var="total" value="${0}"/>
-                        <c:forEach var="val" items="${appInfo}">
-                            <i class="fa fa-edit"></i>АРИЗА
-                            <small>№: ${val[1]}</small>
-                            <c:set var="total" value="${val[0]}"/>
-                            <input type="hidden" id="appId" name="appId" value="<c:out value="${total}"/>"/>
-                        </c:forEach>
-
-                    </h4>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <!-- Smart Wizard -->
-
-                    <div id="wizard" class="form_wizard wizard_horizontal">
-                        <div class="shadow p-3 mb-5 bg-white rounded x_panel">
-                            <div class="x_title collapse-link">
-                                <h2 style="text-align: center">Ариза бўйича дастлабки маълумот</h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <li><a class="ml-5"><i class="fa fa-chevron-up"></i></a>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="x_content " style="display: none;">
-                                <section class="content invoice">
-                                    <!-- info row -->
-                                    <div class="row invoice-info">
-                                        <div class="col-sm-3 invoice-col border-blue border-left">
-                                            <address>
-                                                <strong><i class="fa fa-user mr-2"></i>Аризачи:</strong>
-                                                <br><strong><i class="fa fa-phone mr-2"></i>Телефон рақами:</strong>
-                                                <br><strong><i class="fa fa-barcode mr-2"></i>Юк жўнатувчи:</strong>
-                                                <br><strong><i class="fa fa-money mr-2"></i>Сотувчи</strong>
-                                                <br><strong><i class="fa fa-money mr-2"></i>Транспорт харажатлари</strong>
-                                            </address>
-                                        </div>
-                                        <!-- /.col -->
-                                        <div class="col-sm-2">
-                                            <address>
-                                                <i>
-                                                    <c:set var="total" value="${0.0}"/>
-                                                    <c:forEach var="val" items="${transports}" varStatus="i">
-                                                        <c:set var="total" value="${total + val.transportPrice}"/>
-                                                    </c:forEach>
-                                                    <c:forEach var="val" items="${appInfo}" varStatus="i">
-                                                        ${val[9]}<%--todo Аризачи:  --%>
-                                                        <br>${val[11]} <%--todo Телефон рақами:  --%>
-                                                        <br>${val[16]} - "${val[18]}" <%--todo Юк жўнатувчи: (sender_country_nm + senderOrg)  --%>
-                                                        <br>${val[3]} - "${val[15]}" <%--todo >Сотувчи (customer_country_nm) --%>
-                                                        <br><c:out value="${total}"/> сўм<%--todo >Транспорт харажати (TRAN_EXP) --%>
-                                                    </c:forEach>
-                                                </i>
-                                            </address>
-                                        </div>
-                                        <div class="col-sm-1">
-                                            <img src="<%=request.getContextPath()%>/resources/images/info.gif" data-toggle="modal"
-                                                 data-target="#exampleModalCenter" style="cursor: pointer; background-color: #0b2e13" width="50" height="50">
-                                        </div>
-
-                                        <!-- /.col -->
-                                        <div class="col-sm-3 invoice-col border-blue border-left">
-                                            <address>
-                                                <strong><i class="fa fa-money mr-2"></i>Фактура қиймати</strong>
-                                                <br><strong><i class="fa fa-balance-scale mr-2"></i>Нетто оғирлиги:</strong>
-                                                <br><strong><i class="fa fa-balance-scale mr-2"></i>Брутто оғирлиги:</strong>
-                                                <br><strong><i class="fa fa-money mr-2"></i>Етказиб бериш шарти:</strong>
-                                            </address>
-                                        </div>
-                                        <!-- /.col -->
-                                        <div class="col-sm-1">
-                                            <address>
-                                                <i>
-                                                    <c:forEach var="val" items="${appInfo}" varStatus="i">
-                                                        ${val[29]} АҚШ</strong>
-                                                        <br>${val[27]} кг
-                                                        <br>${val[28]} кг
-                                                        <br>${val[22]} - ${val[23]}
-                                                        <br>
-                                                    </c:forEach>
-                                                </i>
-                                            </address>
-                                        </div>
-                                        <div class="col-sm-1 invoice-col border-blue border-right">
-                                            <img src="<%=request.getContextPath()%>/resources/images/info.gif" data-toggle="modal" data-target="#exampleModal12"
-                                                 style="cursor: pointer; background-color: #0b2e13" width="50" height="50">
-                                        </div>
+        <div class="col-12 col-lg-12">
+            <div class="card shadow">
+                <div class="card-body m-3" style="border-color: #0a58ca; border-style: dotted">
+                    <div class="">
+                        <table class="w-100">
+                            <thead>
+                            <tr>
+                                <td>
+                                    <div class="title">
+                                        <h4 class="fw-bolder">DASTLABKI QAROR</h4>
                                     </div>
+                                    <style>
+                                        @import url('https://fonts.googleapis.com/css?family=Cairo');
 
-                                    <!-- Транспорт тури Modal -->
-                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle1">Транспорт харакати йўналиши ва харажатлари</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
+                                        h4 {
+                                            background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
+                                            background-size: cover;
+                                            color: transparent;
+                                            -moz-background-clip: text;
+                                            -webkit-background-clip: text;
+                                            text-transform: uppercase;
+                                            font-size: 30px;
+                                            margin: 10px 0;
+                                        }
 
-                                                    <div class="col-md-12">
+                                        /* styling my button */
 
-                                                        <div class="">
-                                                            <table class="table">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th>Бошлағич пункт</th>
-                                                                    <th>Тугаш пункти</th>
-                                                                    <th>Транспорт тури</th>
-                                                                    <th>Ҳаражатлар</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                <c:set var="total" value="${0.0}"/>
-                                                                <c:forEach var="val" items="${transports}" varStatus="i">
-                                                                    <c:set var="total" value="${total + val.transportPrice}"/>
-                                                                    <tr>
-                                                                        <th>${val.finishCountry}</th>
-                                                                        <td>${val.endCountry}</td>
-                                                                        <td><i class="fa fa-subway fa-2x mr-3"></i>${val.tarnsportType}</td>
-                                                                        <td>${val.transportPrice}</td>
-                                                                    </tr>
-                                                                </c:forEach>
-                                                                <tr>
-                                                                    <td>Жами</td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td><c:out value="${total}"/></td>
-                                                                </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
+                                        .white-mode {
+                                            text-decoration: none;
+                                            padding: 7px 10px;
+                                            background-color: #122;
+                                            border-radius: 3px;
+                                            color: #FFF;
+                                            transition: .50s ease-in-out;
+                                            position: absolute;
+                                            left: 15px;
+                                            bottom: 15px;
+                                            font-family: "Montserrat";
+                                        }
 
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Ёпиш</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Транспорт тури Modal end -->
-
-                                    <!-- Modal -->
-                                    <div class="modal fade bd-example-modal-lg" id="exampleModal12" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" style="min-width: 85%;" role="document">
-
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModal123">Божхона қиймати индекси бўйича хавф даражаси</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="col-md-12">
-                                                        <table class="table table-bordered table-sm">
-                                                            <thead class="text-center">
-                                                            <tr>
-                                                                <th rowspan="2" style="vertical-align: middle">№</th>
-                                                                <th rowspan="2" style="vertical-align: middle">Товар рақами</th>
-                                                                <th rowspan="2" style="vertical-align: middle">Савдо қилувчи мамлакат</th>
-                                                                <th rowspan="2" style="vertical-align: middle">Транспорт</th>
-                                                                <th rowspan="2" style="vertical-align: middle">Жўнатувчи мамлакат</th>
-                                                                <th rowspan="2" style="vertical-align: middle">ТИФ ТН коди</th>
-                                                                <th rowspan="2" style="vertical-align: middle">Келиб чиқиш мамлакати</th>
-                                                                <th rowspan="2" style="vertical-align: middle">Товар вазни</th>
-                                                                <th rowspan="2" style="vertical-align: middle">Товар миқдори</th>
-                                                                <th rowspan="2" style="vertical-align: middle">Ўлчов бирлиги</th>
-                                                                <th rowspan="2" style="vertical-align: middle">Божхона қиймати($)</th>
-                                                                <th rowspan="2" style="vertical-align: middle">Божхона қиймати(кг $)</th>
-                                                                <th colspan="3" style="vertical-align: middle">Божхона қиймати индекси($)</th>
-                                                            </tr>
-                                                            <tr>
-                                                                <th class="bg-success">Минимал</th>
-                                                                <th class="bg-warning">Ўрта</th>
-                                                                <th class="bg-danger">Максимал</th>
-                                                            </tr>
-
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr>
-                                                                <th scope="row">1</th>
-                                                                <td>1</td>
-                                                                <td>410</td>
-                                                                <td>410</td>
-                                                                <td>30</td>
-                                                                <td>8431492000</td>
-                                                                <td>000</td>
-                                                                <td>210.00</td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td>653.10</td>
-                                                                <td>3.11</td>
-                                                                <td class="bg-success">3.11</td>
-                                                                <td class="bg-warning">3.49</td>
-                                                                <td class="bg-danger">4.97</td>
-
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">1</th>
-                                                                <td>4</td>
-                                                                <td>792</td>
-                                                                <td>792</td>
-                                                                <td>40</td>
-                                                                <td>8431472000</td>
-                                                                <td>000</td>
-                                                                <td>130.00</td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td>640.10</td>
-                                                                <td>2.55</td>
-                                                                <td class="bg-success">2.55</td>
-                                                                <td class="bg-warning">3.22</td>
-                                                                <td class="bg-danger">4.22</td>
-
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Ёпиш</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- endmodal-->
-                                </section>
-                            </div>
-                        </div>
-                        <ul class="wizard_steps">
-                            <li done>
-                                <a href="#step-1" class="done">
-                                    <span class="step_no">1</span>
-                                    <span class="step_descr"></span>
-                                </a>
-                            </li>
-                            <li done>
-                                <a href="#step-2" class="done">
-                                    <span class="step_no">2</span>
-                                    <span class="step_descr"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#step-3" class="done">
-                                    <span class="step_no">3</span>
-                                    <span class="step_descr"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#step-4" class="done">
-                                    <span class="step_no">4</span>
-                                    <span class="step_descr"></span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="row">
-
-                            <%--todo Товарлар рўйхати кўриш DIV ойнаси  --- begin  --%>
-                            <div class="col-md-1" style="max-height: 400px; width: 80px; overflow: auto;" id="div_CmdtList">
-                                <table>
-                                    <tbody>
-                                    <c:forEach var="val" items="${allCommodityFor}" varStatus="i">
+                                        .white-mode:hover {
+                                            background-color: #FFF;
+                                            color: #122;
+                                        }
+                                    </style>
+                                </td>
+                                <td class="text-end">
+                                    <h4 class="text-warning">
+                                        <u>
+                                            <c:set var="total" value="${0}"/>
+                                            <c:forEach var="val" items="${appInfo}">
+                                                <small>№: ${val[1]}</small>
+                                            </c:forEach>
+                                        </u>
+                                    </h4>
+                                </td>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="row invoice-info">
+                            <div class="col-6 col-lg-6">
+                                <table class="table table-responsive border-white fs-6 table-sm">
+                                    <thead>
+                                    <c:set var="total" value="${0.0}"/>
+                                    <c:forEach var="val" items="${transports}" varStatus="i">
+                                        <c:set var="total" value="${total + val.transportPrice}"/>
+                                    </c:forEach>
+                                    <c:forEach var="val" items="${appInfo}" varStatus="i">
                                         <tr>
-                                            <td>
-                                                <button class="btn btn-outline-dark btn-sm btn-block border-green" id="btnCmdt_${i.index+1}"
-                                                        onclick="checkCmdt('${val.id}',1, '${val.appId}')">${i.index+1}: ${val.hsCode}</button>
+                                            <th class="text-end">Аризачи:</th>
+                                            <td>${val[9]}</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-end">Телефон рақами:</th>
+                                            <td>${val[11]}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <th class="text-end">Юк жўнатувчи:</th>
+                                            <td>${val[16]} - "${val[18]}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <th class="text-end">Сотувчи:</th>
+                                            <td>${val[3]} - "${val[15]}</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-end">Транспорт харажатлари:</th>
+                                            <td><a type="button" class="btn btn-primary btn-sm radius-30"
+                                                   data-bs-toggle="modal" data-bs-target="#exampleExtraLargeModal"
+                                                   style="cursor: pointer;"> <c:out value="${total}"/>
+                                                <i class="bx bx-info-circle"></i>
+                                            </a>
                                             </td>
-                                            <script>
-                                                $('.btn').click(function () {
-                                                    $(this).toggleClass('btn-primary').toggleClass('btn-success text-white');
-                                                });
-                                            </script>
                                         </tr>
                                     </c:forEach>
-                                    </tbody>
+                                    </thead>
                                 </table>
                             </div>
-                                <style>
-                                    ::-webkit-scrollbar {
-                                        width: 0;
-                                    }
-                                </style>
-                            <%--todo Товарлар рўйхати кўриш DIV ойнаси  --- end  --%>
+                            <div class="col-4 col-lg-6">
+                                <table class="table table-responsive border-white fs-6 ">
+                                    <thead>
+                                    <c:forEach var="val" items="${appInfo}" varStatus="i">
+                                        <tr>
+                                            <th class="text-end">Фактура қиймати:</th>
+                                            <td>
+                                                <a type="button" class="btn btn-primary btn-sm radius-30"
+                                                   data-bs-toggle="modal" data-bs-target="#exampleExtraLargeModal2"
+                                                   style="cursor: pointer;">
+                                                        ${val[29]} АҚШ <i class="bx bx-info-circle"></i></a>
+                                            </td>
 
-                            <%--todo Товарлар учун қадамлар кетма - кетлигини кўриш DIV ойнаси  --- begin  --%>
-                            <div class="col-md-11" id="div_CmdtStep">
-                                <div id="step-1">
-                                    <div class="col-md-12" id="div_CmdtStep_1">
-                                        <!-- -->
-                                    </div>
-                                </div>
-                                <div id="step-2">
-                                    <div class="col-md-12" id="div_CmdtStep_2">
-                                        <!-- -->
-                                    </div>
-                                </div>
-                                <div id="step-3">
-                                    <div class="col-md-12" id="div_CmdtStep_3">
-                                        <!-- -->
-                                    </div>
-                                </div>
-                                <div id="step-4">
-                                    <div class="col-md-12" id="div_CmdtStep_4">
-                                        <!-- -->
+                                        </tr>
+                                        <tr>
+                                            <th class="text-end">Нетто оғирлиги:</th>
+                                            <td>${val[27]} кг</td>
+
+                                        </tr>
+                                        <tr>
+                                            <th class="text-end">Брутто оғирлиги:</th>
+                                            <td>${val[28]} кг</td>
+
+                                        </tr>
+                                        <tr>
+                                            <th class="text-end">Етказиб бериш шарти:</th>
+                                            <td>${val[22]} - ${val[23]}</td>
+                                        </tr>
+                                    </c:forEach>
+                                    </thead>
+                                </table>
+                            </div>
+                            <!-- Транспорт тури Modal start -->
+                            <div class="modal fade" id="exampleExtraLargeModal" tabindex="-1" style="display: none;"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle1">Транспорт харакати
+                                                йўналиши ва харажатлари</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div class="col-md-12">
+
+                                                <div class="">
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Бошлағич пункт</th>
+                                                            <th>Тугаш пункти</th>
+                                                            <th>Транспорт тури</th>
+                                                            <th>Ҳаражатлар</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <c:set var="total" value="${0.0}"/>
+                                                        <c:forEach var="val" items="${transports}" varStatus="i">
+                                                            <c:set var="total" value="${total + val.transportPrice}"/>
+                                                            <tr>
+                                                                <th>${val.finishCountry}</th>
+                                                                <td>${val.endCountry}</td>
+                                                                <td>
+                                                                    <i class="fa fa-subway fa-2x mr-3"></i>${val.tarnsportType}
+                                                                </td>
+                                                                <td>${val.transportPrice}</td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                        <tr>
+                                                            <td>Жами</td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td><c:out value="${total}"/></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Ёпиш
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <%--todo Товарлар учун қадамлар кетма - кетлигини кўриш DIV ойнаси  --- end  --%>
+                            <!-- Транспорт тури Modal end -->
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleExtraLargeModal2" tabindex="-1" style="display: none;"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModal123">Божхона қиймати индекси бўйича
+                                                хавф даражаси</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="col-md-12">
+                                                <table class="table table-bordered table-sm">
+                                                    <thead class="text-center">
+                                                    <tr>
+                                                        <th rowspan="2" style="vertical-align: middle">№</th>
+                                                        <th rowspan="2" style="vertical-align: middle">Товар рақами</th>
+                                                        <th rowspan="2" style="vertical-align: middle">Савдо қилувчи
+                                                            мамлакат
+                                                        </th>
+                                                        <th rowspan="2" style="vertical-align: middle">Транспорт</th>
+                                                        <th rowspan="2" style="vertical-align: middle">Жўнатувчи
+                                                            мамлакат
+                                                        </th>
+                                                        <th rowspan="2" style="vertical-align: middle">ТИФ ТН коди</th>
+                                                        <th rowspan="2" style="vertical-align: middle">Келиб чиқиш
+                                                            мамлакати
+                                                        </th>
+                                                        <th rowspan="2" style="vertical-align: middle">Товар вазни</th>
+                                                        <th rowspan="2" style="vertical-align: middle">Товар миқдори
+                                                        </th>
+                                                        <th rowspan="2" style="vertical-align: middle">Ўлчов бирлиги
+                                                        </th>
+                                                        <th rowspan="2" style="vertical-align: middle">Божхона
+                                                            қиймати($)
+                                                        </th>
+                                                        <th rowspan="2" style="vertical-align: middle">Божхона
+                                                            қиймати(кг $)
+                                                        </th>
+                                                        <th colspan="3" style="vertical-align: middle">Божхона қиймати
+                                                            индекси($)
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="bg-success">Минимал</th>
+                                                        <th class="bg-warning">Ўрта</th>
+                                                        <th class="bg-danger">Максимал</th>
+                                                    </tr>
 
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>1</td>
+                                                        <td>410</td>
+                                                        <td>410</td>
+                                                        <td>30</td>
+                                                        <td>8431492000</td>
+                                                        <td>000</td>
+                                                        <td>210.00</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>653.10</td>
+                                                        <td>3.11</td>
+                                                        <td class="bg-success">3.11</td>
+                                                        <td class="bg-warning">3.49</td>
+                                                        <td class="bg-danger">4.97</td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>4</td>
+                                                        <td>792</td>
+                                                        <td>792</td>
+                                                        <td>40</td>
+                                                        <td>8431472000</td>
+                                                        <td>000</td>
+                                                        <td>130.00</td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>640.10</td>
+                                                        <td>2.55</td>
+                                                        <td class="bg-success">2.55</td>
+                                                        <td class="bg-warning">3.22</td>
+                                                        <td class="bg-danger">4.22</td>
+
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Ёпиш
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- endmodal-->
                         </div>
                     </div>
-                    <!-- End SmartWizard Content -->
+                    <!--end row-->
+                    Тўлов: <button class="btn btn-primary btn-sm radius-10">ТИФ ТН</button>-хисобланмаган;
+                    <button class="btn btn-success btn-sm radius-10">ТИФ ТН</button>-хисобланган;
+                    <div class="table-responsive mt-3">
+                        <table class="table table-bordered table-striped">
+                            <thead class="bg-light-primary" style="border-color: #0a58ca; border-style: dotted">
+                            <tr>
+                                <th style="position: -webkit-sticky; position: sticky; top: 0;z-index: 2;">ТИФ ТН
+                                    коди:
+                                </th>
+                                <th>Товар номи:</th>
+                                <th>Ишлаб чиқарувчи:</th>
+                                <th>Ишлаб чиқарувчи номи:</th>
+                                <th>Илгари берилган дастлабки қарор:</th>
+                                <th>Илгари б.ТИФ ТН бўй.дастл.қарор:</th>
+                                <th>Тижорат номи:</th>
+                                <th>Савдо белгиси:</th>
+                                <th>Маркаси:</th>
+                                <th>Модели:</th>
+                                <th>Артикули:</th>
+                                <th>Нави:</th>
+                                <th>Стандарти:</th>
+                                <th>Фойдаланиш мақсади:</th>
+                                <th>Тижорат хусусияти:</th>
+                                <th>Техник хусусияти:</th>
+                                <th>Ўрам тури:</th>
+                                <th>Ўрамлар сони:</th>
+                                <th>Юк жойлари сони:</th>
+                                <th>Усул:</th>
+                                <th>Тўл.хис/Қайтариш</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="var" items="${allCommodityFor}" varStatus="i">
+                                <tr>
+                                        <%--                                    <td>--%>
+                                        <%--                                        <div class="d-flex align-items-center">--%>
+                                        <%--                                            <div><i class='bx bxs-file-doc me-2 font-24 text-success'></i>--%>
+                                        <%--                                            </div>--%>
+                                        <%--                                            <div class="font-weight-bold text-success">Review Checklist Template</div>--%>
+                                        <%--                                        </div>--%>
+                                        <%--                                    </td>--%>
+                                    <td><a type="button" class="btn btn-primary btn-sm radius-30" style="cursor: pointer;" onclick="Calculating('${var.id}')">${var.hsCode}</a>
+                                    </td>
+                                    <td><textarea style="resize: horizontal">${var.hsName}</textarea></td>
+                                    <td>${var.orignCountrNm}</td>
+                                    <td>${var.originOrg}</td>
+                                    <td>${var.inDecNum} / ${var.inDecDate}</td>
+                                    <td>${var.hsDecNum} / ${var.hsDecDate}</td>
+                                    <td>${var.tradeName}</td>
+                                    <td>${var.tradeMark}</td>
+                                    <td>${var.mark}</td>
+                                    <td>${var.model}</td>
+                                    <td>${var.article}</td>
+                                    <td>${var.sort}</td>
+                                    <td>${var.standarts}</td>
+                                    <td>${var.functions}</td>
+                                    <td>${var.comProp}</td>
+                                    <td>${var.techChar}</td>
+                                    <td>${var.packTypeNm}</td>
+                                    <td>${var.packQty}</td>
+                                    <td>${var.cargoSpace}</td>
+                                    <td>
+                                            ${var.methodNm}
+                                        <i class="bx bx-info-circle bx-sm" data-bs-toggle="modal"
+                                           data-bs-target="#exampleExtraLargeModal3" style="cursor: pointer;"></i>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-block"
+                                                onclick="Calculating('${var.id}')">
+                                            <i class="bx bx-calculator"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-block" data-bs-toggle="modal"
+                                                data-bs-target="#exampleExtraLargeModal4">
+                                            <i class="bx bx-undo"></i>
+                                        </button>
+                                            <%--                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleExtraLargeModal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Очень большой</font></font></button>--%>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                        <!-- Усул тури Modal -->
+
+                        <div class="modal fade" id="exampleExtraLargeModal3" tabindex="-1" style="display: none;"
+                             aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Танланган усулдан олдинги
+                                            усулни қўлламаслик сабаблари</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Божхона қийматини аниқлаш усули</th>
+                                                        <th>Аввалги усулларни қўлламаслик сабаблари</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>Олиб кириладиган товарга доир битимнинг қиймати бўйича</td>
+                                                        <td>Жўнатувчи мамлакатнинг экспорт божхона юк декларацияси
+                                                            мавжуд эмас
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Усул тури Modal end -->
+                        <!-- Аризани қайтариш Modal -->
+                        <div class="modal fade" id="exampleExtraLargeModal4" tabindex="-1" aria-hidden="true"
+                             style="display: none;">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-primary">
+                                        <h5 class="modal-title text-white">
+                                            Аризани қайтариш тури ва сабаблари
+                                        </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрывать"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" class="" id="fm1" name="fm1">
+
+                                            <div class="form-group mr-4" style="float: left; clear: none;">
+                                                <div class="form-group pmd-textfield pmd-textfield-floating-label mr-4" style="">
+                                                    <select style="width: 100%;" class="form-select shadow-sm" type="text" name="HS_NM" id="HS_NM">
+                                                        <option></option>
+                                                        <c:forEach var="vals" items="${rollbackInfo}" varStatus="i">
+                                                            <option value="${vals.id}">${vals.id} - ${vals.rollbackName}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group ml-4 mb-4" style="float: left; clear: none;">
+                                                <button class="btn btn-primary ml-4" style="padding: 5px 5px;" type="button"
+                                                        onclick="addT_HS_NM(/*$('#HS_NM').val() + ' - ' + */$('#HS_NM option:selected').text())">
+                                                    <i class="bx bx-save" style="color:#ffffff;font-size:13px;"></i>
+                                                    <span class="lang">Сабабни Қўшиш</span>
+                                                </button>
+                                                <button class="btn btn-primary" style="padding: 5px 5px;" type="button"
+                                                        onclick="ClearT_HS_NM()">
+                                                    <i class="bx bx-trash-alt"
+                                                       style="color:#ffffff;font-size:13px;"></i>
+                                                    <span class="lang">Тозалаш</span>
+                                                </button>
+                                                <button class="btn btn-danger" type="button" id="gtkXTButton" style="">
+                                                    <i class="bx bx-trash"></i>
+                                                </button>
+                                            </div>
+                                            <div class="form-group W100" style="margin-top:2px; display: none;">
+                                                <label class="sr-only" for="HS_NM_FULL">Страна-транзит</label>
+                                                <textarea class="form-control input-sm" rows="4" id="HS_NM_FULL"
+                                                          name="HS_NM_FULL" maxlength="150" style="width:85%">
+                                                        <%=HS_NM_FULL%>
+                                                </textarea>
+                                                <textarea class="form-control input-sm" rows="2" id="HS_CD_FULL"
+                                                          name="HS_CD_FULL" maxlength="150" style="width:85%">
+                                                    <%--<%=HS_CD_FULL%>--%>
+                                                </textarea>
+                                            </div>
+                                            <div class="border-primary" style="">
+                                                <textarea class="form-control input-sm mt-1" rows="4"
+                                                          id="HS_NM_FULLS" name="HS_NM_FULLS" maxlength="150"
+                                                          style="width:100%" readonly>
+                                                </textarea>
+                                            </div>
+                                            <div class="border-primary" style="">
+                                                    <textarea class="resizable_textarea form-control mt-1"
+                                                              placeholder="Қўшимча маълумот киритиш учун... " rows="4"
+                                                              style="max-height: 300px;width:100%" id="commentRollback"
+                                                              name="commentRollback">
+                                                    </textarea>
+                                            </div>
+                                        </form>
+<%--                                        <button type="button" class="btn btn-danger mt-3"--%>
+<%--                                                onclick="javascript:appRollback('120');">Тўлиқ қайтариш--%>
+<%--                                        </button>--%>
+<%--                                        <button type="button" class="btn btn-warning mt-3"--%>
+<%--                                                onclick="javascript:appRollbackToFix('125');">Тузатиш учун қайтариш--%>
+<%--                                        </button>--%>
+                                        <div class="form-check form-check-inline form-control-lg">
+                                            <input style="cursor: pointer;" checked class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="120">
+                                            <label style="cursor: pointer;" class="form-check-label" for="inlineRadio1">Тўлиқ қайтариш</label>
+                                        </div>
+                                        <div class="form-check form-check-inline form-control-lg">
+                                            <input style="cursor: pointer;" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="125">
+                                            <label style="cursor: pointer;" class="form-check-label" for="inlineRadio2">Тузатиш учун қайтариш</label>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><font
+                                                style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ёпиш</font></font>
+                                        </button>
+                                        <button type="button" class="btn btn-primary" onclick="javascript:appRollback();"><font
+                                                style="vertical-align: inherit;"><font style="vertical-align: inherit;">Сақлаш</font></font></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Аризани қайтариш Modal end -->
+                    </div>
                 </div>
             </div>
+        </div>
+        <!--
+        <div class="col-4 col-lg-4 position-relative">
+            <div class="position-relative" id="pdf_area_2">
+                <object
+                        data='https://pdfjs-express.s3-us-west-2.amazonaws.com/docs/choosing-a-pdf-viewer.pdf'
+                        type="application/pdf"
+                        width="100%"
+                        height="678">
+                    <p>This browser does not support PDF!</p>
+                </object>
+                <div class="position-absolute bg-white d-flex justify-content-center align-items-center" id="wrap_btn_2"
+                     style="cursor:pointer; top: 50%; left: 0; height: 40px; width: 30px; border-top-right-radius: 15px; border-bottom-right-radius: 15px;">
+                    <i class="fa-solid fa-caret-left f-20" id="caret_2"></i>
+                </div>
 
+            </div>
+        </div>
+        -->
+        <div id="divcalculate">
+            <!-- Calculate oyna uchun div -->
         </div>
     </div>
-
-    <script>
-        var tNum = 0;
-        $(document).ready(function () {
-            $(".collapse-link").on("click", function () {
-                var e = $(this).closest(".x_panel"),
-                    a = $(this).find("i"),
-                    t = e.find(".x_content");
-                e.attr("style") ? t.slideToggle(200, function () {
-                    e.removeAttr("style")
-                }) : (t.slideToggle(200), e.css("height", "auto")), a.toggleClass("fa-chevron-up fa-chevron-down")
-            }), $(".close-link").click(function () {
-                $(this).closest(".x_panel").remove()
-            })
-        });
-
-        function checkCmdt(cmdt_id, x, appId) {
-            var dataS = {
-                "cmdt_id": cmdt_id,
-                "x": x,
-                "appId": appId
-            }
-            var urlForm = '';
-            $.ajax({
-                type: "POST",
-                data: dataS,
-                url: "<%=request.getContextPath()%>/commodity/resources/pages/InitialDecision/InitialDecisionSteps/Steps",
-                dataType: "html",
-                header: 'Content-type: text/html; charset=utf-8',
-                success: function (res) {
-                    console.log(res);
-                    switch (x) {
-                        case 1:
-                            $('div#div_CmdtStep_1').html(res);
-                            $('#wizard').smartWizard('goToStep', 1);
-                            break;
-                        case 2:
-                            $('div#div_CmdtStep_2').html(res);
-                            break;
-                        case 3:
-                            $('div#div_CmdtStep_3').html(res);
-                            break;
-                        case 4:
-                            $('div#div_CmdtStep_4').html(res);
-                            break;
-                        default:
-                    }
-                    // $("#wizard").smartWizard("disableStep","1");
-                    // $("#wizard").smartWizard("disableStep","2");
-                    // $("#wizard").smartWizard("disableStep","3");
-                    // $("#wizard").smartWizard("disableStep","4");
-                    init_SmartWizard();
-                    // $("#wizard").smartWizard("disableStep","1");
-
-                },
-                error: function (res) {
-                }
-            });
-        }
-
-        $(document).ready(function () {
-            $('#btnCmdt_1').click();
-            // init_SmartWizard();
-            $('#wizard').smartWizard({
-                onLeaveStep: leaveAStepCallback,
-                onFinish: onFinishCallback
-            });
-
-            function leaveAStepCallback(obj, context) {
-                // alert("Leaving step " + context.fromStep + " to go to step " + context.toStep);
-                if (context.toStep !== 1)
-                    checkCmdt('', context.toStep, '');
-                return true;
-                // return validateSteps(context.fromStep);
-            }
-
-            function onFinishCallback(objs, context) {
-                if (validateAllSteps()) {
-                    // $('form').submit();
-                    return true;
-                }
-            }
-
-            function validateSteps(stepnumber) {
-                var isStepValid = true;
-                if (stepnumber === 1) {
-                    // isStepValid=false;
-                }
-                return isStepValid;
-            }
-
-            function validateAllSteps() {
-                var isStepValid = true;
-                // all step validation logic
-                return isStepValid;
-            }
-        });
-    </script>
-
-
+    <!--end row-->
 </div>
 
+<script>
+    function Calculating(cmdtId) {
+        // var inspectorName = $('#userIdF_' + rowNum + ' option:selected').text();
+        var dataS = {
+            "cmdt_id": cmdtId,
+            "appId": $('#appId').val()
+        }
+        $.ajax({
+            type: "POST",
+            data: dataS,
+            url: "<%=request.getContextPath()%>/commodity/resources/pages/InitialDecision/InitialDecisionSteps/Steps4",
+            dataType: "html",
+            header: 'Content-type: text/html; charset=utf-8',
+            success: function (res) {
+                $('div#divcalculate').html(res);
+            },
+            error: function (res) {
+            }
+        });
+    }
+
+    function appRollback() {
+        // alert($('#appId').val() + ', \n ' + $.trim($('#commentRollback').val()));
+
+        var log_f = true;
+        var log_n = '';
+        var arr = [];
+        var vN = '';
+
+        var statusApp = '';
+        if ($('#inlineRadio1').is(':checked')) statusApp = $('#inlineRadio1').val();
+        if ($('#inlineRadio2').is(':checked')) statusApp = $('#inlineRadio2').val();
+        // alert(' statusApp --> ' + statusApp);
+
+        if ($.trim($('#HS_NM_FULLS').val()) == null || $.trim($('#HS_NM_FULLS').val()) == '') {
+            $('#HS_NM_FULLS').css({'border': '1px solid #FF0000'});
+            arr[0] = ' Аризани қайтариш сабабини рўйхатдан танланг ! ';
+            log_f = false;
+        } else {
+            $('#HS_NM_FULLS').css({'border': '1px solid #a6c9e2'});
+            arr[0] = '';
+        }
+
+        if ($.trim($('#commentRollback').val()) == null || $.trim($('#commentRollback').val()) == '') {
+            $('#commentRollback').css({'border': '1px solid #FF0000'});
+            arr[1] = ' Аризани қайтариш бўйича қўшимча маълумот киритилмаган, илтимос майдонни тўлдиринг ! ';
+            log_f = false;
+        } else if ($.trim($('#commentRollback').val()).length > 200) {
+            $('#commentRollback').css({'border': '1px solid #FF0000'});
+            arr[1] = ' Аризани қайтариш сабаби майдонининг узунлиги 250 та белгидан ошмаслиги лозим ! ';
+            log_f = false;
+        } else {
+            $('#commentRollback').css({'border': '1px solid #a6c9e2'});
+            arr[1] = '';
+        }
 
 
+        for (var i = 0; i <= 1; i++) {
+            if (arr[i] != '' && !log_f) {
+                log_n = log_n + arr[i] + '\n\n';
+            }
+        }
+
+        if (log_n != '') {
+            alert(log_n + '');
+        }
+
+        if (log_f) {
+
+            var dataS = {
+                "appId": $('#appId').val(),
+                "commentRollback": $.trim($('#commentRollback').val()),
+                "rollback_ids": $.trim($('#HS_CD_FULL').val()),
+                "rollback_names": $.trim($('#HS_NM_FULL').val()),
+                "statusApp": statusApp
+            }
+
+            /*-------------------------------*/
+
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Аризани қайтаришни хоҳлайсизми?',
+                text: "Сиз ушбу ариза бўйича қарор қабул қилмоқдасиз!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ха, ариза қайтарилади!',
+                cancelButtonText: 'Йўқ, қайта кўриб чиқаман!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swalWithBootstrapButtons.fire(
+                        'Ариза қайтарилди!',
+                        'Ушбу ариза божхона қонуни талабларига мос эмас деб топилди',
+                        'success'
+                    )
+                    $.ajax({
+                        type: "POST",
+                        data: dataS,
+                        url: "<%=request.getContextPath()%>/apps/resources/pages/InitialDecision/InitialDecisionRollBack",
+                        dataType: "html",
+                        header: 'Content-type: text/html; charset=utf-8',
+                        success: function (res) {
+                            var typeMessage = '';
+                            $('div#MainContent').html(res);
+                        },
+                        error: function (res) {
+                        }
+                    });
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Амал рад этилди!',
+                        'Сақлаш амалга оширилмади',
+                        'error'
+                    )
+                }
+            })
+
+        } else return false;
+
+        /*------------------------------*/
+    }
+
+    function appRollbackToFix(statusApp) {
+        // alert($('#appId').val() + ', \n ' + $.trim($('#commentRollback').val()));
+
+        var log_f = true;
+        var log_n = '';
+        var arr = [];
+        var vN = '';
+
+        if ($.trim($('#HS_NM_FULLS2').val()) == null || $.trim($('#HS_NM_FULLS2').val()) == '') {
+            $('#HS_NM_FULLS2').css({'border': '1px solid #FF0000'});
+            arr[0] = ' Аризани қайтариш сабабини рўйхатдан танланг ! ';
+            log_f = false;
+        } else {
+            $('#HS_NM_FULLS2').css({'border': '1px solid #a6c9e2'});
+            arr[0] = '';
+        }
+
+        if ($.trim($('#commentRollback2').val()) == null || $.trim($('#commentRollback2').val()) == '') {
+            $('#commentRollback2').css({'border': '1px solid #FF0000'});
+            arr[1] = ' Аризани қайтариш бўйича қўшимча маълумот киритилмаган, илтимос майдонни тўлдиринг ! ';
+            log_f = false;
+        } else if ($.trim($('#commentRollback2').val()).length > 200) {
+            $('#commentRollback2').css({'border': '1px solid #FF0000'});
+            arr[1] = ' Аризани қайтариш сабаби майдонининг узунлиги 250 та белгидан ошмаслиги лозим ! ';
+            log_f = false;
+        } else {
+            $('#commentRollback2').css({'border': '1px solid #a6c9e2'});
+            arr[1] = '';
+        }
+
+
+        for (var i = 0; i <= 1; i++) {
+            if (arr[i] != '' && !log_f) {
+                log_n = log_n + arr[i] + '\n\n';
+            }
+        }
+
+        if (log_n != '') {
+            alert(log_n + '');
+        }
+
+        if (log_f) {
+
+            var dataS = {
+                "appId": $('#appId').val(),
+                "commentRollback": $.trim($('#commentRollback2').val()),
+                "rollback_ids": $.trim($('#HS_CD_FULL2').val()),
+                "rollback_names": $.trim($('#HS_NM_FULL2').val()),
+                "statusApp": statusApp
+            }
+
+            /*-------------------------------*/
+
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+                title: 'Аризани қайтаришни хоҳлайсизми?',
+                text: "Сиз ушбу ариза бўйича қарор қабул қилмоқдасиз!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ха, ариза қайтарилади!',
+                cancelButtonText: 'Йўқ, қайта кўриб чиқаман!',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    swalWithBootstrapButtons.fire(
+                        'Ариза қайтарилди!',
+                        'Ушбу ариза божхона қонуни талабларига мос эмас деб топилди',
+                        'success'
+                    )
+                    $.ajax({
+                        type: "POST",
+                        data: dataS,
+                        url: "<%=request.getContextPath()%>/apps/resources/pages/InitialDecision/InitialDecisionRollBack",
+                        dataType: "html",
+                        header: 'Content-type: text/html; charset=utf-8',
+                        success: function (res) {
+                            $('div#MainContent').html(res);
+                        },
+                        error: function (res) {
+                        }
+                    });
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Амал рад этилди!',
+                        'Сақлаш амалга оширилмади',
+                        'error'
+                    )
+                }
+            })
+
+        } else return false;
+
+        /*------------------------------*/
+    }
+
+
+    var HS_NM_FULL_C = "";
+
+    function addT_HS_NM(x) {
+        // alert(x);
+        var y = x.replaceAll(' ', '');
+        var ta = document.getElementById('HS_NM_FULL').value;
+        var ta2 = document.getElementById('HS_NM_FULLS').value;
+        var tacd = document.getElementById('HS_CD_FULL').value;
+        if (ta.length > 2) {
+            if (ta.indexOf(x.substring(0, 2)) < 0) {
+                document.getElementById('HS_NM_FULL').value = ta + '~' + x;
+                document.getElementById('HS_NM_FULLS').value = ta2 + '\n' + x;
+                HS_NM_FULL_C = y.substring('~', y.indexOf('-'));
+                if (document.getElementById('HS_CD_FULL').value == null || document.getElementById('HS_CD_FULL').value == '') {
+                    document.getElementById('HS_CD_FULL').value = HS_NM_FULL_C;
+                } else {
+                    document.getElementById('HS_CD_FULL').value = tacd + '~' + HS_NM_FULL_C;
+                    // document.getElementById('HS_CD_FULL').value = tacd + '\n' + HS_NM_FULL_C;
+                }
+            }
+        } else {
+            document.getElementById('HS_NM_FULL').value = x;
+            document.getElementById('HS_NM_FULLS').value = x;
+            HS_NM_FULL_C = y.substring(0, y.indexOf('-'));
+            if (document.getElementById('HS_CD_FULL').value == null || document.getElementById('HS_CD_FULL').value == '') {
+                document.getElementById('HS_CD_FULL').value = HS_NM_FULL_C;
+            } else {
+                document.getElementById('HS_CD_FULL').value = tacd + '~' + HS_NM_FULL_C;
+            }
+        }
+        document.getElementById('HS_NM').value = '';
+    }
+
+    function addT_HS_NM2(x) {
+        // alert(x);
+        var y = x.replaceAll(' ', '');
+        var ta = document.getElementById('HS_NM_FULL2').value;
+        var ta2 = document.getElementById('HS_NM_FULLS2').value;
+        var tacd = document.getElementById('HS_CD_FULL2').value;
+        if (ta.length > 2) {
+            if (ta.indexOf(x.substring(0, 2)) < 0) {
+                document.getElementById('HS_NM_FULL2').value = ta + '~' + x;
+                document.getElementById('HS_NM_FULLS2').value = ta2 + '\n' + x;
+                HS_NM_FULL_C = y.substring('~', y.indexOf('-'));
+                if (document.getElementById('HS_CD_FULL2').value == null || document.getElementById('HS_CD_FULL2').value == '') {
+                    document.getElementById('HS_CD_FULL2').value = HS_NM_FULL_C;
+                } else {
+                    document.getElementById('HS_CD_FULL2').value = tacd + '~' + HS_NM_FULL_C;
+                    // document.getElementById('HS_CD_FULL').value = tacd + '\n' + HS_NM_FULL_C;
+                }
+            }
+        } else {
+            document.getElementById('HS_NM_FULL2').value = x;
+            document.getElementById('HS_NM_FULLS2').value = x;
+            HS_NM_FULL_C = y.substring(0, y.indexOf('-'));
+            if (document.getElementById('HS_CD_FULL2').value == null || document.getElementById('HS_CD_FULL2').value == '') {
+                document.getElementById('HS_CD_FULL2').value = HS_NM_FULL_C;
+            } else {
+                document.getElementById('HS_CD_FULL2').value = tacd + '~' + HS_NM_FULL_C;
+            }
+        }
+        document.getElementById('HS_NM2').value = '';
+    }
+
+    function ClearT_HS_NM() {
+        document.getElementById("HS_NM").value = "";
+    }
+
+    function ClearT_HS_NM2() {
+        document.getElementById("HS_NM2").value = "";
+    }
+
+    var gtkXTButton = document.querySelector("#gtkXTButton");
+    var HS_NM_FULL = document.querySelector("#HS_NM_FULL");
+    var HS_NM_FULLS = document.querySelector("#HS_NM_FULLS");
+    var HS_CD_FULL = document.querySelector("#HS_CD_FULL");
+    gtkXTButton.onclick = function () {
+        HS_NM_FULL.value = "";
+        HS_NM_FULLS.value = "";
+        HS_CD_FULL.value = "";
+    };
+
+    var gtkXTButton2 = document.querySelector("#gtkXTButton2");
+    var HS_NM_FULL2 = document.querySelector("#HS_NM_FULL2");
+    var HS_NM_FULLS2 = document.querySelector("#HS_NM_FULLS2");
+    var HS_CD_FULL2 = document.querySelector("#HS_CD_FULL2");
+    gtkXTButton2.onclick = function () {
+        HS_NM_FULL2.value = "";
+        HS_NM_FULLS2.value = "";
+        HS_CD_FULL2.value = "";
+    };
+
+    /*------------------------------*/
+</script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

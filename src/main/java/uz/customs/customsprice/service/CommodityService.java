@@ -18,7 +18,7 @@ public class CommodityService {
     }
 
     public Commodity getByAppId(String appId){
-        return commodityRepo.findByAppId(appId);
+        return commodityRepo.findAllByAppId(appId);
     }
 
     @PersistenceContext

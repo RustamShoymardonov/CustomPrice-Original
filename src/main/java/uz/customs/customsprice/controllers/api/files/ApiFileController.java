@@ -67,7 +67,7 @@ public class ApiFileController {
             if (file.isEmpty()) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("File ustuni bo'sh bo'lishi mumkun emas!");
             }
-            if (!file.getContentType().equals("image/jpeg") && !file.getContentType().equals("application/pdf") && !file.getContentType().equals("application/msword")) {
+            if (!file.getContentType().equals("image/jpeg") && !file.getContentType().equals("application/pdf")&& !file.getContentType().equals("image/png") && !file.getContentType().equals("application/msword")) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Faqat PDF, JPG, WORD formatdagi faylni yuborishingiz mumkin!");
             }
 

@@ -1,33 +1,36 @@
 package uz.customs.customsprice.entity.users;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "roles")
-public class Role {
+@Table(name = "UROLE", indexes = {@Index(columnList = "id", unique = true)})
+@OnDelete(action = OnDeleteAction.CASCADE)
+public class Role implements GrantedAuthority {
     @Id
-    @GeneratedValue()
-    private Long id;
-
-    private  String name;
+    private String id;
+    @Column(name = "NAME", columnDefinition = "VARCHAR(600) CCSID 1208")
+    private String name;
+    @Column(name = "CODE", columnDefinition = "SMALLINT DEFAULT 0")
+    private Integer code;
 
     public Role() {
     }
 
-    public Role(Long id, String name) {
+    public Role(String id, String name, Integer code) {
         this.id = id;
         this.name = name;
+        this.code = code;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -37,5 +40,18 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    @Override
+    public String getAuthority() {
+        return getName();
     }
 }

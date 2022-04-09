@@ -2,25 +2,24 @@ package uz.customs.customsprice.entity.InitialDecision;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import uz.customs.customsprice.entity.entityConfig.AbstractAuditingEntity;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "LOG")
+@Table(name = "log", indexes = {@Index(columnList = "ses_id")})
 public class Log {
+
     @Id
-    @Column(name = "id", columnDefinition = "VARCHAR(50)")
-    private String id;
+    @Column(name = "SES_ID", length = 100)
+    private String sesId = "";
 
-    @Column(name = "USER_ID", length = 50)
-    private String userId;
+    @Column(name = "NAME")
+    private String name = "";
 
-    @Column(name = "USER_NAME", columnDefinition = "VARCHAR(150) CCSID 1208")
-    private String userName;
-
-    @Column(name = "IP", length = 15)
-    private String ip;
+    @Column(name = "IP")
+    private String ip = "";
 
     @CreatedDate
     @Column(name = "ENTER", columnDefinition = " timestamp default current_timestamp")
@@ -33,45 +32,40 @@ public class Log {
     private Date last;
 
     @LastModifiedDate
-    @Column(name = "EXIT")
+    @Column(name = "EXIT", columnDefinition = " timestamp default null")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date exit;
+    private Date exit = null;
+
+    @Column(name = "USER_ID")
+    private String userId = "";
 
     public Log() {
     }
 
-    public Log(String id, String userId, String userName, String ip, Date enter, Date last, Date exit) {
-        this.id = id;
-        this.userId = userId;
-        this.userName = userName;
+    public Log(String sesId, String name, String ip, Date enter, Date last, Date exit, String userId) {
+        this.sesId = sesId;
+        this.name = name;
         this.ip = ip;
         this.enter = enter;
         this.last = last;
         this.exit = exit;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getSesId() {
+        return sesId;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setSesId(String sesId) {
+        this.sesId = sesId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getIp() {
@@ -104,5 +98,13 @@ public class Log {
 
     public void setExit(Date exit) {
         this.exit = exit;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

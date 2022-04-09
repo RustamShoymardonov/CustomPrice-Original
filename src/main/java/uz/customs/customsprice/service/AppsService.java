@@ -48,9 +48,7 @@ public class AppsService {
                     "    cpid.apps_rasp ar\n" +
                     "on\n" +
                     "    a.id=ar.app_id";
-            sqlWhere = " and a.status not in (100,\n" +
-                    "                         170,\n" +
-                    "                         175) \n " +
+            sqlWhere = " and a.status=110 \n " +
                     " and ar.inspector_id='" + userId + "' ";
         }
         if (userRole == 6) {
@@ -422,7 +420,7 @@ public class AppsService {
     }
 
     /* 8) Битта товар "id" бўйича барча товар маълумотлари */
-    public List<Commodity> getCommodityList(String cmdt_id) {
+    public List<Commodity> getCommodityList(String app_id) {
         String queryForList = "select\n" +
                 /*0 - */"    c.id, \n" +
                 /*1 - */"    c.instime, \n" +
@@ -475,7 +473,7 @@ public class AppsService {
                 "    c.app_id = a.id\n" +
                 "and a.isdeleted = 0\n" +
                 "where\n" +
-                "    c.id = '" + cmdt_id + "'\n" +
+                "    c.app_id = '" + app_id + "'\n" +
                 "and c.isdeleted = 0";
         return (List<Commodity>) entityManager.createNativeQuery(queryForList, Commodity.class).getResultList();
     }

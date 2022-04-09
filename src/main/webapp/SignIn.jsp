@@ -20,14 +20,14 @@
   <title>
     Kirish
   </title>
-  <link rel="apple-touch-icon" sizes="76x76" href="<%=request.getContextPath()%>/resources/assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/resources/assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="<%=request.getContextPath()%>/resources/assets2/images/apple-icon.png">
+  <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/resources/assets2/images/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-  <link href="<%=request.getContextPath()%>/resources/assets/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="<%=request.getContextPath()%>/resources/assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="<%=request.getContextPath()%>/resources/assets2/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="<%=request.getContextPath()%>/resources/assets2/css/nucleo-svg.css" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="<%=request.getContextPath()%>/resources/assets/css/nucleo-svg.css" rel="stylesheet" />
-  <link id="pagestyle" href="<%=request.getContextPath()%>/resources/assets/css/argon-dashboard.css?v=2.0.0" rel="stylesheet" />
+  <link href="<%=request.getContextPath()%>/resources/assets2/css/nucleo-svg.css" rel="stylesheet" />
+  <link id="pagestyle" href="<%=request.getContextPath()%>/resources/assets2/css/argon-dashboard.css?v=2.0.0" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -141,7 +141,7 @@
   }
 </script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-<script src="<%=request.getContextPath()%>/resources/assets/js/argon-dashboard.min.js?v=2.0.0"></script>
+<script src="<%=request.getContextPath()%>/resources/assets2/js/argon-dashboard.min.js?v=2.0.0"></script>
 </body>
 
 </html>

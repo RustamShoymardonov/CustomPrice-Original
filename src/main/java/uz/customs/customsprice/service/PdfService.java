@@ -2,13 +2,9 @@ package uz.customs.customsprice.service;
 
 
 import com.itextpdf.text.BadElementException;
-import com.itextpdf.text.Document;
 import com.itextpdf.text.Image;
-import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.BarcodeQRCode;
 import com.itextpdf.text.pdf.BaseFont;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.tool.xml.css.CssFile;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -29,7 +25,6 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Optional;
-import com.itextpdf.tool.xml.XMLWorkerHelper;
 
 
 @Service
@@ -39,12 +34,14 @@ public class PdfService {
     private final CommodityService commodityService;
     private final InDecService inDecService;
     private final DecisionPdfService decisionPdfService;
+    private final PaymentServise paymentServise;
 
-    public PdfService(AppsService appsService, CommodityService commodityService, InDecService inDecService, DecisionPdfService decisionPdfService) {
+    public PdfService(AppsService appsService, CommodityService commodityService, InDecService inDecService, DecisionPdfService decisionPdfService, PaymentServise paymentServise) {
         this.appsService = appsService;
         this.commodityService = commodityService;
         this.inDecService = inDecService;
         this.decisionPdfService = decisionPdfService;
+        this.paymentServise = paymentServise;
     }
 
     public void createPdf(String appId, String cmdtId) throws IOException, BadElementException {
@@ -60,10 +57,18 @@ public class PdfService {
         String url_qrCode = "http://youtube.com";
         String url_InsUsr = "http://google.com";
 
+//        InDec inDec = inDecService.getByCmtdId(cmdtId);
+
         Context context = new Context();
-        context.setVariable("appsDate", appsService.findById(appId));
+        context.setVariable("apps", appsService.findById(appId));
+        context.setVariable("cmdt", commodityService.getById(cmdtId));
+        context.setVariable("inDec", inDecService.getByCmtdId(cmdtId));
+        context.setVariable("payment", paymentServise.getByCmdtId(cmdtId));
+//        context.setVariable("inDecDate", indDecnm.getInDecDate());
+//        context.setVariable("inDecLocationName", indDecnm.getInDecLocationNm());
         context.setVariable("url_qrCode", url_qrCode);
         context.setVariable("url_InsUsr", url_InsUsr);
+
         String processHtml = templateEngine.process("templates/PdfGenerate.html", context);
 
         String urlTTF = "TimesNewRoman.ttf";
@@ -96,7 +101,8 @@ public class PdfService {
         OutputStream outputStream = new FileOutputStream(sv_dir.getPath() + "/" + FileName);
         ITextRenderer renderer = new ITextRenderer();
         renderer.getFontResolver().addFont(urlTTF, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-        renderer.setDocumentFromString(processHtml);
+        String imgPathh = "template/gtk.jpg";
+        renderer.setDocumentFromString(processHtml, imgPathh);
         renderer.layout();
 
         decisionPdf.setCmdtId(cmdtId);

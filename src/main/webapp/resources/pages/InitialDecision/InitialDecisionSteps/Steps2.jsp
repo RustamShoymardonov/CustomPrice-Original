@@ -160,9 +160,10 @@
                 </div>
             </div>
             <!-- Усул тури Modal end -->
+            </c:forEach>
         </div>
     </fieldset>
-    </c:forEach>
+
 </div>
 
 </body>

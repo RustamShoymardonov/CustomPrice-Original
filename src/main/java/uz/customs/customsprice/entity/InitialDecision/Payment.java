@@ -8,7 +8,9 @@ import uz.customs.customsprice.entity.entityConfig.AbstractAuditingEntity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 public class Payment extends AbstractAuditingEntity {
@@ -24,61 +26,64 @@ public class Payment extends AbstractAuditingEntity {
     @JsonIgnore
     private Commodity commodity;
 
-    @Column(name = "G47BASE", precision = 5, scale = 2)
+    @Column(name = "CMDT_ID", columnDefinition = "VARCHAR(50)")
+    private String cmdtId;
+
+    @Column(name = "G47BASE", precision = 19, scale = 3)
     private BigDecimal g47Base;
 
-    @Column(name = "G47ALTBASE", precision = 5, scale = 2)
+    @Column(name = "G47ALTBASE", precision = 19, scale = 3)
     private BigDecimal g47AltBase;
 
-    @Column(name = "G47RATE", precision = 5, scale = 2)
+    @Column(name = "G47RATE", precision = 19, scale = 3)
     private BigDecimal g47Rate;
 
-    @Column(name = "G47ALTRATE", precision = 5, scale = 2)
+    @Column(name = "G47ALTRATE", precision = 19, scale = 3)
     private BigDecimal g47AltRate;
 
-    @Column(name = "G47CURRKOD", length = 3)
-    private String g47CurrKod;
+    @Column(name = "G47CURRKOD", columnDefinition = "VARCHAR(3)")
+    private String g47Currkod;
 
-    @Column(name = "G47SUM", precision = 5, scale = 2)
+    @Column(name = "G47SUM", precision = 19, scale = 3)
     private BigDecimal g47Sum;
 
-    @Column(name = "G47SP", length = 4)
+    @Column(name = "G47SP", columnDefinition = "VARCHAR(4)")
     private String g47Sp;
 
     @Column(name = "G47CLCTYPE")
-    private Integer g47clcType;
+    private int g47ClcType;
 
-    @Column(name = "G47TYPE", length = 4)
+    @Column(name = "G47TYPE", columnDefinition = "VARCHAR(4)")
     private String g47Type;
 
-    @Column(name = "G47ALTBASECURRKOD", length = 3)
-    private String g47AltBaseCurrKod;
+    @Column(name = "G47ALTBASECURRKOD", columnDefinition = "VARCHAR(3)")
+    private String g47Altbasecurrkod;
 
-    @Column(name = "G47ALTBASEEDIZM", length = 20)
+    @Column(name = "G47ALTBASEEDIZM", columnDefinition = "VARCHAR(20)")
     private String g47AltBaseEdIzm;
 
-    @Column(name = "G47SUMCURRKOD", length = 3)
-    private String g47SumCurrKod;
+    @Column(name = "G47SUMCURRKOD", columnDefinition = "VARCHAR(3)")
+    private String g47SumCurrkod;
 
     public Payment() {
     }
 
-    public Payment(String insUser, String updUser, Date insTime, Date updTime, int isDeleted, String id, Commodity commodity, BigDecimal g47Base, BigDecimal g47AltBase, BigDecimal g47Rate, BigDecimal g47AltRate, String g47CurrKod, BigDecimal g47Sum, String g47Sp, Integer g47clcType, String g47Type, String g47AltBaseCurrKod, String g47AltBaseEdIzm, String g47SumCurrKod) {
-        super(insUser, updUser, insTime, updTime, isDeleted);
+    public Payment(String id, Commodity commodity, String cmdtId, BigDecimal g47Base, BigDecimal g47AltBase, BigDecimal g47Rate, BigDecimal g47AltRate, String g47Currkod, BigDecimal g47Sum, String g47Sp, int g47ClcType, String g47Type, String g47Altbasecurrkod, String g47AltBaseEdIzm, String g47SumCurrkod) {
         this.id = id;
         this.commodity = commodity;
+        this.cmdtId = cmdtId;
         this.g47Base = g47Base;
         this.g47AltBase = g47AltBase;
         this.g47Rate = g47Rate;
         this.g47AltRate = g47AltRate;
-        this.g47CurrKod = g47CurrKod;
+        this.g47Currkod = g47Currkod;
         this.g47Sum = g47Sum;
         this.g47Sp = g47Sp;
-        this.g47clcType = g47clcType;
+        this.g47ClcType = g47ClcType;
         this.g47Type = g47Type;
-        this.g47AltBaseCurrKod = g47AltBaseCurrKod;
+        this.g47Altbasecurrkod = g47Altbasecurrkod;
         this.g47AltBaseEdIzm = g47AltBaseEdIzm;
-        this.g47SumCurrKod = g47SumCurrKod;
+        this.g47SumCurrkod = g47SumCurrkod;
     }
 
     public String getId() {
@@ -95,6 +100,14 @@ public class Payment extends AbstractAuditingEntity {
 
     public void setCommodity(Commodity commodity) {
         this.commodity = commodity;
+    }
+
+    public String getCmdtId() {
+        return cmdtId;
+    }
+
+    public void setCmdtId(String cmdtId) {
+        this.cmdtId = cmdtId;
     }
 
     public BigDecimal getG47Base() {
@@ -129,12 +142,12 @@ public class Payment extends AbstractAuditingEntity {
         this.g47AltRate = g47AltRate;
     }
 
-    public String getG47CurrKod() {
-        return g47CurrKod;
+    public String getG47Currkod() {
+        return g47Currkod;
     }
 
-    public void setG47CurrKod(String g47CurrKod) {
-        this.g47CurrKod = g47CurrKod;
+    public void setG47Currkod(String g47Currkod) {
+        this.g47Currkod = g47Currkod;
     }
 
     public BigDecimal getG47Sum() {
@@ -153,12 +166,12 @@ public class Payment extends AbstractAuditingEntity {
         this.g47Sp = g47Sp;
     }
 
-    public Integer getG47clcType() {
-        return g47clcType;
+    public int getG47ClcType() {
+        return g47ClcType;
     }
 
-    public void setG47clcType(Integer g47clcType) {
-        this.g47clcType = g47clcType;
+    public void setG47ClcType(int g47ClcType) {
+        this.g47ClcType = g47ClcType;
     }
 
     public String getG47Type() {
@@ -169,12 +182,12 @@ public class Payment extends AbstractAuditingEntity {
         this.g47Type = g47Type;
     }
 
-    public String getG47AltBaseCurrKod() {
-        return g47AltBaseCurrKod;
+    public String getG47Altbasecurrkod() {
+        return g47Altbasecurrkod;
     }
 
-    public void setG47AltBaseCurrKod(String g47AltBaseCurrKod) {
-        this.g47AltBaseCurrKod = g47AltBaseCurrKod;
+    public void setG47Altbasecurrkod(String g47Altbasecurrkod) {
+        this.g47Altbasecurrkod = g47Altbasecurrkod;
     }
 
     public String getG47AltBaseEdIzm() {
@@ -185,11 +198,11 @@ public class Payment extends AbstractAuditingEntity {
         this.g47AltBaseEdIzm = g47AltBaseEdIzm;
     }
 
-    public String getG47SumCurrKod() {
-        return g47SumCurrKod;
+    public String getG47SumCurrkod() {
+        return g47SumCurrkod;
     }
 
-    public void setG47SumCurrKod(String g47SumCurrKod) {
-        this.g47SumCurrKod = g47SumCurrKod;
+    public void setG47SumCurrkod(String g47SumCurrkod) {
+        this.g47SumCurrkod = g47SumCurrkod;
     }
 }

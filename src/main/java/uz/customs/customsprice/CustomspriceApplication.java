@@ -5,9 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @ServletComponentScan
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
+@SpringBootApplication
+@EnableJpaAuditing(auditorAwareRef = "auditorAware")
 public class CustomspriceApplication {
     public final static String MODEL_PACKAGE = "uz.customs.customsprice.entity";
 

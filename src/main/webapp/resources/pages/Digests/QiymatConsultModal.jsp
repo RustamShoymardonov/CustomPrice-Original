@@ -13,9 +13,6 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<head>
-    <title>Title</title>
-</head>
 <body>
 
 <div class="modal-dialog bg-warning" role="document" style="max-width:80% !important;">
@@ -30,15 +27,15 @@
             </tr>
             </c:forEach>
             </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+<%--            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>--%>
         </div>
         <div class="modal-body p-2">
             <fieldset class="form-group fieldsetC mb-0">
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
                         <div class="table-responsive">
-                            <table class="table">
-                                <thead class="bg-dark text-light">
+                            <table class="table table-striped table-bordered table-sm">
+                                <thead>
                                 <tr>
                                     <th scope="col">т/р</th>
                                     <th scope="col">ТИФ ТН коди</th>
@@ -68,10 +65,10 @@
                                     <th>${val[7]} ${val[8]} ${val[9]}${val[10]}</th>
                                     <td>${val[11]}</td>
                                     <td>
-                                        <textarea rows="3"  cols="250" class="form-control" id="validationTextarea" placeholder="" required>${val[12]}</textarea>
+                                        <textarea rows="3"  cols="250" class="form-control" id="validationTextarea1" placeholder="" required>${val[12]}</textarea>
                                     </td>
                                     <td>
-                                        <textarea rows="3"  cols="250" class="form-control" id="validationTextarea" placeholder="" required>${val[13]}</textarea>
+                                        <textarea rows="3"  cols="250" class="form-control" id="validationTextarea2" placeholder="" required>${val[13]}</textarea>
                                     </td>
                                 </tr>
                                 </c:forEach>
