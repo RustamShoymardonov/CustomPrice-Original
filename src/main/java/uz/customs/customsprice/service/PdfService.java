@@ -35,16 +35,18 @@ public class PdfService {
     private final InDecService inDecService;
     private final DecisionPdfService decisionPdfService;
     private final PaymentServise paymentServise;
+    private final DocsService docsService;
 
-    public PdfService(AppsService appsService, CommodityService commodityService, InDecService inDecService, DecisionPdfService decisionPdfService, PaymentServise paymentServise) {
+    public PdfService(AppsService appsService, CommodityService commodityService, InDecService inDecService, DecisionPdfService decisionPdfService, PaymentServise paymentServise, DocsService docsService) {
         this.appsService = appsService;
         this.commodityService = commodityService;
         this.inDecService = inDecService;
         this.decisionPdfService = decisionPdfService;
         this.paymentServise = paymentServise;
+        this.docsService = docsService;
     }
 
-    public void createPdf(String appId, String cmdtId) throws IOException, BadElementException {
+    public void createPdf(String appId, String cmdtId, String userName) throws IOException, BadElementException {
         Apps apps = appsService.findById(appId);
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
         templateResolver.setSuffix(".html");
@@ -56,16 +58,16 @@ public class PdfService {
         Image img = qrCode.getImage();
         String url_qrCode = "http://youtube.com";
         String url_InsUsr = "http://google.com";
-
-//        InDec inDec = inDecService.getByCmtdId(cmdtId);
+        Date date1 = Calendar.getInstance().getTime();
 
         Context context = new Context();
         context.setVariable("apps", appsService.findById(appId));
         context.setVariable("cmdt", commodityService.getById(cmdtId));
         context.setVariable("inDec", inDecService.getByCmtdId(cmdtId));
         context.setVariable("payment", paymentServise.getByCmdtId(cmdtId));
-//        context.setVariable("inDecDate", indDecnm.getInDecDate());
-//        context.setVariable("inDecLocationName", indDecnm.getInDecLocationNm());
+        context.setVariable("docs", docsService.getByAppIdForPdf(appId));
+        context.setVariable("userName", userName);
+        context.setVariable("LocaleDate", date1);
         context.setVariable("url_qrCode", url_qrCode);
         context.setVariable("url_InsUsr", url_InsUsr);
 

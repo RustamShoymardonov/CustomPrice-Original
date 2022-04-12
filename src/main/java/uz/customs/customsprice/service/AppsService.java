@@ -8,13 +8,13 @@ import uz.customs.customsprice.repository.AppsRepo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.print.Doc;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 public class AppsService {
+
     private final AppsRepo appsRepo;
 
     public AppsService(AppsRepo appsRepo) {
@@ -533,6 +533,7 @@ public class AppsService {
             return appsRepo.findById(id).get();
         else return null;
     }
+
 
     public Apps saveAppsStatus(Apps apps) {
         return appsRepo.save(apps);

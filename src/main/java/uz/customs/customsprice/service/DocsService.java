@@ -29,11 +29,9 @@ public class DocsService {
         return docsRepo.findTop1ByAppIdOrderByInsTimeDesc(appId);
     }
 
-//    public List<Docs> getAllByAppId(String appId) {
-//        return (List<Docs>) docsRepo.findAllByAppId(appId);
-//    }
-
     public Optional<Docs> getById(String id){
         return  docsRepo.findById(id);
     }
+
+    public List<Docs> getByAppIdForPdf(String appId){return  docsRepo.findByAppId(appId);}
 }

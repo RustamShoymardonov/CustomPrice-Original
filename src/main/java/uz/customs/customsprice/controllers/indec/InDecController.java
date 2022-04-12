@@ -36,6 +36,8 @@ public class InDecController {
     private final PdfService pdfService;
     private final PaymentServise paymentServise;
     private final ExchangerateService exchangerateService;
+    private final StatusMService statusMService;
+    private final StatusHService statusHService;
 
     private final String INITIALDECISIONCONFIRMCMDT = "/resources/pages/InitialDecision/InitialDecisionConfirm";
     private final String INITIALDECISIONTOHTMl = "/resources/pages/InitialDecision/Qaror";
@@ -44,7 +46,7 @@ public class InDecController {
     private final String INITIALDECISIONCONFIRMCMDT_CALC = "/resources/pages/InitialDecision/InitialDecisionCalc";
 
 
-    public InDecController(InDecService inDecService, AppsService appsService, AppsService appsservice, CommodityService commodityService, ConturyService conturyService, MethodService methodService, PackagingService packagingService, Tnved2Service tnved2Service, LocationService locationService, StatusService statusService, UsersService usersService, PdfService pdfService, PaymentServise paymentServise, ExchangerateService exchangerateService) {
+    public InDecController(InDecService inDecService, AppsService appsService, AppsService appsservice, CommodityService commodityService, ConturyService conturyService, MethodService methodService, PackagingService packagingService, Tnved2Service tnved2Service, LocationService locationService, StatusService statusService, UsersService usersService, PdfService pdfService, PaymentServise paymentServise, ExchangerateService exchangerateService, StatusMService statusMService, StatusHService statusHService) {
         this.inDecService = inDecService;
         this.appsService = appsService;
         this.appsservice = appsservice;
@@ -59,6 +61,8 @@ public class InDecController {
         this.pdfService = pdfService;
         this.paymentServise = paymentServise;
         this.exchangerateService = exchangerateService;
+        this.statusMService = statusMService;
+        this.statusHService = statusHService;
     }
 
     @PostMapping(value = INITIALDECISIONCONFIRMCMDT)
@@ -99,6 +103,23 @@ public class InDecController {
         usersList = usersService.getByLocationAndPostAndRole(userLocation, userPost, 8);
         mav.addObject("userSelectList", usersList);
         /** mav object end **/
+
+        /**todo ЛОК га ёзиш start todo**/
+        StatusM statusM = new StatusM();
+        statusM.setAppId(apps.getId());
+        statusM.setStatus(String.valueOf(apps.getStatus()));
+        statusM.setStatusComment(apps.getStatusNm());
+        statusM.setInsUser(userId);
+        statusMService.saveStatusM(statusM);
+
+        StatusH statusH = new StatusH();
+        statusH.setStmainID(statusM.getId());
+        statusH.setAppId(statusM.getAppId());
+        statusH.setStatus(String.valueOf(apps.getStatus()));
+        statusH.setStatusComment(apps.getStatusNm());
+        statusH.setInsUser(userId);
+        statusHService.saveStatusH(statusH);
+        /**todo ЛОК га ёзиш end todo**/
 
         return mav;
     }
@@ -146,6 +167,23 @@ public class InDecController {
         mav.addObject("userSelectList", usersList);
         /** mav object end **/
 
+        /**todo ЛОК га ёзиш start todo**/
+        StatusM statusM = new StatusM();
+        statusM.setAppId(apps.getId());
+        statusM.setStatus(String.valueOf(apps.getStatus()));
+        statusM.setStatusComment(apps.getStatusNm());
+        statusM.setInsUser(userId);
+        statusMService.saveStatusM(statusM);
+
+        StatusH statusH = new StatusH();
+        statusH.setStmainID(statusM.getId());
+        statusH.setAppId(statusM.getAppId());
+        statusH.setStatus(String.valueOf(apps.getStatus()));
+        statusH.setStatusComment(apps.getStatusNm());
+        statusH.setInsUser(userId);
+        statusHService.saveStatusH(statusH);
+        /**todo ЛОК га ёзиш end todo**/
+
         return mav;
     }
 
@@ -160,6 +198,8 @@ public class InDecController {
         String userLocation = (String) request.getSession().getAttribute("userLocation");
         String userLocationName = (String) request.getSession().getAttribute("userLocationName");
         String userPost = (String) request.getSession().getAttribute("userPost");
+        Optional<Commodity> commodity = commodityService.getById(cmdtId);
+        Status status1 = statusService.getById(145);
 
         Apps apps = appsService.findById(appId);
         Status status2 = statusService.getById(170);
@@ -184,8 +224,49 @@ public class InDecController {
         List<Users> usersList = new ArrayList<>();
         usersList = usersService.getByLocationAndPostAndRole(userLocation, userPost, 8);
         mav.addObject("userSelectList", usersList);
+
+        /**todo ЛОК га ёзиш start todo**/
+        StatusM statusM = new StatusM();
+        statusM.setAppId(apps.getId());
+        statusM.setStatus(String.valueOf(apps.getStatus()));
+        statusM.setStatusComment(apps.getStatusNm());
+        statusM.setInsUser(userId);
+        statusMService.saveStatusM(statusM);
+
+        StatusH statusH = new StatusH();
+        statusH.setStmainID(statusM.getId());
+        statusH.setAppId(statusM.getAppId());
+        statusH.setStatus(String.valueOf(apps.getStatus()));
+        statusH.setStatusComment(apps.getStatusNm());
+        statusH.setInsUser(userId);
+        statusHService.saveStatusH(statusH);
+        /**todo ЛОК га ёзиш end todo**/
+
+
+        /**todo Дастлаки қарор маълумотларини шакиллантириш **/
+        inDec.setCmdtId(cmdtId);
+//        inDec.setInDecNum();//?
+//        inDec.setInDecDate();//?
+        inDec.setInsUser(userId);
+        inDec.setInDecLocation(apps.getLocationId());
+        inDec.setInDecLocationNm(apps.getLocationNm());
+        inDec.setPersonId(apps.getPersonId());
+        inDec.setHsCode(commodity.get().getHsCode());
+        inDec.setHsName(commodity.get().getHsName());
+        inDec.setMethod(commodity.get().getMethod());
+        inDec.setMethodNm(commodity.get().getMethodNm());
+        inDec.setOriginCountry(commodity.get().getOriginCountry());
+        inDec.setOrignCountrNm(commodity.get().getOrignCountrNm());
+//        inDec.setInDecBasis(); //?
+//        inDec.setCommentMarks(); //?
+//        inDec.setCustomsPreference(); //?
+//        inDec.setCustomsPayments(); //?
+        inDec.setStatus(status1.getId());
+        inDec.setStatusNm(status1.getName());
+        inDecService.saveInDec(inDec);
+
         /**todo PDF GENERATSIYA  **/
-        pdfService.createPdf(appId, cmdtId);
+        pdfService.createPdf(appId, cmdtId, userName);
         return mav;
     }
 
@@ -222,33 +303,11 @@ public class InDecController {
             payment.setG47Type(object.getG47Type());
             paymentServise.savePayment(payment);
         }
+
         Apps apps = appsService.findById(appId);
         Optional<Commodity> commodity = commodityService.getById(cmdtId);
-        Status status1 = statusService.getById(145);
-
         Exchangerate exchangerate840 = exchangerateService.getTop1ByIdOrderByDateSetDesc("840");
         BigDecimal rate = BigDecimal.valueOf(exchangerate840.getRate()).multiply(BigDecimal.valueOf(exchangerate840.getAmount()));
-
-        inDec.setCmdtId(cmdtId);
-//        inDec.setInDecNum();//?
-//        inDec.setInDecDate();//?
-        inDec.setInsUser(userId);
-        inDec.setInDecLocation(apps.getLocationId());
-        inDec.setInDecLocationNm(apps.getLocationNm());
-        inDec.setPersonId(apps.getPersonId());
-        inDec.setHsCode(commodity.get().getHsCode());
-        inDec.setHsName(commodity.get().getHsName());
-        inDec.setMethod(commodity.get().getMethod());
-        inDec.setMethodNm(commodity.get().getMethodNm());
-        inDec.setOriginCountry(commodity.get().getOriginCountry());
-        inDec.setOrignCountrNm(commodity.get().getOrignCountrNm());
-//        inDec.setInDecBasis(); //?
-//        inDec.setCommentMarks(); //?
-//        inDec.setCustomsPreference(); //?
-//        inDec.setCustomsPayments(); //?
-        inDec.setStatus(status1.getId());
-        inDec.setStatusNm(status1.getName());
-        inDecService.saveInDec(inDec);
 
 //        String userId = (String) request.getSession().getAttribute("userId");
 //        String userName = (String) request.getSession().getAttribute("userName");
@@ -309,8 +368,6 @@ public class InDecController {
 //        List<Users> usersList = new ArrayList<>();
 //        usersList = usersService.getByLocationAndPostAndRole(userLocation, userPost, 8);
 //        mav.addObject("userSelectList", usersList);
-        /** mav object end **/
-//        Optional<Commodity> commodity = commodityService.getById(cmdtId);
 
         List<Payment> payments = paymentServise.getByCmdtId(cmdtId);
         mav.addObject("cmdtId", cmdtId);

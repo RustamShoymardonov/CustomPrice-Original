@@ -87,7 +87,6 @@ public class AppsController {
         String userLocationName = (String) request.getSession().getAttribute("userLocationName");
         String userPost = (String) request.getSession().getAttribute("userPost");
 
-
         if (!Objects.equals(inspectorId, "notSelected")) {
             AppsRasp appsRasp = new AppsRasp();
             appsRasp.setAppId(appId);
@@ -103,6 +102,24 @@ public class AppsController {
             app.setStatus(110);
             app.setStatusNm(status.getName());
             appsservice.saveAppsStatus(app);
+
+            /**todo ЛОК га ёзиш start todo**/
+            StatusM statusM = new StatusM();
+            statusM.setAppId(app.getId());
+            statusM.setStatus(String.valueOf(app.getStatus()));
+            statusM.setStatusComment(app.getStatusNm());
+            statusM.setInsUser(userId);
+            statusMService.saveStatusM(statusM);
+
+            StatusH statusH = new StatusH();
+            statusH.setStmainID(statusM.getId());
+            statusH.setAppId(statusM.getAppId());
+            statusH.setStatus(String.valueOf(app.getStatus()));
+            statusH.setStatusComment(app.getStatusNm());
+            statusH.setInsUser(userId);
+            statusHService.saveStatusH(statusH);
+            /**todo ЛОК га ёзиш end todo**/
+
         }
 
 
@@ -189,10 +206,8 @@ public class AppsController {
         List<TransportType> getInDecViewTrType = transportTypeService.getByAppId(appId);
         mav.addObject("transports", getInDecViewTrType);
 
-//        List<RollBackApp> listRollbackSp = rollBackAppRepo.findAll();
         List<RollbackSp> listRollbackSp = rollbackSpService.getlistRollbackSp();
         mav.addObject("rollbackInfo", listRollbackSp);
-
 
         /**Агар роли хбб бошлиги бўлса ва ариза статуси 145 бўлса тасдиқланмаган қарор html кўринади**/
 //        if (userRole == 6 && apps.getStatus() == 145){
@@ -226,6 +241,7 @@ public class AppsController {
         app.setComment(commentRollback);
         appsservice.saveAppsStatus(app);
 
+
         for (int i = 0; i < rollback_idArr.length; i++) {
             RollBackApp rollBackApp = new RollBackApp();
             rollBackApp.setAppId(appId);
@@ -234,6 +250,23 @@ public class AppsController {
             rollBackApp.setRollbackName(rollback_nameArr[i]);
             rollBackAppService.saveRollBack(rollBackApp);
         }
+
+        /**todo ЛОК га ёзиш start todo**/
+        StatusM statusM = new StatusM();
+        statusM.setAppId(app.getId());
+        statusM.setStatus(String.valueOf(app.getStatus()));
+        statusM.setStatusComment(app.getStatusNm());
+        statusM.setInsUser(userId);
+        statusMService.saveStatusM(statusM);
+
+        StatusH statusH = new StatusH();
+        statusH.setStmainID(statusM.getId());
+        statusH.setAppId(statusM.getAppId());
+        statusH.setStatus(String.valueOf(app.getStatus()));
+        statusH.setStatusComment(app.getStatusNm());
+        statusH.setInsUser(userId);
+        statusHService.saveStatusH(statusH);
+        /**todo ЛОК га ёзиш end todo**/
 
         List<Apps> notSortedList = appsservice.getListNotSorted(request, userLocation, userPost, userId, userRole);
         mav.addObject("notSortedList", notSortedList);
@@ -301,12 +334,10 @@ public class AppsController {
         notSortedList = appsservice.getListNotSorted(request, userLocation, userPost, userId, userRole);
         mav.addObject("notSortedList", notSortedList);
 
-//        List<Users> usersList = new ArrayList<>();
         List<User> usersList = new ArrayList<>();
 //        usersList = usersService.getByLocationAndPostAndRole(userLocation, userPost, 8);
         usersList = userRepository.findByLocationAndPost(userLocation, userPost);
         mav.addObject("userSelectList", usersList);
-
         return mav;
     }
 
@@ -349,6 +380,7 @@ public class AppsController {
 
         return mav;
     }
+
 
 }
 

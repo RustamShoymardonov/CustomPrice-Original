@@ -29,7 +29,7 @@
     <div class="mb-0">
         <div class="d-flex justify-content-center">
             <div class="col-md-3 m-2">
-                <label class="text-dark">Мақоми</label>
+                <label class="">Мақоми</label>
                 <select class="form-select shadow-sm" id="validationTooltip04" required="">
                     <option selected="" disabled="disabled" value=""><p class="text-muted">Ариза мақоми</p></option>
                     <option value="100">Янги</option>
@@ -39,13 +39,13 @@
             </div>
             <div class="col-md-2 m-2">
                 <div class="">
-                    <label class="text-dark">ТИФ ТН коди</label>
+                    <label class="">ТИФ ТН коди</label>
                     <input class="result form-control shadow-sm" type="text" placeholder="Товар ТИФ ТН коди">
                 </div>
             </div>
             <div class="col-md-2 m-2">
                 <div class="">
-                    <label class="text-dark">Шахс тури</label>
+                    <label class="">Шахс тури</label>
                     <select class="form-select shadow-sm" id="validationTooltip05" required="">
                         <option selected="" disabled="disabled" value=""><p class="text-muted">Барчаси</p></option>
                         <option value="100">Жисмоний шахс</option>
@@ -55,12 +55,12 @@
             </div>
             <div class="col-md-1 m-2">
                 <div class="">
-                    <label class="text-dark">Сана</label>
+                    <label class="">Сана</label>
                     <input class="result form-control shadow-sm" type="date" id="date" placeholder="йил-ой-кун">
                 </div>
             </div>
             <div class="">
-                <p class="mt-5 text-dark">дан</p>
+                <p class="mt-5">дан</p>
             </div>
             <div class="col-md-1 m-2">
                 <div class="">
@@ -69,7 +69,7 @@
                 </div>
             </div>
             <div class="">
-                <p class="mt-5 text-dark">гача</p>
+                <p class="mt-5">гача</p>
             </div>
             <div class="col-md-2 m-2">
                 <div class="">
@@ -153,7 +153,7 @@
 
     function saveInDecRaspIns(appId, inspectorId, rowNum) {
         var inspectorName = $('#userIdF_' + rowNum + ' option:selected').text();
-        // alert(appId + ', ' + inspectorId + ', ' + inspectorName);
+        alert(appId + ', ' + inspectorId + ', ' + inspectorName);
         var dataS = {
             "appId": appId,
             "inspectorId": inspectorId,

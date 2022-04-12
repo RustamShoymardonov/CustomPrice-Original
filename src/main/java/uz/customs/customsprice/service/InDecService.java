@@ -22,14 +22,8 @@ public class InDecService {
         return inDecRepo.findByCmdtId(cmtdId);
     }
 
-
-//    public InDec saveInDec(InDec inDec) {
-//        return inDecRepo.save(inDec);
-//    }
-
     @PersistenceContext
     private EntityManager entityManager;
-
 
     /* 4) <<app_num>> га ариза рафамини киритади */
     public InDec saveInDec(InDec inDec) {
@@ -102,5 +96,4 @@ public class InDecService {
         }
         return result;
     }
-
 }
