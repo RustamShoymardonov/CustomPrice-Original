@@ -1,6 +1,6 @@
 package uz.customs.customsprice.controllers.api.files;
 
-import org.apache.commons.fileupload.FileUploadException;
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

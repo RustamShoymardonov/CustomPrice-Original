@@ -12,11 +12,15 @@ public class ResponseCustom {
     private String g47AltBaseEdIzm;
     private String rate840;
     private String typeRate;
+    private String g47ClcType;
+    private String g47Type;
+    private String currRate;
+    private String g47AltBaseCurrKod;
 
     public ResponseCustom() {
     }
 
-    public ResponseCustom(String g47Base, String g47AltBase, String g47AltRate, String g47Rate, String g47Sum, String unitRate, String altRate, String advRate, String g47AltBaseEdIzm, String rate840, String typeRate) {
+    public ResponseCustom(String g47Base, String g47AltBase, String g47AltRate, String g47Rate, String g47Sum, String unitRate, String altRate, String advRate, String g47AltBaseEdIzm, String rate840, String typeRate, String g47ClcType, String g47Type, String currRate, String g47AltBaseCurrKod) {
         this.g47Base = g47Base;
         this.g47AltBase = g47AltBase;
         this.g47AltRate = g47AltRate;
@@ -28,6 +32,10 @@ public class ResponseCustom {
         this.g47AltBaseEdIzm = g47AltBaseEdIzm;
         this.rate840 = rate840;
         this.typeRate = typeRate;
+        this.g47ClcType = g47ClcType;
+        this.g47Type = g47Type;
+        this.currRate = currRate;
+        this.g47AltBaseCurrKod = g47AltBaseCurrKod;
     }
 
     public String getG47Base() {
@@ -118,6 +126,38 @@ public class ResponseCustom {
         this.typeRate = typeRate;
     }
 
+    public String getG47ClcType() {
+        return g47ClcType;
+    }
+
+    public void setG47ClcType(String g47ClcType) {
+        this.g47ClcType = g47ClcType;
+    }
+
+    public String getG47Type() {
+        return g47Type;
+    }
+
+    public void setG47Type(String g47Type) {
+        this.g47Type = g47Type;
+    }
+
+    public String getCurrRate() {
+        return currRate;
+    }
+
+    public void setCurrRate(String currRate) {
+        this.currRate = currRate;
+    }
+
+    public String getG47AltBaseCurrKod() {
+        return g47AltBaseCurrKod;
+    }
+
+    public void setG47AltBaseCurrKod(String g47AltBaseCurrKod) {
+        this.g47AltBaseCurrKod = g47AltBaseCurrKod;
+    }
+
     @Override
     public String toString() {
         return "ResponseCustom{" +
@@ -132,6 +172,10 @@ public class ResponseCustom {
                 ", g47AltBaseEdIzm='" + g47AltBaseEdIzm + '\'' +
                 ", rate840='" + rate840 + '\'' +
                 ", typeRate='" + typeRate + '\'' +
+                ", g47ClcType='" + g47ClcType + '\'' +
+                ", g47Type='" + g47Type + '\'' +
+                ", currRate='" + currRate + '\'' +
+                ", g47AltBaseCurrKod='" + g47AltBaseCurrKod + '\'' +
                 '}';
     }
 }

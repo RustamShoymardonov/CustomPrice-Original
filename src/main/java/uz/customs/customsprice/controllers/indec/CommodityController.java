@@ -247,6 +247,12 @@ public class CommodityController {
 
         }
 
+        String g47Type = "", g47ClcType = "", g47AltBaseCurrKod = "", currRate = "";
+        g47Type = paymentType;
+        g47ClcType = String.valueOf(typeRate);
+        g47AltBaseCurrKod = String.valueOf(exchangerate840.getId());
+        currRate = String.valueOf(rate840);
+
         responseCustom.setG47Base(String.valueOf(g47Base)); // todo (Хисоблаш асоси)
         responseCustom.setG47AltBase(String.valueOf(g47AltBase)); //todo (Адвалор ставка)
         responseCustom.setG47AltRate(String.valueOf(g47AltRate)); //todo (Хос ставка миқдори)
@@ -256,8 +262,12 @@ public class CommodityController {
         responseCustom.setAltRate(altRate.toString()); //todo (Хос ставка миқдорининг бирлик (1 - лик) миқдори)
         responseCustom.setAdvRate(advRate.toString()); //todo (Адвалор ставка фоиздаги миқдори)
         responseCustom.setG47AltBaseEdIzm(g47AltBaseEdIzm); //todo (Қўшимча ўлчов бирлиги коди)
-        responseCustom.setRate840(rate840.toString()); //todo (Ақш доллар суммаси)
+        responseCustom.setRate840(rate840.toString()); //todo (1 - АҚШ долларининг сўмдаги миқдори)
         responseCustom.setTypeRate(String.valueOf(typeRate)); //todo (Ҳисоблаш шакли)
+        responseCustom.setG47ClcType(g47ClcType); //todo (Ҳисоблаш шакли)
+        responseCustom.setG47Type(String.valueOf(g47Type)); //todo (Тўлов тури)
+        responseCustom.setG47AltBaseCurrKod(String.valueOf(g47AltBaseCurrKod)); //todo (валюта коди - бизда ҳозирча фақат АҚШ долларида бўлади)
+        responseCustom.setCurrRate(String.valueOf(currRate)); //todo (1 - АҚШ долларининг сўмдаги миқдори)
         responseCustom.toString();
         return ResponseEntity.ok(responseCustom);
     }
@@ -265,7 +275,7 @@ public class CommodityController {
 
     @PostMapping(value = INDECCALCULATING)
     @ResponseBody
-    public ModelAndView InitialDecisionCalculating(HttpSession session, HttpServletRequest request, @RequestParam String cmdt_id,  @RequestParam String appId) {
+    public ModelAndView InitialDecisionCalculating(HttpSession session, HttpServletRequest request, @RequestParam String cmdt_id, @RequestParam String appId) {
         ModelAndView mav = new ModelAndView("resources/pages/InitialDecision/InitialDecisionSteps/Steps4");
         ModelAndView mav2 = new ModelAndView("resources/pages/InitialDecision/InitialDecisionSteps/Steps4StatusDefault");
         Integer userRole = (Integer) request.getSession().getAttribute("userRole");
@@ -290,7 +300,7 @@ public class CommodityController {
         mav.addObject("paymttype", paymtypeEntityList);
         List<Payment> payments = paymentServise.getByCmdtId(cmdt_id);
         Optional<Commodity> commodityTnved = commodityService.getById(cmdt_id);
-        if (payments.isEmpty() && userRole == 8 ){
+        if (payments.isEmpty() && userRole == 8) {
             return mav;
         } else {
             mav2.addObject("CmdtPayments", payments);

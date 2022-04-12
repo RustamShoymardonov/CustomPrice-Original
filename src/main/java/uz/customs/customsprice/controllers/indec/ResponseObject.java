@@ -6,34 +6,32 @@ public class ResponseObject {
     private String paymentType;
     private BigDecimal g47Base;
     private BigDecimal g47AltBase;
-    private BigDecimal altRate;
-    private BigDecimal g47AltRate;
-    private BigDecimal rate840;
-    private String typeRate;
     private BigDecimal g47Rate;
+    private BigDecimal g47AltRate;
+    private String g47AltBaseCurrKod;
+    private BigDecimal currRate;
     private String g47AltBaseEdIzm;
     private BigDecimal g47Sum;
     private String g47Sp;
-    private int g47ClcType;
     private String g47Type;
+    private int g47ClcType;
 
     public ResponseObject() {
     }
 
-    public ResponseObject(String paymentType, BigDecimal g47Base, BigDecimal g47AltBase, BigDecimal altRate, BigDecimal g47AltRate, BigDecimal rate840, String typeRate, BigDecimal g47Rate, String g47AltBaseEdIzm, BigDecimal g47Sum, String g47Sp, int g47ClcType, String g47Type) {
+    public ResponseObject(String paymentType, BigDecimal g47Base, BigDecimal g47AltBase, BigDecimal g47Rate, BigDecimal g47AltRate, String g47AltBaseCurrKod, BigDecimal currRate, String g47AltBaseEdIzm, BigDecimal g47Sum, String g47Sp, String g47Type, int g47ClcType) {
         this.paymentType = paymentType;
         this.g47Base = g47Base;
         this.g47AltBase = g47AltBase;
-        this.altRate = altRate;
-        this.g47AltRate = g47AltRate;
-        this.rate840 = rate840;
-        this.typeRate = typeRate;
         this.g47Rate = g47Rate;
+        this.g47AltRate = g47AltRate;
+        this.g47AltBaseCurrKod = g47AltBaseCurrKod;
+        this.currRate = currRate;
         this.g47AltBaseEdIzm = g47AltBaseEdIzm;
         this.g47Sum = g47Sum;
         this.g47Sp = g47Sp;
-        this.g47ClcType = g47ClcType;
         this.g47Type = g47Type;
+        this.g47ClcType = g47ClcType;
     }
 
     public String getPaymentType() {
@@ -60,12 +58,12 @@ public class ResponseObject {
         this.g47AltBase = g47AltBase;
     }
 
-    public BigDecimal getAltRate() {
-        return altRate;
+    public BigDecimal getG47Rate() {
+        return g47Rate;
     }
 
-    public void setAltRate(BigDecimal altRate) {
-        this.altRate = altRate;
+    public void setG47Rate(BigDecimal g47Rate) {
+        this.g47Rate = g47Rate;
     }
 
     public BigDecimal getG47AltRate() {
@@ -76,28 +74,20 @@ public class ResponseObject {
         this.g47AltRate = g47AltRate;
     }
 
-    public BigDecimal getRate840() {
-        return rate840;
+    public String getG47AltBaseCurrKod() {
+        return g47AltBaseCurrKod;
     }
 
-    public void setRate840(BigDecimal rate840) {
-        this.rate840 = rate840;
+    public void setG47AltBaseCurrKod(String g47AltBaseCurrKod) {
+        this.g47AltBaseCurrKod = g47AltBaseCurrKod;
     }
 
-    public String getTypeRate() {
-        return typeRate;
+    public BigDecimal getCurrRate() {
+        return currRate;
     }
 
-    public void setTypeRate(String typeRate) {
-        this.typeRate = typeRate;
-    }
-
-    public BigDecimal getG47Rate() {
-        return g47Rate;
-    }
-
-    public void setG47Rate(BigDecimal g47Rate) {
-        this.g47Rate = g47Rate;
+    public void setCurrRate(BigDecimal currRate) {
+        this.currRate = currRate;
     }
 
     public String getG47AltBaseEdIzm() {
@@ -124,14 +114,6 @@ public class ResponseObject {
         this.g47Sp = g47Sp;
     }
 
-    public int getG47ClcType() {
-        return g47ClcType;
-    }
-
-    public void setG47ClcType(int g47ClcType) {
-        this.g47ClcType = g47ClcType;
-    }
-
     public String getG47Type() {
         return g47Type;
     }
@@ -140,22 +122,29 @@ public class ResponseObject {
         this.g47Type = g47Type;
     }
 
+    public int getG47ClcType() {
+        return g47ClcType;
+    }
+
+    public void setG47ClcType(int g47ClcType) {
+        this.g47ClcType = g47ClcType;
+    }
+
     @Override
     public String toString() {
         return "ResponseObject{" +
                 "paymentType='" + paymentType + '\'' +
                 ", g47Base=" + g47Base +
                 ", g47AltBase=" + g47AltBase +
-                ", altRate=" + altRate +
-                ", g47AltRate=" + g47AltRate +
-                ", rate840=" + rate840 +
-                ", typeRate='" + typeRate + '\'' +
                 ", g47Rate=" + g47Rate +
+                ", g47AltRate=" + g47AltRate +
+                ", g47AltBaseCurrKod='" + g47AltBaseCurrKod + '\'' +
+                ", currRate=" + currRate +
                 ", g47AltBaseEdIzm='" + g47AltBaseEdIzm + '\'' +
                 ", g47Sum=" + g47Sum +
                 ", g47Sp='" + g47Sp + '\'' +
-                ", g47ClcType=" + g47ClcType +
                 ", g47Type='" + g47Type + '\'' +
+                ", g47ClcType=" + g47ClcType +
                 '}';
     }
 }

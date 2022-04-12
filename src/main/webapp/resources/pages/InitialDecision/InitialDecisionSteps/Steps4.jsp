@@ -20,116 +20,120 @@
         <div class="card">
             <div class="card-body">
                 <div id="myTab1Content" class="tab-content border-primary">
-        <div id="home1" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade py-4 show active">
-            <h5 style="text-align: center">
-                ТИФ ТН коди:
-                <u class="text-primary">
-                ${commodity}
-                </u>
-                бўлган товар учун божхона тўловлари ва йиғимлари тўғрисида маълумот&nbsp
-            </h5>
-            <input type="hidden" id="cmdtId" name="cmdtId" value="<c:out value="${cmdtId}"/>"/>
-            <%--            <input type="hidden" id="appId" name="appId" value="<c:out value="${appId}"/>"/>--%>
-            <input type="hidden" id="rowCount" name="rowCount" value="0"/>
-            <div class="table-responsive">
-                <table class="table tolovlar border-primary" style="border-style: dashed double none">
-                    <thead>
-                    <tr>
-                        <th scope="col">Тўлов тури</th>
-                        <th scope="col">Хисоблаш асоси</th>
-                        <th scope="col">Адвалор ставка</th>
-                        <th scope="col">Хос ставка</th>
-                        <th scope="col">Хос ставка миқдори</th>
-                        <th scope="col">Доллар курси</th>
-                        <th scope="col">Қўш.ўл.бир.миқ.</th>
-                        <th scope="col">Қўш.ўл.бир</th>
-                        <th scope="col">Ҳисобланган</th>
-                        <th scope="col">Тўлов тури</th>
-                        <th scope="col">Ўчириш</th>
-                        <th scope="col">
-                            <a class="btn btn-primary" id="insertRow" href="#">
-                                <i class="bx bx-plus"></i>
-                            </a>
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr class='12'>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <select class="d-none myselect">
-                <option value=""></option>
-                <c:forEach var="val" items="${paymenttype}" varStatus="i">
-                    <option value="${val.id}">${val.id}</option>
-                    ${val.name}
-                </c:forEach>
-            </select>
-            <select class="d-none myselect2">
-                <option value=""></option>
-                <c:forEach var="val" items="${paymttype}" varStatus="i">
-                    <option value="${val.id}">${val.id}</option>
-                    ${val.spname}
-                </c:forEach>
-            </select>
-            <div class="text-end">
-                <button type="button" class="btn btn-success position-relative" onclick="javascript:saveCalcInDec()">
-                    Сақлаш
-                </button>
-            </div>
-            <!-- Add rows button-->
-            <script>
-                $(function () {
-                    // Start counting from the third row
-                    var counter = 1;
-                    $("#insertRow,#insertRow29BN,#insertRow29OO").on("click", function (event) {
-                        event.preventDefault();
-                        var newRow = $("table.tolovlar tbody");
-                        var cols = '<tr>';
-                        // Table columns
-                        cols +=
-                            '<td><select style="width:110%;" id="paymentType' + counter + '" class="form-select rounded-0" onchange="changePaymentType(' + counter + ')" type="text" placeholder="Тўлов турини танланг">' +
-                            $(".myselect").html()
-                            + '</select></td>';
-                        cols += '<td><input id="g47Base' + counter + '" type="number" class="form-control rounded-0" placeholder="Хисоблаш асоси" readonly></td>';
-                        cols += '<td><input id="g47AltBase' + counter + '" type="number" class="form-control rounded-0" placeholder="Адвалор ставка"></td>';
-                        cols += '<td><input id="altRate' + counter + '" type="number" class="form-control rounded-0" placeholder="Хос ставка" ></td>';
-                        cols += '<td><input id="g47AltRate' + counter + '" type="number" class="form-control rounded-0" placeholder="Хос ставка миқдори"></td>';
-                        cols += '<td><input id="rate840' + counter + '" type="number" class="form-control rounded-0" placeholder="Доллар курси" readonly>' +
-                            '<input id="typeRate' + counter + '" type="hidden" class="form-control rounded-0" placeholder="Ҳисоблаш шакли"></td>';
-                        cols += '<td><input id="g47Rate' + counter + '" type="number" class="form-control rounded-0" placeholder="Қўш.ўл.бир.миқ."></td>';
-                        // cols += '<td><input id="typeRate' + counter + '" type="hidden" class="form-control rounded-0" placeholder="Ҳисоблаш шакли"></td>';
-                        cols += '<td><input id="g47AltBaseEdIzm' + counter + '" size="3" maxlength="3" class="form-control rounded-0 w-75" type="number" placeholder="Қўш.ўл.бир." ></td>';
-                        cols += '<td><input id="g47Sum' + counter + '" class="form-control rounded-0 bg-orange text-white" type="number" placeholder="Ҳисобланган бож.тўл" ></td>';
-                        cols += '<td><select style="width:120%;" id="g47Sp' + counter + '" class="form-select rounded-0" type="text" placeholder="Тўлов турини танланг">' + $(".myselect2").html()
-                            + '</select></td>';
-                        cols += '<td>' +
-                                    '<button class="btn btn-danger rounded-0" id ="deleteRow"><i class="bx bx-trash"></i></button ' +
-                                '</td>';
-                        cols += '<td><input id="rowCount_' + counter + '" type="hidden" class="form-control rounded-0 counter" value="' + counter + '"></td>';
-                        cols += '<tr>';
-                        newRow.append(cols);
-                        $('#rowCount').val(counter);
-                        counter++;
-                    });
-                    $("table").on("click", "#deleteRow", function (event) {
-                        table = $(this).closest("table");
-                        $(this).closest("tr").remove();
-                        var cc = 0;
-                        table.find(".counter").each(function (counter) {
-                            cc++;
-                            $(".counter").eq(counter).attr('value', cc);
-                            $('#rowCount').val(cc);
-                        });
-                        counter -= 1
-                        // counter --;
-                    });
-                });
-            </script>
-            <!-- -->
-        </div>
-    </div>
+                    <div id="home1" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade py-4 show active">
+                        <h5 style="text-align: center">
+                            ТИФ ТН коди:
+                            <u class="text-primary">
+                                ${commodity}
+                            </u>
+                            бўлган товар учун божхона тўловлари ва йиғимлари тўғрисида маълумот&nbsp
+                        </h5>
+                        <input type="hidden" id="cmdtId" name="cmdtId" value="<c:out value="${cmdtId}"/>"/>
+                        <%--            <input type="hidden" id="appId" name="appId" value="<c:out value="${appId}"/>"/>--%>
+                        <input type="hidden" id="rowCount" name="rowCount" value="0"/>
+                        <div class="table-responsive">
+                            <table class="table tolovlar border-primary" style="border-style: dashed double none">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Тўлов тури</th>
+                                    <th scope="col">Хисоблаш асоси</th>
+                                    <th scope="col">Адвалор ставка</th>
+                                    <th scope="col">Хос ставка</th>
+                                    <th scope="col">Хос ставка миқдори</th>
+                                    <th scope="col">Доллар курси</th>
+<%--                                    <th scope="col">Қўш.ўл.бир.миқ.</th>--%>
+                                    <th scope="col">Қўш.ўл.бир</th>
+                                    <th scope="col">Ҳисобланган</th>
+                                    <th scope="col">Тўлов усули</th>
+                                    <th scope="col">Ўчириш</th>
+                                    <th scope="col">
+                                        <a class="btn btn-primary" id="insertRow" href="#">
+                                            <i class="bx bx-plus"></i>
+                                        </a>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class='12'>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <select class="d-none myselect">
+                            <option value=""></option>
+                            <c:forEach var="val" items="${paymenttype}" varStatus="i">
+                                <option value="${val.id}">${val.id}</option>
+                                ${val.name}
+                            </c:forEach>
+                        </select>
+                        <select class="d-none myselect2">
+                            <option value=""></option>
+                            <c:forEach var="val" items="${paymttype}" varStatus="i">
+                                <option value="${val.id}">${val.id}</option>
+                                ${val.spname}
+                            </c:forEach>
+                        </select>
+                        <div class="text-end">
+                            <button type="button" class="btn btn-success position-relative" onclick="javascript:saveCalcInDec()">
+                                Сақлаш
+                            </button>
+                        </div>
+                        <!-- Add rows button-->
+                        <script>
+                            $(function () {
+                                // Start counting from the third row
+                                var counter = 1;
+                                $("#insertRow,#insertRow29BN,#insertRow29OO").on("click", function (event) {
+                                    event.preventDefault();
+                                    var newRow = $("table.tolovlar tbody");
+                                    var cols = '<tr>';
+                                    // Table columns
+                                    cols +=
+                                        '<td><select style="width:110%;" id="paymentType' + counter + '" class="form-select rounded-0" onchange="changePaymentType(' + counter + ')" type="text" placeholder="Тўлов турини танланг">' +
+                                        $(".myselect").html()
+                                        + '</select></td>';
+                                    cols += '<td><input id="g47Base' + counter + '" type="number" class="form-control rounded-0" placeholder="Хисоблаш асоси"></td>';
+                                    cols += '<td><input id="g47AltBase' + counter + '" type="number" class="form-control rounded-0" placeholder="Адвалор ставка"></td>';
+                                    cols += '<td><input id="g47Rate' + counter + '" type="number" class="form-control rounded-0" placeholder="Хос ставка" ></td>';
+                                    cols += '<td><input id="g47AltRate' + counter + '" type="number" class="form-control rounded-0" placeholder="Хос ставка миқдори"></td>';
+                                    cols += '<td><input id="currRate' + counter + '" type="number" class="form-control rounded-0" placeholder="Доллар курси" readonly>' +
+                                        '<input id="typeRate' + counter + '" type="hidden" class="form-control rounded-0" placeholder="Ҳисоблаш шакли">' +
+                                        '<input id="g47Type' + counter + '" type="hidden" class="form-control rounded-0" placeholder="Тўлов тури">' +
+                                        '<input id="g47ClcType' + counter + '" type="hidden" class="form-control rounded-0" placeholder="Ҳисоблаш шакли">' +
+                                        '<input id="g47AltBaseCurrKod' + counter + '" type="hidden" class="form-control rounded-0" placeholder="Алтернатив ставка валютаси коди">' +
+                                        '</td>';
+                                    // cols += '<td><input id="g47Rate' + counter + '" type="number" class="form-control rounded-0" placeholder="Қўш.ўл.бир.миқ."></td>';
+                                    // cols += '<td><input id="typeRate' + counter + '" type="hidden" class="form-control rounded-0" placeholder="Ҳисоблаш шакли"></td>';
+                                    cols += '<td><input id="g47AltBaseEdIzm' + counter + '" size="3" maxlength="3" class="form-control rounded-0 w-75" type="number" placeholder="Қўш.ўл.бир." ></td>';
+                                    cols += '<td><input id="g47Sum' + counter + '" class="form-control rounded-0 bg-orange" type="number" placeholder="Ҳисобланган бож.тўл" ></td>';
+                                    cols += '<td><select style="width:120%;" id="g47Sp' + counter + '" class="form-select rounded-0" type="text" placeholder="Тўлов турини танланг">' + $(".myselect2").html()
+                                        + '</select></td>';
+                                    cols += '<td>' +
+                                        '<button class="btn btn-danger rounded-0" id ="deleteRow"><i class="bx bx-trash"></i></button ' +
+                                        '</td>';
+                                    cols += '<td><input id="rowCount_' + counter + '" type="hidden" class="form-control rounded-0 counter" value="' + counter + '"></td>';
+                                    cols += '<tr>';
+                                    newRow.append(cols);
+                                    $('#rowCount').val(counter);
+                                    counter++;
+                                });
+                                $("table").on("click", "#deleteRow", function (event) {
+                                    table = $(this).closest("table");
+                                    $(this).closest("tr").remove();
+                                    var cc = 0;
+                                    table.find(".counter").each(function (counter) {
+                                        cc++;
+                                        $(".counter").eq(counter).attr('value', cc);
+                                        $('#rowCount').val(cc);
+                                    });
+                                    counter -= 1
+                                    // counter --;
+                                });
+                            });
+                        </script>
+                        <!-- -->
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -538,10 +542,13 @@
             header: 'Content-type: application/json; charset=utf-8',
             success: function (res) {
                 console.log(res);
-                $('#g47Base' + rowNum).val((res.g47Base).toLocaleString());
-                $('#rate840' + rowNum).val(res.rate840);
-                $('#g47AltBaseEdIzm' + rowNum).val(res.g47AltBaseEdIzm);
-                $('#g47Rate' + rowNum).val(res.g47Rate);
+                // $('#g47Base' + rowNum).val((res.g47Base).toLocaleString());
+                $('#currRate' + rowNum).val(res.currRate);
+                $('#g47Type' + rowNum).val(res.g47Type);
+                $('#g47ClcType' + rowNum).val(res.g47ClcType);
+                $('#g47AltBaseCurrKod' + rowNum).val(res.g47AltBaseCurrKod);
+                // $('#g47AltBaseEdIzm' + rowNum).val(res.g47AltBaseEdIzm);
+                // $('#g47Rate' + rowNum).val(res.g47Rate);
                 // $('#outputVal').val(
                 //     ' g47Base (Хисоблаш асоси) ===> ' + res.g47Base.toLocaleString() +
                 //     '\n g47AltBase (Адвалор ставка) ===> ' + res.advRate +
@@ -738,15 +745,14 @@
 
 <script>
     class A {
-        constructor(paymentType, g47Base, g47AltBase, altRate, g47AltRate, rate840, typeRate, g47Rate, g47AltBaseEdIzm, g47Sum, g47Sp, g47Type, g47ClcType) {
+        constructor(paymentType, g47Base, g47AltBase, g47Rate, g47AltRate, g47AltBaseCurrKod, currRate, g47AltBaseEdIzm, g47Sum, g47Sp, g47Type, g47ClcType) {
             this.paymentType = paymentType;
             this.g47Base = g47Base;
             this.g47AltBase = g47AltBase;
-            this.altRate = altRate;
-            this.g47AltRate = g47AltRate;
-            this.rate840 = rate840;
-            this.typeRate = typeRate;
             this.g47Rate = g47Rate;
+            this.g47AltRate = g47AltRate;
+            this.g47AltBaseCurrKod = g47AltBaseCurrKod;
+            this.currRate = currRate;
             this.g47AltBaseEdIzm = g47AltBaseEdIzm;
             this.g47Sum = g47Sum;
             this.g47Sp = g47Sp;
@@ -759,7 +765,6 @@
         var log_f = true;
         var log_n = '';
         var arr = [];
-        // alert(' cmdtId --> ' + $('#cmdtId').val() + '\n appId --> '+ $('#appId').val());
         var rowCount = parseInt($("#rowCount").val());
         var listObject = [];
         for (let i = 1; i <= rowCount; i++) {
@@ -767,16 +772,15 @@
                 $("#paymentType" + i).val(),
                 $("#g47Base" + i).val(),
                 $("#g47AltBase" + i).val(),
-                $("#altRate" + i).val(),
-                $("#g47AltRate" + i).val(),
-                $("#rate840" + i).val(),
-                $("#typeRate" + i).val(),
                 $("#g47Rate" + i).val(),
+                $("#g47AltRate" + i).val(),
+                $("#g47AltBaseCurrKod" + i).val(),
+                $("#currRate" + i).val(),
                 $("#g47AltBaseEdIzm" + i).val(),
                 $("#g47Sum" + i).val(),
                 $("#g47Sp" + i).val(),
-                '77',
-                '7'
+                $("#g47Type" + i).val(),
+                $("#g47ClcType" + i).val()
             ));
         }
         console.log(JSON.stringify(listObject));
