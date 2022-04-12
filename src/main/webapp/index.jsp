@@ -166,24 +166,24 @@
                     </div>
                     <div class="mobile-toggle-menu"><i class='bx bx-menu'></i></div>
                     <div class="top-menu-left d-none d-lg-block ps-3">
-                        <ul class="nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="app-emailbox.html"><i class='bx bx-envelope'></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="app-chat-box.html"><i class='bx bx-message'></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="app-fullcalender.html"><i class='bx bx-calendar'></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="app-to-do.html"><i class='bx bx-check-square'></i></a>
-                            </li>
-                            <li class="nav-item" style="display: none;">
-                                <span><span class="f-w-600" id="roleName"><%=roleN%></span>: <span class="border-bottom"
-                                                                                                   id="fullName"><%=user.getFullname()%></span></span>
-                            </li>
-                        </ul>
+<%--                        <ul class="nav">--%>
+<%--                            <li class="nav-item">--%>
+<%--                                <a class="nav-link" href="app-emailbox.html"><i class='bx bx-envelope'></i></a>--%>
+<%--                            </li>--%>
+<%--                            <li class="nav-item">--%>
+<%--                                <a class="nav-link" href="app-chat-box.html"><i class='bx bx-message'></i></a>--%>
+<%--                            </li>--%>
+<%--                            <li class="nav-item">--%>
+<%--                                <a class="nav-link" href="app-fullcalender.html"><i class='bx bx-calendar'></i></a>--%>
+<%--                            </li>--%>
+<%--                            <li class="nav-item">--%>
+<%--                                <a class="nav-link" href="app-to-do.html"><i class='bx bx-check-square'></i></a>--%>
+<%--                            </li>--%>
+<%--                            <li class="nav-item" style="display: none;">--%>
+<%--                                <span><span class="f-w-600" id="roleName"><%=roleN%></span>: <span class="border-bottom"--%>
+<%--                                                                                                   id="fullName"><%=user.getFullname()%></span></span>--%>
+<%--                            </li>--%>
+<%--                        </ul>--%>
                     </div>
                     <div class="search-bar flex-grow-1">
                         <div class="position-relative search-bar-box">
@@ -544,6 +544,23 @@
                                         <div class="text-center msg-footer">View All Messages</div>
                                     </a>
                                 </div>
+                            </li>
+                            <li class="nav-item dropdown dropdown-large">
+                                <a type="button" class="btn btn-sm radius-30 text-white" style="cursor: pointer; background-color: #0a58ca; font-size: 24px" id="id_clock"></a>
+                                <script>
+                                    function digitalClock() {
+                                        var date = new Date();
+                                        var hours = date.getHours();
+                                        var minutes = date.getMinutes();
+                                        var seconds = date.getSeconds();
+                                        //* добавление ведущих нулей */
+                                        if (hours < 10) hours = "0" + hours;
+                                        if (minutes < 10) minutes = "0" + minutes;
+                                        if (seconds < 10) seconds = "0" + seconds;
+                                        document.getElementById("id_clock").innerHTML = hours + ":" + minutes + ":" + seconds;
+                                        setTimeout("digitalClock()", 1000);
+                                    }
+                                </script>
                             </li>
                         </ul>
                     </div>
@@ -939,6 +956,7 @@
     $(document).ready(function () {
         $('#example').DataTable();
     });
+    $(document).ready(digitalClock());
 </script>
 
 
@@ -1014,7 +1032,6 @@
             }
         });
     }
-
 
     /* Маълумотларни твқсимлаш */
     function ListInDec(x) {

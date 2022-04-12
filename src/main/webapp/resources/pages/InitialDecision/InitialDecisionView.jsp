@@ -121,9 +121,7 @@
                                         </tr>
                                         <tr>
                                             <th class="text-end">Транспорт харажатлари:</th>
-                                            <td><a type="button" class="btn btn-primary btn-sm radius-30"
-                                                   data-bs-toggle="modal" data-bs-target="#exampleExtraLargeModal"
-                                                   style="cursor: pointer;"> <c:out value="${total}"/>
+                                            <td><a type="button" class="btn btn-outline-primary btn-sm radius-30" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="cursor: pointer;"> <c:out value="${total}"/>
                                                 <i class="bx bx-info-circle"></i>
                                             </a>
                                             </td>
@@ -139,10 +137,10 @@
                                         <tr>
                                             <th class="text-end">Фактура қиймати:</th>
                                             <td>
-                                                <a type="button" class="btn btn-primary btn-sm radius-30"
-                                                   data-bs-toggle="modal" data-bs-target="#exampleExtraLargeModal2"
-                                                   style="cursor: pointer;">
-                                                        ${val[29]} АҚШ <i class="bx bx-info-circle"></i></a>
+                                                <a type="button" class="btn btn-outline-primary btn-sm radius-30" data-bs-toggle="modal" data-bs-target="#exampleModalfq" style="cursor: pointer;">
+                                                    ${val[29]} АҚШ
+                                                    <i class="bx bx-info-circle"></i>
+                                                </a>
                                             </td>
 
                                         </tr>
@@ -160,165 +158,187 @@
                                             <th class="text-end">Етказиб бериш шарти:</th>
                                             <td>${val[22]} - ${val[23]}</td>
                                         </tr>
+                                        <tr>
+                                            <th class="text-end">Хужжатлар:</th>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    <i class="bx bx-folder-open"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
                                     </c:forEach>
                                     </thead>
                                 </table>
                             </div>
+                            <!-- Хужжатлар Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Аризага бириктирилган хужжатлар</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table id="example" class="table table-bordered border-primary table-sm" style="width:100%;">
+                                                <thead class="bg-gradient text-black" style="background-color: #B5CAF9;">
+                                                <tr class="">
+                                                    <th style="border-style: dotted" class="column-title">№</th>
+                                                    <th style="border-style: dotted" class="column-title">Хужжат тури</th>
+                                                    <th style="border-style: dotted" class="column-title">Хужжат рақами</th>
+                                                    <th style="border-style: dotted" class="column-title">Хужжат санаси</th>
+                                                    <th style="border-style: dotted" class="column-title">Хужжат файли</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <c:forEach var="val" items="${docsList}" varStatus="i">
+                                                    <tr class="even pointer">
+                                                        <td class=" ">${i.index+1}</td>
+                                                        <td class=" ">${val.docType}</td>
+                                                        <td class=" ">${val.docNumber}<i class="success fa fa-long-arrow-up"></i></td>
+                                                        <td class=" ">${val.docDate}</td>
+                                                        <td class=" "><a href="<%=request.getContextPath()%>download?id=${val.id}" class="btn btn-outline-primary btn-sm"><i class="fa fa-download">${ val.docName}</i></a></td>
+                                                    </tr>
+                                                </c:forEach>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- Транспорт тури Modal start -->
-                            <div class="modal fade" id="exampleExtraLargeModal" tabindex="-1" style="display: none;"
-                                 aria-hidden="true">
+                            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
                                 <div class="modal-dialog modal-xl">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle1">Транспорт харакати
+                                            <h5 class="modal-title" id="exampleModalLabel1">Транспорт харакати
                                                 йўналиши ва харажатлари</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-
-                                            <div class="col-md-12">
-
-                                                <div class="">
-                                                    <table class="table">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>Бошлағич пункт</th>
-                                                            <th>Тугаш пункти</th>
-                                                            <th>Транспорт тури</th>
-                                                            <th>Ҳаражатлар</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <c:set var="total" value="${0.0}"/>
-                                                        <c:forEach var="val" items="${transports}" varStatus="i">
-                                                            <c:set var="total" value="${total + val.transportPrice}"/>
-                                                            <tr>
-                                                                <th>${val.finishCountry}</th>
-                                                                <td>${val.endCountry}</td>
-                                                                <td>
-                                                                    <i class="fa fa-subway fa-2x mr-3"></i>${val.tarnsportType}
-                                                                </td>
-                                                                <td>${val.transportPrice}</td>
-                                                            </tr>
-                                                        </c:forEach>
-                                                        <tr>
-                                                            <td>Жами</td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td><c:out value="${total}"/></td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Ёпиш
-                                            </button>
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>Бошлағич пункт</th>
+                                                    <th>Тугаш пункти</th>
+                                                    <th>Транспорт тури</th>
+                                                    <th>Ҳаражатлар</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <c:set var="total" value="${0.0}"/>
+                                                <c:forEach var="val" items="${transports}" varStatus="i">
+                                                    <c:set var="total" value="${total + val.transportPrice}"/>
+                                                    <tr>
+                                                        <th>${val.finishCountry}</th>
+                                                        <td>${val.endCountry}</td>
+                                                        <td>
+                                                            <i class="fa fa-subway fa-2x mr-3"></i>${val.tarnsportType}
+                                                        </td>
+                                                        <td>${val.transportPrice} сўм</td>
+                                                    </tr>
+                                                </c:forEach>
+                                                <tr>
+                                                    <td>Жами</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><c:out value="${total} сўм"/></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- Транспорт тури Modal end -->
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleExtraLargeModal2" tabindex="-1" style="display: none;"
-                                 aria-hidden="true">
-                                <div class="modal-dialog modal-xl">
+                            <!-- Фактура қиймати Modal -->
+                            <div class="modal fade" id="exampleModalfq" tabindex="-1" aria-labelledby="exampleModalLabelfq" aria-hidden="true">
+                                <div class="modal-dialog modal-xl" style="pointer-events: none; opacity: 0.8;">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModal123">Божхона қиймати индекси бўйича
+                                            <h3 class="text-center text-warning" style="position	: absolute; top:300px; width: 100%;">Ушбу бўлим ишлаб чиқилмоқда</h3>
+                                            <h5 class="modal-title" id="exampleModalLabelfq">Божхона қиймати индекси бўйича
                                                 хавф даражаси</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <div class="col-md-12">
-                                                <table class="table table-bordered table-sm">
-                                                    <thead class="text-center">
-                                                    <tr>
-                                                        <th rowspan="2" style="vertical-align: middle">№</th>
-                                                        <th rowspan="2" style="vertical-align: middle">Товар рақами</th>
-                                                        <th rowspan="2" style="vertical-align: middle">Савдо қилувчи
-                                                            мамлакат
-                                                        </th>
-                                                        <th rowspan="2" style="vertical-align: middle">Транспорт</th>
-                                                        <th rowspan="2" style="vertical-align: middle">Жўнатувчи
-                                                            мамлакат
-                                                        </th>
-                                                        <th rowspan="2" style="vertical-align: middle">ТИФ ТН коди</th>
-                                                        <th rowspan="2" style="vertical-align: middle">Келиб чиқиш
-                                                            мамлакати
-                                                        </th>
-                                                        <th rowspan="2" style="vertical-align: middle">Товар вазни</th>
-                                                        <th rowspan="2" style="vertical-align: middle">Товар миқдори
-                                                        </th>
-                                                        <th rowspan="2" style="vertical-align: middle">Ўлчов бирлиги
-                                                        </th>
-                                                        <th rowspan="2" style="vertical-align: middle">Божхона
-                                                            қиймати($)
-                                                        </th>
-                                                        <th rowspan="2" style="vertical-align: middle">Божхона
-                                                            қиймати(кг $)
-                                                        </th>
-                                                        <th colspan="3" style="vertical-align: middle">Божхона қиймати
-                                                            индекси($)
-                                                        </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th class="bg-success">Минимал</th>
-                                                        <th class="bg-warning">Ўрта</th>
-                                                        <th class="bg-danger">Максимал</th>
-                                                    </tr>
+                                            <table class="table table-bordered table-sm">
+                                                <thead class="text-center">
+                                                <tr>
+                                                    <th rowspan="2" style="vertical-align: middle">№</th>
+                                                    <th rowspan="2" style="vertical-align: middle">Товар рақами</th>
+                                                    <th rowspan="2" style="vertical-align: middle">Савдо қилувчи
+                                                        мамлакат
+                                                    </th>
+                                                    <th rowspan="2" style="vertical-align: middle">Транспорт</th>
+                                                    <th rowspan="2" style="vertical-align: middle">Жўнатувчи
+                                                        мамлакат
+                                                    </th>
+                                                    <th rowspan="2" style="vertical-align: middle">ТИФ ТН коди</th>
+                                                    <th rowspan="2" style="vertical-align: middle">Келиб чиқиш
+                                                        мамлакати
+                                                    </th>
+                                                    <th rowspan="2" style="vertical-align: middle">Товар вазни</th>
+                                                    <th rowspan="2" style="vertical-align: middle">Товар миқдори
+                                                    </th>
+                                                    <th rowspan="2" style="vertical-align: middle">Ўлчов бирлиги
+                                                    </th>
+                                                    <th rowspan="2" style="vertical-align: middle">Божхона
+                                                        қиймати($)
+                                                    </th>
+                                                    <th rowspan="2" style="vertical-align: middle">Божхона
+                                                        қиймати(кг $)
+                                                    </th>
+                                                    <th colspan="3" style="vertical-align: middle">Божхона қиймати
+                                                        индекси($)
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <th class="bg-success">Минимал</th>
+                                                    <th class="bg-warning">Ўрта</th>
+                                                    <th class="bg-danger">Максимал</th>
+                                                </tr>
 
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>1</td>
-                                                        <td>410</td>
-                                                        <td>410</td>
-                                                        <td>30</td>
-                                                        <td>8431492000</td>
-                                                        <td>000</td>
-                                                        <td>210.00</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td>653.10</td>
-                                                        <td>3.11</td>
-                                                        <td class="bg-success">3.11</td>
-                                                        <td class="bg-warning">3.49</td>
-                                                        <td class="bg-danger">4.97</td>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>1</td>
+                                                    <td>410</td>
+                                                    <td>410</td>
+                                                    <td>30</td>
+                                                    <td>8431492000</td>
+                                                    <td>000</td>
+                                                    <td>210.00</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>653.10</td>
+                                                    <td>3.11</td>
+                                                    <td>3.11</td>
+                                                    <td>3.49</td>
+                                                    <td>4.97</td>
 
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>4</td>
-                                                        <td>792</td>
-                                                        <td>792</td>
-                                                        <td>40</td>
-                                                        <td>8431472000</td>
-                                                        <td>000</td>
-                                                        <td>130.00</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td>640.10</td>
-                                                        <td>2.55</td>
-                                                        <td class="bg-success">2.55</td>
-                                                        <td class="bg-warning">3.22</td>
-                                                        <td class="bg-danger">4.22</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>4</td>
+                                                    <td>792</td>
+                                                    <td>792</td>
+                                                    <td>40</td>
+                                                    <td>8431472000</td>
+                                                    <td>000</td>
+                                                    <td>130.00</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>640.10</td>
+                                                    <td>2.55</td>
+                                                    <td>2.55</td>
+                                                    <td>3.22</td>
+                                                    <td>4.22</td>
 
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Ёпиш
-                                            </button>
+                                                </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -327,15 +347,13 @@
                         </div>
                     </div>
                     <!--end row-->
-                    Тўлов: <button class="btn btn-primary btn-sm radius-10">ТИФ ТН</button>-хисобланмаган;
-                    <button class="btn btn-success btn-sm radius-10">ТИФ ТН</button>-хисобланган;
+                    Тўлов: <i class='bx bxs-message-square bx-sm text-primary'></i>-хисобланмаган;
+                    <i class='bx bxs-message-square bx-sm text-success'></i>-хисобланган;
                     <div class="table-responsive mt-3">
                         <table class="table table-bordered table-striped">
                             <thead class="bg-light-primary" style="border-color: #0a58ca; border-style: dotted">
                             <tr>
-                                <th style="position: -webkit-sticky; position: sticky; top: 0;z-index: 2;">ТИФ ТН
-                                    коди:
-                                </th>
+                                <th style="position: -webkit-sticky; position: sticky; top: 0;z-index: 2;">ТИФ ТН коди:</th>
                                 <th>Товар номи:</th>
                                 <th>Ишлаб чиқарувчи:</th>
                                 <th>Ишлаб чиқарувчи номи:</th>

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import uz.customs.customsprice.entity.InitialDecision.*;
+import uz.customs.customsprice.entity.files.Docs;
 import uz.customs.customsprice.entity.users.User;
 import uz.customs.customsprice.repository.AppsRepo;
 import uz.customs.customsprice.repository.RollBackAppRepo;
@@ -209,10 +210,9 @@ public class AppsController {
         List<RollbackSp> listRollbackSp = rollbackSpService.getlistRollbackSp();
         mav.addObject("rollbackInfo", listRollbackSp);
 
-        /**Агар роли хбб бошлиги бўлса ва ариза статуси 145 бўлса тасдиқланмаган қарор html кўринади**/
-//        if (userRole == 6 && apps.getStatus() == 145){
-//            return mav2;
-//        }
+        List<Docs> docsList = appsservice.getDocsListAppId(appId);
+
+        mav.addObject("docsList", docsList);
         mav.addObject("appId", appId);
         return mav;
     }
