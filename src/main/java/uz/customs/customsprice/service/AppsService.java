@@ -405,7 +405,8 @@ public class AppsService {
                 /*38 - */"    c.standarts,\n" +
                 /*39 - */"    c.tech_char,\n" +
                 /*40 - */"    c.trade_mark,\n" +
-                /*41 - */"    c.trade_name\n" +
+                /*41 - */"    c.trade_name,\n" +
+                /*42 - */"    c.payment_yn\n" +
                 "from\n" +
                 "    cpid.commodity c\n" +
                 "left join\n" +
@@ -533,7 +534,6 @@ public class AppsService {
             return appsRepo.findById(id).get();
         else return null;
     }
-
 
     public Apps saveAppsStatus(Apps apps) {
         return appsRepo.save(apps);

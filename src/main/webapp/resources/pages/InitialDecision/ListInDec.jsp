@@ -62,6 +62,7 @@
                 </div>
             </div>
         </div>
+        <c:if test="userId == 7">
         <div class="col"  style="cursor: pointer;" onclick="javascript:ListInDecRaspTable('110')">
             <div class="card radius-10 shadow">
                 <div class="card-body">
@@ -74,6 +75,7 @@
                 </div>
             </div>
         </div>
+        </c:if>
         <div class="col">
             <div class="card radius-10 shadow">
                 <div class="card-body">

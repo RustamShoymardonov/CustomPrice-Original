@@ -4,6 +4,7 @@
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
     <style type='text/css'>
+
         @page {
             size: A4;
             margin-top: 0;
@@ -32,6 +33,7 @@
 
         }
 
+
         /*.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {*/
         /*    background-color: #e2efd9ff;*/
         /*}*/
@@ -43,8 +45,9 @@
 <body>
 <div class="row">
     <div class="col-md-12">
-        <p style="background-image: url('https://bojxona.uz/img/gtk_image2.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover; position: absolute; opacity: 0.1; width: 100%; height: 100%"></p>
-<!--        <img alt="" style="position: absolute; opacity: 0.1; width: 100%; height: 100%" src="https://bojxona.uz/img/gtk_image2.png"/>-->
+<!--        <p style="background-image: url('https://bojxona.uz/img/gtk_image2.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover; position: absolute; opacity: 0.9; width: 100%; height: 100%"></p>-->
+<!--        <img alt="" style="background-repeat: no-repeat; background-attachment: fixed; background-size: cover; position: absolute; opacity: 0.1; width: 100%; height: 100%" src=""/>-->
+<!--        <img src="data:https://bojxona.uz/img/gtk_image2.png, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAAABJRU5ErkJggg== ">-->
         <div class="row">
             <table>
                 <thead>
@@ -91,7 +94,9 @@
                         <td class="tg-aboz" th:text="${inDec.getHsCode()}"></td>
                     </tr>
                     <tr>
-                        <td class="tg-oi4f" colspan="3"><b>6. Товарлар номи ва тавсифи:</b><p th:text="'ТИФ ТН бўйича товар номи:' + ${inDec.getHsName()}" style="margin-top: 0; font-style: italic;"></p></td>
+                        <td class="tg-oi4f" colspan="3"><b>6. Товарлар номи ва тавсифи:</b>
+<!--                            <p th:text="'ТИФ ТН бўйича товар номи:' + ${inDec.getHsName()}" style="margin-top: 0; font-style: italic;"></p>-->
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="3">
@@ -234,11 +239,11 @@
                 </table>
             </div>
             <p style="text-indent: 1.5em!important;">
-                Ушбу маълумотлар <b th:text="${#dates.format(LocaleDate, 'dd-MMM yyyy')}"></b> йилдаги Марказий банкининг валюталар курси бўйича ҳисоблаб чиқарилди. Валюта
+                Ушбу маълумотлар <b th:text="${#dates.format(LocaleDate, 'dd.MM.yyyy')}"></b> йилдаги Марказий банкининг валюталар курси бўйича ҳисоблаб чиқарилди. Валюта
                 курси ўзгариши ҳисобига божхона тўловлари миқдори ўзгариши мумкин
             </p>
             <p style="text-indent: 1.5em!important;">
-                Қўлланилган имтиёзлар ва божхона тўловлари ставкалари <b th:text="${#dates.format(LocaleDate, 'dd-MMM yyyy')}"></b> йилдаги Ўзбекистон қонун хужжатларини
+                Қўлланилган имтиёзлар ва божхона тўловлари ставкалари <b th:text="${#dates.format(LocaleDate, 'dd.MM.yyyy')}"></b> йилдаги Ўзбекистон қонун хужжатларини
                 инобатга олиб ҳисобланади.
             </p>
         </div>
