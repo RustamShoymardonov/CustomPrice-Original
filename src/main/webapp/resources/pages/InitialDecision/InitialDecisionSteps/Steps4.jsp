@@ -106,7 +106,8 @@
                                     // cols += '<td><input id="typeRate' + counter + '" type="hidden" class="form-control rounded-0" placeholder="Ҳисоблаш шакли"></td>';
                                     cols += '<td><input id="g47AltBaseEdIzm' + counter + '" size="3" maxlength="3" class="form-control rounded-0 w-75" type="number" placeholder="Қўш.ўл.бир." ></td>';
                                     cols += '<td><input id="g47Sum' + counter + '" class="form-control rounded-0 bg-orange" type="number" placeholder="Ҳисобланган бож.тўл" ></td>';
-                                    cols += '<td><select style="width:120%;" id="g47Sp' + counter + '" class="form-select rounded-0" type="text" placeholder="Тўлов турини танланг">' + $(".myselect2").html()
+                                    cols += '<td><select style="width:120%;" id="g47Sp' + counter + '" class="form-select rounded-0" type="text" placeholder="Тўлов усулини танланг" required>' +
+                                        $(".myselect2").html()
                                         + '</select></td>';
                                     cols += '<td>' +
                                         '<button class="btn btn-danger rounded-0" id ="deleteRow"><i class="bx bx-trash"></i></button ' +

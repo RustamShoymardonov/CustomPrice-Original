@@ -134,6 +134,7 @@ public class CommodityController {
         BigDecimal altRate = BigDecimal.valueOf(0.0);
 
         String paymentTypeS = Utils.nullClear(paymentType);
+        String g47ClcType = "";
         if (!"".equals(paymentTypeS) && !"0".equals(paymentTypeS)) {
 
             if ("20".equals(paymentTypeS)) {
@@ -185,6 +186,7 @@ public class CommodityController {
                     }
                     g47Sum = g47AltBase.add(g47Rate);
                 }
+                g47ClcType = String.valueOf(typeRate);
             }
 
             if ("27".equals(paymentTypeS)) {
@@ -237,19 +239,28 @@ public class CommodityController {
                     }
                     g47Sum = g47AltBase.add(g47Rate);
                 }
+                g47ClcType = String.valueOf(typeRate);
             }
 
             if ("29".equals(paymentTypeS)) {
                 Rate29 rate29 = rate29Service.getdByTnved(tnved);
                 advRate = rate29.getVatRate();
                 g47Sum = (advRate.multiply(g47Base)).divide(BigDecimal.valueOf(100));
+
+                typeRate = 0;
+                g47ClcType = String.valueOf(typeRate);
+            }
+
+            if ("10".equals(paymentTypeS)) {
+                typeRate = 1;
+                g47ClcType = String.valueOf(typeRate);
             }
 
         }
 
-        String g47Type = "", g47ClcType = "", g47AltBaseCurrKod = "", currRate = "";
+        String g47Type = "", g47AltBaseCurrKod = "", currRate = "";
         g47Type = paymentType;
-        g47ClcType = String.valueOf(typeRate);
+//        g47ClcType = String.valueOf(typeRate);
         g47AltBaseCurrKod = String.valueOf(exchangerate840.getId());
         currRate = String.valueOf(rate840);
 

@@ -212,8 +212,10 @@ public class AppsController {
 
         List<Docs> docsList = appsservice.getDocsListAppId(appId);
 
+
         mav.addObject("docsList", docsList);
         mav.addObject("appId", appId);
+
         return mav;
     }
 

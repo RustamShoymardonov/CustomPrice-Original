@@ -13,6 +13,6 @@ public class Rate20Service {
     }
 
     public Rate20 getdByTnved(String tnved) {
-        return rate20Repo.findByTnved(tnved);
+        return rate20Repo.findByTnvedAndFinishDateIsNull(tnved);
     }
 }
