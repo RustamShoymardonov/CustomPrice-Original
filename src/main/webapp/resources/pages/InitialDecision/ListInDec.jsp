@@ -37,8 +37,8 @@
     <link href="<%=request.getContextPath()%>/resources/assets2/css/header-colors.css"/>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="<%=request.getContextPath()%>/resources/assets2/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-    <link href="<%=request.getContextPath()%>/resources/assets2/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+    <link href="<%=request.getContextPath()%>/resources/assets2/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath()%>/resources/assets2/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet"/>
     <!-- loader-->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
@@ -50,7 +50,7 @@
 <div class="page-content">
     <!--start email wrapper-->
     <div class="row">
-        <div class="col"  style="cursor: pointer;" onclick="javascript:ListInDecApp('100')">
+        <div class="col" style="cursor: pointer;" onclick="javascript:ListInDecApp('100')">
             <div class="card radius-10 shadow">
                 <div class="card-body">
                     <div class="text-center">
@@ -62,8 +62,9 @@
                 </div>
             </div>
         </div>
-        <c:if test="userId == 7">
-        <div class="col"  style="cursor: pointer;" onclick="javascript:ListInDecRaspTable('110')">
+        <%if (userRole == 7) {%>
+        <%--        <c:if test="userRole == 7">--%>
+        <div class="col" style="cursor: pointer;" onclick="javascript:ListInDecRaspTable('110')">
             <div class="card radius-10 shadow">
                 <div class="card-body">
                     <div class="text-center">
@@ -75,7 +76,8 @@
                 </div>
             </div>
         </div>
-        </c:if>
+        <%}%>
+        <%--        </c:if>--%>
         <div class="col">
             <div class="card radius-10 shadow">
                 <div class="card-body">
@@ -181,8 +183,10 @@
     })(jQuery);
 
     function ListInDecApp(status) {
-       if (status == '100') {}
-       if (status == '110') {}
+        if (status == '100') {
+        }
+        if (status == '110') {
+        }
         // var inspectorName = $('#userIdF_' + rowNum + ' option:selected').text();
         var x = '0';
         var dataS = {
@@ -209,8 +213,10 @@
     });
 
     function ListInDecRaspTable(status) {
-        if (status == '100') {}
-        if (status == '110') {}
+        if (status == '100') {
+        }
+        if (status == '110') {
+        }
         // var inspectorName = $('#userIdF_' + rowNum + ' option:selected').text();
         var x = '0';
         var dataS = {
@@ -233,8 +239,10 @@
     }
 
     function ListInDecTermstTable(status) {
-        if (status == '100') {}
-        if (status == '110') {}
+        if (status == '100') {
+        }
+        if (status == '110') {
+        }
         // var inspectorName = $('#userIdF_' + rowNum + ' option:selected').text();
         var x = '0';
         var dataS = {

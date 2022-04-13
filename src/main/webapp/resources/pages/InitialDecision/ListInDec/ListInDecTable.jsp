@@ -124,8 +124,7 @@
                             <select class="form-select shadow-sm" required="" id="userIdF_${i.index + 1}"
                                     name="userId_${i.index + 1}">
                                 <option value="notSelected"></option>
-                                <c:forEach var="userSelect" items="${userSelectList}" varStatus="i">
-                                    varStatus="iUser">
+                                <c:forEach var="userSelect" items="${userSelectList}" varStatus="iUser">
                                     <option value="${userSelect.id}"><u>${userSelect.fullname}</u></option>
                                 </c:forEach>
                             </select>
@@ -153,7 +152,7 @@
 
     function saveInDecRaspIns(appId, inspectorId, rowNum) {
         var inspectorName = $('#userIdF_' + rowNum + ' option:selected').text();
-        alert(appId + ', ' + inspectorId + ', ' + inspectorName);
+        alert(' rowNum ===> ' + rowNum + '\n appId ===> ' + appId + '\n inspectorId ===> ' + inspectorId + '\n inspectorName ===> ' + inspectorName);
         var dataS = {
             "appId": appId,
             "inspectorId": inspectorId,
