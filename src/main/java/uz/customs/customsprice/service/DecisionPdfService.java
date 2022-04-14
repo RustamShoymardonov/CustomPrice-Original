@@ -2,7 +2,6 @@ package uz.customs.customsprice.service;
 
 import org.springframework.stereotype.Service;
 import uz.customs.customsprice.entity.files.DecisionPdf;
-import uz.customs.customsprice.entity.files.Docs;
 import uz.customs.customsprice.repository.DecisionPdfRepo;
 
 import java.util.Optional;
@@ -30,4 +29,5 @@ public class DecisionPdfService {
     public DecisionPdf saveDecisionPdf(DecisionPdf decisionPdf) {
         return decisionPdfRepo.save(decisionPdf);
     }
+
 }

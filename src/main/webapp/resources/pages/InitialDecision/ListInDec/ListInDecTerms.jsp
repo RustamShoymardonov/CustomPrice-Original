@@ -108,7 +108,7 @@
                         <td><div class="badge rounded-pill text-warning bg-light-warning p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>${terms[28]}</div></td>
                         <td>${terms[1]}</td>
                         <td>
-                            <a type="button"  href="<%=request.getContextPath()%>/decisionPdfDownload?appId=${terms[0]}&cmdtId=${terms[32]}" class="btn btn-warning">
+                            <a type="button"  href="<%=request.getContextPath()%>/decisionPdfDownload?appId=${terms[0]}&cmdtId=${terms[32]}" class="btn btn-outline-warning">
                                 <i class="bx bxs-file-pdf" style="font-size: 30px"></i>
                             </a>
                         </td>

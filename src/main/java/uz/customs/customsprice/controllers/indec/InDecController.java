@@ -266,7 +266,7 @@ public class InDecController {
         inDecService.saveInDec(inDec);
 
         /**todo PDF GENERATSIYA  **/
-        pdfService.createPdf(appId, cmdtId, userName);
+//        pdfService.createPdf(appId, cmdtId, userName);
         return mav;
     }
 

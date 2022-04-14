@@ -7,6 +7,7 @@ import uz.customs.customsprice.repository.users.RolesRepo;
 import uz.customs.customsprice.repository.users.UsersRepo;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsersService {
@@ -27,5 +28,8 @@ public class UsersService {
         return usersRepo.findByLocationAndPostAndRole(userLocation, userPost, userRole);
     }
 
+    public Optional<Users> getById(String id){
+        return  usersRepo.findById(id);
+    }
 }
 

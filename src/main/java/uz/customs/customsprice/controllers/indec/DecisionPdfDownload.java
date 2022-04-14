@@ -1,13 +1,16 @@
 package uz.customs.customsprice.controllers.indec;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import uz.customs.customsprice.entity.files.DecisionPdf;
+import uz.customs.customsprice.repository.DecisionPdfRepo;
 import uz.customs.customsprice.service.AppsService;
 import uz.customs.customsprice.service.DecisionPdfService;
+import uz.customs.customsprice.service.PdfService;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -24,15 +27,21 @@ import java.util.Optional;
 public class DecisionPdfDownload {
     private final AppsService appsService;
     private final DecisionPdfService decisionPdfService;
+    private final PdfService pdfService;
 
-    public DecisionPdfDownload(AppsService appsService, DecisionPdfService decisionPdfService) {
+    @Autowired
+    DecisionPdfRepo decisionPdfRepo;
+
+    public DecisionPdfDownload(AppsService appsService, DecisionPdfService decisionPdfService, PdfService pdfService) {
         this.appsService = appsService;
         this.decisionPdfService = decisionPdfService;
+        this.pdfService = pdfService;
     }
 
 
     @GetMapping
     public void downloadFile(@Param("appId") String appId, @Param("cmdtId") String cmdtId, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        pdfService.createPdf(appId, cmdtId);
 
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("utf-8");
@@ -68,6 +77,15 @@ public class DecisionPdfDownload {
                 }
                 out.close();
                 buf.close();
+
+                /* todo Файлни щчириш командаси бошланди */
+                File file = new File(pdfPath);
+                if (file.delete())
+                    System.out.println(pdfPath + " файл ўчирилди !!! ");
+                decisionPdfRepo.deleteDecisionPdfById(pdfId);
+                /* todo Файлни щчириш командаси тугади */
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -77,5 +95,7 @@ public class DecisionPdfDownload {
                     "</body>");
         }
     }
+
+
 }
 

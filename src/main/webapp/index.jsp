@@ -197,13 +197,13 @@
                     <div class="top-menu ms-auto">
                         <ul class="navbar-nav align-items-center">
                             <li class="nav-item mobile-search-icon">
-                                <a class="nav-link" href="#"> <i class='bx bx-search'></i>
-                                </a>
+                                <%--<a class="nav-link" href="#"> <i class='bx bx-search'></i>
+                                </a>--%>
                             </li>
                             <li class="nav-item dropdown dropdown-large">
-                                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button"
-                                   data-bs-toggle="dropdown" aria-expanded="false"> <i class='bx bx-category'></i>
-                                </a>
+<%--                                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button"--%>
+<%--                                   data-bs-toggle="dropdown" aria-expanded="false"> <i class='bx bx-category'></i>--%>
+<%--                                </a>--%>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <div class="row row-cols-3 g-3 p-3">
                                         <div class="col text-center">
@@ -246,18 +246,18 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown dropdown-large">
-                                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"
-                                   role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span
-                                        class="alert-count w-50">71</span>
-                                    <i class='bx bx-bell'></i><i class='bx bxs-bell bx-tada'></i>
-                                </a>
+<%--                                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"--%>
+<%--                                   role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span--%>
+<%--                                        class="alert-count w-50">71</span>--%>
+<%--                                    <i class='bx bx-bell'></i><i class='bx bxs-bell bx-tada'></i>--%>
+<%--                                </a>--%>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <a href="javascript:;">
-                                        <div class="msg-header">
-                                            <p class="msg-header-title">Notifications</p>
-                                            <p class="msg-header-clear ms-auto">Marks all as read</p>
-                                        </div>
-                                    </a>
+<%--                                    <a href="javascript:;">--%>
+<%--                                        <div class="msg-header">--%>
+<%--                                            <p class="msg-header-title">Notifications</p>--%>
+<%--                                            <p class="msg-header-clear ms-auto">Marks all as read</p>--%>
+<%--                                        </div>--%>
+<%--                                    </a>--%>
                                     <div class="header-notifications-list">
                                         <a class="dropdown-item" href="javascript:;">
                                             <div class="d-flex align-items-center">
@@ -376,11 +376,11 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown dropdown-large">
-                                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"
-                                   role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span
-                                        class="alert-count">8</span>
-                                    <i class='bx bx-comment'></i>
-                                </a>
+<%--                                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"--%>
+<%--                                   role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span--%>
+<%--                                        class="alert-count">8</span>--%>
+<%--                                    <i class='bx bx-comment'></i>--%>
+<%--                                </a>--%>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <a href="javascript:;">
                                         <div class="msg-header">
@@ -546,6 +546,7 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown dropdown-large">
+                                <a type="button" class="btn btn-sm radius-30 text-white" style="cursor: pointer; background-color: #0a58ca; font-size: 24px" id="id_date"></a>
                                 <a type="button" class="btn btn-sm radius-30 text-white" style="cursor: pointer; background-color: #0a58ca; font-size: 24px" id="id_clock"></a>
                                 <script>
                                     function digitalClock() {
@@ -553,11 +554,16 @@
                                         var hours = date.getHours();
                                         var minutes = date.getMinutes();
                                         var seconds = date.getSeconds();
+                                        var day = date.getDate();
+                                        var month = date.getMonth();
+                                        var years = date.getFullYear()
                                         //* добавление ведущих нулей */
                                         if (hours < 10) hours = "0" + hours;
                                         if (minutes < 10) minutes = "0" + minutes;
                                         if (seconds < 10) seconds = "0" + seconds;
-                                        document.getElementById("id_clock").innerHTML = hours + ":" + minutes + ":" + seconds;
+                                        document.getElementById("id_date").innerHTML = years + "/" + month + "/" + day;
+                                        document.getElementById("id_clock").innerHTML =hours + ":" + minutes + ":" + seconds;
+
                                         setTimeout("digitalClock()", 1000);
                                     };
                                 </script>
@@ -580,7 +586,7 @@
                             <div class="user-info ps-3">
                                 <p class="user-name mb-0"><%=user.getFullname()%>
                                 </p>
-                                <%--									<p class="designattion mb-0"><%=user.getRoles()%></p>--%>
+                                									<p class="designattion mb-0"><%=roleN%></p>
                             </div>
                             <div class="user-info ps-3">
                                 <i class='bx bx-log-in-circle bx-lg'></i>

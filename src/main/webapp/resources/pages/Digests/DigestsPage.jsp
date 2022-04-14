@@ -676,6 +676,7 @@
         var dataS = {
             "x": x
         }
+        document.body.style.cursor = "wait";
         $.ajax({
             type: "POST",
             data: dataS,
@@ -683,6 +684,7 @@
             dataType: "html",
             header: 'Content-type: text/html; charset=utf-8',
             success: function (res) {
+                document.body.style.cursor = "default";
                 $('div#MainContent').html(res);
             },
             error: function (res) {

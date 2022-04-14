@@ -14,6 +14,7 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
 import uz.customs.customsprice.entity.InitialDecision.Apps;
 import uz.customs.customsprice.entity.InitialDecision.Commodity;
 import uz.customs.customsprice.entity.InitialDecision.InDec;
+import uz.customs.customsprice.entity.InitialDecision.Users;
 import uz.customs.customsprice.entity.files.DecisionPdf;
 
 import java.io.*;
@@ -36,18 +37,24 @@ public class PdfService {
     private final DecisionPdfService decisionPdfService;
     private final PaymentServise paymentServise;
     private final DocsService docsService;
+    private final UsersService usersService;
 
-    public PdfService(AppsService appsService, CommodityService commodityService, InDecService inDecService, DecisionPdfService decisionPdfService, PaymentServise paymentServise, DocsService docsService) {
+    public PdfService(AppsService appsService, CommodityService commodityService, InDecService inDecService, DecisionPdfService decisionPdfService, PaymentServise paymentServise, DocsService docsService, UsersService usersService) {
         this.appsService = appsService;
         this.commodityService = commodityService;
         this.inDecService = inDecService;
         this.decisionPdfService = decisionPdfService;
         this.paymentServise = paymentServise;
         this.docsService = docsService;
+        this.usersService = usersService;
     }
 
-    public void createPdf(String appId, String cmdtId, String userName) throws IOException, BadElementException {
+    public void createPdf(String appId, String cmdtId) throws IOException, BadElementException {
         Apps apps = appsService.findById(appId);
+        InDec inDec2 = inDecService.getByCmtdId(cmdtId);
+        String IdUser = inDec2.getInsUser();
+        Optional<Users> userName = usersService.getById(IdUser);
+
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
@@ -60,13 +67,14 @@ public class PdfService {
         String url_InsUsr = "http://google.com";
         Date date1 = Calendar.getInstance().getTime();
 
+
         Context context = new Context();
         context.setVariable("apps", appsService.findById(appId));
         context.setVariable("cmdt", commodityService.getById(cmdtId));
         context.setVariable("inDec", inDecService.getByCmtdId(cmdtId));
         context.setVariable("payment", paymentServise.getByCmdtId(cmdtId));
         context.setVariable("docs", docsService.getByAppIdForPdf(appId));
-        context.setVariable("userName", userName);
+        context.setVariable("userName", userName.get().getUserName());
         context.setVariable("LocaleDate", date1);
         context.setVariable("url_qrCode", url_qrCode);
         context.setVariable("url_InsUsr", url_InsUsr);
