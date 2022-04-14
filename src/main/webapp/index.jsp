@@ -561,13 +561,13 @@
                                         setTimeout("digitalClock()", 1000);
                                     };
                                 </script>
-                                <form id="form" method="post" action="">
+<%--                                <form id="form" method="post" action="">--%>
 
-                                    <div class="flex">
-                                        <span class="currency">$</span>
-                                        <input id="amount" name="amount" type="text" maxlength="40" />
-                                    </div>
-                                </form>
+<%--                                    <div class="flex">--%>
+<%--                                        <span class="currency">$</span>--%>
+<%--                                        <input id="amount" name="amount" type="text" maxlength="40" />--%>
+<%--                                    </div>--%>
+<%--                                </form>--%>
 
                             </li>
                         </ul>

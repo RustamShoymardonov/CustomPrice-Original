@@ -59,6 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/auth/E404/**").permitAll()
                 .antMatchers("/esad", "/logo/**").permitAll()
                 .antMatchers("/logo", "/skvnksjdhfjksd.do/**").permitAll()
+                .antMatchers("/api/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

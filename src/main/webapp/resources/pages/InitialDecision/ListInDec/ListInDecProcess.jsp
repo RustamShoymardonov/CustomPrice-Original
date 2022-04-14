@@ -21,9 +21,7 @@
     String userLocationName = (String) request.getSession().getAttribute("userLocationName");
     String userPost = (String) request.getSession().getAttribute("userPost");
 %>
-<head>
-    <title>Title</title>
-</head>
+
 <body>
 <div class="fm-search">
     <div class="mb-0">
@@ -79,46 +77,34 @@
         </div>
     </div>
 </div>
-<div class="row mt-3">
+<div class="row mt-3" >
     <div class="col-12 col-lg-12">
-        <div class="table-responsive">
-            <table id="example3"  class="table table-striped table-bordered table-responsive">
+        <div class="table-responsive" >
+            <table id="example2"  class="table table-striped table-bordered table-responsive" >
                 <thead class="bg-light-primary" style="border-color: #0a58ca; border-style: dotted">
                 <tr>
-                    <th style=" border-style: dotted">т/р</th>
-                    <th style=" border-style: dotted">Ариза рақами</th>
-                    <th style=" border-style: dotted">Холати</th>
-                    <th style=" border-style: dotted">Ариза санаси</th>
-                    <th style=" border-style: dotted">Хужжат (Pdf)</th>
-                    <th style=" border-style: dotted">Манфаатдор шахс</th>
-                    <th style=" border-style: dotted">Қарор рақами</th>
-                    <th style=" border-style: dotted">Қарор санаси</th>
-                    <th style=" border-style: dotted">Амал қилиш муддати</th>
-                    <th style=" border-style: dotted">Етказиб бериш шарти</th>
-                    <th style=" border-style: dotted">Бекор қилиш санаси</th>
-                    <th style=" border-style: dotted">Инспектор</th>
+                    <th style="border-style: dotted">т/р</th>
+                    <th style="border-style: dotted">Ариза рақами</th>
+                    <th style="border-style: dotted">Мақоми</th>
+                    <th style="border-style: dotted">Ариза санаси</th>
+                    <th style="border-style: dotted">Мафаатдор шахс</th>
+                    <th style="border-style: dotted">Савдо қилувчи</th>
+                    <th style="border-style: dotted">Сотувчи мамлакат</th>
+                    <th style="border-style: dotted">Кимга тақсимланган</th>
                 </tr>
                 </thead>
-                <tbody>
-                <c:forEach var="terms" items="${termsList}" varStatus="i">
-                    <tr style="vertical-align: center">
+                <tbody >
+                <c:forEach var="sorted" items="${sortedList}" varStatus="i">
+                    <tr>
                         <td>${i.index+1}</td>
-                        <td><a type="button" class="btn btn-primary btn-sm radius-30 px-4" href="javascript:InitialDecisionView('${terms[0]}')"
-                               class="text-primary font-weight-bold"><u>${terms[6]}</u></a></td>
-                        <td><div class="badge rounded-pill text-warning bg-light-warning p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>${terms[28]}</div></td>
-                        <td>${terms[1]}</td>
-                        <td>
-                            <a type="button"  href="<%=request.getContextPath()%>/decisionPdfDownload?appId=${terms[0]}&cmdtId=${terms[32]}" class="btn btn-warning">
-                                <i class="bx bxs-file-pdf" style="font-size: 30px"></i>
-                            </a>
-                        </td>
-                        <td>${terms[14]}</td>
-                        <td>${terms[9]}-${terms[8]}</td>
-                        <td>${terms[9]}-${terms[8]}</td>
-                        <td>${terms[9]}-${terms[8]}</td>
-                        <td>${terms[9]}-${terms[8]}</td>
-                        <td>${terms[9]}-${terms[8]}</td>
-                        <td>${terms[30]}</td>
+                        <td><a type="button" class="btn btn-primary btn-sm radius-30 px-4" href="javascript:InitialDecisionView('${sorted[0]}')"
+                               class="text-primary font-weight-bold"><u>${sorted[6]}</u></a></td>
+                        <td><div class="badge rounded-pill text-info bg-light-info p-2 text-uppercase px-3"><i class='bx bxs-circle align-middle me-1'></i>${sorted[25]}</div></td>
+                        <td>${sorted[1]}</td>
+                        <td>${sorted[14]}</td>
+                        <td>${sorted[9]}-${sorted[8]}</td>
+                        <td>${sorted[21]}-${sorted[22]}</td>
+                        <td>${sorted[31]}</td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -126,6 +112,7 @@
         </div>
     </div>
 </div>
+
 <script>
     $('.datepicker').pickadate({
         selectMonths: true,
@@ -156,6 +143,8 @@
     });
 </script>
 <script>
+    /* Ариза тафсилоти */
+
     $(document).ready(function () {
         $('#example1').DataTable({
             "language": {

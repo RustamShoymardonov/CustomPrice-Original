@@ -64,7 +64,7 @@
         </div>
         <%if (userRole == 7) {%>
         <%--        <c:if test="userRole == 7">--%>
-        <div class="col" style="cursor: pointer;" onclick="javascript:ListInDecRaspTable('110')">
+        <div class="col my-button" style="cursor: pointer;" onclick="javascript:ListInDecRaspTable('110')">
             <div class="card radius-10 shadow">
                 <div class="card-body">
                     <div class="text-center">
